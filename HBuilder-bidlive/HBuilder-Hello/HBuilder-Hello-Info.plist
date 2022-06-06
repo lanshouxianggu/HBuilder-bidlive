@@ -463,7 +463,7 @@
 					<key>class</key>
 					<string>BidLiveHomeComponent</string>
 					<key>name</key>
-					<string>ios-BidLiveHome</string>
+					<string>homeView</string>
 					<key>type</key>
 					<string>component</string>
 				</dict>
