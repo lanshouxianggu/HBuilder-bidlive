@@ -1,0 +1,757 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		79CF337AAAB07E38AB2D25DF0C39D315 /* TWebRTC */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 533323DA06FB5E73A3518F76031632FF /* Build configuration list for PBXAggregateTarget "TWebRTC" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = TWebRTC;
+		};
+		9DC369FA3A7E08322BD1CE2D993E2B5A /* LiveEB_IOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3A8697195DBFFFEE0D79C68C0F054960 /* Build configuration list for PBXAggregateTarget "LiveEB_IOS" */;
+			buildPhases = (
+			);
+			dependencies = (
+				938A1042828ED9DA52CCE5ED4BA18494 /* PBXTargetDependency */,
+			);
+			name = LiveEB_IOS;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		A23061574A9DECBA57869713E8790DDB /* Pods-LebLivePlugin-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D26AC9D94FC2D68CADAE0541B58AA32A /* Pods-LebLivePlugin-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		352DCC92F03AA0DBB71C0F3953A36E3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79CF337AAAB07E38AB2D25DF0C39D315;
+			remoteInfo = TWebRTC;
+		};
+		5CF55DC801B05960AEBC70B3465A90E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DC369FA3A7E08322BD1CE2D993E2B5A;
+			remoteInfo = LiveEB_IOS;
+		};
+		F5A8381ACB6666B24B30A947678FF8E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79CF337AAAB07E38AB2D25DF0C39D315;
+			remoteInfo = TWebRTC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00739773111213E7B9A6B6A83152B4C7 /* RTCVideoEncoderFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderFactory.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderFactory.h; sourceTree = "<group>"; };
+		04BE1C5390ADF0843C39CBFF240D9AD4 /* RTCAudioSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioSource.h; path = TWEBRTC.framework/Headers/RTCAudioSource.h; sourceTree = "<group>"; };
+		0661429F2AFE61FE661BA94130CEA49A /* RTCVideoDecoderFactoryH264.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderFactoryH264.h; path = TWEBRTC.framework/Headers/RTCVideoDecoderFactoryH264.h; sourceTree = "<group>"; };
+		0699355C17C042AAAC325ECE68FAB083 /* LiveEB_IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LiveEB_IOS.debug.xcconfig; sourceTree = "<group>"; };
+		0738CA085A7B310C1BEDB4D731C81F0A /* RTCIntervalRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCIntervalRange.h; path = TWEBRTC.framework/Headers/RTCIntervalRange.h; sourceTree = "<group>"; };
+		075217E46AD64F140644892A286889B3 /* RTCMediaSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaSource.h; path = TWEBRTC.framework/Headers/RTCMediaSource.h; sourceTree = "<group>"; };
+		0D067CF364DE50FDFBD3810975A8E280 /* RTCCryptoOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCryptoOptions.h; path = TWEBRTC.framework/Headers/RTCCryptoOptions.h; sourceTree = "<group>"; };
+		10451BB094E10D5F562A836424F81630 /* RTCAudioSessionConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioSessionConfiguration.h; path = TWEBRTC.framework/Headers/RTCAudioSessionConfiguration.h; sourceTree = "<group>"; };
+		10B315E945B7AF34D1BB29380F240877 /* RTCRtpSender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpSender.h; path = TWEBRTC.framework/Headers/RTCRtpSender.h; sourceTree = "<group>"; };
+		10CACABA6523D29D9F32686F2C581695 /* RTCMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMacros.h; path = TWEBRTC.framework/Headers/RTCMacros.h; sourceTree = "<group>"; };
+		12E580C9D465ADAEBE47C2169730FFFF /* RTCVideoEncoderSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderSettings.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderSettings.h; sourceTree = "<group>"; };
+		18FA024AB2226EE9157E8656D6324E45 /* RTCConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCConfiguration.h; path = TWEBRTC.framework/Headers/RTCConfiguration.h; sourceTree = "<group>"; };
+		1BA1483C60BDCF52EB0D16DB8975EC13 /* LiveEB_IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LiveEB_IOS.release.xcconfig; sourceTree = "<group>"; };
+		1BC3FE5969604EAE13CBF9FD721756CA /* RTCEAGLVideoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCEAGLVideoView.h; path = TWEBRTC.framework/Headers/RTCEAGLVideoView.h; sourceTree = "<group>"; };
+		1BE7AB9D0FB5E42F3775E141CA7E7B77 /* RTCSSLAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCSSLAdapter.h; path = TWEBRTC.framework/Headers/RTCSSLAdapter.h; sourceTree = "<group>"; };
+		1C41B282CE436D582C00F9D94A5F5406 /* RTCVideoEncoderFactoryH265.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderFactoryH265.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderFactoryH265.h; sourceTree = "<group>"; };
+		1ED6552E9F8422F97FEA8C8A913DF13D /* RTCTracing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCTracing.h; path = TWEBRTC.framework/Headers/RTCTracing.h; sourceTree = "<group>"; };
+		24B6AB16CE30E22839157707DF11F0F5 /* RTCCodecSpecificInfoH264.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCodecSpecificInfoH264.h; path = TWEBRTC.framework/Headers/RTCCodecSpecificInfoH264.h; sourceTree = "<group>"; };
+		24B999F694E7FC0756F04D3EE55D01BE /* RTCDataChannelConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDataChannelConfiguration.h; path = TWEBRTC.framework/Headers/RTCDataChannelConfiguration.h; sourceTree = "<group>"; };
+		28436916C3C8A30325695CF511D98D82 /* RTCPeerConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCPeerConnection.h; path = TWEBRTC.framework/Headers/RTCPeerConnection.h; sourceTree = "<group>"; };
+		29105A1C2CAB0327862A209E4BE1B03D /* Pods-LebLivePlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LebLivePlugin.release.xcconfig"; sourceTree = "<group>"; };
+		29FB09ECE8742F582B5D828EBDC3EBEF /* RTCEncodedImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCEncodedImage.h; path = TWEBRTC.framework/Headers/RTCEncodedImage.h; sourceTree = "<group>"; };
+		2A24E7EEE5B8B63D04802DD2D4CB1296 /* RTCIceCandidate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCIceCandidate.h; path = TWEBRTC.framework/Headers/RTCIceCandidate.h; sourceTree = "<group>"; };
+		2E85D98D46A14115ECAC87795C94C7CF /* RTCNativeMutableI420Buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCNativeMutableI420Buffer.h; path = TWEBRTC.framework/Headers/RTCNativeMutableI420Buffer.h; sourceTree = "<group>"; };
+		35BDB68E330FB01C29FFF2B6074AB2FC /* LiveEB_IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LiveEB_IOS.h; path = Product/LiveEB_IOS.framework/Headers/LiveEB_IOS.h; sourceTree = "<group>"; };
+		35DCF9F891CF0920F2F29FEBE7B96FA2 /* RTCYUVPlanarBuffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCYUVPlanarBuffer.h; path = TWEBRTC.framework/Headers/RTCYUVPlanarBuffer.h; sourceTree = "<group>"; };
+		36286F7D3627B039D5D21DB6AD0CD83D /* RTCMetrics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMetrics.h; path = TWEBRTC.framework/Headers/RTCMetrics.h; sourceTree = "<group>"; };
+		36F9A5A1C29E0B5B07361FE92756DF68 /* RTCVideoSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoSource.h; path = TWEBRTC.framework/Headers/RTCVideoSource.h; sourceTree = "<group>"; };
+		372A0B75916BFF505E54F7B283A2A23B /* RTCVideoCodecInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoCodecInfo.h; path = TWEBRTC.framework/Headers/RTCVideoCodecInfo.h; sourceTree = "<group>"; };
+		389DA98DC56CE855FA393ACAD47F7F39 /* RTCVideoViewShading.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoViewShading.h; path = TWEBRTC.framework/Headers/RTCVideoViewShading.h; sourceTree = "<group>"; };
+		39F065AAB7EC0E4BFE4B14390489F316 /* RTCMediaStreamTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaStreamTrack.h; path = TWEBRTC.framework/Headers/RTCMediaStreamTrack.h; sourceTree = "<group>"; };
+		3C7CD13A05F68A1B9760FD3647226F7F /* RTCIceServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCIceServer.h; path = TWEBRTC.framework/Headers/RTCIceServer.h; sourceTree = "<group>"; };
+		3DEFF58B93AC8EED75005F29FCE9B56C /* RTCVideoDecoderFactoryH265.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderFactoryH265.h; path = TWEBRTC.framework/Headers/RTCVideoDecoderFactoryH265.h; sourceTree = "<group>"; };
+		427B84FB0A9EFEA89BB60D48E510AB32 /* RTCLegacyStatsReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCLegacyStatsReport.h; path = TWEBRTC.framework/Headers/RTCLegacyStatsReport.h; sourceTree = "<group>"; };
+		43552DB649F3649454ABC5EF2F576A24 /* RTCRtpEncodingParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpEncodingParameters.h; path = TWEBRTC.framework/Headers/RTCRtpEncodingParameters.h; sourceTree = "<group>"; };
+		4667D0905E5593F96DBADF9EC7BE79C0 /* RTCCodecSpecificInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCodecSpecificInfo.h; path = TWEBRTC.framework/Headers/RTCCodecSpecificInfo.h; sourceTree = "<group>"; };
+		4989EEBAB2B5FC93B0A01B0FEE8AC602 /* RTCVideoDecoderFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderFactory.h; path = TWEBRTC.framework/Headers/RTCVideoDecoderFactory.h; sourceTree = "<group>"; };
+		538AC0E113D4288A7EB5A67EE6CDB5CA /* RTCDtmfSender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDtmfSender.h; path = TWEBRTC.framework/Headers/RTCDtmfSender.h; sourceTree = "<group>"; };
+		55FF22DC5C620DA1987463E3048B5CF3 /* RTCVideoDecoderVP9.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderVP9.h; path = TWEBRTC.framework/Headers/RTCVideoDecoderVP9.h; sourceTree = "<group>"; };
+		5718FAF76E573D1096B32A690C536F49 /* RTCAudioSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioSession.h; path = TWEBRTC.framework/Headers/RTCAudioSession.h; sourceTree = "<group>"; };
+		57423B0E97D1D95E924C2FDD2DA8BE43 /* RTCFileVideoCapturer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCFileVideoCapturer.h; path = TWEBRTC.framework/Headers/RTCFileVideoCapturer.h; sourceTree = "<group>"; };
+		5813BC2C01487D5B0511C68DE7E0B632 /* RTCMediaStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaStream.h; path = TWEBRTC.framework/Headers/RTCMediaStream.h; sourceTree = "<group>"; };
+		5B397A0F7DC8DF23E90962E1417EF48E /* RTCDispatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDispatcher.h; path = TWEBRTC.framework/Headers/RTCDispatcher.h; sourceTree = "<group>"; };
+		634BF371A7638FD89596225568F0C08E /* UIDevice+RTCDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIDevice+RTCDevice.h"; path = "TWEBRTC.framework/Headers/UIDevice+RTCDevice.h"; sourceTree = "<group>"; };
+		661364BA513CC0D5493F53127509DBC1 /* LiveEBVideoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LiveEBVideoView.h; path = Product/LiveEB_IOS.framework/Headers/LiveEBVideoView.h; sourceTree = "<group>"; };
+		66496A0689C1D07981638178C06AD364 /* RTCPeerConnectionFactoryOptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCPeerConnectionFactoryOptions.h; path = TWEBRTC.framework/Headers/RTCPeerConnectionFactoryOptions.h; sourceTree = "<group>"; };
+		6831DFBE00EF500E7FD1F53A0CA471EE /* RTCRtpParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpParameters.h; path = TWEBRTC.framework/Headers/RTCRtpParameters.h; sourceTree = "<group>"; };
+		68B06E8A181A64AB167A5BEB47457E98 /* RTCVideoEncoderFactoryH264.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderFactoryH264.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderFactoryH264.h; sourceTree = "<group>"; };
+		6E4ECBABC1135229399DD2E4D602E872 /* RTCPeerConnectionFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCPeerConnectionFactory.h; path = TWEBRTC.framework/Headers/RTCPeerConnectionFactory.h; sourceTree = "<group>"; };
+		715FCD857D7EE65882F0920BA4CB3287 /* RTCVideoDecoderVP8.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderVP8.h; path = TWEBRTC.framework/Headers/RTCVideoDecoderVP8.h; sourceTree = "<group>"; };
+		741BA64E33834E8BD8CED234C918E5B5 /* RTCMediaConstraints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaConstraints.h; path = TWEBRTC.framework/Headers/RTCMediaConstraints.h; sourceTree = "<group>"; };
+		79890656A11724A20697F1B8CAC5D41A /* RTCFieldTrials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCFieldTrials.h; path = TWEBRTC.framework/Headers/RTCFieldTrials.h; sourceTree = "<group>"; };
+		7AEE09C57358FF46A9CC1998C9A717DC /* RTCCVPixelBuffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCVPixelBuffer.h; path = TWEBRTC.framework/Headers/RTCCVPixelBuffer.h; sourceTree = "<group>"; };
+		7BAE4F55CC084F679DE3EC8159574F8A /* RTCVideoRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoRenderer.h; path = TWEBRTC.framework/Headers/RTCVideoRenderer.h; sourceTree = "<group>"; };
+		7FF0A5ED961C4DAE0B9449C6CAD4D4D2 /* RTCVideoDecoderH265.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderH265.h; path = TWEBRTC.framework/Headers/RTCVideoDecoderH265.h; sourceTree = "<group>"; };
+		82AD2C6839C3D5A303A47219CD95854E /* RTCMutableYUVPlanarBuffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMutableYUVPlanarBuffer.h; path = TWEBRTC.framework/Headers/RTCMutableYUVPlanarBuffer.h; sourceTree = "<group>"; };
+		8394A9C3B6C993F64767E3671E52EC9C /* RTCRtpHeaderExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpHeaderExtension.h; path = TWEBRTC.framework/Headers/RTCRtpHeaderExtension.h; sourceTree = "<group>"; };
+		83CAEE4129BB93C3BBF369BB8833296B /* TWebRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TWebRTC.debug.xcconfig; sourceTree = "<group>"; };
+		8B54AB490AD4DF70FCE94359A577898E /* RTCDefaultVideoDecoderFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDefaultVideoDecoderFactory.h; path = TWEBRTC.framework/Headers/RTCDefaultVideoDecoderFactory.h; sourceTree = "<group>"; };
+		8D597D311E35AC762A2CD414210EB3E3 /* RTCCallbackLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCallbackLogger.h; path = TWEBRTC.framework/Headers/RTCCallbackLogger.h; sourceTree = "<group>"; };
+		8D8D6EB2226E286A4BAFB14ACA227068 /* RTCVideoFrameBuffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoFrameBuffer.h; path = TWEBRTC.framework/Headers/RTCVideoFrameBuffer.h; sourceTree = "<group>"; };
+		8E9ABD2DBE9406DEA9A83F4B1938FD02 /* RTCRtpFragmentationHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpFragmentationHeader.h; path = TWEBRTC.framework/Headers/RTCRtpFragmentationHeader.h; sourceTree = "<group>"; };
+		8F073AFB7B04554334EDD118F37DA8F6 /* RTCI420Buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCI420Buffer.h; path = TWEBRTC.framework/Headers/RTCI420Buffer.h; sourceTree = "<group>"; };
+		8F7A2F047AC8E7F1131169E43E183B5B /* RTCDataChannel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDataChannel.h; path = TWEBRTC.framework/Headers/RTCDataChannel.h; sourceTree = "<group>"; };
+		912DF70F497EC457192362125D9DCEE4 /* libPods-LebLivePlugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-LebLivePlugin.a"; path = "libPods-LebLivePlugin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		929344AB31558927AD0821C98A66C15D /* LEBStatReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LEBStatReport.h; path = Product/LiveEB_IOS.framework/Headers/LEBStatReport.h; sourceTree = "<group>"; };
+		970665CE16607123C84EC2AF28EC7A5A /* RTCVideoCodecConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoCodecConstants.h; path = TWEBRTC.framework/Headers/RTCVideoCodecConstants.h; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E4D321BCCEB37908D639D6B2695FF4C /* RTCSessionDescription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCSessionDescription.h; path = TWEBRTC.framework/Headers/RTCSessionDescription.h; sourceTree = "<group>"; };
+		9F05D3192E0D394F28EBBB23D14F1DF2 /* Pods-LebLivePlugin-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LebLivePlugin-acknowledgements.plist"; sourceTree = "<group>"; };
+		A0CE3CFDE89A16931A2CDE0FAB88D02F /* RTCMTLVideoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMTLVideoView.h; path = TWEBRTC.framework/Headers/RTCMTLVideoView.h; sourceTree = "<group>"; };
+		A3755EFB28B38BEB16FAF49D8F38C847 /* TWEBRTC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TWEBRTC.h; path = TWEBRTC.framework/Headers/TWEBRTC.h; sourceTree = "<group>"; };
+		A3FA199DEB55532E53AB0ABBB50E4223 /* TWebRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TWebRTC.release.xcconfig; sourceTree = "<group>"; };
+		A965FA6B1F6FB7F147E5097445FC2EA0 /* RTCVideoTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoTrack.h; path = TWEBRTC.framework/Headers/RTCVideoTrack.h; sourceTree = "<group>"; };
+		AB61C970BBE28EBDB824C9A137044C74 /* Pods-LebLivePlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LebLivePlugin.debug.xcconfig"; sourceTree = "<group>"; };
+		ABA9BFB69C776AF5C1E6556CCADA86CF /* RTCRtcpParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtcpParameters.h; path = TWEBRTC.framework/Headers/RTCRtcpParameters.h; sourceTree = "<group>"; };
+		AD3E37CABB78AEE35412F7A9B7851827 /* RTCVideoFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoFrame.h; path = TWEBRTC.framework/Headers/RTCVideoFrame.h; sourceTree = "<group>"; };
+		ADB701085D0048443572270722CCE031 /* RTCVideoDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoder.h; path = TWEBRTC.framework/Headers/RTCVideoDecoder.h; sourceTree = "<group>"; };
+		ADD013DE8490F01E9A6C42685614CBF6 /* RTCMetricsSampleInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMetricsSampleInfo.h; path = TWEBRTC.framework/Headers/RTCMetricsSampleInfo.h; sourceTree = "<group>"; };
+		B0FDA7856F0E61C5DA20AAE9050E76FE /* LiveEB_IOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveEB_IOS.framework; path = Product/LiveEB_IOS.framework; sourceTree = "<group>"; };
+		B48EA473329A41201897B087869FE327 /* RTCStatisticsReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCStatisticsReport.h; path = TWEBRTC.framework/Headers/RTCStatisticsReport.h; sourceTree = "<group>"; };
+		B61F758DEB8466C98B9CC1B3499B5BC2 /* RTCH264ProfileLevelId.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCH264ProfileLevelId.h; path = TWEBRTC.framework/Headers/RTCH264ProfileLevelId.h; sourceTree = "<group>"; };
+		B713889A74E61334DBE656484D484F0B /* RTCVideoEncoderH264.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderH264.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderH264.h; sourceTree = "<group>"; };
+		BC449EFC620917666950D05FD429E717 /* RTCVideoEncoderVP9.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderVP9.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderVP9.h; sourceTree = "<group>"; };
+		BD2DE7F01BD6A3C8CF0BE17C1130B376 /* RTCVideoEncoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoder.h; path = TWEBRTC.framework/Headers/RTCVideoEncoder.h; sourceTree = "<group>"; };
+		BD99450AAA25CABA8FEA7B9653221D80 /* RTCH265ProfileLevelId.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCH265ProfileLevelId.h; path = TWEBRTC.framework/Headers/RTCH265ProfileLevelId.h; sourceTree = "<group>"; };
+		BEC398A36E8F9386BDEB0CF8168B8569 /* RTCAudioTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioTrack.h; path = TWEBRTC.framework/Headers/RTCAudioTrack.h; sourceTree = "<group>"; };
+		C3333551F9F3F82BACD2001A36F7FD1C /* RTCVideoEncoderQpThresholds.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderQpThresholds.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderQpThresholds.h; sourceTree = "<group>"; };
+		C523B543170645992BE06D2CD518A4A2 /* RTCCameraVideoCapturer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCameraVideoCapturer.h; path = TWEBRTC.framework/Headers/RTCCameraVideoCapturer.h; sourceTree = "<group>"; };
+		C999B7777C05AB6DDAB4324315369F79 /* RTCRtpTransceiver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpTransceiver.h; path = TWEBRTC.framework/Headers/RTCRtpTransceiver.h; sourceTree = "<group>"; };
+		CAB16678F86A192C0092CC93449BC933 /* RTCVideoDecoderH264.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderH264.h; path = TWEBRTC.framework/Headers/RTCVideoDecoderH264.h; sourceTree = "<group>"; };
+		CAC463659DF449151D6C39761EB692C6 /* RTCVideoEncoderH265.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderH265.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderH265.h; sourceTree = "<group>"; };
+		CED6A769A5E7C20BFB9C60E38B050A05 /* RTCRtpCodecParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpCodecParameters.h; path = TWEBRTC.framework/Headers/RTCRtpCodecParameters.h; sourceTree = "<group>"; };
+		D26AC9D94FC2D68CADAE0541B58AA32A /* Pods-LebLivePlugin-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LebLivePlugin-dummy.m"; sourceTree = "<group>"; };
+		E5936547C98A9C6A6D1C233F9D5B9FD9 /* RTCLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCLogging.h; path = TWEBRTC.framework/Headers/RTCLogging.h; sourceTree = "<group>"; };
+		E8197646AF6E8123763CF94290F0C1E7 /* LiveEBManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LiveEBManager.h; path = Product/LiveEB_IOS.framework/Headers/LiveEBManager.h; sourceTree = "<group>"; };
+		EB5200D9ED81D363D83AAB7A7FE55E8B /* Pods-LebLivePlugin-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LebLivePlugin-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EE84041F0B22399A277789BC3F2B1CA8 /* RTCMutableI420Buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMutableI420Buffer.h; path = TWEBRTC.framework/Headers/RTCMutableI420Buffer.h; sourceTree = "<group>"; };
+		F232DE81726BC9BF8176EF391590D174 /* RTCRtpReceiver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpReceiver.h; path = TWEBRTC.framework/Headers/RTCRtpReceiver.h; sourceTree = "<group>"; };
+		F34822C6BB0A90713320403B45D038D8 /* TWEBRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TWEBRTC.framework; sourceTree = "<group>"; };
+		F86E5696F0226431166AB801AB204BBF /* RTCNativeI420Buffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCNativeI420Buffer.h; path = TWEBRTC.framework/Headers/RTCNativeI420Buffer.h; sourceTree = "<group>"; };
+		F8CDA534E69D5777F140883A7FE71D43 /* RTCVideoEncoderVP8.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderVP8.h; path = TWEBRTC.framework/Headers/RTCVideoEncoderVP8.h; sourceTree = "<group>"; };
+		F94AB6475348086580A6B16684C36E47 /* RTCDefaultVideoEncoderFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDefaultVideoEncoderFactory.h; path = TWEBRTC.framework/Headers/RTCDefaultVideoEncoderFactory.h; sourceTree = "<group>"; };
+		F9D82A33C2117028BE231BF9EFF905D5 /* RTCCameraPreviewView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCameraPreviewView.h; path = TWEBRTC.framework/Headers/RTCCameraPreviewView.h; sourceTree = "<group>"; };
+		FC09B34455B65452974DD7CE0DA49669 /* RTCCertificate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCertificate.h; path = TWEBRTC.framework/Headers/RTCCertificate.h; sourceTree = "<group>"; };
+		FC9F2F50C27CC24FFD42849248C42085 /* RTCFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCFileLogger.h; path = TWEBRTC.framework/Headers/RTCFileLogger.h; sourceTree = "<group>"; };
+		FDAE10B770D67B854A07185A68D162B9 /* RTCVideoCapturer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoCapturer.h; path = TWEBRTC.framework/Headers/RTCVideoCapturer.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CDD23EE954BBE33485A7096904245437 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F9B23FCDA540D87B4F35FC605303122 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				83CAEE4129BB93C3BBF369BB8833296B /* TWebRTC.debug.xcconfig */,
+				A3FA199DEB55532E53AB0ABBB50E4223 /* TWebRTC.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TWebRTC";
+			sourceTree = "<group>";
+		};
+		41078F2A86BDD98FD71FFA1C38C45FE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				912DF70F497EC457192362125D9DCEE4 /* libPods-LebLivePlugin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46C57CA2ACC36AFCD289E2461A56806E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0FDA7856F0E61C5DA20AAE9050E76FE /* LiveEB_IOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59E990374553898EE87D3F9D5C9D71D2 /* LiveEB_IOS */ = {
+			isa = PBXGroup;
+			children = (
+				929344AB31558927AD0821C98A66C15D /* LEBStatReport.h */,
+				35BDB68E330FB01C29FFF2B6074AB2FC /* LiveEB_IOS.h */,
+				E8197646AF6E8123763CF94290F0C1E7 /* LiveEBManager.h */,
+				661364BA513CC0D5493F53127509DBC1 /* LiveEBVideoView.h */,
+				46C57CA2ACC36AFCD289E2461A56806E /* Frameworks */,
+				6ECD3CF5365CD462DCA04019A8B73527 /* Support Files */,
+			);
+			name = LiveEB_IOS;
+			path = LiveEB_IOS;
+			sourceTree = "<group>";
+		};
+		6ECD3CF5365CD462DCA04019A8B73527 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0699355C17C042AAAC325ECE68FAB083 /* LiveEB_IOS.debug.xcconfig */,
+				1BA1483C60BDCF52EB0D16DB8975EC13 /* LiveEB_IOS.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/LiveEB_IOS";
+			sourceTree = "<group>";
+		};
+		80C842A3644C7699889304E8325926A3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8826CAE7D84D1CA0FD164A899ABABF51 /* Pods-LebLivePlugin */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		8826CAE7D84D1CA0FD164A899ABABF51 /* Pods-LebLivePlugin */ = {
+			isa = PBXGroup;
+			children = (
+				EB5200D9ED81D363D83AAB7A7FE55E8B /* Pods-LebLivePlugin-acknowledgements.markdown */,
+				9F05D3192E0D394F28EBBB23D14F1DF2 /* Pods-LebLivePlugin-acknowledgements.plist */,
+				D26AC9D94FC2D68CADAE0541B58AA32A /* Pods-LebLivePlugin-dummy.m */,
+				AB61C970BBE28EBDB824C9A137044C74 /* Pods-LebLivePlugin.debug.xcconfig */,
+				29105A1C2CAB0327862A209E4BE1B03D /* Pods-LebLivePlugin.release.xcconfig */,
+			);
+			name = "Pods-LebLivePlugin";
+			path = "Target Support Files/Pods-LebLivePlugin";
+			sourceTree = "<group>";
+		};
+		C1F3317CA0E4567414E435FB6AE6D22B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F34822C6BB0A90713320403B45D038D8 /* TWEBRTC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				F7C7F4268BFE3355A08627584F711B01 /* Pods */,
+				41078F2A86BDD98FD71FFA1C38C45FE0 /* Products */,
+				80C842A3644C7699889304E8325926A3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7975B25529F9FFF276963B716521A6B /* TWebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				5718FAF76E573D1096B32A690C536F49 /* RTCAudioSession.h */,
+				10451BB094E10D5F562A836424F81630 /* RTCAudioSessionConfiguration.h */,
+				04BE1C5390ADF0843C39CBFF240D9AD4 /* RTCAudioSource.h */,
+				BEC398A36E8F9386BDEB0CF8168B8569 /* RTCAudioTrack.h */,
+				8D597D311E35AC762A2CD414210EB3E3 /* RTCCallbackLogger.h */,
+				F9D82A33C2117028BE231BF9EFF905D5 /* RTCCameraPreviewView.h */,
+				C523B543170645992BE06D2CD518A4A2 /* RTCCameraVideoCapturer.h */,
+				FC09B34455B65452974DD7CE0DA49669 /* RTCCertificate.h */,
+				4667D0905E5593F96DBADF9EC7BE79C0 /* RTCCodecSpecificInfo.h */,
+				24B6AB16CE30E22839157707DF11F0F5 /* RTCCodecSpecificInfoH264.h */,
+				18FA024AB2226EE9157E8656D6324E45 /* RTCConfiguration.h */,
+				0D067CF364DE50FDFBD3810975A8E280 /* RTCCryptoOptions.h */,
+				7AEE09C57358FF46A9CC1998C9A717DC /* RTCCVPixelBuffer.h */,
+				8F7A2F047AC8E7F1131169E43E183B5B /* RTCDataChannel.h */,
+				24B999F694E7FC0756F04D3EE55D01BE /* RTCDataChannelConfiguration.h */,
+				8B54AB490AD4DF70FCE94359A577898E /* RTCDefaultVideoDecoderFactory.h */,
+				F94AB6475348086580A6B16684C36E47 /* RTCDefaultVideoEncoderFactory.h */,
+				5B397A0F7DC8DF23E90962E1417EF48E /* RTCDispatcher.h */,
+				538AC0E113D4288A7EB5A67EE6CDB5CA /* RTCDtmfSender.h */,
+				1BC3FE5969604EAE13CBF9FD721756CA /* RTCEAGLVideoView.h */,
+				29FB09ECE8742F582B5D828EBDC3EBEF /* RTCEncodedImage.h */,
+				79890656A11724A20697F1B8CAC5D41A /* RTCFieldTrials.h */,
+				FC9F2F50C27CC24FFD42849248C42085 /* RTCFileLogger.h */,
+				57423B0E97D1D95E924C2FDD2DA8BE43 /* RTCFileVideoCapturer.h */,
+				B61F758DEB8466C98B9CC1B3499B5BC2 /* RTCH264ProfileLevelId.h */,
+				BD99450AAA25CABA8FEA7B9653221D80 /* RTCH265ProfileLevelId.h */,
+				8F073AFB7B04554334EDD118F37DA8F6 /* RTCI420Buffer.h */,
+				2A24E7EEE5B8B63D04802DD2D4CB1296 /* RTCIceCandidate.h */,
+				3C7CD13A05F68A1B9760FD3647226F7F /* RTCIceServer.h */,
+				0738CA085A7B310C1BEDB4D731C81F0A /* RTCIntervalRange.h */,
+				427B84FB0A9EFEA89BB60D48E510AB32 /* RTCLegacyStatsReport.h */,
+				E5936547C98A9C6A6D1C233F9D5B9FD9 /* RTCLogging.h */,
+				10CACABA6523D29D9F32686F2C581695 /* RTCMacros.h */,
+				741BA64E33834E8BD8CED234C918E5B5 /* RTCMediaConstraints.h */,
+				075217E46AD64F140644892A286889B3 /* RTCMediaSource.h */,
+				5813BC2C01487D5B0511C68DE7E0B632 /* RTCMediaStream.h */,
+				39F065AAB7EC0E4BFE4B14390489F316 /* RTCMediaStreamTrack.h */,
+				36286F7D3627B039D5D21DB6AD0CD83D /* RTCMetrics.h */,
+				ADD013DE8490F01E9A6C42685614CBF6 /* RTCMetricsSampleInfo.h */,
+				A0CE3CFDE89A16931A2CDE0FAB88D02F /* RTCMTLVideoView.h */,
+				EE84041F0B22399A277789BC3F2B1CA8 /* RTCMutableI420Buffer.h */,
+				82AD2C6839C3D5A303A47219CD95854E /* RTCMutableYUVPlanarBuffer.h */,
+				F86E5696F0226431166AB801AB204BBF /* RTCNativeI420Buffer.h */,
+				2E85D98D46A14115ECAC87795C94C7CF /* RTCNativeMutableI420Buffer.h */,
+				28436916C3C8A30325695CF511D98D82 /* RTCPeerConnection.h */,
+				6E4ECBABC1135229399DD2E4D602E872 /* RTCPeerConnectionFactory.h */,
+				66496A0689C1D07981638178C06AD364 /* RTCPeerConnectionFactoryOptions.h */,
+				ABA9BFB69C776AF5C1E6556CCADA86CF /* RTCRtcpParameters.h */,
+				CED6A769A5E7C20BFB9C60E38B050A05 /* RTCRtpCodecParameters.h */,
+				43552DB649F3649454ABC5EF2F576A24 /* RTCRtpEncodingParameters.h */,
+				8E9ABD2DBE9406DEA9A83F4B1938FD02 /* RTCRtpFragmentationHeader.h */,
+				8394A9C3B6C993F64767E3671E52EC9C /* RTCRtpHeaderExtension.h */,
+				6831DFBE00EF500E7FD1F53A0CA471EE /* RTCRtpParameters.h */,
+				F232DE81726BC9BF8176EF391590D174 /* RTCRtpReceiver.h */,
+				10B315E945B7AF34D1BB29380F240877 /* RTCRtpSender.h */,
+				C999B7777C05AB6DDAB4324315369F79 /* RTCRtpTransceiver.h */,
+				9E4D321BCCEB37908D639D6B2695FF4C /* RTCSessionDescription.h */,
+				1BE7AB9D0FB5E42F3775E141CA7E7B77 /* RTCSSLAdapter.h */,
+				B48EA473329A41201897B087869FE327 /* RTCStatisticsReport.h */,
+				1ED6552E9F8422F97FEA8C8A913DF13D /* RTCTracing.h */,
+				FDAE10B770D67B854A07185A68D162B9 /* RTCVideoCapturer.h */,
+				970665CE16607123C84EC2AF28EC7A5A /* RTCVideoCodecConstants.h */,
+				372A0B75916BFF505E54F7B283A2A23B /* RTCVideoCodecInfo.h */,
+				ADB701085D0048443572270722CCE031 /* RTCVideoDecoder.h */,
+				4989EEBAB2B5FC93B0A01B0FEE8AC602 /* RTCVideoDecoderFactory.h */,
+				0661429F2AFE61FE661BA94130CEA49A /* RTCVideoDecoderFactoryH264.h */,
+				3DEFF58B93AC8EED75005F29FCE9B56C /* RTCVideoDecoderFactoryH265.h */,
+				CAB16678F86A192C0092CC93449BC933 /* RTCVideoDecoderH264.h */,
+				7FF0A5ED961C4DAE0B9449C6CAD4D4D2 /* RTCVideoDecoderH265.h */,
+				715FCD857D7EE65882F0920BA4CB3287 /* RTCVideoDecoderVP8.h */,
+				55FF22DC5C620DA1987463E3048B5CF3 /* RTCVideoDecoderVP9.h */,
+				BD2DE7F01BD6A3C8CF0BE17C1130B376 /* RTCVideoEncoder.h */,
+				00739773111213E7B9A6B6A83152B4C7 /* RTCVideoEncoderFactory.h */,
+				68B06E8A181A64AB167A5BEB47457E98 /* RTCVideoEncoderFactoryH264.h */,
+				1C41B282CE436D582C00F9D94A5F5406 /* RTCVideoEncoderFactoryH265.h */,
+				B713889A74E61334DBE656484D484F0B /* RTCVideoEncoderH264.h */,
+				CAC463659DF449151D6C39761EB692C6 /* RTCVideoEncoderH265.h */,
+				C3333551F9F3F82BACD2001A36F7FD1C /* RTCVideoEncoderQpThresholds.h */,
+				12E580C9D465ADAEBE47C2169730FFFF /* RTCVideoEncoderSettings.h */,
+				F8CDA534E69D5777F140883A7FE71D43 /* RTCVideoEncoderVP8.h */,
+				BC449EFC620917666950D05FD429E717 /* RTCVideoEncoderVP9.h */,
+				AD3E37CABB78AEE35412F7A9B7851827 /* RTCVideoFrame.h */,
+				8D8D6EB2226E286A4BAFB14ACA227068 /* RTCVideoFrameBuffer.h */,
+				7BAE4F55CC084F679DE3EC8159574F8A /* RTCVideoRenderer.h */,
+				36F9A5A1C29E0B5B07361FE92756DF68 /* RTCVideoSource.h */,
+				A965FA6B1F6FB7F147E5097445FC2EA0 /* RTCVideoTrack.h */,
+				389DA98DC56CE855FA393ACAD47F7F39 /* RTCVideoViewShading.h */,
+				35DCF9F891CF0920F2F29FEBE7B96FA2 /* RTCYUVPlanarBuffer.h */,
+				A3755EFB28B38BEB16FAF49D8F38C847 /* TWEBRTC.h */,
+				634BF371A7638FD89596225568F0C08E /* UIDevice+RTCDevice.h */,
+				C1F3317CA0E4567414E435FB6AE6D22B /* Frameworks */,
+				3F9B23FCDA540D87B4F35FC605303122 /* Support Files */,
+			);
+			name = TWebRTC;
+			path = TWebRTC;
+			sourceTree = "<group>";
+		};
+		F7C7F4268BFE3355A08627584F711B01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59E990374553898EE87D3F9D5C9D71D2 /* LiveEB_IOS */,
+				E7975B25529F9FFF276963B716521A6B /* TWebRTC */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3907ADA0830F503A5BAB7CD79D5C327E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		047C2485A7E9F6EFECA3E1B21D813BD5 /* Pods-LebLivePlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42F25AA32FA5BF306394631AB52C5BD3 /* Build configuration list for PBXNativeTarget "Pods-LebLivePlugin" */;
+			buildPhases = (
+				3907ADA0830F503A5BAB7CD79D5C327E /* Headers */,
+				07499DD40628C7ECC4A924784CFB827F /* Sources */,
+				CDD23EE954BBE33485A7096904245437 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE0B898D73F51E072D5193004052104D /* PBXTargetDependency */,
+				8A3D2FDFB9368CC978CC615525ACD942 /* PBXTargetDependency */,
+			);
+			name = "Pods-LebLivePlugin";
+			productName = "Pods-LebLivePlugin";
+			productReference = 912DF70F497EC457192362125D9DCEE4 /* libPods-LebLivePlugin.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 41078F2A86BDD98FD71FFA1C38C45FE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DC369FA3A7E08322BD1CE2D993E2B5A /* LiveEB_IOS */,
+				047C2485A7E9F6EFECA3E1B21D813BD5 /* Pods-LebLivePlugin */,
+				79CF337AAAB07E38AB2D25DF0C39D315 /* TWebRTC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07499DD40628C7ECC4A924784CFB827F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A23061574A9DECBA57869713E8790DDB /* Pods-LebLivePlugin-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A3D2FDFB9368CC978CC615525ACD942 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TWebRTC;
+			target = 79CF337AAAB07E38AB2D25DF0C39D315 /* TWebRTC */;
+			targetProxy = 352DCC92F03AA0DBB71C0F3953A36E3E /* PBXContainerItemProxy */;
+		};
+		938A1042828ED9DA52CCE5ED4BA18494 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TWebRTC;
+			target = 79CF337AAAB07E38AB2D25DF0C39D315 /* TWebRTC */;
+			targetProxy = F5A8381ACB6666B24B30A947678FF8E9 /* PBXContainerItemProxy */;
+		};
+		AE0B898D73F51E072D5193004052104D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LiveEB_IOS;
+			target = 9DC369FA3A7E08322BD1CE2D993E2B5A /* LiveEB_IOS */;
+			targetProxy = 5CF55DC801B05960AEBC70B3465A90E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1022FB35AEBCF7259EA7EE176311A065 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB61C970BBE28EBDB824C9A137044C74 /* Pods-LebLivePlugin.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		567F11C8765AB37DED350E5EACEEF779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29105A1C2CAB0327862A209E4BE1B03D /* Pods-LebLivePlugin.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5989CA286FA50820C1983CD82D63C4FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0699355C17C042AAAC325ECE68FAB083 /* LiveEB_IOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		91C740157EE28CCD64DBE39511CC26AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BA1483C60BDCF52EB0D16DB8975EC13 /* LiveEB_IOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		CAB60C771B7EDC0C2800B1E6354C658B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83CAEE4129BB93C3BBF369BB8833296B /* TWebRTC.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC7D57B0B4FAB964CFE1BA4055B11F4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3FA199DEB55532E53AB0ABBB50E4223 /* TWebRTC.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A8697195DBFFFEE0D79C68C0F054960 /* Build configuration list for PBXAggregateTarget "LiveEB_IOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5989CA286FA50820C1983CD82D63C4FE /* Debug */,
+				91C740157EE28CCD64DBE39511CC26AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42F25AA32FA5BF306394631AB52C5BD3 /* Build configuration list for PBXNativeTarget "Pods-LebLivePlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1022FB35AEBCF7259EA7EE176311A065 /* Debug */,
+				567F11C8765AB37DED350E5EACEEF779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		533323DA06FB5E73A3518F76031632FF /* Build configuration list for PBXAggregateTarget "TWebRTC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAB60C771B7EDC0C2800B1E6354C658B /* Debug */,
+				EC7D57B0B4FAB964CFE1BA4055B11F4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22B546E92844613300525686 /* BidLiveHomeScrollMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B546E72844613300525686 /* BidLiveHomeScrollMainView.h */; };
+		22B546EA2844613300525686 /* BidLiveHomeScrollMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546E82844613300525686 /* BidLiveHomeScrollMainView.m */; };
+		22B546ED28446C6000525686 /* BidLiveHomeScrollTopMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B546EB28446C6000525686 /* BidLiveHomeScrollTopMainView.h */; };
+		22B546EE28446C6000525686 /* BidLiveHomeScrollTopMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546EC28446C6000525686 /* BidLiveHomeScrollTopMainView.m */; };
+		22B546F128446ED000525686 /* BidLiveHomeScrollLiveMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B546EF28446ED000525686 /* BidLiveHomeScrollLiveMainView.h */; };
+		22B546F228446ED000525686 /* BidLiveHomeScrollLiveMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546F028446ED000525686 /* BidLiveHomeScrollLiveMainView.m */; };
+		22B546F62844769B00525686 /* BidLiveHomeScollLiveNormalCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B546F32844769B00525686 /* BidLiveHomeScollLiveNormalCell.h */; };
+		22B546F72844769B00525686 /* BidLiveHomeScollLiveNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546F42844769B00525686 /* BidLiveHomeScollLiveNormalCell.m */; };
+		22B546F82844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B546F52844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib */; };
+		22B5470028449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B546FE28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h */; };
+		22B5470128449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546FF28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m */; };
+		22B547052844A36700525686 /* BidLiveHomeScrollSpeechCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547022844A36700525686 /* BidLiveHomeScrollSpeechCell.h */; };
+		22B547062844A36700525686 /* BidLiveHomeScrollSpeechCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B547032844A36700525686 /* BidLiveHomeScrollSpeechCell.m */; };
+		22B547072844A36700525686 /* BidLiveHomeScrollSpeechCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B547042844A36700525686 /* BidLiveHomeScrollSpeechCell.xib */; };
+		22B547122844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547102844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h */; };
+		22B547132844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B547112844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m */; };
+		22B547162845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547142845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h */; };
+		22B547172845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B547152845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m */; };
+		22B5471A2845AE5900525686 /* BidLiveHomeScrollYouLikeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547182845AE5900525686 /* BidLiveHomeScrollYouLikeCell.h */; };
+		22B5471B2845AE5900525686 /* BidLiveHomeScrollYouLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B547192845AE5900525686 /* BidLiveHomeScrollYouLikeCell.m */; };
+		22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41532840A95300854873 /* BidLiveVCTools.m */; };
+		22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */; };
+		22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41552840A95300854873 /* BidLiveHomeMainView.h */; };
+		22BD416F2840A95400854873 /* BidLiveHomeFirstTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41562840A95300854873 /* BidLiveHomeFirstTableViewCell.h */; };
+		22BD41702840A95400854873 /* BidLiveHomeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41572840A95300854873 /* BidLiveHomeHeadView.m */; };
+		22BD41712840A95400854873 /* BidLiveTopBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41582840A95300854873 /* BidLiveTopBannerView.m */; };
+		22BD41722840A95400854873 /* BidLiveHomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41592840A95300854873 /* BidLiveHomeViewController.h */; };
+		22BD41732840A95400854873 /* BidLiveHomeShufflingLableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD415A2840A95300854873 /* BidLiveHomeShufflingLableView.m */; };
+		22BD41742840A95400854873 /* BidLiveHomeFloatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD415B2840A95300854873 /* BidLiveHomeFloatView.m */; };
+		22BD41752840A95400854873 /* BidLiveHomeFirstCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD415C2840A95300854873 /* BidLiveHomeFirstCell.h */; };
+		22BD41762840A95400854873 /* BidLiveHomeFirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD415D2840A95300854873 /* BidLiveHomeFirstTableViewCell.m */; };
+		22BD41772840A95400854873 /* BidLiveHomeMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD415E2840A95300854873 /* BidLiveHomeMainView.m */; };
+		22BD41782840A95400854873 /* SGAdvertScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41602840A95300854873 /* SGAdvertScrollView.m */; };
+		22BD41792840A95400854873 /* SGAdvertScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41612840A95300854873 /* SGAdvertScrollView.h */; };
+		22BD417A2840A95400854873 /* BidLiveVCTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41622840A95300854873 /* BidLiveVCTools.h */; };
+		22BD417B2840A95400854873 /* BidLiveTopBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41632840A95300854873 /* BidLiveTopBannerView.h */; };
+		22BD417C2840A95400854873 /* BidLiveHomeHeadView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41642840A95300854873 /* BidLiveHomeHeadView.h */; };
+		22BD417D2840A95400854873 /* BidLiveHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41652840A95300854873 /* BidLiveHomeViewController.m */; };
+		22BD417E2840A95400854873 /* BidLiveHomeFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41662840A95300854873 /* BidLiveHomeFirstCell.m */; };
+		22BD417F2840A95400854873 /* BidLiveHomeFloatView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41672840A95300854873 /* BidLiveHomeFloatView.h */; };
+		22BD41802840A95400854873 /* BidLiveHomeShufflingLableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41682840A95300854873 /* BidLiveHomeShufflingLableView.h */; };
+		22BD41812840A95400854873 /* LCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD416A2840A95300854873 /* LCConfig.h */; };
+		22BD41872840A99100854873 /* BidLiveHomeComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41852840A99100854873 /* BidLiveHomeComponent.h */; };
+		22BD41882840A99100854873 /* BidLiveHomeComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41862840A99100854873 /* BidLiveHomeComponent.m */; };
+		22BD41942840C55100854873 /* BidLiveHomeBtnItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41922840C55100854873 /* BidLiveHomeBtnItemsView.m */; };
+		22BD41952840C55100854873 /* BidLiveHomeBtnItemsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41932840C55100854873 /* BidLiveHomeBtnItemsView.h */; };
+		22BD41B02841BC8300854873 /* BidLiveBundleRecourseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41AE2841BC8300854873 /* BidLiveBundleRecourseManager.h */; };
+		22BD41B12841BC8300854873 /* BidLiveBundleRecourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41AF2841BC8300854873 /* BidLiveBundleRecourseManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22B546E72844613300525686 /* BidLiveHomeScrollMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollMainView.h; sourceTree = "<group>"; };
+		22B546E82844613300525686 /* BidLiveHomeScrollMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollMainView.m; sourceTree = "<group>"; };
+		22B546EB28446C6000525686 /* BidLiveHomeScrollTopMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollTopMainView.h; sourceTree = "<group>"; };
+		22B546EC28446C6000525686 /* BidLiveHomeScrollTopMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollTopMainView.m; sourceTree = "<group>"; };
+		22B546EF28446ED000525686 /* BidLiveHomeScrollLiveMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollLiveMainView.h; sourceTree = "<group>"; };
+		22B546F028446ED000525686 /* BidLiveHomeScrollLiveMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollLiveMainView.m; sourceTree = "<group>"; };
+		22B546F32844769B00525686 /* BidLiveHomeScollLiveNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScollLiveNormalCell.h; sourceTree = "<group>"; };
+		22B546F42844769B00525686 /* BidLiveHomeScollLiveNormalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScollLiveNormalCell.m; sourceTree = "<group>"; };
+		22B546F52844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidLiveHomeScollLiveNormalCell.xib; sourceTree = "<group>"; };
+		22B546FE28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollSpeechMainView.h; sourceTree = "<group>"; };
+		22B546FF28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollSpeechMainView.m; sourceTree = "<group>"; };
+		22B547022844A36700525686 /* BidLiveHomeScrollSpeechCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollSpeechCell.h; sourceTree = "<group>"; };
+		22B547032844A36700525686 /* BidLiveHomeScrollSpeechCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollSpeechCell.m; sourceTree = "<group>"; };
+		22B547042844A36700525686 /* BidLiveHomeScrollSpeechCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidLiveHomeScrollSpeechCell.xib; sourceTree = "<group>"; };
+		22B547102844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollLiveBtnView.h; sourceTree = "<group>"; };
+		22B547112844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollLiveBtnView.m; sourceTree = "<group>"; };
+		22B547142845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollYouLikeMainView.h; sourceTree = "<group>"; };
+		22B547152845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollYouLikeMainView.m; sourceTree = "<group>"; };
+		22B547182845AE5900525686 /* BidLiveHomeScrollYouLikeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollYouLikeCell.h; sourceTree = "<group>"; };
+		22B547192845AE5900525686 /* BidLiveHomeScrollYouLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollYouLikeCell.m; sourceTree = "<group>"; };
+		22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidLiveIOSPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22BD41532840A95300854873 /* BidLiveVCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveVCTools.m; sourceTree = "<group>"; };
+		22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeFirstCell.xib; sourceTree = "<group>"; };
+		22BD41552840A95300854873 /* BidLiveHomeMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeMainView.h; sourceTree = "<group>"; };
+		22BD41562840A95300854873 /* BidLiveHomeFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeFirstTableViewCell.h; sourceTree = "<group>"; };
+		22BD41572840A95300854873 /* BidLiveHomeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeHeadView.m; sourceTree = "<group>"; };
+		22BD41582840A95300854873 /* BidLiveTopBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveTopBannerView.m; sourceTree = "<group>"; };
+		22BD41592840A95300854873 /* BidLiveHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeViewController.h; sourceTree = "<group>"; };
+		22BD415A2840A95300854873 /* BidLiveHomeShufflingLableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeShufflingLableView.m; sourceTree = "<group>"; };
+		22BD415B2840A95300854873 /* BidLiveHomeFloatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeFloatView.m; sourceTree = "<group>"; };
+		22BD415C2840A95300854873 /* BidLiveHomeFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeFirstCell.h; sourceTree = "<group>"; };
+		22BD415D2840A95300854873 /* BidLiveHomeFirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeFirstTableViewCell.m; sourceTree = "<group>"; };
+		22BD415E2840A95300854873 /* BidLiveHomeMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeMainView.m; sourceTree = "<group>"; };
+		22BD41602840A95300854873 /* SGAdvertScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAdvertScrollView.m; sourceTree = "<group>"; };
+		22BD41612840A95300854873 /* SGAdvertScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAdvertScrollView.h; sourceTree = "<group>"; };
+		22BD41622840A95300854873 /* BidLiveVCTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveVCTools.h; sourceTree = "<group>"; };
+		22BD41632840A95300854873 /* BidLiveTopBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveTopBannerView.h; sourceTree = "<group>"; };
+		22BD41642840A95300854873 /* BidLiveHomeHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeHeadView.h; sourceTree = "<group>"; };
+		22BD41652840A95300854873 /* BidLiveHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeViewController.m; sourceTree = "<group>"; };
+		22BD41662840A95300854873 /* BidLiveHomeFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeFirstCell.m; sourceTree = "<group>"; };
+		22BD41672840A95300854873 /* BidLiveHomeFloatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeFloatView.h; sourceTree = "<group>"; };
+		22BD41682840A95300854873 /* BidLiveHomeShufflingLableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeShufflingLableView.h; sourceTree = "<group>"; };
+		22BD416A2840A95300854873 /* LCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCConfig.h; sourceTree = "<group>"; };
+		22BD41852840A99100854873 /* BidLiveHomeComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeComponent.h; sourceTree = "<group>"; };
+		22BD41862840A99100854873 /* BidLiveHomeComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeComponent.m; sourceTree = "<group>"; };
+		22BD41922840C55100854873 /* BidLiveHomeBtnItemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeBtnItemsView.m; sourceTree = "<group>"; };
+		22BD41932840C55100854873 /* BidLiveHomeBtnItemsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeBtnItemsView.h; sourceTree = "<group>"; };
+		22BD41AE2841BC8300854873 /* BidLiveBundleRecourseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveBundleRecourseManager.h; sourceTree = "<group>"; };
+		22BD41AF2841BC8300854873 /* BidLiveBundleRecourseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveBundleRecourseManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22BD41362840A69B00854873 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22B546E128445EBF00525686 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				22BD415C2840A95300854873 /* BidLiveHomeFirstCell.h */,
+				22BD41662840A95300854873 /* BidLiveHomeFirstCell.m */,
+				22BD41562840A95300854873 /* BidLiveHomeFirstTableViewCell.h */,
+				22BD415D2840A95300854873 /* BidLiveHomeFirstTableViewCell.m */,
+				22B546F32844769B00525686 /* BidLiveHomeScollLiveNormalCell.h */,
+				22B546F42844769B00525686 /* BidLiveHomeScollLiveNormalCell.m */,
+				22B547022844A36700525686 /* BidLiveHomeScrollSpeechCell.h */,
+				22B547032844A36700525686 /* BidLiveHomeScrollSpeechCell.m */,
+				22B547182845AE5900525686 /* BidLiveHomeScrollYouLikeCell.h */,
+				22B547192845AE5900525686 /* BidLiveHomeScrollYouLikeCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		22B546E228445ECD00525686 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				22B546EB28446C6000525686 /* BidLiveHomeScrollTopMainView.h */,
+				22B546EC28446C6000525686 /* BidLiveHomeScrollTopMainView.m */,
+				22B546EF28446ED000525686 /* BidLiveHomeScrollLiveMainView.h */,
+				22B546F028446ED000525686 /* BidLiveHomeScrollLiveMainView.m */,
+				22B546FE28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h */,
+				22B546FF28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m */,
+				22B547102844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h */,
+				22B547112844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m */,
+				22B547142845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h */,
+				22B547152845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		22B546FB2844921300525686 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				22B547042844A36700525686 /* BidLiveHomeScrollSpeechCell.xib */,
+				22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */,
+				22B546F52844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		22BD412F2840A69B00854873 = {
+			isa = PBXGroup;
+			children = (
+				22BD413B2840A69B00854873 /* BidLiveIOSPlugin */,
+				22BD413A2840A69B00854873 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22BD413A2840A69B00854873 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22BD413B2840A69B00854873 /* BidLiveIOSPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				22BD41842840A96400854873 /* Components */,
+				22BD41832840A95800854873 /* Modules */,
+				22BD41522840A95300854873 /* BidLiveHomePage */,
+				22BD41692840A95300854873 /* Tools */,
+			);
+			path = BidLiveIOSPlugin;
+			sourceTree = "<group>";
+		};
+		22BD41522840A95300854873 /* BidLiveHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				22B546FB2844921300525686 /* xib */,
+				22B546E228445ECD00525686 /* view */,
+				22B546E128445EBF00525686 /* cell */,
+				22BD41672840A95300854873 /* BidLiveHomeFloatView.h */,
+				22BD415B2840A95300854873 /* BidLiveHomeFloatView.m */,
+				22BD41642840A95300854873 /* BidLiveHomeHeadView.h */,
+				22BD41572840A95300854873 /* BidLiveHomeHeadView.m */,
+				22BD41932840C55100854873 /* BidLiveHomeBtnItemsView.h */,
+				22BD41922840C55100854873 /* BidLiveHomeBtnItemsView.m */,
+				22BD41552840A95300854873 /* BidLiveHomeMainView.h */,
+				22BD415E2840A95300854873 /* BidLiveHomeMainView.m */,
+				22BD41682840A95300854873 /* BidLiveHomeShufflingLableView.h */,
+				22BD415A2840A95300854873 /* BidLiveHomeShufflingLableView.m */,
+				22BD41592840A95300854873 /* BidLiveHomeViewController.h */,
+				22BD41652840A95300854873 /* BidLiveHomeViewController.m */,
+				22BD41632840A95300854873 /* BidLiveTopBannerView.h */,
+				22BD41582840A95300854873 /* BidLiveTopBannerView.m */,
+				22BD41622840A95300854873 /* BidLiveVCTools.h */,
+				22BD41532840A95300854873 /* BidLiveVCTools.m */,
+				22BD415F2840A95300854873 /* SGAdvertScrollView */,
+				22B546E72844613300525686 /* BidLiveHomeScrollMainView.h */,
+				22B546E82844613300525686 /* BidLiveHomeScrollMainView.m */,
+			);
+			path = BidLiveHomePage;
+			sourceTree = "<group>";
+		};
+		22BD415F2840A95300854873 /* SGAdvertScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				22BD41602840A95300854873 /* SGAdvertScrollView.m */,
+				22BD41612840A95300854873 /* SGAdvertScrollView.h */,
+			);
+			path = SGAdvertScrollView;
+			sourceTree = "<group>";
+		};
+		22BD41692840A95300854873 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				22BD416A2840A95300854873 /* LCConfig.h */,
+				22BD41AE2841BC8300854873 /* BidLiveBundleRecourseManager.h */,
+				22BD41AF2841BC8300854873 /* BidLiveBundleRecourseManager.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		22BD41832840A95800854873 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		22BD41842840A96400854873 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				22BD41852840A99100854873 /* BidLiveHomeComponent.h */,
+				22BD41862840A99100854873 /* BidLiveHomeComponent.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		22BD41342840A69B00854873 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B546F62844769B00525686 /* BidLiveHomeScollLiveNormalCell.h in Headers */,
+				22BD417C2840A95400854873 /* BidLiveHomeHeadView.h in Headers */,
+				22BD41792840A95400854873 /* SGAdvertScrollView.h in Headers */,
+				22BD41752840A95400854873 /* BidLiveHomeFirstCell.h in Headers */,
+				22BD417B2840A95400854873 /* BidLiveTopBannerView.h in Headers */,
+				22BD41812840A95400854873 /* LCConfig.h in Headers */,
+				22B547052844A36700525686 /* BidLiveHomeScrollSpeechCell.h in Headers */,
+				22B547162845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h in Headers */,
+				22B547122844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h in Headers */,
+				22BD416F2840A95400854873 /* BidLiveHomeFirstTableViewCell.h in Headers */,
+				22BD41B02841BC8300854873 /* BidLiveBundleRecourseManager.h in Headers */,
+				22B546E92844613300525686 /* BidLiveHomeScrollMainView.h in Headers */,
+				22BD417F2840A95400854873 /* BidLiveHomeFloatView.h in Headers */,
+				22BD41872840A99100854873 /* BidLiveHomeComponent.h in Headers */,
+				22BD41802840A95400854873 /* BidLiveHomeShufflingLableView.h in Headers */,
+				22B546F128446ED000525686 /* BidLiveHomeScrollLiveMainView.h in Headers */,
+				22B5470028449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h in Headers */,
+				22BD41722840A95400854873 /* BidLiveHomeViewController.h in Headers */,
+				22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */,
+				22B5471A2845AE5900525686 /* BidLiveHomeScrollYouLikeCell.h in Headers */,
+				22BD41952840C55100854873 /* BidLiveHomeBtnItemsView.h in Headers */,
+				22B546ED28446C6000525686 /* BidLiveHomeScrollTopMainView.h in Headers */,
+				22BD417A2840A95400854873 /* BidLiveVCTools.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		22BD41382840A69B00854873 /* BidLiveIOSPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22BD41402840A69B00854873 /* Build configuration list for PBXNativeTarget "BidLiveIOSPlugin" */;
+			buildPhases = (
+				22BD41342840A69B00854873 /* Headers */,
+				22BD41352840A69B00854873 /* Sources */,
+				22BD41362840A69B00854873 /* Frameworks */,
+				22BD41372840A69B00854873 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BidLiveIOSPlugin;
+			productName = BidLiveIOSPlugin;
+			productReference = 22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22BD41302840A69B00854873 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					22BD41382840A69B00854873 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = 22BD41332840A69B00854873 /* Build configuration list for PBXProject "BidLiveIOSPlugin" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22BD412F2840A69B00854873;
+			productRefGroup = 22BD413A2840A69B00854873 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22BD41382840A69B00854873 /* BidLiveIOSPlugin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22BD41372840A69B00854873 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */,
+				22B547072844A36700525686 /* BidLiveHomeScrollSpeechCell.xib in Resources */,
+				22B546F82844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22BD41352840A69B00854873 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22BD41772840A95400854873 /* BidLiveHomeMainView.m in Sources */,
+				22B546F228446ED000525686 /* BidLiveHomeScrollLiveMainView.m in Sources */,
+				22BD41942840C55100854873 /* BidLiveHomeBtnItemsView.m in Sources */,
+				22B547132844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m in Sources */,
+				22BD41782840A95400854873 /* SGAdvertScrollView.m in Sources */,
+				22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */,
+				22BD41712840A95400854873 /* BidLiveTopBannerView.m in Sources */,
+				22B546F72844769B00525686 /* BidLiveHomeScollLiveNormalCell.m in Sources */,
+				22B5471B2845AE5900525686 /* BidLiveHomeScrollYouLikeCell.m in Sources */,
+				22B5470128449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m in Sources */,
+				22BD41702840A95400854873 /* BidLiveHomeHeadView.m in Sources */,
+				22B546EA2844613300525686 /* BidLiveHomeScrollMainView.m in Sources */,
+				22BD41882840A99100854873 /* BidLiveHomeComponent.m in Sources */,
+				22B546EE28446C6000525686 /* BidLiveHomeScrollTopMainView.m in Sources */,
+				22BD417E2840A95400854873 /* BidLiveHomeFirstCell.m in Sources */,
+				22BD41732840A95400854873 /* BidLiveHomeShufflingLableView.m in Sources */,
+				22B547062844A36700525686 /* BidLiveHomeScrollSpeechCell.m in Sources */,
+				22BD41742840A95400854873 /* BidLiveHomeFloatView.m in Sources */,
+				22B547172845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m in Sources */,
+				22BD41B12841BC8300854873 /* BidLiveBundleRecourseManager.m in Sources */,
+				22BD417D2840A95400854873 /* BidLiveHomeViewController.m in Sources */,
+				22BD41762840A95400854873 /* BidLiveHomeFirstTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		22BD413E2840A69B00854873 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		22BD413F2840A69B00854873 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		22BD41412840A69B00854873 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../SDK/inc\"/**";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bidlive.BidLiveIOSPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22BD41422840A69B00854873 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../SDK/inc\"/**";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bidlive.BidLiveIOSPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22BD41332840A69B00854873 /* Build configuration list for PBXProject "BidLiveIOSPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22BD413E2840A69B00854873 /* Debug */,
+				22BD413F2840A69B00854873 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22BD41402840A69B00854873 /* Build configuration list for PBXNativeTarget "BidLiveIOSPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22BD41412840A69B00854873 /* Debug */,
+				22BD41422840A69B00854873 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22BD41302840A69B00854873 /* Project object */;
+}

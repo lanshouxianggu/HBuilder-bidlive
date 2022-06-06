@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,shrink-to-fit=no">
+    <script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.1.5.2.js"></script>
+
+    <style>
+	.content{
+		padding: 15px;
+	}
+	.content img{
+		max-width: 100%;
+		margin: 0 auto;
+	}
+    </style>
+  </head>
+  <body >
+    <div class="content" id="content">
+	</div>
+	<script>
+		function setContent(data){
+			document.getElementById("content").innerHTML=data.content
+		}
+		window.onload = function(){
+			uni.postMessage({
+				data: {
+					action: 'h5load'
+				}
+			})
+		}
+	</script>
+  </body>
+</html>
