@@ -104,10 +104,7 @@
 
 -(void)setupUI {
     [self addSubview:self.mainScrollView];
-    CGFloat origionY = 0;
-    if (UIApplication.sharedApplication.statusBarFrame.size.height>20) {
-        origionY = -UIApplication.sharedApplication.statusBarFrame.size.height;
-    }
+    CGFloat origionY = -UIApplication.sharedApplication.statusBarFrame.size.height;
     [self.mainScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsMake(origionY, 0, 0, 0));
         make.width.mas_equalTo(SCREEN_WIDTH);
@@ -229,7 +226,11 @@
 
 -(BidLiveHomeHeadView *)topSearchView {
     if (!_topSearchView) {
-        _topSearchView = [[BidLiveHomeHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+        CGFloat height = 80;
+        if (UIApplication.sharedApplication.statusBarFrame.size.height>20) {
+            height = 100;
+        }
+        _topSearchView = [[BidLiveHomeHeadView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, height)];
         WS(weakSelf)
         [_topSearchView setSearchClickBlock:^{
             !weakSelf.searchClickBlock?:weakSelf.searchClickBlock();
