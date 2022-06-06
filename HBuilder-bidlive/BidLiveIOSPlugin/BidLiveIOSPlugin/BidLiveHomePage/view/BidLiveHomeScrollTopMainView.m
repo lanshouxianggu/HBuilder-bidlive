@@ -80,7 +80,11 @@
 #pragma mark - lazy
 -(BidLiveTopBannerView *)bannerView {
     if (!_bannerView) {
-        _bannerView = [[BidLiveTopBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210) imgArray:self.imageArray];
+        CGFloat height = 180;
+        if (UIApplication.sharedApplication.statusBarFrame.size.height>20) {
+            height = 210;
+        }
+        _bannerView = [[BidLiveTopBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, height) imgArray:self.imageArray];
     }
     return _bannerView;
 }
