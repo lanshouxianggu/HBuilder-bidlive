@@ -2,3 +2,11 @@
 *.framework
 /SDK/
 /__UNI__DB57290/
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddat
+!*/xcuserdata/admin.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlista/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
