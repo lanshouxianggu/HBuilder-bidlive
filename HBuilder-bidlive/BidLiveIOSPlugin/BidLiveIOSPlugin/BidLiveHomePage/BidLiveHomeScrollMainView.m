@@ -16,6 +16,7 @@
 #import "BidLiveHomeScrollLiveMainView.h"
 #import "BidLiveHomeScrollSpeechMainView.h"
 #import "BidLiveHomeScrollYouLikeMainView.h"
+#import "BidLiveHomeNetworkModel.h"
 
 #define kTopMainViewHeight 550
 #define kLiveMainViewHeight (140*8+90+90+70+110)
@@ -98,10 +99,26 @@
             CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastVideosCount-5)*280-150;
             [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
         }];
+        
+        [self loadData];
     }
     return self;
 }
 
+#pragma mark - 加载数据
+-(void)loadData {
+    [self loadBannerData];
+}
+
+#pragma mark - 加载广告轮播数据
+-(void)loadBannerData {
+    WS(weakSelf)
+    [BidLiveHomeNetworkModel getHomePageBannerList:11 client:@"wx" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
+        [weakSelf.topMainView updateBanners:bannerList];
+    }];
+}
+
+#pragma mark - 设置UI
 -(void)setupUI {
     [self addSubview:self.mainScrollView];
     CGFloat origionY = -UIApplication.sharedApplication.statusBarFrame.size.height;
@@ -250,6 +267,11 @@
     if (!_topMainView) {
         _topMainView  = [[BidLiveHomeScrollTopMainView alloc] initWithFrame:CGRectZero];
         _topMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+        
+        WS(weakSelf)
+        [_topMainView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
     }
     return _topMainView;
 }

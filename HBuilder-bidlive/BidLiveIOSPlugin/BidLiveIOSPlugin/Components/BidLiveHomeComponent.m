@@ -10,6 +10,8 @@
 #import "BidLiveHomeViewController.h"
 #import "DCSVProgressHUD.h"
 #import "LCConfig.h"
+#import "BidLiveHomeBannerModel.h"
+#import "MJExtension.h"
 
 #define sOnEventGlobalSaleClicked @"onEventGlobalSaleClicked"
 #define sOnTurnPageEvent @"onTurnPage"
@@ -56,6 +58,13 @@
         [_homeVC setSearchClickBlock:^{
             if (weakSelf.onTurnPage) {
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auction/search/index?areas=other"}} domChanges:nil];
+            }
+        }];
+#pragma mark - 顶部图片广告点击事件
+        [_homeVC setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
+            if (weakSelf.onTurnPage) {
+                NSDictionary *advDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"banner",@"adv":advDic}} domChanges:nil];
             }
         }];
 #pragma mark - 全球拍卖点击事件

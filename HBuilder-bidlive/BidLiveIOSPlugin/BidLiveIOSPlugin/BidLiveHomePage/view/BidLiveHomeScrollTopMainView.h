@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class BidLiveHomeBannerModel;
 @interface BidLiveHomeScrollTopMainView : UIView
 ///全球拍卖block
 @property (nonatomic, copy) void (^globalSaleClickBlock)(void);
@@ -22,6 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^sendClickBlock)(void);
 ///资讯block
 @property (nonatomic, copy) void (^informationClickBlock)(void);
+///广告点击block
+@property (nonatomic, copy) void (^bannerClick)(BidLiveHomeBannerModel *model);
+
+-(void)updateBanners:(NSArray<BidLiveHomeBannerModel *> *)banners;
 @end
 
 NS_ASSUME_NONNULL_END

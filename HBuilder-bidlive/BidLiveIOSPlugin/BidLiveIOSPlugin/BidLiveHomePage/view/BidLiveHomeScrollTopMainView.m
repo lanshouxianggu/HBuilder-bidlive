@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIView *scrollTitleSuperView;
 @property (strong, nonatomic) SGAdvertScrollView *scrollTitleView;
 @property (nonatomic, strong) UIView *liveView;
+@property (nonatomic, strong) NSArray<BidLiveHomeBannerModel *> *banners;
 
 @end
 
@@ -27,7 +28,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.imageArray = @[UIColor.cyanColor,UIColor.blueColor,UIColor.yellowColor,UIColor.redColor];
+        self.imageArray = @[];
         self.scrollTitleView.titles = @[@"1.上岛咖啡就是看劳动法就是盛开的积分是劳动法",
                                         @"2.SDK和索拉卡的附近是了的开发房贷",
                                         @"3.收快递费就SDK废旧塑料的发三楼的靠近非塑料袋开发计算量大开发就"];
@@ -72,6 +73,10 @@
     [self addSubview:self.liveView];
 }
 
+-(void)updateBanners:(NSArray<BidLiveHomeBannerModel *> *)banners {
+    [self.bannerView updateBannerArray:banners];
+}
+
 #pragma mark - SGAdvertScrollViewDelegate
 -(void)advertScrollView:(SGAdvertScrollView *)advertScrollView didSelectedItemAtIndex:(NSInteger)index {
     
@@ -85,6 +90,10 @@
             height = 210;
         }
         _bannerView = [[BidLiveTopBannerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, height) imgArray:self.imageArray];
+        WS(weakSelf)
+        [_bannerView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
     }
     return _bannerView;
 }
@@ -114,6 +123,7 @@
 -(SGAdvertScrollView *)scrollTitleView {
     if (!_scrollTitleView) {
         _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(70, 0, SCREEN_WIDTH-100, 44)];
+        _scrollTitleView.delegate = self;
     }
     return _scrollTitleView;
 }
