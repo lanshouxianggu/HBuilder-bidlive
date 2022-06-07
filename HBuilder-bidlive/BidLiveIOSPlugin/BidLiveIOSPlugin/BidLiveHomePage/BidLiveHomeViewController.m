@@ -46,6 +46,28 @@
 -(BidLiveHomeScrollMainView *)mainScrollView {
     if (!_mainScrollView) {
         _mainScrollView = [[BidLiveHomeScrollMainView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT)];
+        WS(weakSelf)
+        [_mainScrollView setSearchClickBlock:^{
+            !weakSelf.searchClickBlock?:weakSelf.searchClickBlock();
+        }];
+        [_mainScrollView setGlobalSaleClickBlock:^{
+            !weakSelf.globalSaleClickBlock?:weakSelf.globalSaleClickBlock();
+        }];
+        [_mainScrollView setCountrySaleClickBlock:^{
+            !weakSelf.countrySaleClickBlock?:weakSelf.countrySaleClickBlock();
+        }];
+        [_mainScrollView setSpeechClassClickBlock:^{
+            !weakSelf.speechClassClickBlock?:weakSelf.speechClassClickBlock();
+        }];
+        [_mainScrollView setAppraisalClickBlock:^{
+            !weakSelf.appraisalClickBlock?:weakSelf.appraisalClickBlock();
+        }];
+        [_mainScrollView setSendClickBlock:^{
+            !weakSelf.sendClickBlock?:weakSelf.sendClickBlock();
+        }];
+        [_mainScrollView setInformationClickBlock:^{
+            !weakSelf.informationClickBlock?:weakSelf.informationClickBlock();
+        }];
     }
     return _mainScrollView;
 }
