@@ -163,6 +163,13 @@
 			remoteGlobalIDString = FD2FCAD225FC51B50036D89D;
 			remoteInfo = LebLivePlugin;
 		};
+		22B5493628504CEA00525686 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22B5493228504CEA00525686 /* BidLiveBundle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 22B549012850466B00525686;
+			remoteInfo = BidLiveBundle;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -218,6 +225,7 @@
 		22B547242845EB2E00525686 /* BidLiveIOSPlugin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BidLiveIOSPlugin.xcodeproj; path = BidLiveIOSPlugin/BidLiveIOSPlugin.xcodeproj; sourceTree = "<group>"; };
 		22B547B428475A1D00525686 /* LebLivePlugin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LebLivePlugin.xcodeproj; path = LebLivePlugin/LebLivePlugin.xcodeproj; sourceTree = "<group>"; };
 		22B549302850487F00525686 /* BidLiveBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BidLiveBundle.bundle; sourceTree = "<group>"; };
+		22B5493228504CEA00525686 /* BidLiveBundle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BidLiveBundle.xcodeproj; path = BidLiveBundle/BidLiveBundle.xcodeproj; sourceTree = "<group>"; };
 		240905021C200AEF0070786F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		242725CA1D2666ED00EBD79E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		242725CC1D26686700EBD79E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -645,6 +653,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		22B5493328504CEA00525686 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22B5493728504CEA00525686 /* BidLiveBundle.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4F4C64522465600B006A13AA /* inc */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,6 +952,7 @@
 		8EED628F198A1D13000A4449 = {
 			isa = PBXGroup;
 			children = (
+				22B5493228504CEA00525686 /* BidLiveBundle.xcodeproj */,
 				22B547B428475A1D00525686 /* LebLivePlugin.xcodeproj */,
 				22B547242845EB2E00525686 /* BidLiveIOSPlugin.xcodeproj */,
 				6731F399232F4F03007838BC /* HBuilder.entitlements */,
@@ -1166,6 +1183,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 22B5493328504CEA00525686 /* Products */;
+					ProjectRef = 22B5493228504CEA00525686 /* BidLiveBundle.xcodeproj */;
+				},
+				{
 					ProductGroup = 22B547252845EB2E00525686 /* Products */;
 					ProjectRef = 22B547242845EB2E00525686 /* BidLiveIOSPlugin.xcodeproj */;
 				},
@@ -1194,6 +1215,13 @@
 			fileType = wrapper.framework;
 			path = LebLivePlugin.framework;
 			remoteRef = 22B547B828475A1E00525686 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		22B5493728504CEA00525686 /* BidLiveBundle.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BidLiveBundle.bundle;
+			remoteRef = 22B5493628504CEA00525686 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

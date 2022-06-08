@@ -326,25 +326,12 @@ UNI_EXPORT_METHOD(@selector(rotateVideo:))
         self->_rtcView.videoView.delegate = self;
         [self.view addSubview: self->_rtcView];
         [self->_rtcView.videoView setStatState:YES];
-        
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setTitle:@"最小化" forState:UIControlStateNormal];
-        btn.frame = CGRectMake(UIScreen.mainScreen.bounds.size.width-120, 30, 100, 100);
-        [btn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(btnaction) forControlEvents:UIControlEventTouchUpInside];
-        btn.layer.zPosition = 100;
-        [self.view addSubview:btn];
     }
 
     if (callback) {
          callback(@"OK",NO);
 
      }
-}
-
--(void)btnaction {
-    [self fireEvent:@"onVideoMinimizeClickEvent" params:@{@"detail":@{@"isFullScreen":@(sIsFullScreen),@"liveUrl":sLiveUrl,@"videoFixWidth":@(sVideoFixWidth),@"videoFixHeight":@(sVideoFixHeight)}} domChanges:nil];
-//    [self showFloatView];
 }
 
 - (void) setVideoSize:(float)width height:(float)height
