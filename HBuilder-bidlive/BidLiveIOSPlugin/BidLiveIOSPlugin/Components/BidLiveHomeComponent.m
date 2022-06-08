@@ -77,7 +77,7 @@
 #pragma mark - 鉴定点击事件
         [_homeVC setAppraisalClickBlock:^{
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/identification/expertList"}} domChanges:nil];
             }
         }];
 #pragma mark - 国内拍卖点击事件
@@ -89,19 +89,19 @@
 #pragma mark - 送拍点击事件
         [_homeVC setSendClickBlock:^{
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/sendPhotos/sendPhotos"}} domChanges:nil];
             }
         }];
 #pragma mark - 讲堂点击事件
         [_homeVC setSpeechClassClickBlock:^{
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/news/index"}} domChanges:nil];
             }
         }];
 #pragma mark - 资讯点击事件
         [_homeVC setInformationClickBlock:^{
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/news/newsHome?p_id=99"}} domChanges:nil];
             }
         }];
     }
