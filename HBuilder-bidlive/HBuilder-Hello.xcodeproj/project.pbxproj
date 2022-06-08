@@ -43,8 +43,8 @@
 		22B546CB284361C400525686 /* LiveEB_IOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22B546C3284358F200525686 /* LiveEB_IOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		22B546CC284361CB00525686 /* TWEBRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22B546C5284358FE00525686 /* TWEBRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		22B547212845EA7100525686 /* BidLiveIOSPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B547202845EA7100525686 /* BidLiveIOSPlugin.framework */; };
-		22B547232845EA7E00525686 /* BidLiveIOSPlugin.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22B547222845EA7E00525686 /* BidLiveIOSPlugin.bundle */; };
 		22B547BE28475B1400525686 /* LebLivePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B547B928475A1E00525686 /* LebLivePlugin.framework */; };
+		22B549312850487F00525686 /* BidLiveBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22B549302850487F00525686 /* BidLiveBundle.bundle */; };
 		240905031C200AEF0070786F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240905021C200AEF0070786F /* CoreBluetooth.framework */; };
 		242725CB1D2666ED00EBD79E /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 242725CA1D2666ED00EBD79E /* JavaScriptCore.framework */; };
 		242725CD1D26686700EBD79E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 242725CC1D26686700EBD79E /* CoreMotion.framework */; };
@@ -215,9 +215,9 @@
 		22B546C5284358FE00525686 /* TWEBRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TWEBRTC.framework; path = ../SDK/Libs/TWEBRTC.framework; sourceTree = "<group>"; };
 		22B546C72843590A00525686 /* LebLivePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LebLivePlugin.framework; path = ../SDK/Libs/LebLivePlugin.framework; sourceTree = "<group>"; };
 		22B547202845EA7100525686 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BidLiveIOSPlugin.framework; path = ../SDK/Libs/BidLiveIOSPlugin.framework; sourceTree = "<group>"; };
-		22B547222845EA7E00525686 /* BidLiveIOSPlugin.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BidLiveIOSPlugin.bundle; sourceTree = "<group>"; };
 		22B547242845EB2E00525686 /* BidLiveIOSPlugin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BidLiveIOSPlugin.xcodeproj; path = BidLiveIOSPlugin/BidLiveIOSPlugin.xcodeproj; sourceTree = "<group>"; };
 		22B547B428475A1D00525686 /* LebLivePlugin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LebLivePlugin.xcodeproj; path = LebLivePlugin/LebLivePlugin.xcodeproj; sourceTree = "<group>"; };
+		22B549302850487F00525686 /* BidLiveBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BidLiveBundle.bundle; sourceTree = "<group>"; };
 		240905021C200AEF0070786F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		242725CA1D2666ED00EBD79E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		242725CC1D26686700EBD79E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -874,7 +874,7 @@
 		4F4C65172465606B006A13AA /* Bundles */ = {
 			isa = PBXGroup;
 			children = (
-				22B547222845EA7E00525686 /* BidLiveIOSPlugin.bundle */,
+				22B549302850487F00525686 /* BidLiveBundle.bundle */,
 				22B546BC28434DE900525686 /* AlipaySDK.bundle */,
 				22B546B528434D1900525686 /* PandoraApi.bundle */,
 				22B546B12843470000525686 /* TYRZResource.bundle */,
@@ -1207,6 +1207,7 @@
 				2F0BA3F9215B48A700F67004 /* Images.xcassets in Resources */,
 				22B546B628434D1900525686 /* PandoraApi.bundle in Resources */,
 				4F4C65512465606C006A13AA /* weex-polyfill.js in Resources */,
+				22B549312850487F00525686 /* BidLiveBundle.bundle in Resources */,
 				8EED62A6198A1D13000A4449 /* InfoPlist.strings in Resources */,
 				22B5469F284315A500525686 /* DCSVProgressHUD.bundle in Resources */,
 				4F6ABFDE2451A1DC00C40B5A /* dclogo@3x.png in Resources */,
@@ -1219,7 +1220,6 @@
 				67E9CDCF22968D2E0076E0FB /* Localizable.strings in Resources */,
 				67B7CAA221DCE8180083E96A /* control.xml in Resources */,
 				4F4C65522465606C006A13AA /* weexUniJs.js in Resources */,
-				22B547232845EA7E00525686 /* BidLiveIOSPlugin.bundle in Resources */,
 				4FA53F7726E5D01300BAD6A0 /* uni-jsframework-vue3.js in Resources */,
 				22B546B22843470000525686 /* TYRZResource.bundle in Resources */,
 				4F4C65472465606C006A13AA /* unincomponents.ttf in Resources */,

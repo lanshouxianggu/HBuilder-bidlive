@@ -9,7 +9,7 @@
 
 @implementation BidLiveBundleRecourseManager
 +(UIImage *)getBundleImage:(NSString *)imageName type:(NSString *)type {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveIOSPlugin" ofType:@"bundle"];
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveBundle" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     NSString *imagePath = [bundle pathForResource:imageName ofType:type];
     NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
@@ -18,7 +18,7 @@
 }
 
 +(UINib *)getBundleNib:(NSString *)nibName type:(NSString *)type {
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveIOSPlugin" ofType:@"bundle"];
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveBundle" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     NSString *nibPath = [bundle pathForResource:nibName ofType:type];
     NSData *nibData = [NSData dataWithContentsOfFile:nibPath];

@@ -44,7 +44,7 @@
 //        rtcView.videoView.delegate = self;
         [videoMainView addSubview: rtcView];
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveIOSPlugin" ofType:@"bundle"];
+        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveBundle" ofType:@"bundle"];
         NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
         NSString *imagePath = [bundle pathForResource:@"ic_close" ofType:@"png"];
         NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
