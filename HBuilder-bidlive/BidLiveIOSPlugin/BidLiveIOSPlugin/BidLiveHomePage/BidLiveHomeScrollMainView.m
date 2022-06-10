@@ -23,8 +23,13 @@
 
 #define kTopMainBannerViewHeight (UIApplication.sharedApplication.statusBarFrame.size.height>20?210:180)
 
-#define kTopMainViewHeight (kTopMainBannerViewHeight+100+10+30+10+SCREEN_HEIGHT*0.18)
-#define kLiveMainViewHeight (140*8+90+90+70+110)
+#define kAnimationViewHeight (SCREEN_WIDTH*72/585)
+#define kTopMainViewHeight (kTopMainBannerViewHeight+100+10+kAnimationViewHeight+10+SCREEN_HEIGHT*0.18)
+
+#define kLiveNormalCellHeight ((SCREEN_WIDTH-30)*218.5/537)
+#define kLiveCenterImageCellHeight ((SCREEN_WIDTH-30)*138.5/537)
+//#define kLiveMainViewHeight (140*8+90+90+70+110)
+#define kLiveMainViewHeight (kLiveNormalCellHeight*8+90+kLiveCenterImageCellHeight+70+kLiveCenterImageCellHeight)
 
 #define kAnchorCellHeight (SCREEN_WIDTH-30)*11/18
 
@@ -432,11 +437,12 @@
 
 #pragma mark - scrollView 停止滚动监测
 - (void)scrollViewDidEndScroll {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:0.15 animations:^{
-            self.floatView.transform = CGAffineTransformMakeScale(1, 1);
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.35 animations:^{
+//            self.floatView.transform = CGAffineTransformMakeScale(1, 1);
+            self.floatView.alpha = 1;
         }];
-    });
+//    });
 }
 
 #pragma mark - lazy

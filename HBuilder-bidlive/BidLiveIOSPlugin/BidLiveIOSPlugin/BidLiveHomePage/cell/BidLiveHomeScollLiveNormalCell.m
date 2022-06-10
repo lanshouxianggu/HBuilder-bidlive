@@ -34,7 +34,7 @@
     self.imageV.backgroundColor = UIColorFromRGB(0xf8f8f8);
     self.imageV.contentMode = UIViewContentModeScaleAspectFill;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.liveBtn.layer.cornerRadius = 4;
+    self.liveBtn.layer.cornerRadius = 3;
     self.liveBtn.layer.masksToBounds = YES;
 }
 
@@ -47,12 +47,12 @@
     
     if (model.Status==4) {
         [self.liveBtn setTitle:@"正在直播" forState:UIControlStateNormal];
-        self.liveBtn.backgroundColor = UIColorFromRGB(0xC6746C);
+        self.liveBtn.backgroundColor = UIColorFromRGB(0xD56C68);
         self.changeLabel.text = [NSString stringWithFormat:@"第%ld件/%ld件",model.NowItemCount,model.AuctionItemCount];
-        self.changeLabel.textColor = UIColorFromRGB(0xC6746C);
+        self.changeLabel.textColor = UIColorFromRGB(0xD56C68);
     }else if (model.Status==3) {
         [self.liveBtn setTitle:@"即将开拍" forState:UIControlStateNormal];
-        self.liveBtn.backgroundColor = UIColorFromRGB(0x7BB1CF);
+        self.liveBtn.backgroundColor = UIColorFromRGB(0x69B2D2);
         self.changeLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(@"距开拍 ").foregroundColor(UIColorFromRGB(0x666666));
             make.text(@""[model.RemainTime]).foregroundColor(UIColorFromRGB(0x7BB1CF));

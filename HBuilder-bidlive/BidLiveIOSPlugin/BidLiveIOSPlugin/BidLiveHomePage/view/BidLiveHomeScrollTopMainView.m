@@ -15,6 +15,8 @@
 #import "LCConfig.h"
 #import "Masonry.h"
 
+#define kMainViewHeihgt (SCREEN_WIDTH*72/585)
+
 @interface BidLiveHomeScrollTopMainView () <SGAdvertScrollViewDelegate>
 @property (nonatomic, strong) BidLiveTopBannerView *bannerView;
 @property (nonatomic, strong) BidLiveHomeBtnItemsView *itemsView;
@@ -120,9 +122,9 @@
 
 -(UIView *)scrollTitleSuperView {
     if (!_scrollTitleSuperView) {
-        _scrollTitleSuperView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.itemsView.frame)+10, SCREEN_WIDTH, 30)];
+        _scrollTitleSuperView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.itemsView.frame)+10, SCREEN_WIDTH, kMainViewHeihgt)];
         _scrollTitleSuperView.backgroundColor = UIColor.whiteColor;
-        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 60, 30)];
+        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 60, kMainViewHeihgt)];
         lab.text = @"[动态]";
         lab.textColor = UIColorFromRGB(0x999999);
         lab.font = [UIFont systemFontOfSize:14];
@@ -134,7 +136,7 @@
 
 -(SGAdvertScrollView *)scrollTitleView {
     if (!_scrollTitleView) {
-        _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(60, 0, SCREEN_WIDTH-70, 30)];
+        _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(60, 0, SCREEN_WIDTH-70, kMainViewHeihgt)];
         _scrollTitleView.delegate = self;
     }
     return _scrollTitleView;

@@ -110,9 +110,9 @@
 -(void)setupUI {
     [self.contentView addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.offset(10);
+        make.left.offset(15);
         make.centerY.offset(0);
-        make.width.height.mas_equalTo(22);
+        make.width.height.mas_equalTo(18);
     }];
     
     [self.contentView addSubview:self.titleLable];

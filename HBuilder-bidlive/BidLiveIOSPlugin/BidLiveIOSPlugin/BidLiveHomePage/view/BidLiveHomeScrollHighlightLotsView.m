@@ -69,13 +69,13 @@
         _topView = [[UIView alloc] initWithFrame:CGRectZero];
         _topView.backgroundColor = UIColorFromRGB(0xf8f8f8);
         
-        UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"classroom" type:@"png"];
+        UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"indexBlock5" type:@"png"];
         
         UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
         [_topView addSubview:imageV];
         [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.offset(0);
-            make.width.mas_equalTo(44*3.35);
+            make.width.mas_equalTo(44*3.23);
             make.height.mas_equalTo(44);
         }];
     }

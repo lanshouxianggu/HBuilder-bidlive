@@ -62,14 +62,17 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==0||indexPath.section==1) {
-        return 140;
+//        return 140;
+        return (SCREEN_WIDTH-30)*218.5/537;
     }
-    return 100;
+    return (SCREEN_WIDTH-30)*138.5/537;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section==0||section==1) {
+    if (section==0) {
         return 90;
+    }else if (section==1) {
+        return (SCREEN_WIDTH-30)*138.5/537;
     }
     return 70;
 }
@@ -79,13 +82,13 @@
     headView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     WS(weakSelf)
     if (section==0) {
-        UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"special" type:@"png"];
+        UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"indexBlock2" type:@"png"];
         
         UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
         [headView addSubview:imageV];
         [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.offset(0);
-            make.width.mas_equalTo(44*3.35);
+            make.width.mas_equalTo(44*3.23);
             make.height.mas_equalTo(44);
         }];
     }

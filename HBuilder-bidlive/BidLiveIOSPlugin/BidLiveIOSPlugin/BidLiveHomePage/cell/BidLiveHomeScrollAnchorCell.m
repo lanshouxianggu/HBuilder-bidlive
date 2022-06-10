@@ -9,9 +9,12 @@
 #import "UIImageView+WebCache.h"
 #import "NSString+LLStringConnection.h"
 #import "LCConfig.h"
+#import "UIView+GradientColor.h"
 
 @interface BidLiveHomeScrollAnchorCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
+@property (weak, nonatomic) IBOutlet UIView *topRightView;
+@property (weak, nonatomic) IBOutlet UIView *topLeftView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UILabel *topLeftLabel;
@@ -35,7 +38,7 @@
     self.topView.backgroundColor = UIColor.clearColor;
     self.topView.layer.cornerRadius = 4;
     self.topView.layer.masksToBounds = YES;
-    self.topRightLabel.backgroundColor = UIColorFromRGBA(0x000000, 0.5);
+    self.topRightView.backgroundColor = UIColorFromRGBA(0x000000, 0.5);
     
     self.bottomCoverImageView.backgroundColor = UIColor.cyanColor;
     self.bottomCoverImageView.layer.cornerRadius = 25;
@@ -44,28 +47,30 @@
     self.bottomView.frame = CGRectMake(0, self.frame.size.height, SCREEN_WIDTH-30, 72);
         
     //设置渐变
-    UIColor *one = UIColorFromRGBA(0x3b3b3b, 0);
-    UIColor *two = UIColorFromRGBA(0x3b3b3b, 1);
-    NSArray *colors = [NSArray arrayWithObjects:(id)one.CGColor,two.CGColor, nil];
-    
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.startPoint = CGPointMake(0, 0);
-    gradient.endPoint = CGPointMake(0, 1);
-    gradient.colors = colors;
-    gradient.frame = self.bottomView.bounds;
-    
-    [self.bottomView.layer insertSublayer:gradient atIndex:0];
+    [self.bottomView gradientFromColor:UIColorFromRGBA(0x3b3b3b, 0) toColor:UIColorFromRGBA(0x3b3b3b, 1) directionType:GradientDirectionToDown];
 }
 
 -(void)setModel:(BidLiveHomeAnchorListModel *)model {
     _model = model;
     [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:model.coverImage] placeholderImage:nil];
+    self.topRightLabel.text = @""[model.liveDateTimeStr][@" 开播"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.topLeftView gradientFromColor:UIColorFromRGB(0x7590F6) toColor:UIColorFromRGB(0x88D3F2) directionType:GradientDirectionToRight];
+    });
+    
+    
     if (model.liveStatus==5) {
         self.topLeftLabel.text = @"预告";
     }else if (model.liveStatus==0) {
         self.topLeftLabel.text = @"预展";
+    }else if (model.liveStatus==1) {
+        self.topLeftLabel.text = @"直播中";
+        self.topRightLabel.text = @""[@(model.watchCount)][@"热度"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.topLeftView gradientFromColor:UIColorFromRGB(0xF8523B) toColor:UIColorFromRGB(0xF9B194) directionType:GradientDirectionToRight];
+        });
     }
-    self.topRightLabel.text = @""[model.liveDateTimeStr][@" 开播"];
+    
     self.bottomView.hidden = !model.isShowAvater;
     if (model.isShowAvater) {
         [self.bottomCoverImageView sd_setImageWithURL:[NSURL URLWithString:model.logo] placeholderImage:nil];

@@ -1,0 +1,37 @@
+{
+    "version" : "bl870_1",
+    "prompt" : "template",
+    "title" : "服务协议和隐私政策",
+    "message" : "\t\t\t\t您好，欢迎使用联拍在线APP。在您使用联拍在线服务之前，请您务必审慎阅读<a href=\"http://wxv3.51bidlive.com/h5/pages/about/privacy\">《联拍在线隐私条款》</a>、<a href=\"http://wxv3.51bidlive.com/h5/pages/about/rule\">《联拍在线网络拍卖规则》</a>和<a href=\"http://wxv3.51bidlive.com/h5/pages/about/liveService\">《联拍在线直播间会员服务用户协议》</a><br>
+\t\t\t\t1.为了给您提供交易相关功能，我们会收集、使用必要信息;<br>
+\t\t\t\t2.为了方便给您推送重要信息，我们会申请设备权限，获取手机设备信息;<br>
+\t\t\t\t3.为了缓存观看视频、直播时产生的临时文件，我们会申请存储权限;<br>
+\t\t\t\t4.基于您的授权，我们可能会获取您的相机权限（用于送鉴、送拍时拍摄/上传图片等)，您有权拒绝或取消授权;<br>
+\t\t\t\t5.我们会使用先进的安全措施保护您的信息安全;<br>
+\t\t\t\t6.未经您同意，我们不会从第三方获取、共享或向其提供您的信息;<br>
+\t\t\t\t7.您可以查询、更正、删除您的个人信息，您也可以注销您在联拍在线的账号;<br>
+\t\t\t\t8.您可以在同意拨打电话权限后，点击联系客服来拨打客服电话;<br>
+\t\t\t\t9.您可以在同意安装应用程序权限后，安装应用程序更新，以体验新版本功能;<br>
+\t\t\t\t10.我们可能会收集您使用我们的产品与/或服务时的设备信息（硬件型号、设备MAC地址、IMEI、AndroidID、OAID、ICCID、GAID、MEID、IDFA、IMSI、必要的软件列表）、WIFI信息、WLAN接入点（SSID，BSSID）用于帮助使我们更加了解您如何接入和使用我们的产品与/或服务、为用户提供问题诊断排查、维护和改进我们的产品与/或服务或对您作出其他方面的回应。",
+    "buttonAccept" : "同意并接受",
+    "buttonRefuse" : "暂不同意",
+    "second" : {
+        "title" : "确认提示",
+        "message" : "　　进入应用前，你需先同意<a href=\"http://wxv3.51bidlive.com/h5/pages/about/privacy\">《联拍在线隐私条款》</a>、<a href=\"http://wxv3.51bidlive.com/h5/pages/about/rule\">《联拍在线网络拍卖规则》</a>和<a href=\"http://wxv3.51bidlive.com/h5/pages/about/liveService\">《联拍在线直播间会员服务用户协议》</a>，否则将退出应用。",
+        "buttonAccept" : "同意并继续",
+        "buttonRefuse" : "退出应用"
+    },
+    "styles" : {
+        "backgroundColor" : "#ffffff",
+        "borderRadius" : "5px",
+        "title" : {
+            "color" : "#000000"
+        },
+        "buttonAccept" : {
+            "color" : "#000000"
+        },
+        "buttonRefuse" : {
+            "color" : "#000000"
+        }
+    }
+}

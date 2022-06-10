@@ -135,6 +135,9 @@
 		22B54A582852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A502852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m */; };
 		22B54A592852EE8100525686 /* BidLiveLiveMainArticleScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */; };
 		22B54A5A2852EE8100525686 /* BidLiveLiveMainArticleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */; };
+		22B54A5C285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B54A5B285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib */; };
+		22B54A75285320B500525686 /* UIView+GradientColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A73285320B500525686 /* UIView+GradientColor.h */; };
+		22B54A76285320B500525686 /* UIView+GradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A74285320B500525686 /* UIView+GradientColor.m */; };
 		22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41532840A95300854873 /* BidLiveVCTools.m */; };
 		22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */; };
 		22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41552840A95300854873 /* BidLiveHomeMainView.h */; };
@@ -294,6 +297,9 @@
 		22B54A502852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollHighlightLotsView.m; sourceTree = "<group>"; };
 		22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveLiveMainArticleScrollView.h; sourceTree = "<group>"; };
 		22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveLiveMainArticleScrollView.m; sourceTree = "<group>"; };
+		22B54A5B285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeScrollAnchorCell.xib; sourceTree = "<group>"; };
+		22B54A73285320B500525686 /* UIView+GradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+GradientColor.h"; sourceTree = "<group>"; };
+		22B54A74285320B500525686 /* UIView+GradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+GradientColor.m"; sourceTree = "<group>"; };
 		22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidLiveIOSPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BD41532840A95300854873 /* BidLiveVCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveVCTools.m; sourceTree = "<group>"; };
 		22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeFirstCell.xib; sourceTree = "<group>"; };
@@ -390,6 +396,7 @@
 				22B547042844A36700525686 /* BidLiveHomeScrollSpeechCell.xib */,
 				22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */,
 				22B546F52844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib */,
+				22B54A5B285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -583,6 +590,8 @@
 				22B54A272852EBC700525686 /* UILabel+Common.m */,
 				22B54A222852EBC600525686 /* UIView+PartRounded.h */,
 				22B54A282852EBC700525686 /* UIView+PartRounded.m */,
+				22B54A73285320B500525686 /* UIView+GradientColor.h */,
+				22B54A74285320B500525686 /* UIView+GradientColor.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -770,6 +779,7 @@
 				22B548E3284EEFA000525686 /* HJNetwork.h in Headers */,
 				22B548B9284EEE9900525686 /* UIWebView+AFNetworking.h in Headers */,
 				22B548A1284EEE9900525686 /* NSObject+MJProperty.h in Headers */,
+				22B54A75285320B500525686 /* UIView+GradientColor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +843,7 @@
 			files = (
 				22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */,
 				22B547072844A36700525686 /* BidLiveHomeScrollSpeechCell.xib in Resources */,
+				22B54A5C285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib in Resources */,
 				22B546F82844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -900,6 +911,7 @@
 				22B547062844A36700525686 /* BidLiveHomeScrollSpeechCell.m in Sources */,
 				22BD41742840A95400854873 /* BidLiveHomeFloatView.m in Sources */,
 				22B548B4284EEE9900525686 /* UIRefreshControl+AFNetworking.m in Sources */,
+				22B54A76285320B500525686 /* UIView+GradientColor.m in Sources */,
 				22B54A3E2852EBC700525686 /* UIColor+LLRandomColor.m in Sources */,
 				22B548B2284EEE9900525686 /* UIProgressView+AFNetworking.m in Sources */,
 				22B54A3D2852EBC700525686 /* NSString+LLStringConnection.m in Sources */,

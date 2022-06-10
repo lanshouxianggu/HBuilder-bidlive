@@ -44,6 +44,10 @@
     [self.tableView reloadData];
 }
 
+-(void)anchorMoreBtnAction {
+    
+}
+
 #pragma mark - UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -65,14 +69,27 @@
     UIView *headView = [UIView new];
     headView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"classroom" type:@"png"];
+    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"indexBlock3" type:@"png"];
     
     UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
     [headView addSubview:imageV];
     [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.offset(0);
-        make.width.mas_equalTo(44*3.35);
+        make.width.mas_equalTo(44*3.23);
         make.height.mas_equalTo(44);
+    }];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *moreImage = [BidLiveBundleRecourseManager getBundleImage:@"indexBlockMore" type:@"png"];
+    [btn setImage:moreImage forState:UIControlStateNormal];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [btn addTarget:self action:@selector(anchorMoreBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [headView addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-8);
+        make.centerY.offset(0);
+        make.width.height.mas_equalTo(40);
     }];
     
     return headView;
