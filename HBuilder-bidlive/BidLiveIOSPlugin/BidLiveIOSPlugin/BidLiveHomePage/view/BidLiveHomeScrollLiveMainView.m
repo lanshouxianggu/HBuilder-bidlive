@@ -14,10 +14,14 @@
 #import "BidLiveHomeScrollLiveBtnView.h"
 #import "BidLiveHomeGlobalLiveModel.h"
 #import "BidLiveLiveMainArticleScrollView.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+GIF.h"
 
 @interface BidLiveHomeScrollLiveMainView () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) BidLiveLiveMainArticleScrollView *articleScrollView;
+@property (nonatomic, strong) UIImageView *gifImageView;
+@property (nonatomic, strong) BidLiveHomeBannerModel *gifModel;
 @end
 
 @implementation BidLiveHomeScrollLiveMainView
@@ -40,9 +44,26 @@
     [self.tableView reloadData];
 }
 
--(void)updateBannerArray:(NSArray<BidLiveHomeCMSArticleModel *> *)bannerArray {
-    [self.articleScrollView updateBannerArray:bannerArray];
+-(void)updateBannerArray:(NSArray<BidLiveHomeBannerModel *> *)bannerArray {
+//    [self.articleScrollView updateBannerArray:bannerArray];
+    if (bannerArray.count==0) {
+        return;
+    }
+    BidLiveHomeBannerModel *firstModel = bannerArray.firstObject;
+    self.gifModel = firstModel;
+    if ([firstModel.imageUrl hasSuffix:@"gif"]) {
+        NSData *gifData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:firstModel.imageUrl]];
+        UIImage *gifImage = [UIImage sd_imageWithGIFData:gifData];
+        self.gifImageView.image = gifImage;
+    }else {
+        [self.gifImageView sd_setImageWithURL:[NSURL URLWithString:firstModel.imageUrl] placeholderImage:nil];
+    }
+    
     [self reloadData];
+}
+
+-(void)gifImageViewTapAction{
+    !self.gifImageClickBlock?:self.gifImageClickBlock(self.gifModel);
 }
 
 #pragma mark - UITableViewDelegate
@@ -72,7 +93,7 @@
     if (section==0) {
         return 90;
     }else if (section==1) {
-        return (SCREEN_WIDTH-30)*138.5/537;
+        return (SCREEN_WIDTH-30)*138.5/537+10;
     }
     return 70;
 }
@@ -93,7 +114,8 @@
         }];
     }
     if (section==1) {
-        [headView addSubview:self.articleScrollView];
+//        [headView addSubview:self.articleScrollView];
+        [headView addSubview:self.gifImageView];
     }
     if (section==2) {
         BidLiveHomeScrollLiveBtnView *leftView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"海外" direction:ArrowDirectionRight];
@@ -182,9 +204,19 @@
 
 -(BidLiveLiveMainArticleScrollView *)articleScrollView {
     if (!_articleScrollView) {
-        _articleScrollView = [[BidLiveLiveMainArticleScrollView alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 80)];
+        _articleScrollView = [[BidLiveLiveMainArticleScrollView alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
     }
     return _articleScrollView;
 }
+
+-(UIImageView *)gifImageView {
+    if (!_gifImageView) {
+        _gifImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gifImageViewTapAction)];
+        [_gifImageView addGestureRecognizer:tapGes];
+    }
+    return _gifImageView;
+}
+
 @end
 

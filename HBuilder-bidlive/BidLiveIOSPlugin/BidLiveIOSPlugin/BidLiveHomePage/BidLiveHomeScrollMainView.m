@@ -29,7 +29,7 @@
 #define kLiveNormalCellHeight ((SCREEN_WIDTH-30)*218.5/537)
 #define kLiveCenterImageCellHeight ((SCREEN_WIDTH-30)*138.5/537)
 //#define kLiveMainViewHeight (140*8+90+90+70+110)
-#define kLiveMainViewHeight (kLiveNormalCellHeight*8+90+kLiveCenterImageCellHeight+70+kLiveCenterImageCellHeight)
+#define kLiveMainViewHeight (kLiveNormalCellHeight*8+90+kLiveCenterImageCellHeight+10+70+kLiveCenterImageCellHeight)
 
 #define kAnchorCellHeight (SCREEN_WIDTH-30)*11/18
 
@@ -270,8 +270,14 @@
 #pragma mark - 加载广告轮播数据
 -(void)loadBannerData {
     WS(weakSelf)
+    //顶部banner
     [BidLiveHomeNetworkModel getHomePageBannerList:11 client:@"wx" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
         [weakSelf.topMainView updateBanners:bannerList];
+    }];
+    
+    //全球直播gif
+    [BidLiveHomeNetworkModel getHomePageBannerList:12 client:@"wx" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
+        [weakSelf.liveMainView updateBannerArray:bannerList];
     }];
 }
 
@@ -280,7 +286,6 @@
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageArticleList:1 pageSize:5 completion:^(NSArray<BidLiveHomeCMSArticleModel *> * _Nonnull cmsArticleList) {
         [weakSelf.topMainView updateCMSArticleList:cmsArticleList];
-        [weakSelf.liveMainView updateBannerArray:cmsArticleList];
     }];
 }
 

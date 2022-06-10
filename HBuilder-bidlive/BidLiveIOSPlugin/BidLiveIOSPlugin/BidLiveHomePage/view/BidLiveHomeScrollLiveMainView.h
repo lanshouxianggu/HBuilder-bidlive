@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BidLiveHomeCMSArticleModel.h"
+#import "BidLiveHomeBannerModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollLiveMainView : UIView
@@ -14,10 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *adsArray;
 @property (nonatomic, strong) NSArray *secondPartLiveArray;
 
+///海外点击block
 @property (nonatomic, copy) void (^abroadClickBlock)(void);
+///国内点击block
 @property (nonatomic, copy) void (^internalClickBlock)(void);
+///gif点击block
+@property (nonatomic, copy) void (^gifImageClickBlock)(BidLiveHomeBannerModel *model);
 
--(void)updateBannerArray:(NSArray <BidLiveHomeCMSArticleModel *> *)bannerArray;
+-(void)updateBannerArray:(NSArray <BidLiveHomeBannerModel *> *)bannerArray;
 
 -(void)reloadData;
 @end
