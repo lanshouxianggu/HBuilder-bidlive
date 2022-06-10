@@ -54,15 +54,18 @@
     _model = model;
     [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:model.coverImage] placeholderImage:nil];
     self.topRightLabel.text = @""[model.liveDateTimeStr][@" 开播"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.topLeftView gradientFromColor:UIColorFromRGB(0x7590F6) toColor:UIColorFromRGB(0x88D3F2) directionType:GradientDirectionToRight];
-    });
-    
+
     
     if (model.liveStatus==5) {
         self.topLeftLabel.text = @"预告";
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.topLeftView gradientFromColor:UIColorFromRGB(0x7590F6) toColor:UIColorFromRGB(0x88D3F2) directionType:GradientDirectionToRight];
+        });
     }else if (model.liveStatus==0) {
         self.topLeftLabel.text = @"预展";
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.topLeftView gradientFromColor:UIColorFromRGB(0x7590F6) toColor:UIColorFromRGB(0x88D3F2) directionType:GradientDirectionToRight];
+        });
     }else if (model.liveStatus==1) {
         self.topLeftLabel.text = @"直播中";
         self.topRightLabel.text = @""[@(model.watchCount)][@"热度"];

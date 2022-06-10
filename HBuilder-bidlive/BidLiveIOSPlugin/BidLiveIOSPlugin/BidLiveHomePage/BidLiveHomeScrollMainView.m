@@ -507,6 +507,15 @@
     if (!_liveMainView) {
         _liveMainView = [[BidLiveHomeScrollLiveMainView alloc] initWithFrame:CGRectZero];
         _liveMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+        
+        WS(weakSelf)
+        [_liveMainView setGifImageClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
+        
+        [_liveMainView setBottomImageClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
     }
     return _liveMainView;
 }

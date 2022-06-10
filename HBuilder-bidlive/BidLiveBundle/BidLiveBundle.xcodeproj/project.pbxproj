@@ -37,6 +37,7 @@
 		22B54A6F2853192500525686 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B54A6D2853192500525686 /* arrow-right.png */; };
 		22B54A702853192500525686 /* arrow-dark-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B54A6E2853192500525686 /* arrow-dark-right.png */; };
 		22B54A722853192B00525686 /* banner_lodding.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B54A712853192B00525686 /* banner_lodding.png */; };
+		22B54A7828533EB300525686 /* animation_live.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22B54A7728533EB300525686 /* animation_live.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		22B54A6D2853192500525686 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right.png"; sourceTree = "<group>"; };
 		22B54A6E2853192500525686 /* arrow-dark-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-dark-right.png"; sourceTree = "<group>"; };
 		22B54A712853192B00525686 /* banner_lodding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner_lodding.png; sourceTree = "<group>"; };
+		22B54A7728533EB300525686 /* animation_live.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = animation_live.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		22B549082850482100525686 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				22B54A7728533EB300525686 /* animation_live.gif */,
 				22B54A712853192B00525686 /* banner_lodding.png */,
 				22B54A6E2853192500525686 /* arrow-dark-right.png */,
 				22B54A6D2853192500525686 /* arrow-right.png */,
@@ -218,6 +221,7 @@
 				22B54A722853192B00525686 /* banner_lodding.png in Resources */,
 				22B5492E2850482200525686 /* BidLiveHomeScrollSpeechCell.xib in Resources */,
 				22B5492B2850482200525686 /* classroom.png in Resources */,
+				22B54A7828533EB300525686 /* animation_live.gif in Resources */,
 				22B54A6B2853191B00525686 /* indexBlock2.png in Resources */,
 				22B5491D2850482200525686 /* newauctionicon.png in Resources */,
 				22B549202850482200525686 /* quanqiupai.png in Resources */,

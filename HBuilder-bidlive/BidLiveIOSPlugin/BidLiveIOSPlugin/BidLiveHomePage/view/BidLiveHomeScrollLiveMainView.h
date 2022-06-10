@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^internalClickBlock)(void);
 ///gif点击block
 @property (nonatomic, copy) void (^gifImageClickBlock)(BidLiveHomeBannerModel *model);
-
+///底部图片点击block
+@property (nonatomic, copy) void (^bottomImageClickBlock)(BidLiveHomeBannerModel *model);
 -(void)updateBannerArray:(NSArray <BidLiveHomeBannerModel *> *)bannerArray;
 
 -(void)reloadData;
