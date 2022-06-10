@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BidLiveHomeGuessYouLikeModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollYouLikeMainView : UIView

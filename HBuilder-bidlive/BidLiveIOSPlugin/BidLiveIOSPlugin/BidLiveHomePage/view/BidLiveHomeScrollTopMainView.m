@@ -10,6 +10,8 @@
 #import "BidLiveHomeShufflingLableView.h"
 #import "SGAdvertScrollView.h"
 #import "BidLiveHomeBtnItemsView.h"
+#import "BidLiveHomeCMSArticleModel.h"
+#import "BidLiveHomeVideoGuideView.h"
 #import "LCConfig.h"
 #import "Masonry.h"
 
@@ -19,8 +21,8 @@
 @property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, strong) UIView *scrollTitleSuperView;
 @property (strong, nonatomic) SGAdvertScrollView *scrollTitleView;
-@property (nonatomic, strong) UIView *liveView;
-@property (nonatomic, strong) NSArray<BidLiveHomeBannerModel *> *banners;
+@property (nonatomic, strong) BidLiveHomeVideoGuideView *videoGuideView;
+@property (nonatomic, strong) NSArray <BidLiveHomeCMSArticleModel *> *cmsArticleArray;
 
 @end
 
@@ -29,9 +31,6 @@
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.imageArray = @[];
-        self.scrollTitleView.titles = @[@"1.上岛咖啡就是看劳动法就是盛开的积分是劳动法",
-                                        @"2.SDK和索拉卡的附近是了的开发房贷",
-                                        @"3.收快递费就SDK废旧塑料的发三楼的靠近非塑料袋开发计算量大开发就"];
         self.scrollTitleView.titleColor = UIColorFromRGB(0x3b3b3b);
         self.scrollTitleView.titleFont = [UIFont systemFontOfSize:14];
         self.scrollTitleView.delegate = self;
@@ -70,16 +69,29 @@
     [self addSubview:self.bannerView];
     [self addSubview:self.itemsView];
     [self addSubview:self.scrollTitleSuperView];
-    [self addSubview:self.liveView];
+    [self addSubview:self.videoGuideView];
 }
 
 -(void)updateBanners:(NSArray<BidLiveHomeBannerModel *> *)banners {
     [self.bannerView updateBannerArray:banners];
 }
 
+-(void)updateCMSArticleList:(NSArray<BidLiveHomeCMSArticleModel *> *)list {
+    NSMutableArray *titles = [NSMutableArray array];
+    self.cmsArticleArray = list;
+    [list enumerateObjectsUsingBlock:^(BidLiveHomeCMSArticleModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [titles addObject:obj.Title];
+    }];
+    self.scrollTitleView.titles = titles;
+}
+
+-(void)updateVideoGuaideList:(NSArray<BidLiveHomeVideoGuaideListModel *> *)list {
+    [self.videoGuideView updateVideoGuideList:list];
+}
+
 #pragma mark - SGAdvertScrollViewDelegate
 -(void)advertScrollView:(SGAdvertScrollView *)advertScrollView didSelectedItemAtIndex:(NSInteger)index {
-    
+    !self.cmsArticleClickBlock?:self.cmsArticleClickBlock(self.cmsArticleArray[index]);
 }
 
 #pragma mark - lazy
@@ -108,9 +120,9 @@
 
 -(UIView *)scrollTitleSuperView {
     if (!_scrollTitleSuperView) {
-        _scrollTitleSuperView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.itemsView.frame)+10, SCREEN_WIDTH, 44)];
+        _scrollTitleSuperView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.itemsView.frame)+10, SCREEN_WIDTH, 30)];
         _scrollTitleSuperView.backgroundColor = UIColor.whiteColor;
-        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 60, 44)];
+        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 60, 30)];
         lab.text = @"[动态]";
         lab.textColor = UIColorFromRGB(0x999999);
         lab.font = [UIFont systemFontOfSize:14];
@@ -122,18 +134,18 @@
 
 -(SGAdvertScrollView *)scrollTitleView {
     if (!_scrollTitleView) {
-        _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(70, 0, SCREEN_WIDTH-100, 44)];
+        _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(60, 0, SCREEN_WIDTH-70, 30)];
         _scrollTitleView.delegate = self;
     }
     return _scrollTitleView;
 }
 
--(UIView *)liveView {
-    if (!_liveView) {
-        _liveView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(self.scrollTitleSuperView.frame)+10, SCREEN_WIDTH-30, 200)];
-        _liveView.backgroundColor = UIColor.cyanColor;
+-(BidLiveHomeVideoGuideView *)videoGuideView {
+    if (!_videoGuideView) {
+        _videoGuideView = [[BidLiveHomeVideoGuideView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(self.scrollTitleSuperView.frame)+10, SCREEN_WIDTH-30, SCREEN_HEIGHT*0.25)];
+        _videoGuideView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     }
-    return _liveView;
+    return _videoGuideView;
 }
 
 @end

@@ -127,6 +127,14 @@
 		22B54A3D2852EBC700525686 /* NSString+LLStringConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A292852EBC700525686 /* NSString+LLStringConnection.m */; };
 		22B54A3E2852EBC700525686 /* UIColor+LLRandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A2A2852EBC700525686 /* UIColor+LLRandomColor.m */; };
 		22B54A442852EBC700525686 /* NSAttributedString+LLMake.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A302852EBC700525686 /* NSAttributedString+LLMake.m */; };
+		22B54A532852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A4B2852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.h */; };
+		22B54A542852EE8100525686 /* BidLiveHomeVideoGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A4C2852EE8100525686 /* BidLiveHomeVideoGuideView.m */; };
+		22B54A552852EE8100525686 /* BidLiveHomeScrollAnchorMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A4D2852EE8100525686 /* BidLiveHomeScrollAnchorMainView.m */; };
+		22B54A562852EE8100525686 /* BidLiveHomeScrollAnchorMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A4E2852EE8100525686 /* BidLiveHomeScrollAnchorMainView.h */; };
+		22B54A572852EE8100525686 /* BidLiveHomeVideoGuideView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A4F2852EE8100525686 /* BidLiveHomeVideoGuideView.h */; };
+		22B54A582852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A502852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m */; };
+		22B54A592852EE8100525686 /* BidLiveLiveMainArticleScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */; };
+		22B54A5A2852EE8100525686 /* BidLiveLiveMainArticleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */; };
 		22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41532840A95300854873 /* BidLiveVCTools.m */; };
 		22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */; };
 		22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41552840A95300854873 /* BidLiveHomeMainView.h */; };
@@ -278,6 +286,14 @@
 		22B54A292852EBC700525686 /* NSString+LLStringConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LLStringConnection.m"; sourceTree = "<group>"; };
 		22B54A2A2852EBC700525686 /* UIColor+LLRandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LLRandomColor.m"; sourceTree = "<group>"; };
 		22B54A302852EBC700525686 /* NSAttributedString+LLMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+LLMake.m"; sourceTree = "<group>"; };
+		22B54A4B2852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollHighlightLotsView.h; sourceTree = "<group>"; };
+		22B54A4C2852EE8100525686 /* BidLiveHomeVideoGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeVideoGuideView.m; sourceTree = "<group>"; };
+		22B54A4D2852EE8100525686 /* BidLiveHomeScrollAnchorMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollAnchorMainView.m; sourceTree = "<group>"; };
+		22B54A4E2852EE8100525686 /* BidLiveHomeScrollAnchorMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollAnchorMainView.h; sourceTree = "<group>"; };
+		22B54A4F2852EE8100525686 /* BidLiveHomeVideoGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeVideoGuideView.h; sourceTree = "<group>"; };
+		22B54A502852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollHighlightLotsView.m; sourceTree = "<group>"; };
+		22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveLiveMainArticleScrollView.h; sourceTree = "<group>"; };
+		22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveLiveMainArticleScrollView.m; sourceTree = "<group>"; };
 		22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidLiveIOSPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BD41532840A95300854873 /* BidLiveVCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveVCTools.m; sourceTree = "<group>"; };
 		22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeFirstCell.xib; sourceTree = "<group>"; };
@@ -356,6 +372,14 @@
 				22B547112844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m */,
 				22B547142845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h */,
 				22B547152845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m */,
+				22B54A4E2852EE8100525686 /* BidLiveHomeScrollAnchorMainView.h */,
+				22B54A4D2852EE8100525686 /* BidLiveHomeScrollAnchorMainView.m */,
+				22B54A4B2852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.h */,
+				22B54A502852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m */,
+				22B54A4F2852EE8100525686 /* BidLiveHomeVideoGuideView.h */,
+				22B54A4C2852EE8100525686 /* BidLiveHomeVideoGuideView.m */,
+				22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */,
+				22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -715,6 +739,7 @@
 				22B548BC284EEE9900525686 /* UIProgressView+AFNetworking.h in Headers */,
 				22B546F128446ED000525686 /* BidLiveHomeScrollLiveMainView.h in Headers */,
 				22B54A092852E8EB00525686 /* BidLiveHomeHotCourseModel.h in Headers */,
+				22B54A572852EE8100525686 /* BidLiveHomeVideoGuideView.h in Headers */,
 				22B548AF284EEE9900525686 /* NSObject+MJKeyValue.h in Headers */,
 				22B548BF284EEE9900525686 /* UIRefreshControl+AFNetworking.h in Headers */,
 				22B548C6284EEE9900525686 /* AFSecurityPolicy.h in Headers */,
@@ -731,6 +756,8 @@
 				22B54A0A2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.h in Headers */,
 				22B5489A284EEE9900525686 /* YYCache.h in Headers */,
 				22B548AE284EEE9900525686 /* MJProperty.h in Headers */,
+				22B54A592852EE8100525686 /* BidLiveLiveMainArticleScrollView.h in Headers */,
+				22B54A562852EE8100525686 /* BidLiveHomeScrollAnchorMainView.h in Headers */,
 				22BD41952840C55100854873 /* BidLiveHomeBtnItemsView.h in Headers */,
 				22B546ED28446C6000525686 /* BidLiveHomeScrollTopMainView.h in Headers */,
 				22B5489D284EEE9900525686 /* MJPropertyKey.h in Headers */,
@@ -739,6 +766,7 @@
 				22B548D2284EEE9900525686 /* AFCompatibilityMacros.h in Headers */,
 				22B548BA284EEE9900525686 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				22B548CC284EEE9900525686 /* AFURLResponseSerialization.h in Headers */,
+				22B54A532852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.h in Headers */,
 				22B548E3284EEFA000525686 /* HJNetwork.h in Headers */,
 				22B548B9284EEE9900525686 /* UIWebView+AFNetworking.h in Headers */,
 				22B548A1284EEE9900525686 /* NSObject+MJProperty.h in Headers */,
@@ -844,6 +872,7 @@
 				22B548A0284EEE9900525686 /* MJPropertyType.m in Sources */,
 				22B548A4284EEE9900525686 /* MJProperty.m in Sources */,
 				22BD41712840A95400854873 /* BidLiveTopBannerView.m in Sources */,
+				22B54A542852EE8100525686 /* BidLiveHomeVideoGuideView.m in Sources */,
 				22B54A442852EBC700525686 /* NSAttributedString+LLMake.m in Sources */,
 				22B5489B284EEE9900525686 /* YYKVStorage.m in Sources */,
 				22B548AC284EEE9900525686 /* NSString+MJExtension.m in Sources */,
@@ -858,6 +887,7 @@
 				22B546EA2844613300525686 /* BidLiveHomeScrollMainView.m in Sources */,
 				22B548AD284EEE9900525686 /* MJPropertyKey.m in Sources */,
 				22B548CB284EEE9900525686 /* AFHTTPSessionManager.m in Sources */,
+				22B54A552852EE8100525686 /* BidLiveHomeScrollAnchorMainView.m in Sources */,
 				22BD41882840A99100854873 /* BidLiveHomeComponent.m in Sources */,
 				22B54A182852EA7100525686 /* BidLiveHomeScrollAnchorCell.m in Sources */,
 				22B54A0C2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.m in Sources */,
@@ -865,6 +895,7 @@
 				22B54A3C2852EBC700525686 /* UIView+PartRounded.m in Sources */,
 				22BD417E2840A95400854873 /* BidLiveHomeFirstCell.m in Sources */,
 				22BD41732840A95400854873 /* BidLiveHomeShufflingLableView.m in Sources */,
+				22B54A582852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m in Sources */,
 				22B54A072852E8EB00525686 /* BidLiveHomeHotCourseModel.m in Sources */,
 				22B547062844A36700525686 /* BidLiveHomeScrollSpeechCell.m in Sources */,
 				22BD41742840A95400854873 /* BidLiveHomeFloatView.m in Sources */,
@@ -872,6 +903,7 @@
 				22B54A3E2852EBC700525686 /* UIColor+LLRandomColor.m in Sources */,
 				22B548B2284EEE9900525686 /* UIProgressView+AFNetworking.m in Sources */,
 				22B54A3D2852EBC700525686 /* NSString+LLStringConnection.m in Sources */,
+				22B54A5A2852EE8100525686 /* BidLiveLiveMainArticleScrollView.m in Sources */,
 				22B547172845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m in Sources */,
 				22B548CE284EEE9900525686 /* AFURLRequestSerialization.m in Sources */,
 				22B548A3284EEE9900525686 /* NSObject+MJKeyValue.m in Sources */,

@@ -6,11 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BidLiveHomeHotCourseModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollSpeechCell : UITableViewCell
-
+@property (nonatomic, strong) BidLiveHomeHotCourseListModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

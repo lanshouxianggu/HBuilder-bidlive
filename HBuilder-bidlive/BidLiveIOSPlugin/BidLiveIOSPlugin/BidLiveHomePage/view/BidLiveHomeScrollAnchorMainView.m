@@ -1,32 +1,32 @@
 //
-//  BidLiveHomeScrollSpeechMainView.m
-//  BidLiveIOSPlugin
+//  BidLiveHomeScrollAnchorMainView.m
+//  OCTools
 //
-//  Created by bidlive on 2022/5/30.
+//  Created by bidlive on 2022/6/8.
 //
 
-#import "BidLiveHomeScrollSpeechMainView.h"
+#import "BidLiveHomeScrollAnchorMainView.h"
 #import "Masonry.h"
 #import "LCConfig.h"
 #import "BidLiveBundleRecourseManager.h"
-#import "DCSVProgressHUD.h"
-#import "BidLiveHomeScrollSpeechCell.h"
+#import "BidLiveHomeScrollAnchorCell.h"
 #import "BidLiveHomeScrollLiveBtnView.h"
 
-@interface BidLiveHomeScrollSpeechMainView () <UITableViewDelegate,UITableViewDataSource>
+@interface BidLiveHomeScrollAnchorMainView ()<UITableViewDelegate,UITableViewDataSource>
 ///是否点击了更多
 @property (nonatomic, assign) BOOL isClickMore;
-///点击更多次数，点击更多两次，只显示收起按钮
+///点击更多次数，点击更多1次，只显示收起按钮
 @property (nonatomic, assign) NSInteger clickMoreTimes;
 ///是否点击了收起
 @property (nonatomic, assign) BOOL isClickBack;
+
 @end
 
-@implementation BidLiveHomeScrollSpeechMainView
+@implementation BidLiveHomeScrollAnchorMainView
 
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.videosArray = [NSMutableArray array];
+        self.anchorsArray = [NSMutableArray array];
         self.isClickBack = YES;
         [self setupUI];
     }
@@ -50,11 +50,11 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.videosArray.count;
+    return self.anchorsArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (SCREEN_WIDTH-30)*405.5/537;
+    return (SCREEN_WIDTH-30)*11/18;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -92,7 +92,6 @@
             weakSelf.isClickMore = YES;
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes++;
-            [DCSVProgressHUD showInfoWithStatus:@"更多"];
             !weakSelf.moreClickBlock?:weakSelf.moreClickBlock();
         }];
         
@@ -103,46 +102,45 @@
             make.centerX.offset(-2);
             make.bottom.offset(-10);
         }];
-    }else if (self.clickMoreTimes>0 && self.clickMoreTimes<2) {
-        BidLiveHomeScrollLiveBtnView *leftView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"收起" direction:ArrowDirectionUp];
-        [leftView setClickBock:^{
-            [DCSVProgressHUD showInfoWithStatus:@"收起"];
-            weakSelf.isClickBack = YES;
-            weakSelf.isClickMore = NO;
-            weakSelf.clickMoreTimes = 0;
-            !weakSelf.retractingClickBlock?:weakSelf.retractingClickBlock();
-        }];
-        [footView addSubview:leftView];
-        [leftView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(70);
-            make.height.mas_equalTo(30);
-            make.bottom.offset(-10);
-            make.centerX.offset(-40);
-        }];
-        
-        BidLiveHomeScrollLiveBtnView *rightView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"更多" direction:ArrowDirectionDown];
-        [rightView setClickBock:^{
-            weakSelf.isClickMore = YES;
-            weakSelf.isClickBack = NO;
-            weakSelf.clickMoreTimes++;
-            [DCSVProgressHUD showInfoWithStatus:@"更多"];
-            !weakSelf.moreClickBlock?:weakSelf.moreClickBlock();
-        }];
-        
-        [footView addSubview:rightView];
-        [rightView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(70);
-            make.height.mas_equalTo(30);
-            make.centerX.offset(40);
-            make.bottom.offset(-10);
-        }];
-    }else {
+    }
+//    else if (self.clickMoreTimes>0 && self.clickMoreTimes<2) {
+//        BidLiveHomeScrollLiveBtnView *leftView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"收起" direction:ArrowDirectionUp];
+//        [leftView setClickBock:^{
+//            weakSelf.isClickBack = YES;
+//            weakSelf.isClickMore = NO;
+//            weakSelf.clickMoreTimes = 0;
+//            !weakSelf.retractingClickBlock?:weakSelf.retractingClickBlock();
+//        }];
+//        [footView addSubview:leftView];
+//        [leftView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.width.mas_equalTo(70);
+//            make.height.mas_equalTo(30);
+//            make.bottom.offset(-10);
+//            make.centerX.offset(-40);
+//        }];
+//
+//        BidLiveHomeScrollLiveBtnView *rightView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"更多" direction:ArrowDirectionDown];
+//        [rightView setClickBock:^{
+//            weakSelf.isClickMore = YES;
+//            weakSelf.isClickBack = NO;
+//            weakSelf.clickMoreTimes++;
+//            !weakSelf.moreClickBlock?:weakSelf.moreClickBlock();
+//        }];
+//
+//        [footView addSubview:rightView];
+//        [rightView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.width.mas_equalTo(70);
+//            make.height.mas_equalTo(30);
+//            make.centerX.offset(40);
+//            make.bottom.offset(-10);
+//        }];
+//    }
+    else {
         BidLiveHomeScrollLiveBtnView *rightView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"收起" direction:ArrowDirectionUp];
         [rightView setClickBock:^{
             weakSelf.isClickMore = YES;
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes=0;
-            [DCSVProgressHUD showInfoWithStatus:@"收起"];
             !weakSelf.retractingClickBlock?:weakSelf.retractingClickBlock();
         }];
         
@@ -154,21 +152,18 @@
             make.bottom.offset(-10);
         }];
     }
-    
-    
     return footView;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BidLiveHomeScrollSpeechCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeScrollSpeechCell" forIndexPath:indexPath];
+    BidLiveHomeScrollAnchorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeScrollAnchorCell" forIndexPath:indexPath];
     cell.backgroundColor = UIColorFromRGB(0xf8f8f8);
-    cell.model = self.videosArray[indexPath.row];
+    cell.model = self.anchorsArray[indexPath.row];
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [DCSVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"item：%ld",indexPath.item]];
 }
 
 
@@ -188,8 +183,8 @@
         
         
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
-        UINib *nib = [BidLiveBundleRecourseManager getBundleNib:@"BidLiveHomeScrollSpeechCell" type:@"nib"];
-        [_tableView registerNib:nib forCellReuseIdentifier:@"BidLiveHomeScrollSpeechCell"];
+        UINib *nib = [BidLiveBundleRecourseManager getBundleNib:@"BidLiveHomeScrollAnchorCell" type:@"nib"];
+        [_tableView registerNib:nib forCellReuseIdentifier:@"BidLiveHomeScrollAnchorCell"];
     }
     return _tableView;
 }

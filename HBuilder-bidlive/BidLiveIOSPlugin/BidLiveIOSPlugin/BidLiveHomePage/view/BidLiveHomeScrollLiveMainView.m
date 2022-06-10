@@ -12,17 +12,18 @@
 #import "BidLiveHomeScollLiveNormalCell.h"
 #import "DCSVProgressHUD.h"
 #import "BidLiveHomeScrollLiveBtnView.h"
+#import "BidLiveHomeGlobalLiveModel.h"
+#import "BidLiveLiveMainArticleScrollView.h"
 
 @interface BidLiveHomeScrollLiveMainView () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) BidLiveLiveMainArticleScrollView *articleScrollView;
 @end
 
 @implementation BidLiveHomeScrollLiveMainView
 
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.firstPartLiveArray = @[@"",@"",@"",@""];
-        self.secondPartLiveArray = @[@"",@"",@"",@""];
         [self setupUI];
     }
     return self;
@@ -33,6 +34,15 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsZero);
     }];
+}
+
+-(void)reloadData {
+    [self.tableView reloadData];
+}
+
+-(void)updateBannerArray:(NSArray<BidLiveHomeCMSArticleModel *> *)bannerArray {
+    [self.articleScrollView updateBannerArray:bannerArray];
+    [self reloadData];
 }
 
 #pragma mark - UITableViewDelegate
@@ -80,15 +90,7 @@
         }];
     }
     if (section==1) {
-        UIView *view = [UIView new];
-        view.backgroundColor = UIColor.orangeColor;
-        [headView addSubview:view];
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.offset(15);
-            make.right.offset(-15);
-            make.top.offset(5);
-            make.bottom.offset(-5);
-        }];
+        [headView addSubview:self.articleScrollView];
     }
     if (section==2) {
         BidLiveHomeScrollLiveBtnView *leftView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"海外" direction:ArrowDirectionRight];
@@ -125,7 +127,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==0||indexPath.section==1) {
         BidLiveHomeScollLiveNormalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeScollLiveNormalCell" forIndexPath:indexPath];
-        
+        if (indexPath.section==0) {
+            cell.model = self.firstPartLiveArray[indexPath.row];
+        }else if (indexPath.section==1) {
+            cell.model = self.secondPartLiveArray[indexPath.row];
+        }
         return cell;
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
@@ -169,6 +175,13 @@
         [_tableView registerNib:nib forCellReuseIdentifier:@"BidLiveHomeScollLiveNormalCell"];
     }
     return _tableView;
+}
+
+-(BidLiveLiveMainArticleScrollView *)articleScrollView {
+    if (!_articleScrollView) {
+        _articleScrollView = [[BidLiveLiveMainArticleScrollView alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 80)];
+    }
+    return _articleScrollView;
 }
 @end
 

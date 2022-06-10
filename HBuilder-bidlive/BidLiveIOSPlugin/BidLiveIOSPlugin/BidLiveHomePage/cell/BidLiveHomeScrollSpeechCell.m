@@ -7,6 +7,7 @@
 
 #import "BidLiveHomeScrollSpeechCell.h"
 #import "BidLiveBundleRecourseManager.h"
+#import "UIImageView+WebCache.h"
 
 @interface BidLiveHomeScrollSpeechCell ()
 @property (weak, nonatomic) IBOutlet UIView *mainView;
@@ -27,7 +28,21 @@
     
     UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"lianpaijiangtangvideobg" type:@"png"];
     self.videoIconImageView.image = image;
+    self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
+
+-(void)setModel:(BidLiveHomeHotCourseListModel *)model {
+    _model = model;
+    [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:nil];
+    self.videoNameLabel.text = model.courseSubjectName;
+    self.authNameLabel.text = model.anchorName;
+    if (model.updatedCount<model.contentCount) {
+        self.countLabel.text = [NSString stringWithFormat:@"更新至%ld期 ~ 共%ld期 | %ld观看",model.updatedCount,model.contentCount,model.playCount];
+    }else {
+        self.countLabel.text = [NSString stringWithFormat:@"共%ld期全 | %ld观看",model.contentCount,model.playCount];
+    }
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

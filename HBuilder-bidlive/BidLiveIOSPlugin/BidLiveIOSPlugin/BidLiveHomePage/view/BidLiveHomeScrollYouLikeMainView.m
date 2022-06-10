@@ -19,7 +19,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.likesArray = [NSMutableArray arrayWithArray:@[@[@"",@"",@"",@"",@"",@"",@"",@"",@"",@""]]];
+        self.likesArray = [NSMutableArray array];
         [self setupUI];
     }
     return self;
@@ -81,7 +81,8 @@
 
 -(__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BidLiveHomeScrollYouLikeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell" forIndexPath:indexPath];
-    
+    NSArray<BidLiveHomeGuessYouLikeListModel *> *array = self.likesArray[indexPath.section];
+    cell.model = array[indexPath.item];
     return cell;
 }
 

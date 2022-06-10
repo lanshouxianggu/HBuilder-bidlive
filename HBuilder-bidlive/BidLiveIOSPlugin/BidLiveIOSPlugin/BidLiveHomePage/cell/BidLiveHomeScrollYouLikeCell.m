@@ -8,6 +8,9 @@
 #import "BidLiveHomeScrollYouLikeCell.h"
 #import "LCConfig.h"
 #import "Masonry.h"
+#import "UIImageView+WebCache.h"
+#import "NSString+LLStringConnection.h"
+#import "NSAttributedString+LLMake.h"
 
 @interface BidLiveHomeScrollYouLikeCell ()
 @property (nonatomic, strong) UIImageView *topImageView;
@@ -40,6 +43,26 @@
         make.left.right.bottom.offset(0);
         make.top.equalTo(self.topImageView.mas_bottom);
     }];
+}
+
+-(void)setModel:(BidLiveHomeGuessYouLikeListModel *)model {
+    _model = model;
+    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
+    self.nameLabel.text = @""[model.auctionItemName];
+    
+    self.priceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
+        make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x666666));
+        make.text(model.strStartingPrice).foregroundColor(UIColorFromRGB(0x5E98CB));
+    }];
+    if (model.status==2) {
+        self.stateLabel.text = @"正在直播";
+        self.stateLabel.textColor = UIColorFromRGB(0xC6746C);
+        self.dateLabel.text = @""[model.sellerName];
+    }else {
+        self.stateLabel.text = @"预展中";
+        self.stateLabel.textColor = UIColorFromRGB(0x5E98CB);
+        self.dateLabel.text = @"距开拍 "[model.strRemainTime];
+    }
 }
 
 #pragma mark - lazy
