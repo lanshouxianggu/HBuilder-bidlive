@@ -111,6 +111,22 @@
 		22B54A0F2852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A012852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m */; };
 		22B54A102852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A022852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h */; };
 		22B54A112852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A032852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m */; };
+		22B54A182852EA7100525686 /* BidLiveHomeScrollAnchorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A122852EA7100525686 /* BidLiveHomeScrollAnchorCell.m */; };
+		22B54A192852EA7100525686 /* BidLiveHomeScrollAnchorCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A132852EA7100525686 /* BidLiveHomeScrollAnchorCell.h */; };
+		22B54A1A2852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A142852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.h */; };
+		22B54A1B2852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A152852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.m */; };
+		22B54A1C2852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A162852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.h */; };
+		22B54A1D2852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A172852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.m */; };
+		22B54A342852EBC700525686 /* UIColor+LLRandomColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A202852EBC600525686 /* UIColor+LLRandomColor.h */; };
+		22B54A352852EBC700525686 /* NSAttributedString+LLMake.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A212852EBC600525686 /* NSAttributedString+LLMake.h */; };
+		22B54A362852EBC700525686 /* UIView+PartRounded.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A222852EBC600525686 /* UIView+PartRounded.h */; };
+		22B54A392852EBC700525686 /* NSString+LLStringConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A252852EBC600525686 /* NSString+LLStringConnection.h */; };
+		22B54A3A2852EBC700525686 /* UILabel+Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A262852EBC700525686 /* UILabel+Common.h */; };
+		22B54A3B2852EBC700525686 /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A272852EBC700525686 /* UILabel+Common.m */; };
+		22B54A3C2852EBC700525686 /* UIView+PartRounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A282852EBC700525686 /* UIView+PartRounded.m */; };
+		22B54A3D2852EBC700525686 /* NSString+LLStringConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A292852EBC700525686 /* NSString+LLStringConnection.m */; };
+		22B54A3E2852EBC700525686 /* UIColor+LLRandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A2A2852EBC700525686 /* UIColor+LLRandomColor.m */; };
+		22B54A442852EBC700525686 /* NSAttributedString+LLMake.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A302852EBC700525686 /* NSAttributedString+LLMake.m */; };
 		22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41532840A95300854873 /* BidLiveVCTools.m */; };
 		22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */; };
 		22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41552840A95300854873 /* BidLiveHomeMainView.h */; };
@@ -246,6 +262,22 @@
 		22B54A012852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeGuessYouLikeModel.m; sourceTree = "<group>"; };
 		22B54A022852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeGuessYouLikeModel.h; sourceTree = "<group>"; };
 		22B54A032852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeVideoGuaideModel.m; sourceTree = "<group>"; };
+		22B54A122852EA7100525686 /* BidLiveHomeScrollAnchorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollAnchorCell.m; sourceTree = "<group>"; };
+		22B54A132852EA7100525686 /* BidLiveHomeScrollAnchorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollAnchorCell.h; sourceTree = "<group>"; };
+		22B54A142852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollHighlightLotsCell.h; sourceTree = "<group>"; };
+		22B54A152852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollHighlightLotsCell.m; sourceTree = "<group>"; };
+		22B54A162852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollVideoGuaideCell.h; sourceTree = "<group>"; };
+		22B54A172852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollVideoGuaideCell.m; sourceTree = "<group>"; };
+		22B54A202852EBC600525686 /* UIColor+LLRandomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LLRandomColor.h"; sourceTree = "<group>"; };
+		22B54A212852EBC600525686 /* NSAttributedString+LLMake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+LLMake.h"; sourceTree = "<group>"; };
+		22B54A222852EBC600525686 /* UIView+PartRounded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PartRounded.h"; sourceTree = "<group>"; };
+		22B54A252852EBC600525686 /* NSString+LLStringConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LLStringConnection.h"; sourceTree = "<group>"; };
+		22B54A262852EBC700525686 /* UILabel+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Common.h"; sourceTree = "<group>"; };
+		22B54A272852EBC700525686 /* UILabel+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Common.m"; sourceTree = "<group>"; };
+		22B54A282852EBC700525686 /* UIView+PartRounded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PartRounded.m"; sourceTree = "<group>"; };
+		22B54A292852EBC700525686 /* NSString+LLStringConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LLStringConnection.m"; sourceTree = "<group>"; };
+		22B54A2A2852EBC700525686 /* UIColor+LLRandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LLRandomColor.m"; sourceTree = "<group>"; };
+		22B54A302852EBC700525686 /* NSAttributedString+LLMake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+LLMake.m"; sourceTree = "<group>"; };
 		22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidLiveIOSPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BD41532840A95300854873 /* BidLiveVCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveVCTools.m; sourceTree = "<group>"; };
 		22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeFirstCell.xib; sourceTree = "<group>"; };
@@ -301,6 +333,12 @@
 				22B547032844A36700525686 /* BidLiveHomeScrollSpeechCell.m */,
 				22B547182845AE5900525686 /* BidLiveHomeScrollYouLikeCell.h */,
 				22B547192845AE5900525686 /* BidLiveHomeScrollYouLikeCell.m */,
+				22B54A132852EA7100525686 /* BidLiveHomeScrollAnchorCell.h */,
+				22B54A122852EA7100525686 /* BidLiveHomeScrollAnchorCell.m */,
+				22B54A142852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.h */,
+				22B54A152852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.m */,
+				22B54A162852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.h */,
+				22B54A172852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -508,6 +546,23 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		22B54A1E2852EB2F00525686 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				22B54A212852EBC600525686 /* NSAttributedString+LLMake.h */,
+				22B54A302852EBC700525686 /* NSAttributedString+LLMake.m */,
+				22B54A252852EBC600525686 /* NSString+LLStringConnection.h */,
+				22B54A292852EBC700525686 /* NSString+LLStringConnection.m */,
+				22B54A202852EBC600525686 /* UIColor+LLRandomColor.h */,
+				22B54A2A2852EBC700525686 /* UIColor+LLRandomColor.m */,
+				22B54A262852EBC700525686 /* UILabel+Common.h */,
+				22B54A272852EBC700525686 /* UILabel+Common.m */,
+				22B54A222852EBC600525686 /* UIView+PartRounded.h */,
+				22B54A282852EBC700525686 /* UIView+PartRounded.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
 		22BD412F2840A69B00854873 = {
 			isa = PBXGroup;
 			children = (
@@ -527,11 +582,12 @@
 		22BD413B2840A69B00854873 /* BidLiveIOSPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				22B54A1E2852EB2F00525686 /* category */,
+				22BD41692840A95300854873 /* Tools */,
 				22B5484D284EEE9900525686 /* Library */,
 				22BD41842840A96400854873 /* Components */,
 				22BD41832840A95800854873 /* Modules */,
 				22BD41522840A95300854873 /* BidLiveHomePage */,
-				22BD41692840A95300854873 /* Tools */,
 			);
 			path = BidLiveIOSPlugin;
 			sourceTree = "<group>";
@@ -613,8 +669,11 @@
 				22B546F62844769B00525686 /* BidLiveHomeScollLiveNormalCell.h in Headers */,
 				22BD417C2840A95400854873 /* BidLiveHomeHeadView.h in Headers */,
 				22B54A082852E8EB00525686 /* BidLiveHomeVideoGuaideModel.h in Headers */,
+				22B54A1A2852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.h in Headers */,
 				22BD41792840A95400854873 /* SGAdvertScrollView.h in Headers */,
 				22B548A2284EEE9900525686 /* MJExtensionConst.h in Headers */,
+				22B54A352852EBC700525686 /* NSAttributedString+LLMake.h in Headers */,
+				22B54A1C2852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.h in Headers */,
 				22B54896284EEE9900525686 /* YYKVStorage.h in Headers */,
 				22BD41752840A95400854873 /* BidLiveHomeFirstCell.h in Headers */,
 				22B548B5284EEE9900525686 /* UIImageView+AFNetworking.h in Headers */,
@@ -623,8 +682,10 @@
 				22B54A102852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h in Headers */,
 				22B548C7284EEE9900525686 /* AFNetworkReachabilityManager.h in Headers */,
 				22B548BB284EEE9900525686 /* UIImage+AFNetworking.h in Headers */,
+				22B54A192852EA7100525686 /* BidLiveHomeScrollAnchorCell.h in Headers */,
 				22B54A0B2852E8EB00525686 /* BidLiveHomeCMSArticleModel.h in Headers */,
 				22B548D3284EEE9900525686 /* AFHTTPSessionManager.h in Headers */,
+				22B54A3A2852EBC700525686 /* UILabel+Common.h in Headers */,
 				22B54A042852E8EB00525686 /* BidLiveHomeAnchorModel.h in Headers */,
 				22B547052844A36700525686 /* BidLiveHomeScrollSpeechCell.h in Headers */,
 				22B547162845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h in Headers */,
@@ -645,7 +706,9 @@
 				22BD417F2840A95400854873 /* BidLiveHomeFloatView.h in Headers */,
 				22B548BE284EEE9900525686 /* UIKit+AFNetworking.h in Headers */,
 				22B548B6284EEE9900525686 /* AFImageDownloader.h in Headers */,
+				22B54A392852EBC700525686 /* NSString+LLStringConnection.h in Headers */,
 				22B548C4284EEE9900525686 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				22B54A362852EBC700525686 /* UIView+PartRounded.h in Headers */,
 				22BD41872840A99100854873 /* BidLiveHomeComponent.h in Headers */,
 				22B548B0284EEE9900525686 /* NSObject+MJCoding.h in Headers */,
 				22BD41802840A95400854873 /* BidLiveHomeShufflingLableView.h in Headers */,
@@ -658,6 +721,7 @@
 				22B548B3284EEE9900525686 /* UIButton+AFNetworking.h in Headers */,
 				22B5489E284EEE9900525686 /* NSObject+MJClass.h in Headers */,
 				22B5470028449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h in Headers */,
+				22B54A342852EBC700525686 /* UIColor+LLRandomColor.h in Headers */,
 				22B54898284EEE9900525686 /* YYMemoryCache.h in Headers */,
 				22BD41722840A95400854873 /* BidLiveHomeViewController.h in Headers */,
 				22B548AA284EEE9900525686 /* MJPropertyType.h in Headers */,
@@ -754,6 +818,7 @@
 			files = (
 				22BD41772840A95400854873 /* BidLiveHomeMainView.m in Sources */,
 				22B546F228446ED000525686 /* BidLiveHomeScrollLiveMainView.m in Sources */,
+				22B54A1D2852EA7100525686 /* BidLiveHomeScrollVideoGuaideCell.m in Sources */,
 				22B548C5284EEE9900525686 /* AFImageDownloader.m in Sources */,
 				22B54897284EEE9900525686 /* YYCache.m in Sources */,
 				22B548B1284EEE9900525686 /* MJFoundation.m in Sources */,
@@ -770,6 +835,7 @@
 				22B547132844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m in Sources */,
 				22B548AB284EEE9900525686 /* NSObject+MJClass.m in Sources */,
 				22B548D0284EEE9900525686 /* AFNetworkReachabilityManager.m in Sources */,
+				22B54A1B2852EA7100525686 /* BidLiveHomeScrollHighlightLotsCell.m in Sources */,
 				22BD41782840A95400854873 /* SGAdvertScrollView.m in Sources */,
 				22B54A052852E8EB00525686 /* BidLiveHomeGlobalLiveModel.m in Sources */,
 				22B54895284EEE9900525686 /* YYDiskCache.m in Sources */,
@@ -778,6 +844,7 @@
 				22B548A0284EEE9900525686 /* MJPropertyType.m in Sources */,
 				22B548A4284EEE9900525686 /* MJProperty.m in Sources */,
 				22BD41712840A95400854873 /* BidLiveTopBannerView.m in Sources */,
+				22B54A442852EBC700525686 /* NSAttributedString+LLMake.m in Sources */,
 				22B5489B284EEE9900525686 /* YYKVStorage.m in Sources */,
 				22B548AC284EEE9900525686 /* NSString+MJExtension.m in Sources */,
 				22B546F72844769B00525686 /* BidLiveHomeScollLiveNormalCell.m in Sources */,
@@ -792,15 +859,19 @@
 				22B548AD284EEE9900525686 /* MJPropertyKey.m in Sources */,
 				22B548CB284EEE9900525686 /* AFHTTPSessionManager.m in Sources */,
 				22BD41882840A99100854873 /* BidLiveHomeComponent.m in Sources */,
+				22B54A182852EA7100525686 /* BidLiveHomeScrollAnchorCell.m in Sources */,
 				22B54A0C2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.m in Sources */,
 				22B546EE28446C6000525686 /* BidLiveHomeScrollTopMainView.m in Sources */,
+				22B54A3C2852EBC700525686 /* UIView+PartRounded.m in Sources */,
 				22BD417E2840A95400854873 /* BidLiveHomeFirstCell.m in Sources */,
 				22BD41732840A95400854873 /* BidLiveHomeShufflingLableView.m in Sources */,
 				22B54A072852E8EB00525686 /* BidLiveHomeHotCourseModel.m in Sources */,
 				22B547062844A36700525686 /* BidLiveHomeScrollSpeechCell.m in Sources */,
 				22BD41742840A95400854873 /* BidLiveHomeFloatView.m in Sources */,
 				22B548B4284EEE9900525686 /* UIRefreshControl+AFNetworking.m in Sources */,
+				22B54A3E2852EBC700525686 /* UIColor+LLRandomColor.m in Sources */,
 				22B548B2284EEE9900525686 /* UIProgressView+AFNetworking.m in Sources */,
+				22B54A3D2852EBC700525686 /* NSString+LLStringConnection.m in Sources */,
 				22B547172845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m in Sources */,
 				22B548CE284EEE9900525686 /* AFURLRequestSerialization.m in Sources */,
 				22B548A3284EEE9900525686 /* NSObject+MJKeyValue.m in Sources */,
@@ -811,6 +882,7 @@
 				22B548C0284EEE9900525686 /* UIButton+AFNetworking.m in Sources */,
 				22BD417D2840A95400854873 /* BidLiveHomeViewController.m in Sources */,
 				22B548A8284EEE9900525686 /* MJExtensionConst.m in Sources */,
+				22B54A3B2852EBC700525686 /* UILabel+Common.m in Sources */,
 				22BD41762840A95400854873 /* BidLiveHomeFirstTableViewCell.m in Sources */,
 				22B548C3284EEE9900525686 /* AFAutoPurgingImageCache.m in Sources */,
 			);
