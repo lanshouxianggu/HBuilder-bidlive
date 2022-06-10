@@ -75,7 +75,7 @@
 
 #pragma mark - banner点击
 -(void)imageViewTapGes:(UIButton *)btn {
-    !self.bannerClick?:self.bannerClick(self.imgArray[btn.tag-1]);
+    !self.bannerClick?:self.bannerClick(self.imgArray[btn.tag]);
 }
 
 #pragma mark - UIScrollViewDelegate

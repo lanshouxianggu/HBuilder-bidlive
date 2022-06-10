@@ -97,6 +97,20 @@
 		22B548DE284EEF2B00525686 /* BidliveInterfaceEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B548DD284EEF2B00525686 /* BidliveInterfaceEnum.h */; };
 		22B548E3284EEFA000525686 /* HJNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B548E1284EEFA000525686 /* HJNetwork.h */; };
 		22B548E4284EEFA000525686 /* HJNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B548E2284EEFA000525686 /* HJNetwork.m */; };
+		22B54A042852E8EB00525686 /* BidLiveHomeAnchorModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B549F62852E8EA00525686 /* BidLiveHomeAnchorModel.h */; };
+		22B54A052852E8EB00525686 /* BidLiveHomeGlobalLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B549F72852E8EA00525686 /* BidLiveHomeGlobalLiveModel.m */; };
+		22B54A062852E8EB00525686 /* BidLiveHomeCMSArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B549F82852E8EA00525686 /* BidLiveHomeCMSArticleModel.m */; };
+		22B54A072852E8EB00525686 /* BidLiveHomeHotCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B549F92852E8EA00525686 /* BidLiveHomeHotCourseModel.m */; };
+		22B54A082852E8EB00525686 /* BidLiveHomeVideoGuaideModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B549FA2852E8EA00525686 /* BidLiveHomeVideoGuaideModel.h */; };
+		22B54A092852E8EB00525686 /* BidLiveHomeHotCourseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B549FB2852E8EA00525686 /* BidLiveHomeHotCourseModel.h */; };
+		22B54A0A2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B549FC2852E8EA00525686 /* BidLiveHomeHighlightLotsModel.h */; };
+		22B54A0B2852E8EB00525686 /* BidLiveHomeCMSArticleModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B549FD2852E8EB00525686 /* BidLiveHomeCMSArticleModel.h */; };
+		22B54A0C2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B549FE2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.m */; };
+		22B54A0D2852E8EB00525686 /* BidLiveHomeAnchorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B549FF2852E8EB00525686 /* BidLiveHomeAnchorModel.m */; };
+		22B54A0E2852E8EB00525686 /* BidLiveHomeGlobalLiveModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A002852E8EB00525686 /* BidLiveHomeGlobalLiveModel.h */; };
+		22B54A0F2852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A012852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m */; };
+		22B54A102852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A022852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h */; };
+		22B54A112852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A032852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m */; };
 		22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41532840A95300854873 /* BidLiveVCTools.m */; };
 		22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */; };
 		22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41552840A95300854873 /* BidLiveHomeMainView.h */; };
@@ -218,6 +232,20 @@
 		22B548DD284EEF2B00525686 /* BidliveInterfaceEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidliveInterfaceEnum.h; sourceTree = "<group>"; };
 		22B548E1284EEFA000525686 /* HJNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJNetwork.h; sourceTree = "<group>"; };
 		22B548E2284EEFA000525686 /* HJNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJNetwork.m; sourceTree = "<group>"; };
+		22B549F62852E8EA00525686 /* BidLiveHomeAnchorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeAnchorModel.h; sourceTree = "<group>"; };
+		22B549F72852E8EA00525686 /* BidLiveHomeGlobalLiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeGlobalLiveModel.m; sourceTree = "<group>"; };
+		22B549F82852E8EA00525686 /* BidLiveHomeCMSArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeCMSArticleModel.m; sourceTree = "<group>"; };
+		22B549F92852E8EA00525686 /* BidLiveHomeHotCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeHotCourseModel.m; sourceTree = "<group>"; };
+		22B549FA2852E8EA00525686 /* BidLiveHomeVideoGuaideModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeVideoGuaideModel.h; sourceTree = "<group>"; };
+		22B549FB2852E8EA00525686 /* BidLiveHomeHotCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeHotCourseModel.h; sourceTree = "<group>"; };
+		22B549FC2852E8EA00525686 /* BidLiveHomeHighlightLotsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeHighlightLotsModel.h; sourceTree = "<group>"; };
+		22B549FD2852E8EB00525686 /* BidLiveHomeCMSArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeCMSArticleModel.h; sourceTree = "<group>"; };
+		22B549FE2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeHighlightLotsModel.m; sourceTree = "<group>"; };
+		22B549FF2852E8EB00525686 /* BidLiveHomeAnchorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeAnchorModel.m; sourceTree = "<group>"; };
+		22B54A002852E8EB00525686 /* BidLiveHomeGlobalLiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeGlobalLiveModel.h; sourceTree = "<group>"; };
+		22B54A012852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeGuessYouLikeModel.m; sourceTree = "<group>"; };
+		22B54A022852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeGuessYouLikeModel.h; sourceTree = "<group>"; };
+		22B54A032852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeVideoGuaideModel.m; sourceTree = "<group>"; };
 		22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidLiveIOSPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BD41532840A95300854873 /* BidLiveVCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveVCTools.m; sourceTree = "<group>"; };
 		22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeFirstCell.xib; sourceTree = "<group>"; };
@@ -445,6 +473,20 @@
 				22B548D7284EEEEF00525686 /* BidLiveHomeBannerModel.m */,
 				22B548D6284EEEEF00525686 /* BidLiveHomeNetworkModel.h */,
 				22B548D8284EEEEF00525686 /* BidLiveHomeNetworkModel.m */,
+				22B549F62852E8EA00525686 /* BidLiveHomeAnchorModel.h */,
+				22B549FF2852E8EB00525686 /* BidLiveHomeAnchorModel.m */,
+				22B549FD2852E8EB00525686 /* BidLiveHomeCMSArticleModel.h */,
+				22B549F82852E8EA00525686 /* BidLiveHomeCMSArticleModel.m */,
+				22B54A002852E8EB00525686 /* BidLiveHomeGlobalLiveModel.h */,
+				22B549F72852E8EA00525686 /* BidLiveHomeGlobalLiveModel.m */,
+				22B54A022852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h */,
+				22B54A012852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m */,
+				22B549FC2852E8EA00525686 /* BidLiveHomeHighlightLotsModel.h */,
+				22B549FE2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.m */,
+				22B549FB2852E8EA00525686 /* BidLiveHomeHotCourseModel.h */,
+				22B549F92852E8EA00525686 /* BidLiveHomeHotCourseModel.m */,
+				22B549FA2852E8EA00525686 /* BidLiveHomeVideoGuaideModel.h */,
+				22B54A032852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -570,6 +612,7 @@
 			files = (
 				22B546F62844769B00525686 /* BidLiveHomeScollLiveNormalCell.h in Headers */,
 				22BD417C2840A95400854873 /* BidLiveHomeHeadView.h in Headers */,
+				22B54A082852E8EB00525686 /* BidLiveHomeVideoGuaideModel.h in Headers */,
 				22BD41792840A95400854873 /* SGAdvertScrollView.h in Headers */,
 				22B548A2284EEE9900525686 /* MJExtensionConst.h in Headers */,
 				22B54896284EEE9900525686 /* YYKVStorage.h in Headers */,
@@ -577,9 +620,12 @@
 				22B548B5284EEE9900525686 /* UIImageView+AFNetworking.h in Headers */,
 				22BD417B2840A95400854873 /* BidLiveTopBannerView.h in Headers */,
 				22BD41812840A95400854873 /* LCConfig.h in Headers */,
+				22B54A102852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.h in Headers */,
 				22B548C7284EEE9900525686 /* AFNetworkReachabilityManager.h in Headers */,
 				22B548BB284EEE9900525686 /* UIImage+AFNetworking.h in Headers */,
+				22B54A0B2852E8EB00525686 /* BidLiveHomeCMSArticleModel.h in Headers */,
 				22B548D3284EEE9900525686 /* AFHTTPSessionManager.h in Headers */,
+				22B54A042852E8EB00525686 /* BidLiveHomeAnchorModel.h in Headers */,
 				22B547052844A36700525686 /* BidLiveHomeScrollSpeechCell.h in Headers */,
 				22B547162845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h in Headers */,
 				22B547122844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h in Headers */,
@@ -591,6 +637,7 @@
 				22BD41B02841BC8300854873 /* BidLiveBundleRecourseManager.h in Headers */,
 				22B5489F284EEE9900525686 /* NSString+MJExtension.h in Headers */,
 				22B548A7284EEE9900525686 /* MJExtension.h in Headers */,
+				22B54A0E2852E8EB00525686 /* BidLiveHomeGlobalLiveModel.h in Headers */,
 				22B546E92844613300525686 /* BidLiveHomeScrollMainView.h in Headers */,
 				22B548C8284EEE9900525686 /* AFURLSessionManager.h in Headers */,
 				22B548B8284EEE9900525686 /* AFAutoPurgingImageCache.h in Headers */,
@@ -604,6 +651,7 @@
 				22BD41802840A95400854873 /* BidLiveHomeShufflingLableView.h in Headers */,
 				22B548BC284EEE9900525686 /* UIProgressView+AFNetworking.h in Headers */,
 				22B546F128446ED000525686 /* BidLiveHomeScrollLiveMainView.h in Headers */,
+				22B54A092852E8EB00525686 /* BidLiveHomeHotCourseModel.h in Headers */,
 				22B548AF284EEE9900525686 /* NSObject+MJKeyValue.h in Headers */,
 				22B548BF284EEE9900525686 /* UIRefreshControl+AFNetworking.h in Headers */,
 				22B548C6284EEE9900525686 /* AFSecurityPolicy.h in Headers */,
@@ -616,6 +664,7 @@
 				22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */,
 				22B5471A2845AE5900525686 /* BidLiveHomeScrollYouLikeCell.h in Headers */,
 				22B548A5284EEE9900525686 /* MJFoundation.h in Headers */,
+				22B54A0A2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.h in Headers */,
 				22B5489A284EEE9900525686 /* YYCache.h in Headers */,
 				22B548AE284EEE9900525686 /* MJProperty.h in Headers */,
 				22BD41952840C55100854873 /* BidLiveHomeBtnItemsView.h in Headers */,
@@ -710,14 +759,19 @@
 				22B548B1284EEE9900525686 /* MJFoundation.m in Sources */,
 				22B5489C284EEE9900525686 /* YYMemoryCache.m in Sources */,
 				22B548DB284EEEEF00525686 /* BidLiveHomeBannerModel.m in Sources */,
+				22B54A0F2852E8EB00525686 /* BidLiveHomeGuessYouLikeModel.m in Sources */,
+				22B54A062852E8EB00525686 /* BidLiveHomeCMSArticleModel.m in Sources */,
 				22BD41942840C55100854873 /* BidLiveHomeBtnItemsView.m in Sources */,
 				22B548C2284EEE9900525686 /* UIWebView+AFNetworking.m in Sources */,
+				22B54A0D2852E8EB00525686 /* BidLiveHomeAnchorModel.m in Sources */,
 				22B548C1284EEE9900525686 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				22B54A112852E8EB00525686 /* BidLiveHomeVideoGuaideModel.m in Sources */,
 				22B548CD284EEE9900525686 /* AFURLSessionManager.m in Sources */,
 				22B547132844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m in Sources */,
 				22B548AB284EEE9900525686 /* NSObject+MJClass.m in Sources */,
 				22B548D0284EEE9900525686 /* AFNetworkReachabilityManager.m in Sources */,
 				22BD41782840A95400854873 /* SGAdvertScrollView.m in Sources */,
+				22B54A052852E8EB00525686 /* BidLiveHomeGlobalLiveModel.m in Sources */,
 				22B54895284EEE9900525686 /* YYDiskCache.m in Sources */,
 				22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */,
 				22B548BD284EEE9900525686 /* UIImageView+AFNetworking.m in Sources */,
@@ -738,9 +792,11 @@
 				22B548AD284EEE9900525686 /* MJPropertyKey.m in Sources */,
 				22B548CB284EEE9900525686 /* AFHTTPSessionManager.m in Sources */,
 				22BD41882840A99100854873 /* BidLiveHomeComponent.m in Sources */,
+				22B54A0C2852E8EB00525686 /* BidLiveHomeHighlightLotsModel.m in Sources */,
 				22B546EE28446C6000525686 /* BidLiveHomeScrollTopMainView.m in Sources */,
 				22BD417E2840A95400854873 /* BidLiveHomeFirstCell.m in Sources */,
 				22BD41732840A95400854873 /* BidLiveHomeShufflingLableView.m in Sources */,
+				22B54A072852E8EB00525686 /* BidLiveHomeHotCourseModel.m in Sources */,
 				22B547062844A36700525686 /* BidLiveHomeScrollSpeechCell.m in Sources */,
 				22BD41742840A95400854873 /* BidLiveHomeFloatView.m in Sources */,
 				22B548B4284EEE9900525686 /* UIRefreshControl+AFNetworking.m in Sources */,
