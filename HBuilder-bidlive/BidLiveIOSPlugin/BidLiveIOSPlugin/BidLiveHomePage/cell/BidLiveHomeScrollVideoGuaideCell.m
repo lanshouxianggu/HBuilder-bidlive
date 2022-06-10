@@ -17,7 +17,7 @@
 @interface BidLiveHomeScrollVideoGuaideCell ()
 @property (nonatomic, strong) UIImageView *videoImageView;
 @property (nonatomic, strong) UILabel *videoTitleLabel;
-@property (nonatomic, strong) UIView *livingView;
+@property (nonatomic, strong) BidLiveLivingView *livingView;
 @end
 
 @implementation BidLiveHomeScrollVideoGuaideCell
@@ -25,11 +25,6 @@
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setupUI];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.livingView gradientFromColor:UIColorFromRGB(0xF8523B) toColor:UIColorFromRGB(0xF9B194) directionType:GradientDirectionToRight];
-            [self.livingView addRoundedCorners:UIRectCornerBottomRight withSize:CGSizeMake(8, 8)];
-            
-        });
     }
     return self;
 }
@@ -49,11 +44,6 @@
     }];
     
     [topView addSubview:self.livingView];
-    [self.livingView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.offset(0);
-        make.width.mas_equalTo(self.frame.size.width*0.4);
-        make.height.mas_equalTo(self.frame.size.height*0.13);
-    }];
     
     UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"lianpaijiangtangvideobg" type:@"png"];
     
@@ -109,35 +99,48 @@
     return _videoTitleLabel;
 }
 
--(UIView *)livingView {
+-(BidLiveLivingView *)livingView {
     if (!_livingView) {
-        _livingView = [UIView new];
+        _livingView = [[BidLiveLivingView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width*0.4, self.frame.size.height*0.13)];
         _livingView.backgroundColor = UIColor.cyanColor;
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveBundle" ofType:@"bundle"];
-        NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-        NSString *imagePath = [bundle pathForResource:@"animation_live" ofType:@"gif"];
-        NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
-        UIImage *gifImage = [UIImage sd_imageWithGIFData:imageData];
-        
-        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        imageV.image = gifImage;
-        [_livingView addSubview:imageV];
-//        [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerY.offset(0);
-//            make.left.offset(0);
-//            make.width.height.mas_equalTo(20);
-//        }];
-        
-        UILabel *lab = [UILabel new];
-        lab.text = @"直播中";
-        lab.textColor = UIColor.whiteColor;
-        lab.font = [UIFont systemFontOfSize:11];
-        [_livingView addSubview:lab];
-        [lab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.offset(0);
-            make.left.equalTo(imageV.mas_right);
-        }];
     }
     return _livingView;
+}
+@end
+
+
+@implementation BidLiveLivingView
+
+-(instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupUI];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self gradientFromColor:UIColorFromRGB(0xF8523B) toColor:UIColorFromRGB(0xF9B194) directionType:GradientDirectionToRight];
+            [self addRoundedCorners:UIRectCornerBottomRight withSize:CGSizeMake(8, 8)];
+//        });
+    }
+    return self;
+}
+
+-(void)setupUI {
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveBundle" ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    NSString *imagePath = [bundle pathForResource:@"animation_live" ofType:@"gif"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
+    UIImage *gifImage = [UIImage sd_imageWithGIFData:imageData];
+    
+    UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    imageV.image = gifImage;
+    [self addSubview:imageV];
+    
+    UILabel *lab = [UILabel new];
+    lab.text = @"直播中";
+    lab.textColor = UIColor.whiteColor;
+    lab.font = [UIFont systemFontOfSize:11];
+    [self addSubview:lab];
+    [lab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.offset(0);
+        make.left.equalTo(imageV.mas_right);
+    }];
 }
 @end

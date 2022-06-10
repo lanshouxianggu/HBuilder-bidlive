@@ -8,6 +8,10 @@
 #import <UIKit/UIKit.h>
 #import "BidLiveHomeVideoGuaideModel.h"
 
+@interface BidLiveLivingView : UIView
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollVideoGuaideCell : UICollectionViewCell
