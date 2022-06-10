@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeFloatView : UIView
-
+@property (nonatomic, copy) void (^toNewAuctionClickBlock)(void);
 @end
 
 NS_ASSUME_NONNULL_END

@@ -71,6 +71,9 @@
         [_mainScrollView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
             !weakSelf.bannerClick?:weakSelf.bannerClick(model);
         }];
+        [_mainScrollView setToNewAuctionClickBlock:^{
+            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
+        }];
     }
     return _mainScrollView;
 }

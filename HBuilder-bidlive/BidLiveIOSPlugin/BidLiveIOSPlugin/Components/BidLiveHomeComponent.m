@@ -104,6 +104,12 @@
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/news/newsHome?p_id=99"}} domChanges:nil];
             }
         }];
+#pragma mark - 新上拍场点击事件
+        [_homeVC setToNewAuctionClickBlock:^{
+            if (weakSelf.onTurnPage) {
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/newAuctions?source=1"}} domChanges:nil];
+            }
+        }];
     }
     return _homeVC;
 }

@@ -52,7 +52,7 @@
 }
 
 -(void)touchAction {
-    [DCSVProgressHUD showWithStatus:@"新拍上场"];
+    !self.toNewAuctionClickBlock?:self.toNewAuctionClickBlock();
 }
 
 @end

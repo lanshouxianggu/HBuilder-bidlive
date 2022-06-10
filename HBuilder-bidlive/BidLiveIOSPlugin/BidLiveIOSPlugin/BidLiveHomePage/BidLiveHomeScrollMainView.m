@@ -486,6 +486,10 @@
 -(BidLiveHomeFloatView *)floatView {
     if (!_floatView) {
         _floatView = [[BidLiveHomeFloatView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-60-30, SCREEN_HEIGHT-130, 60, 60)];
+        WS(weakSelf)
+        [_floatView setToNewAuctionClickBlock:^{
+            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
+        }];
     }
     return _floatView;
 }
