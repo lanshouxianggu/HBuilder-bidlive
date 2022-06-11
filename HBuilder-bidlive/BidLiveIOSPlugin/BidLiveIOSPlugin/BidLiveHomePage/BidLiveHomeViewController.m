@@ -80,6 +80,10 @@
         [_mainScrollView setGlobalLiveCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
             !weakSelf.globalLiveCellClickBlock?:weakSelf.globalLiveCellClickBlock(model);
         }];
+        [_mainScrollView setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
+            !weakSelf.speechCellClickBlock?:weakSelf.speechCellClickBlock(model);
+        }];
+        
         [_mainScrollView setToNewAuctionClickBlock:^{
             !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
         }];

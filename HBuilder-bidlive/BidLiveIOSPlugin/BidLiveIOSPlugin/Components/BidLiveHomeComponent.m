@@ -13,6 +13,7 @@
 #import "BidLiveHomeBannerModel.h"
 #import "BidLiveHomeCMSArticleModel.h"
 #import "BidLiveHomeGlobalLiveModel.h"
+#import "BidLiveHomeHotCourseModel.h"
 
 #import "MJExtension.h"
 #import "NSString+LLStringConnection.h"
@@ -128,6 +129,13 @@
                 }else if (model.AuctionCount>1) {
                     pageStr = @""[@"/pages/auction/companyAuctionList?id="][@(model.SellerId)];
                 }
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
+            }
+        }];
+#pragma mark - 名家讲堂cell点击事件
+        [_homeVC setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
+            if (weakSelf.onTurnPage) {
+                NSString *pageStr = @""[@"/pages/lectureHall/videoDetails/videoDetails?courseId="][@(model.courseId)][@"&coverUrl="][model.coverUrl];
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
             }
         }];

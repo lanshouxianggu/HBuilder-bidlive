@@ -131,12 +131,16 @@
                     
         }];
         
-#pragma mark - 联拍讲堂更多点击事件
+#pragma mark - 名家讲堂cell点击事件
+        [self.speechMainView setCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
+            !weakSelf.speechCellClickBlock?:weakSelf.speechCellClickBlock(model);
+        }];
+#pragma mark - 名家讲堂更多点击事件
         [self.speechMainView setMoreClickBlock:^{
             weakSelf.speechPageIndex++;
             [weakSelf loadHomeHotCourseData];
         }];
-#pragma mark - 联拍讲堂收起点击事件
+#pragma mark - 名家讲堂收起点击事件
         [self.speechMainView setRetractingClickBlock:^{
             weakSelf.speechPageIndex = 1;
             weakSelf.speechMainView.videosArray = [NSMutableArray arrayWithArray:weakSelf.speechOrigionArray];

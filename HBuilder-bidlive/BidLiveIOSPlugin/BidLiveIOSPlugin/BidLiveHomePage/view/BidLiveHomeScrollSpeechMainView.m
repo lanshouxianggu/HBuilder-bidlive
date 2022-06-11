@@ -168,7 +168,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [DCSVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"item：%ld",indexPath.item]];
+    !self.cellClickBlock?:self.cellClickBlock(self.videosArray[indexPath.row]);
 }
 
 
