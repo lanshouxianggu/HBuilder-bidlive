@@ -7,7 +7,6 @@
 
 #import "BidLiveHomeFirstTableViewCell.h"
 #import "BidLiveTopBannerView.h"
-#import "BidLiveHomeShufflingLableView.h"
 #import "SGAdvertScrollView.h"
 #import "BidLiveHomeBtnItemsView.h"
 #import "LCConfig.h"

@@ -132,6 +132,18 @@
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
             }
         }];
+#pragma mark - 全球直播海外点击事件
+        [_homeVC setAbroadClickBlock:^{
+            if (weakSelf.onTurnPage) {
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/index?source=en"}} domChanges:nil];
+            }
+        }];
+#pragma mark - 全球直播国内点击事件
+        [_homeVC setInternalClickBlock:^{
+            if (weakSelf.onTurnPage) {
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/index?source=cn"}} domChanges:nil];
+            }
+        }];
 #pragma mark - 名家讲堂cell点击事件
         [_homeVC setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
             if (weakSelf.onTurnPage) {
@@ -142,7 +154,7 @@
 #pragma mark - 新上拍场点击事件
         [_homeVC setToNewAuctionClickBlock:^{
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/newAuctions?source=1"}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/newAuctions?source=en"}} domChanges:nil];
             }
         }];
     }

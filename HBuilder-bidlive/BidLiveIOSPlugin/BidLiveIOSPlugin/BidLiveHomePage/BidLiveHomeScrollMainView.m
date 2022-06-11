@@ -127,13 +127,21 @@
         [self.liveMainView setCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
             !weakSelf.globalLiveCellClickBlock?:weakSelf.globalLiveCellClickBlock(model);
         }];
+#pragma mark - 全球直播gif动画点击事件
+        [self.liveMainView setGifImageClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
+#pragma mark - 全球直播底部广告点击事件
+        [self.liveMainView setBottomImageClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
 #pragma mark - 全球直播海外点击事件
         [self.liveMainView setAbroadClickBlock:^{
-                    
+            !weakSelf.abroadClickBlock?:weakSelf.abroadClickBlock();
         }];
 #pragma mark - 全球直播国内点击事件
         [self.liveMainView setInternalClickBlock:^{
-                    
+            !weakSelf.internalClickBlock?:weakSelf.internalClickBlock();
         }];
         
 #pragma mark - 名家讲堂cell点击事件
@@ -504,7 +512,7 @@
     if (!_mainScrollView) {
         _mainScrollView = [[UIScrollView alloc] init];
         _mainScrollView.delegate = self;
-        _mainScrollView.bounces = NO;
+//        _mainScrollView.bounces = NO;
     }
     return _mainScrollView;
 }
@@ -560,15 +568,6 @@
     if (!_liveMainView) {
         _liveMainView = [[BidLiveHomeScrollLiveMainView alloc] initWithFrame:CGRectZero];
         _liveMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
-        
-        WS(weakSelf)
-        [_liveMainView setGifImageClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
-            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
-        }];
-        
-        [_liveMainView setBottomImageClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
-            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
-        }];
     }
     return _liveMainView;
 }

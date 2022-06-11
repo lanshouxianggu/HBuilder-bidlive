@@ -136,7 +136,6 @@
     if (section==2) {
         BidLiveHomeScrollLiveBtnView *leftView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"海外" direction:ArrowDirectionRight];
         [leftView setClickBock:^{
-            [DCSVProgressHUD showInfoWithStatus:@"海外"];
             !weakSelf.abroadClickBlock?:weakSelf.abroadClickBlock();
         }];
         [headView addSubview:leftView];
@@ -149,7 +148,6 @@
         
         BidLiveHomeScrollLiveBtnView *rightView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"国内" direction:ArrowDirectionRight];
         [rightView setClickBock:^{
-            [DCSVProgressHUD showInfoWithStatus:@"国内"];
             !weakSelf.internalClickBlock?:weakSelf.internalClickBlock();
         }];
         

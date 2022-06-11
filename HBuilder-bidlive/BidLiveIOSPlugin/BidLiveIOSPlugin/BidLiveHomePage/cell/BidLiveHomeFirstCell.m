@@ -7,14 +7,12 @@
 
 #import "BidLiveHomeFirstCell.h"
 #import "BidLiveTopBannerView.h"
-#import "BidLiveHomeShufflingLableView.h"
 #import "SGAdvertScrollView.h"
 #import "LCConfig.h"
 
 @interface BidLiveHomeFirstCell () <SGAdvertScrollViewDelegate>
 @property (nonatomic, strong) BidLiveTopBannerView *bannerView;
 @property (nonatomic, strong) NSArray *imageArray;
-@property (nonatomic, strong) BidLiveHomeShufflingLableView *shufflingLableView;
 
 @property (weak, nonatomic) IBOutlet UIView *topBannerView;
 
@@ -87,16 +85,4 @@
     return _bannerView;
 }
 
--(BidLiveHomeShufflingLableView *)shufflingLableView {
-    if (!_shufflingLableView) {
-        _shufflingLableView = [[BidLiveHomeShufflingLableView alloc] initWithFrame:CGRectZero];
-        [_shufflingLableView setTextArray:@[@"1.上岛咖啡就是看劳动法就是盛开的积分是劳动法",
-                                          @"2.SDK和索拉卡的附近是了的开发房贷",
-                                          @"3.收快递费就SDK废旧塑料的发三楼的靠近非塑料袋开发计算量大开发就"] InteralTime:2 Direction:SHRollingDirectionUp];
-        _shufflingLableView.didSelect = ^(NSInteger index, NSString * _Nonnull text) {
-            
-        };
-    }
-    return _shufflingLableView;
-}
 @end

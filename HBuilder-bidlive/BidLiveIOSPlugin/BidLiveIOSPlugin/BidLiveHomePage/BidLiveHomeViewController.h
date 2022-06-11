@@ -35,6 +35,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^cmsArticleClickBlock)(BidLiveHomeCMSArticleModel *model);
 ///全球直播cell点击block
 @property (nonatomic, copy) void (^globalLiveCellClickBlock)(BidLiveHomeGlobalLiveModel *model);
+///全球直播海外点击block
+@property (nonatomic, copy) void (^abroadClickBlock)(void);
+///全球直播国内点击block
+@property (nonatomic, copy) void (^internalClickBlock)(void);
 ///名家讲堂cell点击block
 @property (nonatomic, copy) void (^speechCellClickBlock)(BidLiveHomeHotCourseListModel *model);
 ///新上拍场点击block

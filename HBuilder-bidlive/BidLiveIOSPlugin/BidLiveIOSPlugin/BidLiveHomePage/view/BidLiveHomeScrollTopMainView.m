@@ -7,7 +7,6 @@
 
 #import "BidLiveHomeScrollTopMainView.h"
 #import "BidLiveTopBannerView.h"
-#import "BidLiveHomeShufflingLableView.h"
 #import "SGAdvertScrollView.h"
 #import "BidLiveHomeBtnItemsView.h"
 #import "BidLiveHomeCMSArticleModel.h"
