@@ -297,6 +297,28 @@
     [self loadHomeHighliahtLotsListData];
 }
 
+#pragma mark - 刷新数据
+-(void)refreshData {
+    [self initData];
+    [self loadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.mainScrollView.mj_header endRefreshing];
+    });
+}
+
+#pragma mark - 加载更多猜你喜欢数据
+-(void)loadMoreData {
+    if (self.youlikePageIndexArray.firstObject) {
+        int currentPage = [[self.youlikePageIndexArray firstObject] intValue];
+        self.youlikePageIndex = currentPage;
+        [self loadGuessYouLikeListData];
+        [self.youlikePageIndexArray removeObjectAtIndex:0];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.mainScrollView.mj_footer endRefreshing];
+        });
+    }
+}
+
 #pragma mark - 加载广告轮播数据
 -(void)loadBannerData {
     WS(weakSelf)
@@ -393,7 +415,9 @@
 -(void)loadGuessYouLikeListData {
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageGuessYouLikeList:self.youlikePageIndex completion:^(BidLiveHomeGuessYouLikeModel * _Nonnull model) {
+        NSLog(@"猜你喜欢列表数据加载：%d",weakSelf.youlikePageNormalIndex);
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:model.list];
+        CGFloat origionHight = CGRectGetHeight(weakSelf.youlikeMainView.frame);
         if (weakSelf.youlikePageIndex==0 && model.list.count>10) {
             [weakSelf.youlikeMainView.likesArray removeAllObjects];
             NSRange range1 = NSMakeRange(0, 10);
@@ -415,25 +439,27 @@
                     NSArray *lastPageIndexArray = [weakSelf.youlikeMainView.likesArray lastObject];
                     NSMutableArray *lastArray = [NSMutableArray arrayWithArray:lastPageIndexArray];
                     [lastArray addObjectsFromArray:model.list];
-//                    weakSelf.youlikeMainView.likesArray[weakSelf.youlikePageNormalIndex] = lastArray;
+                    weakSelf.youlikeMainView.likesArray[weakSelf.youlikePageNormalIndex] = lastArray;
                 }
             }
+            origionHight+= (kYouLikeHeadViewHeight+(model.list.count/2)*280+4*10);
             weakSelf.youlikePageNormalIndex++;
         }
-        
         NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
         NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
-//        if (likesArrayCount <= likesBannerCount) {
+        if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
             [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(likesArrayCount*kYouLikeMainViewHeight);
             }];
-//        }else {
-//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                make.height.mas_equalTo(likesArrayCount*kYouLikeMainViewHeight-(likesArrayCount-likesBannerCount)*((SCREEN_WIDTH-30)*138.5/537));
-//            }];
-//        }
-        
-        [weakSelf.youlikeMainView.collectionView reloadData];
+        }else {
+            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(weakSelf.youlikePageNormalIndex*kYouLikeMainViewHeight-(weakSelf.youlikePageNormalIndex-likesBannerCount)*kYouLikeHeadViewHeight);
+            }];
+        }
+            
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.youlikeMainView.collectionView reloadData];
+        });
     }];
 }
 
@@ -447,6 +473,16 @@
     }else {
         self.topSearchView.backgroundColor = UIColorFromRGBA(0xf2f2f2,1);
     }
+    
+//    CGFloat youlikeViewMinY = CGRectGetMinY(self.youlikeMainView.frame);
+//    if (offsetY<youlikeViewMinY) {
+//        self.mainScrollView.scrollEnabled = YES;
+//        self.youlikeMainView.collectionView.scrollEnabled = NO;
+//    }else {
+//        self.mainScrollView.scrollEnabled = NO;
+//        self.youlikeMainView.collectionView.scrollEnabled = YES;
+//    }
+    
     CGPoint offset = scrollView.contentOffset;
     CGRect bounds = scrollView.bounds;
     CGSize size = scrollView.contentSize;
@@ -455,12 +491,12 @@
     CGFloat maximumOffset = size.height;
     
     if (currentOffset>=maximumOffset) {
-        if (self.youlikePageIndexArray.firstObject) {
-            int currentPage = [[self.youlikePageIndexArray firstObject] intValue];
-            self.youlikePageIndex = currentPage;
-            [self loadGuessYouLikeListData];
-            [self.youlikePageIndexArray removeObjectAtIndex:0];
-        }
+//        if (self.youlikePageIndexArray.firstObject) {
+//            int currentPage = [[self.youlikePageIndexArray firstObject] intValue];
+//            self.youlikePageIndex = currentPage;
+//            [self loadGuessYouLikeListData];
+//            [self.youlikePageIndexArray removeObjectAtIndex:0];
+//        }
     }
     
     CGFloat statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
@@ -513,6 +549,23 @@
         _mainScrollView = [[UIScrollView alloc] init];
         _mainScrollView.delegate = self;
 //        _mainScrollView.bounces = NO;
+        
+        WS(weakSelf)
+        MJRefreshNormalHeader *refreshHead = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [weakSelf refreshData];
+        }];
+        refreshHead.backgroundColor = [UIColor clearColor];
+        
+        refreshHead.lastUpdatedTimeLabel.hidden = YES;
+        refreshHead.stateLabel.hidden = YES;
+        _mainScrollView.mj_header = refreshHead;
+        
+        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [weakSelf loadMoreData];
+        }];
+        refreshFoot.refreshingTitleHidden = YES;
+        refreshFoot.onlyRefreshPerDrag = YES;
+        _mainScrollView.mj_footer = refreshFoot;
     }
     return _mainScrollView;
 }
@@ -600,6 +653,15 @@
     if (!_youlikeMainView) {
         _youlikeMainView = [[BidLiveHomeScrollYouLikeMainView alloc] initWithFrame:CGRectZero];
         _youlikeMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+        
+        WS(weakSelf)
+        [_youlikeMainView setLoadMoreGuessYouLikeDataBlock:^{
+            [weakSelf loadMoreData];
+        }];
+        
+        [_youlikeMainView setYouLikeViewScrollToTopBlock:^{
+            weakSelf.mainScrollView.scrollEnabled = YES;
+        }];
     }
     return _youlikeMainView;
 }

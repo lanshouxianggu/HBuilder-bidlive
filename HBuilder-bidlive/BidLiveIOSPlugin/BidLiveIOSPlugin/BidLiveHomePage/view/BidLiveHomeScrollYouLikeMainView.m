@@ -11,7 +11,7 @@
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
 
-@interface BidLiveHomeScrollYouLikeMainView () <UICollectionViewDelegate,UICollectionViewDataSource>
+@interface BidLiveHomeScrollYouLikeMainView () <UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @end
@@ -95,6 +95,13 @@
     return cell;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if (scrollView.contentOffset.y<0) {
+//        self.collectionView.scrollEnabled = NO;
+//        !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
+//    }
+}
+
 #pragma mark - lazy
 -(UICollectionViewFlowLayout *)layout {
     if (!_layout) {
@@ -117,8 +124,20 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.scrollEnabled = NO;
+        _collectionView.showsVerticalScrollIndicator = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView1"];
+        
+//        WS(weakSelf)
+//        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [weakSelf.collectionView.mj_footer endRefreshing];
+//            });
+//        }];
+//        refreshFoot.refreshingTitleHidden = YES;
+//        refreshFoot.onlyRefreshPerDrag = YES;
+//        _collectionView.mj_footer = refreshFoot;
     }
     return _collectionView;
 }
