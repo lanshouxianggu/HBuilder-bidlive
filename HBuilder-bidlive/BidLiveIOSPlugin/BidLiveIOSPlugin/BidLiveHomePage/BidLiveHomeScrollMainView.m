@@ -181,7 +181,10 @@
             CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastAnchorsCount-5)*kAnchorCellHeight-150;
             [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
         }];
-        
+#pragma mark - 焦点拍品cell点击事件
+        [self.highlightLotsMainView setCellClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            !weakSelf.highlightLotsCellClickBlock?:weakSelf.highlightLotsCellClickBlock(model);
+        }];
         [self loadData];
     }
     return self;

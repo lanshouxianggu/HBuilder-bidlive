@@ -89,6 +89,9 @@
         [_mainScrollView setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
             !weakSelf.speechCellClickBlock?:weakSelf.speechCellClickBlock(model);
         }];
+        [_mainScrollView setHighlightLotsCellClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            !weakSelf.highlightLotsCellClickBlock?:weakSelf.highlightLotsCellClickBlock(model);
+        }];
         
         [_mainScrollView setToNewAuctionClickBlock:^{
             !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();

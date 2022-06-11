@@ -63,6 +63,11 @@
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BidLiveHomeHighlightLotsListModel *model = self.dataList[indexPath.item];
+    !self.cellClickBlock?:self.cellClickBlock(model);
+}
+
 #pragma mark - lazy
 -(UIView *)topView {
     if (!_topView) {

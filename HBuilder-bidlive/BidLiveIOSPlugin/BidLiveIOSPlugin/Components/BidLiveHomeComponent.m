@@ -14,6 +14,7 @@
 #import "BidLiveHomeCMSArticleModel.h"
 #import "BidLiveHomeGlobalLiveModel.h"
 #import "BidLiveHomeHotCourseModel.h"
+#import "BidLiveHomeHighlightLotsModel.h"
 
 #import "MJExtension.h"
 #import "NSString+LLStringConnection.h"
@@ -148,6 +149,13 @@
         [_homeVC setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
             if (weakSelf.onTurnPage) {
                 NSString *pageStr = @""[@"/pages/lectureHall/videoDetails/videoDetails?courseId="][@(model.courseId)][@"&coverUrl="][model.coverUrl];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
+            }
+        }];
+#pragma mark - 焦点拍品cell点击事件
+        [_homeVC setHighlightLotsCellClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            if (weakSelf.onTurnPage) {
+                NSString *pageStr = @""[@"/pages/auction/item?auctionItemId="][@(model.id)];
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
             }
         }];
