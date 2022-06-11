@@ -21,14 +21,14 @@
 
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.titlesArr = @[@"全球拍卖",@"鉴定",@"国内拍卖",@"送拍",@"讲堂",@"资讯"];
+        self.titlesArr = @[@"全球专场",@"鉴  定",@"国内专场",@"送  拍",@"直播间",@"讲  堂"];
         
         UIImage *image1 = [BidLiveBundleRecourseManager getBundleImage:@"quanqiupai" type:@"png"];
         UIImage *image2 = [BidLiveBundleRecourseManager getBundleImage:@"jianding" type:@"png"];
         UIImage *image3 = [BidLiveBundleRecourseManager getBundleImage:@"guoneipai" type:@"png"];
         UIImage *image4 = [BidLiveBundleRecourseManager getBundleImage:@"songpai" type:@"png"];
-        UIImage *image5 = [BidLiveBundleRecourseManager getBundleImage:@"lianpaijiangtang" type:@"png"];
-        UIImage *image6 = [BidLiveBundleRecourseManager getBundleImage:@"newsFeed" type:@"png"];
+        UIImage *image5 = [BidLiveBundleRecourseManager getBundleImage:@"zhibojian" type:@"png"];
+        UIImage *image6 = [BidLiveBundleRecourseManager getBundleImage:@"lianpaijiangtang" type:@"png"];
         self.imagesArr = @[image1,image2,image3,image4,image5,image6];
         [self setupUI];
     }
@@ -60,8 +60,10 @@
         case 1:!self.appraisalClickBlock?:self.appraisalClickBlock();break;
         case 2:!self.countrySaleClickBlock?:self.countrySaleClickBlock();break;
         case 3:!self.sendClickBlock?:self.sendClickBlock();break;
-        case 4:!self.speechClassClickBlock?:self.speechClassClickBlock();break;
-        case 5:!self.informationClickBlock?:self.informationClickBlock();break;
+//        case 4:!self.speechClassClickBlock?:self.speechClassClickBlock();break;
+//        case 5:!self.informationClickBlock?:self.informationClickBlock();break;
+        case 4:!self.liveRoomClickBlock?:self.liveRoomClickBlock();break;
+        case 5:!self.speechClassClickBlock?:self.speechClassClickBlock();break;
         default:
             break;
     }

@@ -110,6 +110,10 @@
         [self.topMainView setInformationClickBlock:^{
             !weakSelf.informationClickBlock?:weakSelf.informationClickBlock();
         }];
+#pragma mark - 直播间点击事件
+        [self.topMainView setLiveRoomClickBlock:^{
+            !weakSelf.liveRoomClickBlock?:weakSelf.liveRoomClickBlock();
+        }];
 #pragma mark - 直播专场海外点击事件
         [self.liveMainView setAbroadClickBlock:^{
                     

@@ -68,6 +68,9 @@
         [_mainScrollView setInformationClickBlock:^{
             !weakSelf.informationClickBlock?:weakSelf.informationClickBlock();
         }];
+        [_mainScrollView setLiveRoomClickBlock:^{
+            !weakSelf.liveRoomClickBlock?:weakSelf.liveRoomClickBlock();
+        }];
         [_mainScrollView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
             !weakSelf.bannerClick?:weakSelf.bannerClick(model);
         }];

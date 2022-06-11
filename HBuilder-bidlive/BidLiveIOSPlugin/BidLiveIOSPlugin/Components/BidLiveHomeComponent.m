@@ -69,9 +69,8 @@
         }];
 #pragma mark - 全球拍卖点击事件
         [_homeVC setGlobalSaleClickBlock:^{
-            [DCSVProgressHUD showInfoWithStatus:@"全球拍卖"];
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/index?source=en"}} domChanges:nil];
             }
         }];
 #pragma mark - 鉴定点击事件
@@ -83,7 +82,7 @@
 #pragma mark - 国内拍卖点击事件
         [_homeVC setCountrySaleClickBlock:^{
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/index?source=cn"}} domChanges:nil];
             }
         }];
 #pragma mark - 送拍点击事件
@@ -102,6 +101,12 @@
         [_homeVC setInformationClickBlock:^{
             if (weakSelf.onTurnPage) {
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/news/newsHome?p_id=99"}} domChanges:nil];
+            }
+        }];
+#pragma mark - 直播间点击事件
+        [_homeVC setLiveRoomClickBlock:^{
+            if (weakSelf.onTurnPage) {
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/live/home/index"}} domChanges:nil];
             }
         }];
 #pragma mark - 新上拍场点击事件

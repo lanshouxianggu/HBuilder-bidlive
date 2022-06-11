@@ -63,6 +63,10 @@
         [self.itemsView setInformationClickBlock:^{
             !weakSelf.informationClickBlock?:weakSelf.informationClickBlock();
         }];
+        
+        [self.itemsView setLiveRoomClickBlock:^{
+            !weakSelf.liveRoomClickBlock?:weakSelf.liveRoomClickBlock();
+        }];
     }
     return self;
 }

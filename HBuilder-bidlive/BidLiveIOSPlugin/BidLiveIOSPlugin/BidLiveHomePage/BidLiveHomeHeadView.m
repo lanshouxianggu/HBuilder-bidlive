@@ -41,7 +41,7 @@
     
     UILabel *lab = [UILabel new];
     lab.text = @"请输入关键字搜索";
-    lab.textColor = UIColorFromRGB(0x3b3b3b);
+    lab.textColor = UIColorFromRGB(0x666666);
     lab.font = [UIFont systemFontOfSize:14];
     lab.textAlignment = NSTextAlignmentCenter;
     
@@ -56,7 +56,7 @@
     
     [searchView addSubview:imageV];
     [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(18);
+        make.width.height.mas_equalTo(15);
         make.centerY.offset(0);
         make.right.equalTo(lab.mas_left).offset(-8);
     }];

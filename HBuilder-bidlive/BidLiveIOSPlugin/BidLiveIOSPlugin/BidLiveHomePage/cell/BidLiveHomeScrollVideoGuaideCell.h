@@ -9,13 +9,14 @@
 #import "BidLiveHomeVideoGuaideModel.h"
 
 @interface BidLiveLivingView : UIView
-
+@property (nonatomic, strong) UIImageView *animationImageView;
 @end
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollVideoGuaideCell : UICollectionViewCell
 @property (nonatomic, strong) BidLiveHomeVideoGuaideListModel *model;
+@property (nonatomic, strong) BidLiveLivingView *livingView;
 @end
 
 NS_ASSUME_NONNULL_END

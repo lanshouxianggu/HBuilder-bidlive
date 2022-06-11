@@ -17,7 +17,6 @@
 @interface BidLiveHomeScrollVideoGuaideCell ()
 @property (nonatomic, strong) UIImageView *videoImageView;
 @property (nonatomic, strong) UILabel *videoTitleLabel;
-@property (nonatomic, strong) BidLiveLivingView *livingView;
 @end
 
 @implementation BidLiveHomeScrollVideoGuaideCell
@@ -131,6 +130,7 @@
     
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     imageV.image = gifImage;
+    self.animationImageView = imageV;
     [self addSubview:imageV];
     
     UILabel *lab = [UILabel new];

@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^sendClickBlock)(void);
 ///资讯block
 @property (nonatomic, copy) void (^informationClickBlock)(void);
+///直播间block
+@property (nonatomic, copy) void (^liveRoomClickBlock)(void);
 ///广告点击block
 @property (nonatomic, copy) void (^bannerClick)(BidLiveHomeBannerModel *model);
 ///新上拍场点击block
