@@ -8,6 +8,12 @@
 #ifndef LCConfig_h
 #define LCConfig_h
 
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "HJNetwork.h"
+#import "NSString+LLStringConnection.h"
+#import "NSAttributedString+LLMake.h"
+
 //弱引用
 #define WEAK_SELF(weakeSelf) __weak typeof(self) weakeSelf = self
 #define WEAK @weakify(self);
