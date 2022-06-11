@@ -49,7 +49,10 @@
     cell.backgroundColor = UIColor.whiteColor;
     cell.imageView.image = self.imagesArr[indexPath.item];
     cell.titleLable.text = self.titlesArr[indexPath.item];
-    
+    cell.leftLine.hidden = cell.rightLine.hidden = YES;
+    if (indexPath.item==2||indexPath.item==3) {
+        cell.leftLine.hidden = cell.rightLine.hidden = NO;
+    }
     
     return cell;
 }
@@ -89,7 +92,7 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        _collectionView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+        _collectionView.backgroundColor = UIColor.whiteColor;
         
         [_collectionView registerClass:BidLiveHomeBtnItemCell.class forCellWithReuseIdentifier:@"BidLiveHomeBtnItemCell"];
     }
@@ -123,6 +126,22 @@
         make.centerY.offset(0);
         make.right.offset(-10);
     }];
+    
+    [self.contentView addSubview:self.leftLine];
+    [self.leftLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(0);
+        make.width.mas_equalTo(1);
+        make.height.mas_equalTo(15);
+        make.centerY.offset(0);
+    }];
+    
+    [self.contentView addSubview:self.rightLine];
+    [self.rightLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(0);
+        make.width.mas_equalTo(1);
+        make.height.mas_equalTo(15);
+        make.centerY.offset(0);
+    }];
 }
 
 #pragma mark - lazy
@@ -141,5 +160,21 @@
         _titleLable.textAlignment = NSTextAlignmentCenter;
     }
     return _titleLable;
+}
+
+-(UIView *)leftLine {
+    if (!_leftLine) {
+        _leftLine = [UIView new];
+        _leftLine.backgroundColor = UIColorFromRGB(0xf8f8f8);
+    }
+    return _leftLine;
+}
+
+-(UIView *)rightLine {
+    if (!_rightLine) {
+        _rightLine = [UIView new];
+        _rightLine.backgroundColor = UIColorFromRGB(0xf8f8f8);
+    }
+    return _rightLine;
 }
 @end

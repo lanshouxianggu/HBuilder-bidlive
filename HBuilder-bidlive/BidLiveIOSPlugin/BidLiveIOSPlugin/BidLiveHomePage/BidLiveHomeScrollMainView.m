@@ -114,6 +114,10 @@
         [self.topMainView setLiveRoomClickBlock:^{
             !weakSelf.liveRoomClickBlock?:weakSelf.liveRoomClickBlock();
         }];
+#pragma mark - 动态点击事件
+        [self.topMainView setCmsArticleClickBlock:^(BidLiveHomeCMSArticleModel * _Nonnull model) {
+            !weakSelf.cmsArticleClickBlock?:weakSelf.cmsArticleClickBlock(model);
+        }];
 #pragma mark - 直播专场海外点击事件
         [self.liveMainView setAbroadClickBlock:^{
                     

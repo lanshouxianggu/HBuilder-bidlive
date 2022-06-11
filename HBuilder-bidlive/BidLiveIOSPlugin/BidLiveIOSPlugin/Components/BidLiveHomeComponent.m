@@ -11,7 +11,9 @@
 #import "DCSVProgressHUD.h"
 #import "LCConfig.h"
 #import "BidLiveHomeBannerModel.h"
+#import "BidLiveHomeCMSArticleModel.h"
 #import "MJExtension.h"
+#import "NSString+LLStringConnection.h"
 
 #define sOnEventGlobalSaleClicked @"onEventGlobalSaleClicked"
 #define sOnTurnPageEvent @"onTurnPage"
@@ -107,6 +109,12 @@
         [_homeVC setLiveRoomClickBlock:^{
             if (weakSelf.onTurnPage) {
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/live/home/index"}} domChanges:nil];
+            }
+        }];
+#pragma mark - 动态点击事件
+        [_homeVC setCmsArticleClickBlock:^(BidLiveHomeCMSArticleModel * _Nonnull model) {
+            if (weakSelf.onTurnPage) {
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""[@"/pages/home/newsDetail?id="][@(model.Id)]}} domChanges:nil];
             }
         }];
 #pragma mark - 新上拍场点击事件

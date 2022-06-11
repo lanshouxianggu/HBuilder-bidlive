@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @class BidLiveHomeBannerModel;
+@class BidLiveHomeCMSArticleModel;
 @interface BidLiveHomeViewController : UIViewController
 ///搜索block
 @property (nonatomic, copy) void (^searchClickBlock)(void);
@@ -28,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^liveRoomClickBlock)(void);
 ///广告点击block
 @property (nonatomic, copy) void (^bannerClick)(BidLiveHomeBannerModel *model);
+///动态点击block
+@property (nonatomic, copy) void (^cmsArticleClickBlock)(BidLiveHomeCMSArticleModel *model);
 ///新上拍场点击block
 @property (nonatomic, copy) void (^toNewAuctionClickBlock)(void);
 @end

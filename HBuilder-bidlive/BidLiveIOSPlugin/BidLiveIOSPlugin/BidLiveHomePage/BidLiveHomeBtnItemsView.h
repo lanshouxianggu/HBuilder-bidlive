@@ -30,5 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BidLiveHomeBtnItemCell : UICollectionViewCell
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLable;
+@property (nonatomic, strong) UIView *leftLine;
+@property (nonatomic, strong) UIView *rightLine;
 @end
 NS_ASSUME_NONNULL_END

@@ -79,7 +79,7 @@
 }
 
 -(void)imageViewTapGes:(UIButton *)btn {
-    !self.bannerClick?:self.bannerClick(self.imgArray[btn.tag-1]);
+    !self.bannerClick?:self.bannerClick(self.imgArray[btn.tag]);
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetX = scrollView.contentOffset.x;

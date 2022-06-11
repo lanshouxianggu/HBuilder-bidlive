@@ -71,6 +71,9 @@
         [_mainScrollView setLiveRoomClickBlock:^{
             !weakSelf.liveRoomClickBlock?:weakSelf.liveRoomClickBlock();
         }];
+        [_mainScrollView setCmsArticleClickBlock:^(BidLiveHomeCMSArticleModel * _Nonnull model) {
+            !weakSelf.cmsArticleClickBlock?:weakSelf.cmsArticleClickBlock(model);
+        }];
         [_mainScrollView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
             !weakSelf.bannerClick?:weakSelf.bannerClick(model);
         }];
