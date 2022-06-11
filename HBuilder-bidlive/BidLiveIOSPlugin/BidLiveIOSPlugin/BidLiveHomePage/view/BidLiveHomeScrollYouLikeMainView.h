@@ -7,10 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BidLiveHomeGuessYouLikeModel.h"
+#import "BidLiveHomeBannerModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollYouLikeMainView : UIView
 @property (nonatomic, strong) NSMutableArray *likesArray;
+@property (nonatomic, strong) NSMutableArray <BidLiveHomeBannerModel *> *bannerArray;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @end
 

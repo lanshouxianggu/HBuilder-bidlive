@@ -37,7 +37,10 @@
 
 #define kSpeechCellHeight (SCREEN_WIDTH-30)*405.5/537
 #define kSpeechMainViewHeight (90+4*kSpeechCellHeight+60)
-#define kYouLikeMainViewHeight (110+5*280+4*10)
+
+#define kYouLikeHeadViewHeight ((SCREEN_WIDTH-30)*138.5/537)
+//#define kYouLikeMainViewHeight (110+5*280+4*10)
+#define kYouLikeMainViewHeight (kYouLikeHeadViewHeight+5*280+4*10)
 
 #define kHightlightLotsMainViewHeight (SCREEN_HEIGHT*1/3+20+90)
 
@@ -72,10 +75,12 @@
 ///第一页精选主播列表数据
 @property (nonatomic, strong) NSArray *anchorOrigionArray;
 
-///猜你喜欢当前页码
+///猜你喜欢当前页码(无序)
 @property (nonatomic, assign) int youlikePageIndex;
-
+///猜你喜欢当前页码(有序)
+@property (nonatomic, assign) int youlikePageNormalIndex;
 @property (nonatomic, strong) NSMutableArray *youlikePageIndexArray;
+@property (nonatomic, strong) NSArray *youlikeBannerArray;
 @end
 
 @implementation BidLiveHomeScrollMainView
@@ -178,6 +183,7 @@
     self.speechPageIndex = 1;
     self.anchorPageIndex = 1;
     self.youlikePageIndex = 0;
+    self.youlikePageNormalIndex = 0;
     self.youlikePageIndexArray = [NSMutableArray arrayWithArray:@[@(82),@(81),@(67),@(3),
                                                                   @(71),@(44),@(8),@(40),@(106),
                                                                   @(47),@(94),@(19),@(7),@(87),
@@ -291,9 +297,14 @@
         [weakSelf.topMainView updateBanners:bannerList];
     }];
     
-    //全球直播gif
+    //全球直播banner
     [BidLiveHomeNetworkModel getHomePageBannerList:12 client:@"wx" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
         [weakSelf.liveMainView updateBannerArray:bannerList];
+    }];
+    
+    //猜你喜欢banner
+    [BidLiveHomeNetworkModel getHomePageBannerList:22 client:@"app" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
+        weakSelf.youlikeBannerArray = bannerList;
     }];
 }
 
@@ -383,15 +394,37 @@
             NSArray *array2 = [tempArray subarrayWithRange:range2];
             [weakSelf.youlikeMainView.likesArray addObject:array1];
             [weakSelf.youlikeMainView.likesArray addObject:array2];
+            weakSelf.youlikePageNormalIndex = 1;
+            if (weakSelf.youlikeBannerArray.count) {
+                [weakSelf.youlikeMainView.bannerArray addObject:weakSelf.youlikeBannerArray[weakSelf.youlikePageNormalIndex]];
+            }
         }else {
             if (model.list) {
-                [weakSelf.youlikeMainView.likesArray addObject:model.list];
+                if (weakSelf.youlikePageNormalIndex < weakSelf.youlikeBannerArray.count) {
+                    [weakSelf.youlikeMainView.bannerArray addObject:weakSelf.youlikeBannerArray[weakSelf.youlikePageNormalIndex]];
+                    [weakSelf.youlikeMainView.likesArray addObject:model.list];
+                }else {
+                    NSArray *lastPageIndexArray = [weakSelf.youlikeMainView.likesArray lastObject];
+                    NSMutableArray *lastArray = [NSMutableArray arrayWithArray:lastPageIndexArray];
+                    [lastArray addObjectsFromArray:model.list];
+//                    weakSelf.youlikeMainView.likesArray[weakSelf.youlikePageNormalIndex] = lastArray;
+                }
             }
+            weakSelf.youlikePageNormalIndex++;
         }
+        
         NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
-        [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(likesArrayCount*kYouLikeMainViewHeight);
-        }];
+        NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
+//        if (likesArrayCount <= likesBannerCount) {
+            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(likesArrayCount*kYouLikeMainViewHeight);
+            }];
+//        }else {
+//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(likesArrayCount*kYouLikeMainViewHeight-(likesArrayCount-likesBannerCount)*((SCREEN_WIDTH-30)*138.5/537));
+//            }];
+//        }
+        
         [weakSelf.youlikeMainView.collectionView reloadData];
     }];
 }

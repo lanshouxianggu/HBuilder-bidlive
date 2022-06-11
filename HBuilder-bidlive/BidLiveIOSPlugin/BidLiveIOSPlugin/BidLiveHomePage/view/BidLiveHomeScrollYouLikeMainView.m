@@ -9,6 +9,7 @@
 #import "BidLiveHomeScrollYouLikeCell.h"
 #import "LCConfig.h"
 #import "Masonry.h"
+#import "UIImageView+WebCache.h"
 
 @interface BidLiveHomeScrollYouLikeMainView () <UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -66,9 +67,17 @@
             }else {
                 UIView *view = (UIView *)[reusableHeadView viewWithTag:101];
                 if (!view) {
-                    view = [[UIView alloc] initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH-30, 90)];
-                    view.backgroundColor = UIColor.orangeColor;
+                    view = [[UIView alloc] initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
+                    view.backgroundColor = UIColorFromRGB(0xf8f8f8);
                     view.tag = 101;
+                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
+                    if (indexPath.section-1<self.bannerArray.count) {
+                        BidLiveHomeBannerModel *model = self.bannerArray[indexPath.section-1];
+                        if (model) {
+                            [imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
+                        }
+                        [view addSubview:imageView];
+                    }
                     
                     [reusableHeadView addSubview:view];
                 }
@@ -95,7 +104,7 @@
         _layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _layout.minimumLineSpacing = 10;
         _layout.minimumInteritemSpacing = 0;
-        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 110);
+        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
     }
     return _layout;
 }
@@ -112,5 +121,12 @@
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView1"];
     }
     return _collectionView;
+}
+
+-(NSMutableArray<BidLiveHomeBannerModel *> *)bannerArray {
+    if (!_bannerArray) {
+        _bannerArray = [NSMutableArray<BidLiveHomeBannerModel*> array];
+    }
+    return _bannerArray;
 }
 @end
