@@ -14,6 +14,7 @@
 #import "BidLiveHomeVideoGuideView.h"
 #import "LCConfig.h"
 #import "Masonry.h"
+#import "BidLiveBundleRecourseManager.h"
 
 #define kMainViewHeihgt (SCREEN_WIDTH*72/585)
 
@@ -134,13 +135,23 @@
         lab.font = [UIFont systemFontOfSize:14];
         [_scrollTitleSuperView addSubview:lab];
         [_scrollTitleSuperView addSubview:self.scrollTitleView];
+        
+        UIImage *arrow = [BidLiveBundleRecourseManager getBundleImage:@"arrow-dark-right" type:@"png"];
+        UIImageView *imageV = [[UIImageView alloc] initWithImage:arrow];
+        [_scrollTitleSuperView addSubview:imageV];
+        [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.offset(-15);
+            make.centerY.offset(0);
+            make.width.mas_equalTo(8);
+            make.height.mas_equalTo(12);
+        }];
     }
     return _scrollTitleSuperView;
 }
 
 -(SGAdvertScrollView *)scrollTitleView {
     if (!_scrollTitleView) {
-        _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(60, 0, SCREEN_WIDTH-70, kMainViewHeihgt)];
+        _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(60, 0, SCREEN_WIDTH-85, kMainViewHeihgt)];
         _scrollTitleView.delegate = self;
     }
     return _scrollTitleView;

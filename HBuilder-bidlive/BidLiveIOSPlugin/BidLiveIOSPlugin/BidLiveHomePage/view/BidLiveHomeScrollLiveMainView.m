@@ -203,6 +203,14 @@
     if (indexPath.section==2) {
         [self bottomImageViewTapAction];
     }
+    if (indexPath.section==0) {
+        BidLiveHomeGlobalLiveModel *model = self.firstPartLiveArray[indexPath.row];
+        !self.cellClickBlock?:self.cellClickBlock(model);
+    }
+    if (indexPath.section==1) {
+        BidLiveHomeGlobalLiveModel *model = self.secondPartLiveArray[indexPath.row];
+        !self.cellClickBlock?:self.cellClickBlock(model);
+    }
 }
 
 

@@ -118,11 +118,15 @@
         [self.topMainView setCmsArticleClickBlock:^(BidLiveHomeCMSArticleModel * _Nonnull model) {
             !weakSelf.cmsArticleClickBlock?:weakSelf.cmsArticleClickBlock(model);
         }];
-#pragma mark - 直播专场海外点击事件
+#pragma mark - 全球直播cell点击事件
+        [self.liveMainView setCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+            !weakSelf.globalLiveCellClickBlock?:weakSelf.globalLiveCellClickBlock(model);
+        }];
+#pragma mark - 全球直播海外点击事件
         [self.liveMainView setAbroadClickBlock:^{
                     
         }];
-#pragma mark - 直播专场国内点击事件
+#pragma mark - 全球直播国内点击事件
         [self.liveMainView setInternalClickBlock:^{
                     
         }];

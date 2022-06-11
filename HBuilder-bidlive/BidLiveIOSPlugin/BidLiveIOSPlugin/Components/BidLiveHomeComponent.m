@@ -12,6 +12,8 @@
 #import "LCConfig.h"
 #import "BidLiveHomeBannerModel.h"
 #import "BidLiveHomeCMSArticleModel.h"
+#import "BidLiveHomeGlobalLiveModel.h"
+
 #import "MJExtension.h"
 #import "NSString+LLStringConnection.h"
 
@@ -115,6 +117,18 @@
         [_homeVC setCmsArticleClickBlock:^(BidLiveHomeCMSArticleModel * _Nonnull model) {
             if (weakSelf.onTurnPage) {
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""[@"/pages/home/newsDetail?id="][@(model.Id)]}} domChanges:nil];
+            }
+        }];
+#pragma mark - 全球直播cell点击事件
+        [_homeVC setGlobalLiveCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+            if (weakSelf.onTurnPage) {
+                NSString *pageStr = @"";
+                if (model.Status==4||model.AuctionCount==1) {
+                    pageStr = @""[@"/pages/auction/itemList?id="][@(model.Id)];
+                }else if (model.AuctionCount>1) {
+                    pageStr = @""[@"/pages/auction/companyAuctionList?id="][@(model.SellerId)];
+                }
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
             }
         }];
 #pragma mark - 新上拍场点击事件

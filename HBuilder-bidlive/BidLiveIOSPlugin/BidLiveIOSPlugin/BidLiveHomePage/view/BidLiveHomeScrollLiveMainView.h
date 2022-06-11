@@ -9,6 +9,7 @@
 #import "BidLiveHomeBannerModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+@class BidLiveHomeGlobalLiveModel;
 @interface BidLiveHomeScrollLiveMainView : UIView
 @property (nonatomic, strong) NSArray *firstPartLiveArray;
 @property (nonatomic, strong) NSArray *adsArray;
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^gifImageClickBlock)(BidLiveHomeBannerModel *model);
 ///底部图片点击block
 @property (nonatomic, copy) void (^bottomImageClickBlock)(BidLiveHomeBannerModel *model);
+///cell点击block
+@property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeGlobalLiveModel *model);
 -(void)updateBannerArray:(NSArray <BidLiveHomeBannerModel *> *)bannerArray;
 
 -(void)reloadData;
