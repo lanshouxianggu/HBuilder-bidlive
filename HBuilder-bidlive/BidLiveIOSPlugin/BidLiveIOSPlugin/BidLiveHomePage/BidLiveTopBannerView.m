@@ -7,6 +7,7 @@
 
 #import "BidLiveTopBannerView.h"
 #import "UIImageView+WebCache.h"
+#import "LCConfig.h"
 
 @interface BidLiveTopBannerView () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -66,7 +67,9 @@
     
     self.pageControl.numberOfPages = bannerArray.count;
     self.pageControl.currentPage = 0;
-    self.pageControl.tintColor = UIColor.whiteColor;
+    self.pageControl.pageIndicatorTintColor = UIColorFromRGB(0x666666);
+    self.pageControl.currentPageIndicatorTintColor = UIColorFromRGB(0x69B2D2);
+    self.pageControl.userInteractionEnabled = NO;
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollIamge) userInfo:nil repeats:YES];
     NSRunLoop *runloop = [NSRunLoop currentRunLoop];

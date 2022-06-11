@@ -58,7 +58,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (SCREEN_WIDTH-30)*11/18;
+    return (SCREEN_WIDTH-30)*11/18-10;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

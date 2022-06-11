@@ -31,7 +31,7 @@
 //#define kLiveMainViewHeight (140*8+90+90+70+110)
 #define kLiveMainViewHeight (kLiveNormalCellHeight*8+90+kLiveCenterImageCellHeight+10+70+kLiveCenterImageCellHeight)
 
-#define kAnchorCellHeight (SCREEN_WIDTH-30)*11/18
+#define kAnchorCellHeight ((SCREEN_WIDTH-30)*11/18-10)
 
 #define kAnchorMainViewHeight (90+4*kAnchorCellHeight+60)
 
