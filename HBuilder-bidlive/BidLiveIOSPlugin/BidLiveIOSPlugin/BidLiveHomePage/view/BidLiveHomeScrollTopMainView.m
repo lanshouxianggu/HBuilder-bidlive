@@ -100,6 +100,10 @@
     !self.cmsArticleClickBlock?:self.cmsArticleClickBlock(self.cmsArticleArray[index]);
 }
 
+-(void)destroyTimer {
+    [self.bannerView destroyTimer];
+}
+
 #pragma mark - lazy
 -(BidLiveTopBannerView *)bannerView {
     if (!_bannerView) {

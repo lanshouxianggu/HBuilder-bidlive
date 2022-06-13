@@ -493,6 +493,11 @@
     }];
 }
 
+#pragma mark - 销毁定时器
+-(void)destroyTimer {
+    [self.topMainView destroyTimer];
+}
+
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;

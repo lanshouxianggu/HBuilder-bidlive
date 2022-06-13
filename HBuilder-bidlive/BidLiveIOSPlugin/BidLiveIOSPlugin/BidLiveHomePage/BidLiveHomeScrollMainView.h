@@ -56,6 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^guessYouLikeBannerClickBlock)(BidLiveHomeBannerModel *model);
 ///新上拍场点击block
 @property (nonatomic, copy) void (^toNewAuctionClickBlock)(void);
+
+-(void)destroyTimer;
 @end
 
 NS_ASSUME_NONNULL_END

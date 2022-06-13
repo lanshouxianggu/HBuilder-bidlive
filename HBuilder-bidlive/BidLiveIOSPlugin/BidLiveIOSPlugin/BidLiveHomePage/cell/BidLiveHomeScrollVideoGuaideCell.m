@@ -75,7 +75,7 @@
     _model = model;
     [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:nil];
     self.videoTitleLabel.text = model.name;
-//    self.livingView.hidden = !(model.isLiveroom && model.roomType==2);
+    self.livingView.hidden = !(model.isLiveroom && model.roomType==2);
 }
 
 #pragma mark - lazy
@@ -128,8 +128,10 @@
     NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
     UIImage *gifImage = [UIImage sd_imageWithGIFData:imageData];
     
-    UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    imageV.image = gifImage;
+    YFGIFImageView *imageV = [[YFGIFImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    imageV.image = gifImage;
+    imageV.gifData = imageData;
+    [imageV startGIF];
     self.animationImageView = imageV;
     [self addSubview:imageV];
     

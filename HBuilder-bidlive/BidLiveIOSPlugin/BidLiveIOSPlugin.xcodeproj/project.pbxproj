@@ -178,6 +178,8 @@
 		22B54B192854771900525686 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54AF12854771900525686 /* MJRefreshComponent.m */; };
 		22B54B1A2854771900525686 /* MJRefreshFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54AF22854771900525686 /* MJRefreshFooter.h */; };
 		22B54B1B2854771900525686 /* MJRefreshBackFooter.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54AF32854771900525686 /* MJRefreshBackFooter.h */; };
+		22B54B1E2856E8DF00525686 /* YFGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54B1C2856E8DE00525686 /* YFGIFImageView.m */; };
+		22B54B1F2856E8DF00525686 /* YFGIFImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54B1D2856E8DE00525686 /* YFGIFImageView.h */; };
 		22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41532840A95300854873 /* BidLiveVCTools.m */; };
 		22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */; };
 		22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41552840A95300854873 /* BidLiveHomeMainView.h */; };
@@ -378,6 +380,8 @@
 		22B54AF12854771900525686 /* MJRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshComponent.m; sourceTree = "<group>"; };
 		22B54AF22854771900525686 /* MJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooter.h; sourceTree = "<group>"; };
 		22B54AF32854771900525686 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
+		22B54B1C2856E8DE00525686 /* YFGIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFGIFImageView.m; sourceTree = "<group>"; };
+		22B54B1D2856E8DE00525686 /* YFGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFGIFImageView.h; sourceTree = "<group>"; };
 		22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidLiveIOSPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BD41532840A95300854873 /* BidLiveVCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveVCTools.m; sourceTree = "<group>"; };
 		22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeFirstCell.xib; sourceTree = "<group>"; };
@@ -845,6 +849,8 @@
 		22BD41692840A95300854873 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				22B54B1D2856E8DE00525686 /* YFGIFImageView.h */,
+				22B54B1C2856E8DE00525686 /* YFGIFImageView.m */,
 				22B548DF284EEFA000525686 /* HJNetwork */,
 				22B548DD284EEF2B00525686 /* BidliveInterfaceEnum.h */,
 				22BD416A2840A95300854873 /* LCConfig.h */,
@@ -902,6 +908,7 @@
 				22B54B002854771900525686 /* MJRefreshBackGifFooter.h in Headers */,
 				22B54B0E2854771900525686 /* MJRefreshGifHeader.h in Headers */,
 				22B54A3A2852EBC700525686 /* UILabel+Common.h in Headers */,
+				22B54B1F2856E8DF00525686 /* YFGIFImageView.h in Headers */,
 				22B54A042852E8EB00525686 /* BidLiveHomeAnchorModel.h in Headers */,
 				22B547052844A36700525686 /* BidLiveHomeScrollSpeechCell.h in Headers */,
 				22B547162845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h in Headers */,
@@ -1078,6 +1085,7 @@
 				22B547132844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m in Sources */,
 				22B54B172854771900525686 /* MJRefreshAutoFooter.m in Sources */,
 				22B54B112854771900525686 /* MJRefreshGifHeader.m in Sources */,
+				22B54B1E2856E8DF00525686 /* YFGIFImageView.m in Sources */,
 				22B548AB284EEE9900525686 /* NSObject+MJClass.m in Sources */,
 				22B54B0A2854771900525686 /* MJRefreshAutoGifFooter.m in Sources */,
 				22B54AF42854771900525686 /* UIScrollView+MJRefresh.m in Sources */,

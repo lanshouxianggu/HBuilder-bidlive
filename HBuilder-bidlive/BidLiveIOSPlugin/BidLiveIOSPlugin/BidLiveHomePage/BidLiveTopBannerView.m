@@ -34,6 +34,12 @@
         
         [self addSubview:self.scrollView];
         [self addSubview:self.pageControl];
+        
+        if (!self.timer) {
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollIamge) userInfo:nil repeats:YES];
+            NSRunLoop *runloop = [NSRunLoop currentRunLoop];
+            [runloop addTimer:self.timer forMode:NSRunLoopCommonModes];
+        }
     }
     return self;
 }
@@ -70,7 +76,16 @@
     self.pageControl.pageIndicatorTintColor = UIColorFromRGB(0x666666);
     self.pageControl.currentPageIndicatorTintColor = UIColorFromRGB(0x69B2D2);
     self.pageControl.userInteractionEnabled = NO;
-    
+}
+
+-(void)destroyTimer {
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+-(void)resumeTimer {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollIamge) userInfo:nil repeats:YES];
     NSRunLoop *runloop = [NSRunLoop currentRunLoop];
     [runloop addTimer:self.timer forMode:NSRunLoopCommonModes];

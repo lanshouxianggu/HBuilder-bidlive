@@ -7,9 +7,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BidLiveHomeVideoGuaideModel.h"
+#import "YFGIFImageView.h"
 
 @interface BidLiveLivingView : UIView
-@property (nonatomic, strong) UIImageView *animationImageView;
+@property (nonatomic, strong) YFGIFImageView *animationImageView;
 @end
 
 NS_ASSUME_NONNULL_BEGIN
