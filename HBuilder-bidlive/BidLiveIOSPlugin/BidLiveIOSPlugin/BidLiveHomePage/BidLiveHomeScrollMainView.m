@@ -42,7 +42,7 @@
 //#define kYouLikeMainViewHeight (110+5*280+4*10)
 #define kYouLikeMainViewHeight (kYouLikeHeadViewHeight+5*280+4*10)
 
-#define kHightlightLotsMainViewHeight (SCREEN_HEIGHT*1/3+20+90)
+#define kHightlightLotsMainViewHeight (SCREEN_WIDTH*0.689+90)
 
 @interface BidLiveHomeScrollMainView () <UIScrollViewDelegate>
 @property (nonatomic, strong) BidLiveHomeHeadView *topSearchView;
@@ -81,6 +81,9 @@
 @property (nonatomic, assign) int youlikePageNormalIndex;
 @property (nonatomic, strong) NSMutableArray *youlikePageIndexArray;
 @property (nonatomic, strong) NSArray *youlikeBannerArray;
+
+///是否下拉刷新
+@property (nonatomic, assign) BOOL isPullRefresh;
 @end
 
 @implementation BidLiveHomeScrollMainView
@@ -151,6 +154,7 @@
 #pragma mark - 名家讲堂更多点击事件
         [self.speechMainView setMoreClickBlock:^{
             weakSelf.speechPageIndex++;
+            weakSelf.isPullRefresh = NO;
             [weakSelf loadHomeHotCourseData];
         }];
 #pragma mark - 名家讲堂收起点击事件
@@ -167,6 +171,7 @@
 #pragma mark - 精选主播更多点击事件
         [self.anchorMainView setMoreClickBlock:^{
             weakSelf.anchorPageIndex++;
+            weakSelf.isPullRefresh = NO;
             [weakSelf loadHomeAnchorListData];
         }];
 #pragma mark - 精选主播收起点击事件
@@ -296,7 +301,7 @@
     [self.mainView addSubview:self.youlikeMainView];
     [self.youlikeMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
-        make.top.equalTo(self.highlightLotsMainView.mas_bottom).offset(-40);
+        make.top.equalTo(self.highlightLotsMainView.mas_bottom).offset(-30);
         make.height.mas_equalTo(kYouLikeMainViewHeight);
         make.bottom.offset(-10);
     }];
@@ -385,6 +390,9 @@
 -(void)loadHomeHotCourseData {
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageHotCourse:self.speechPageIndex pageSize:4 pageCount:0 completion:^(BidLiveHomeHotCourseModel * _Nonnull courseModel) {
+        if (weakSelf.isPullRefresh) {
+            [weakSelf.speechMainView.videosArray removeAllObjects];
+        }
         [weakSelf.speechMainView.videosArray addObjectsFromArray:courseModel.list];
         if (weakSelf.speechPageIndex==1) {
             weakSelf.speechOrigionArray = courseModel.list;
@@ -410,6 +418,9 @@
     WS(weakSelf)
     
     [BidLiveHomeNetworkModel getHomePageAnchorList:self.anchorPageIndex pageSize:4 pageCount:0 isContainBeforePage:false completion:^(BidLiveHomeAnchorModel * _Nonnull model) {
+        if (weakSelf.isPullRefresh) {
+            [weakSelf.anchorMainView.anchorsArray removeAllObjects];
+        }
         [weakSelf.anchorMainView.anchorsArray addObjectsFromArray:model.list];
         if (weakSelf.anchorPageIndex==1) {
             weakSelf.anchorOrigionArray = model.list;
@@ -571,6 +582,7 @@
         
         WS(weakSelf)
         MJRefreshNormalHeader *refreshHead = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            weakSelf.isPullRefresh = YES;
             [weakSelf refreshData];
         }];
         refreshHead.backgroundColor = [UIColor clearColor];
@@ -580,6 +592,7 @@
         _mainScrollView.mj_header = refreshHead;
         
         MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            weakSelf.isPullRefresh = NO;
             [weakSelf loadMoreData];
         }];
         refreshFoot.refreshingTitleHidden = YES;

@@ -20,11 +20,11 @@
 }
 
 -(void)setupUI {
-    self.layer.cornerRadius = 30;
-    self.layer.shadowColor = UIColor.blackColor.CGColor;
-    self.layer.shadowOffset = CGSizeMake(0, 0);
-    self.layer.shadowRadius = 6;
-    self.layer.shadowOpacity = 0.4;
+//    self.layer.cornerRadius = 30;
+//    self.layer.shadowColor = UIColor.blackColor.CGColor;
+//    self.layer.shadowOffset = CGSizeMake(0, 0);
+//    self.layer.shadowRadius = 6;
+//    self.layer.shadowOpacity = 0.4;
     
     UIView *mainView = [UIView new];
     mainView.layer.cornerRadius = 30;

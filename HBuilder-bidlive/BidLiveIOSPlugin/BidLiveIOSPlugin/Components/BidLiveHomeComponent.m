@@ -163,6 +163,7 @@
 //            }else if (model.liveRoomType==2 && (model.liveStatus==5||model.liveStatus==6||model.liveStatus==7)) {
 //
 //            }
+            //这里涉及到的某些逻辑app无法处理，传json过去，让uniapp去处理
             if (weakSelf.onTurnPage) {
                 NSDictionary *advDic = [model mj_keyValues];
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"anchor",@"adv":advDic}} domChanges:nil];

@@ -14,7 +14,7 @@
 
 #define kTopViewHeight 90
 #define kItemWidth (SCREEN_WIDTH-15*2-12*2)/2.25
-#define kBottomViewHeight (SCREEN_HEIGHT*1/3)
+#define kBottomViewHeight (SCREEN_WIDTH*0.689)
 
 @interface BidLiveHomeScrollHighlightLotsView () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UIView *topView;
