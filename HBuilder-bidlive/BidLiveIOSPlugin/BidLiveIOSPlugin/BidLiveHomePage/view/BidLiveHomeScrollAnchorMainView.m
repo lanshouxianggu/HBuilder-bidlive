@@ -175,7 +175,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BidLiveHomeScrollAnchorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeScrollAnchorCell" forIndexPath:indexPath];
     cell.backgroundColor = UIColorFromRGB(0xf8f8f8);
-    cell.model = self.anchorsArray[indexPath.row];
+    BidLiveHomeAnchorListModel *model = self.anchorsArray[indexPath.row];
+    if (indexPath.row==0||indexPath.row==2) {
+        model.liveStatus = 1;
+    }
+    cell.model = model;
     
     return cell;
 }

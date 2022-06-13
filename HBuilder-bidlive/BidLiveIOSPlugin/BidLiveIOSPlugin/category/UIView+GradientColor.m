@@ -11,6 +11,12 @@
 -(void)gradientFromColor:(UIColor *)fromColr toColor:(UIColor *)toColor directionType:(GradientDirectionType)directionType {
     NSArray *colors = [NSArray arrayWithObjects:(id)fromColr.CGColor,toColor.CGColor, nil];
     
+    CALayer *lastLayer = [self.layer.sublayers firstObject];
+    if ([lastLayer isKindOfClass:CAGradientLayer.class]) {
+        [lastLayer removeFromSuperlayer];
+    }
+    
+    
     CAGradientLayer *gradientBG = [CAGradientLayer layer];
     if (directionType == GradientDirectionToRight) {
         gradientBG.startPoint = CGPointMake(0.0, 0);

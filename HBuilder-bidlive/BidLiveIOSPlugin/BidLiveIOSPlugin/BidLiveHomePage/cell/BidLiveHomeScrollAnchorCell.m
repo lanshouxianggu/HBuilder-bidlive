@@ -47,6 +47,7 @@
     self.bottomView.backgroundColor = UIColor.clearColor;
     self.bottomView.frame = CGRectMake(0, self.frame.size.height, SCREEN_WIDTH-30, 72);
         
+    self.topLeftView.layer.masksToBounds = YES;
     //设置渐变
     [self.bottomView gradientFromColor:UIColorFromRGBA(0x3b3b3b, 0) toColor:UIColorFromRGBA(0x3b3b3b, 1) directionType:GradientDirectionToDown];
 }
