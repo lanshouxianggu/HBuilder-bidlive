@@ -15,12 +15,10 @@
 		22B546F228446ED000525686 /* BidLiveHomeScrollLiveMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546F028446ED000525686 /* BidLiveHomeScrollLiveMainView.m */; };
 		22B546F62844769B00525686 /* BidLiveHomeScollLiveNormalCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B546F32844769B00525686 /* BidLiveHomeScollLiveNormalCell.h */; };
 		22B546F72844769B00525686 /* BidLiveHomeScollLiveNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546F42844769B00525686 /* BidLiveHomeScollLiveNormalCell.m */; };
-		22B546F82844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B546F52844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib */; };
 		22B5470028449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B546FE28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h */; };
 		22B5470128449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B546FF28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m */; };
 		22B547052844A36700525686 /* BidLiveHomeScrollSpeechCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547022844A36700525686 /* BidLiveHomeScrollSpeechCell.h */; };
 		22B547062844A36700525686 /* BidLiveHomeScrollSpeechCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B547032844A36700525686 /* BidLiveHomeScrollSpeechCell.m */; };
-		22B547072844A36700525686 /* BidLiveHomeScrollSpeechCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B547042844A36700525686 /* BidLiveHomeScrollSpeechCell.xib */; };
 		22B547122844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547102844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h */; };
 		22B547132844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B547112844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m */; };
 		22B547162845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547142845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h */; };
@@ -135,7 +133,6 @@
 		22B54A582852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A502852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m */; };
 		22B54A592852EE8100525686 /* BidLiveLiveMainArticleScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */; };
 		22B54A5A2852EE8100525686 /* BidLiveLiveMainArticleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */; };
-		22B54A5C285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B54A5B285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib */; };
 		22B54A75285320B500525686 /* UIView+GradientColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54A73285320B500525686 /* UIView+GradientColor.h */; };
 		22B54A76285320B500525686 /* UIView+GradientColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54A74285320B500525686 /* UIView+GradientColor.m */; };
 		22B54AF42854771900525686 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54AC62854771900525686 /* UIScrollView+MJRefresh.m */; };
@@ -181,7 +178,6 @@
 		22B54B1E2856E8DF00525686 /* YFGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B54B1C2856E8DE00525686 /* YFGIFImageView.m */; };
 		22B54B1F2856E8DF00525686 /* YFGIFImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B54B1D2856E8DE00525686 /* YFGIFImageView.h */; };
 		22BD416C2840A95400854873 /* BidLiveVCTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41532840A95300854873 /* BidLiveVCTools.m */; };
-		22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */; };
 		22BD416E2840A95400854873 /* BidLiveHomeMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41552840A95300854873 /* BidLiveHomeMainView.h */; };
 		22BD416F2840A95400854873 /* BidLiveHomeFirstTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41562840A95300854873 /* BidLiveHomeFirstTableViewCell.h */; };
 		22BD41702840A95400854873 /* BidLiveHomeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41572840A95300854873 /* BidLiveHomeHeadView.m */; };
@@ -217,12 +213,10 @@
 		22B546F028446ED000525686 /* BidLiveHomeScrollLiveMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollLiveMainView.m; sourceTree = "<group>"; };
 		22B546F32844769B00525686 /* BidLiveHomeScollLiveNormalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScollLiveNormalCell.h; sourceTree = "<group>"; };
 		22B546F42844769B00525686 /* BidLiveHomeScollLiveNormalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScollLiveNormalCell.m; sourceTree = "<group>"; };
-		22B546F52844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidLiveHomeScollLiveNormalCell.xib; sourceTree = "<group>"; };
 		22B546FE28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollSpeechMainView.h; sourceTree = "<group>"; };
 		22B546FF28449FBB00525686 /* BidLiveHomeScrollSpeechMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollSpeechMainView.m; sourceTree = "<group>"; };
 		22B547022844A36700525686 /* BidLiveHomeScrollSpeechCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollSpeechCell.h; sourceTree = "<group>"; };
 		22B547032844A36700525686 /* BidLiveHomeScrollSpeechCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollSpeechCell.m; sourceTree = "<group>"; };
-		22B547042844A36700525686 /* BidLiveHomeScrollSpeechCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidLiveHomeScrollSpeechCell.xib; sourceTree = "<group>"; };
 		22B547102844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollLiveBtnView.h; sourceTree = "<group>"; };
 		22B547112844AB5F00525686 /* BidLiveHomeScrollLiveBtnView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollLiveBtnView.m; sourceTree = "<group>"; };
 		22B547142845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollYouLikeMainView.h; sourceTree = "<group>"; };
@@ -337,7 +331,6 @@
 		22B54A502852EE8100525686 /* BidLiveHomeScrollHighlightLotsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollHighlightLotsView.m; sourceTree = "<group>"; };
 		22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveLiveMainArticleScrollView.h; sourceTree = "<group>"; };
 		22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveLiveMainArticleScrollView.m; sourceTree = "<group>"; };
-		22B54A5B285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeScrollAnchorCell.xib; sourceTree = "<group>"; };
 		22B54A73285320B500525686 /* UIView+GradientColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+GradientColor.h"; sourceTree = "<group>"; };
 		22B54A74285320B500525686 /* UIView+GradientColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+GradientColor.m"; sourceTree = "<group>"; };
 		22B54AC62854771900525686 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
@@ -384,7 +377,6 @@
 		22B54B1D2856E8DE00525686 /* YFGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFGIFImageView.h; sourceTree = "<group>"; };
 		22BD41392840A69B00854873 /* BidLiveIOSPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BidLiveIOSPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BD41532840A95300854873 /* BidLiveVCTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveVCTools.m; sourceTree = "<group>"; };
-		22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidLiveHomeFirstCell.xib; sourceTree = "<group>"; };
 		22BD41552840A95300854873 /* BidLiveHomeMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeMainView.h; sourceTree = "<group>"; };
 		22BD41562840A95300854873 /* BidLiveHomeFirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeFirstTableViewCell.h; sourceTree = "<group>"; };
 		22BD41572840A95300854873 /* BidLiveHomeHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeHeadView.m; sourceTree = "<group>"; };
@@ -473,10 +465,6 @@
 		22B546FB2844921300525686 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				22B547042844A36700525686 /* BidLiveHomeScrollSpeechCell.xib */,
-				22BD41542840A95300854873 /* BidLiveHomeFirstCell.xib */,
-				22B546F52844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib */,
-				22B54A5B285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -1045,11 +1033,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22BD416D2840A95400854873 /* BidLiveHomeFirstCell.xib in Resources */,
-				22B547072844A36700525686 /* BidLiveHomeScrollSpeechCell.xib in Resources */,
-				22B54A5C285314AE00525686 /* BidLiveHomeScrollAnchorCell.xib in Resources */,
 				22B54AF92854771900525686 /* MJRefresh.bundle in Resources */,
-				22B546F82844769B00525686 /* BidLiveHomeScollLiveNormalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

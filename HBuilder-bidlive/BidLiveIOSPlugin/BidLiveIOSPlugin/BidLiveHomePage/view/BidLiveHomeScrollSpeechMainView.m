@@ -63,7 +63,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 90;
+    return 70;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -110,7 +110,6 @@
             weakSelf.isClickMore = YES;
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes++;
-            [DCSVProgressHUD showInfoWithStatus:@"更多"];
             !weakSelf.moreClickBlock?:weakSelf.moreClickBlock();
         }];
         
@@ -121,10 +120,9 @@
             make.centerX.offset(-2);
             make.bottom.offset(-10);
         }];
-    }else if (self.clickMoreTimes>0 && self.clickMoreTimes<2) {
+    }else if (self.clickMoreTimes>0 && self.clickMoreTimes<3) {
         BidLiveHomeScrollLiveBtnView *leftView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"收起" direction:ArrowDirectionUp];
         [leftView setClickBock:^{
-            [DCSVProgressHUD showInfoWithStatus:@"收起"];
             weakSelf.isClickBack = YES;
             weakSelf.isClickMore = NO;
             weakSelf.clickMoreTimes = 0;
@@ -143,7 +141,6 @@
             weakSelf.isClickMore = YES;
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes++;
-            [DCSVProgressHUD showInfoWithStatus:@"更多"];
             !weakSelf.moreClickBlock?:weakSelf.moreClickBlock();
         }];
         
@@ -160,7 +157,6 @@
             weakSelf.isClickMore = YES;
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes=0;
-            [DCSVProgressHUD showInfoWithStatus:@"收起"];
             !weakSelf.retractingClickBlock?:weakSelf.retractingClickBlock();
         }];
         

@@ -51,6 +51,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22B54B262857235600525686 /* LiveComponent */ = {
+			isa = PBXGroup;
+			children = (
+				22B54B292857238E00525686 /* view */,
+				FD2FCAFB25FC59250036D89D /* LebLiveComponent.h */,
+				FD2FCAFE25FC59260036D89D /* LebLiveComponent.m */,
+			);
+			path = LiveComponent;
+			sourceTree = "<group>";
+		};
+		22B54B272857236B00525686 /* LiveFloatModule */ = {
+			isa = PBXGroup;
+			children = (
+				22B54B282857238200525686 /* view */,
+				22B547AC284734D000525686 /* FloatLiveDialogModule.h */,
+				22B547AD284734D000525686 /* FloatLiveDialogModule.m */,
+			);
+			path = LiveFloatModule;
+			sourceTree = "<group>";
+		};
+		22B54B282857238200525686 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				22BD4069283CE3C300854873 /* LebLiveFloatView.h */,
+				22BD406A283CE3C300854873 /* LebLiveFloatView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		22B54B292857238E00525686 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				FD2FCAFC25FC59250036D89D /* WebRtcView.h */,
+				FD2FCAFD25FC59250036D89D /* WebRtcView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		2D9D001CAA0D1DB2F5684155 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,15 +134,9 @@
 		FD2FCAD525FC51B50036D89D /* LebLivePlugin */ = {
 			isa = PBXGroup;
 			children = (
-				22BD4069283CE3C300854873 /* LebLiveFloatView.h */,
-				22BD406A283CE3C300854873 /* LebLiveFloatView.m */,
-				FD2FCAFB25FC59250036D89D /* LebLiveComponent.h */,
-				FD2FCAFE25FC59260036D89D /* LebLiveComponent.m */,
-				FD2FCAFC25FC59250036D89D /* WebRtcView.h */,
-				FD2FCAFD25FC59250036D89D /* WebRtcView.m */,
+				22B54B272857236B00525686 /* LiveFloatModule */,
+				22B54B262857235600525686 /* LiveComponent */,
 				FD2FCAD725FC51B50036D89D /* Info.plist */,
-				22B547AC284734D000525686 /* FloatLiveDialogModule.h */,
-				22B547AD284734D000525686 /* FloatLiveDialogModule.m */,
 			);
 			path = LebLivePlugin;
 			sourceTree = "<group>";

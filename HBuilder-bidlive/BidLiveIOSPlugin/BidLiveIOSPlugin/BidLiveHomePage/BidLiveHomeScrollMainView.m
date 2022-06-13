@@ -36,7 +36,7 @@
 #define kAnchorMainViewHeight (90+4*kAnchorCellHeight+60)
 
 #define kSpeechCellHeight (SCREEN_WIDTH-30)*405.5/537
-#define kSpeechMainViewHeight (90+4*kSpeechCellHeight+60)
+#define kSpeechMainViewHeight (70+4*kSpeechCellHeight+60)
 
 #define kYouLikeHeadViewHeight ((SCREEN_WIDTH-30)*138.5/537)
 //#define kYouLikeMainViewHeight (110+5*280+4*10)
