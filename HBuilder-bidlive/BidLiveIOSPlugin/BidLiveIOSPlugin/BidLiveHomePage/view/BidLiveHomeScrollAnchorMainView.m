@@ -45,7 +45,7 @@
 }
 
 -(void)anchorMoreBtnAction {
-    
+    !self.arrowClickBlock?:self.arrowClickBlock();
 }
 
 #pragma mark - UITableViewDelegate
@@ -181,6 +181,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    !self.cellClickBlock?:self.cellClickBlock(self.anchorsArray[indexPath.row]);
 }
 
 

@@ -16,6 +16,7 @@
 #import "BidLiveHomeHotCourseModel.h"
 #import "BidLiveHomeHighlightLotsModel.h"
 #import "BidLiveHomeGuessYouLikeModel.h"
+#import "BidLiveHomeAnchorModel.h"
 
 #import "MJExtension.h"
 #import "NSString+LLStringConnection.h"
@@ -144,6 +145,27 @@
         [_homeVC setInternalClickBlock:^{
             if (weakSelf.onTurnPage) {
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/index?source=cn"}} domChanges:nil];
+            }
+        }];
+#pragma mark - 精选主播cell点击事件
+        [_homeVC setAnchorCellClickBlock:^(BidLiveHomeAnchorListModel * _Nonnull model) {
+//            __block NSString *pageStr = @"";
+//            if (model.liveRoomType==1) {
+//                //获取直播状态
+//                [BidLiveHomeNetworkModel getHomePageGetLiveRoomStatus:model.id completion:^(NSInteger liveStatus) {
+//                    if (liveStatus==1||liveStatus==2||liveStatus==3) {
+//                        //直播进行中
+//                        pageStr = @"/pages/live/buyer/index?type="[@(model.isTransverse)][@"&liveRoomId="][model.id][@"&storeId="][model.storeId][@"&liveStatus="][@(model.liveStatus)];
+//                    }else {
+//                        pageStr = @"/pages/live/store/preview?storeId="[model.storeId][@"&roomId="][model.id][@"&type=0"];
+//                    }
+//                }];
+//            }else if (model.liveRoomType==2 && (model.liveStatus==5||model.liveStatus==6||model.liveStatus==7)) {
+//
+//            }
+            if (weakSelf.onTurnPage) {
+                NSDictionary *advDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"anchor",@"adv":advDic}} domChanges:nil];
             }
         }];
 #pragma mark - 名家讲堂cell点击事件

@@ -9,7 +9,7 @@
 #define BidliveInterfaceEnum_h
 
 
-/*************************************************************************************/
+/************************************** webapi ***********************************************/
 static NSString *const kAppWebApiAddress = @"http://webapi.51bidlive.com";
 
 ///是否登录
@@ -27,15 +27,18 @@ static NSString *const kGetAuctionPromotionItems = @"/api/services/app/AuctionPr
 ///猜你喜欢
 static NSString *const kGetGuangGuangPagedList = @"/api/services/app/AuctionItemQuery/GetGuangGuangPagedList";
 
-/*************************************************************************************/
+/*************************************** newttp **********************************************/
 static NSString *const kAppNewttpApiAddress = @"http://newttp_api.51bidlive.com";
 
 ///精选主播
 static NSString *const kGetHomeHotLiveV2 = @"/api/services/app/Home/GetHomeHotLiveV2";
 ///名家讲堂
 static NSString *const kGetHomeHotCourse = @"/api/services/app/Home/GetHomeHotCourse";
+///直播状态
+static NSString *const kGetLiveRoomStatus = @"/api/services/app/LiveRoom/GetLiveRoomStatus";
 
-/*************************************************************************************/
+
+/*************************************** en.m **********************************************/
 static NSString *const kAppEnApiAddress = @"http://en.m.51bidlive.com";
 
 ///动态

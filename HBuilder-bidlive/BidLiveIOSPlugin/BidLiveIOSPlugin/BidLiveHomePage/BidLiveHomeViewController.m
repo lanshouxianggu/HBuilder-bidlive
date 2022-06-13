@@ -98,6 +98,9 @@
         [_mainScrollView setGuessYouLikeBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
             !weakSelf.guessYouLikeBannerClickBlock?:weakSelf.guessYouLikeBannerClickBlock(model);
         }];
+        [_mainScrollView setAnchorCellClickBlock:^(BidLiveHomeAnchorListModel * _Nonnull model) {
+            !weakSelf.anchorCellClickBlock?:weakSelf.anchorCellClickBlock(model);
+        }];
         
         [_mainScrollView setToNewAuctionClickBlock:^{
             !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();

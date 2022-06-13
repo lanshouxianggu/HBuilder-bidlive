@@ -13,6 +13,8 @@
 #import "HJNetwork.h"
 #import "NSString+LLStringConnection.h"
 #import "NSAttributedString+LLMake.h"
+#import "MJExtension.h"
+#import "BidLiveHomeNetworkModel.h"
 
 //弱引用
 #define WEAK_SELF(weakeSelf) __weak typeof(self) weakeSelf = self

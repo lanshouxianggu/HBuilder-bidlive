@@ -66,6 +66,9 @@ NS_ASSUME_NONNULL_BEGIN
                        scrollLeft:(NSString *)scrollLeft
                        completion:(void (^)(BidLiveHomeHighlightLotsModel * courseModel))completionBlock;
 
+///获取直播状态
++(void)getHomePageGetLiveRoomStatus:(NSString *)liveRoomId completion:(void (^)(NSInteger liveStatus))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

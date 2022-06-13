@@ -31,6 +31,7 @@
     [super awakeFromNib];
     // Initialization code
     
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 //    self.coverImageView.backgroundColor = UIColor.cyanColor;
     
 //    self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;

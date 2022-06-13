@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray <BidLiveHomeAnchorListModel *>*anchorsArray;
 @property (nonatomic, copy) void (^moreClickBlock)(void);
 @property (nonatomic, copy) void (^retractingClickBlock)(void);
+@property (nonatomic, copy) void (^arrowClickBlock)(void);
+@property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeAnchorListModel *model);
 
 -(void)reloadData;
 @end

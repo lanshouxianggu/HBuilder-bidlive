@@ -9,6 +9,7 @@
 #import "BidLiveInterfaceEnum.h"
 #import "MJExtension.h"
 #import "HJNetwork.h"
+#import "LCConfig.h"
 
 @implementation BidLiveHomeNetworkModel
 
@@ -195,6 +196,28 @@
                 }
             }else{
                 !completionBlock?:completionBlock([BidLiveHomeHighlightLotsModel new]);
+            }
+        }
+    }];
+}
+
++(void)getHomePageGetLiveRoomStatus:(NSString *)liveRoomId completion:(void (^)(NSInteger))completionBlock
+{
+    NSString *url = @""[kAppNewttpApiAddress][kGetLiveRoomStatus];
+    NSDictionary *params = @{@"liveRoomId":@""[liveRoomId]};
+    
+    [HJNetwork POSTWithURL:url parameters:params callback:^(id responseObject, BOOL isCache, NSError *error) {
+        if (error) {
+            !completionBlock?:completionBlock(-1);
+        }else {
+            if ([responseObject isKindOfClass:NSDictionary.class]) {
+                if ([responseObject[@"result"] isKindOfClass:NSDictionary.class]) {
+                    NSDictionary *dataDic = responseObject[@"result"];
+                    NSInteger status = [dataDic[@"liveStatus"] integerValue];
+                    !completionBlock?:completionBlock(status);
+                }else{
+                    !completionBlock?:completionBlock(-1);
+                }
             }
         }
     }];
