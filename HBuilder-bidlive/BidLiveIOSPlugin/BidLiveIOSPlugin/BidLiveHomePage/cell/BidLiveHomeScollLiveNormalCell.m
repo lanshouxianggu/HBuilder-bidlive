@@ -68,8 +68,10 @@
             long long startTime = [NSDate dateWithTimeIntervalSince1970:model.StartTime*1000].timeIntervalSince1970;
             long long nowTime = [NSDate date].timeIntervalSince1970*1000;
             long long timeDiff = startTime-nowTime;
-            if (timeDiff <= 60*60*1000) {
+            if (timeDiff > 0 && timeDiff <= 60*60*1000) {
                 [weakSelf startTimer];
+            }else {
+                [weakSelf endTimer];
             }
         }];
         
@@ -167,6 +169,9 @@
 - (IBAction)liveBtnAction:(id)sender {
 }
 
+-(void)dealloc {
+    [self endTimer];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

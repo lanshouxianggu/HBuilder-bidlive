@@ -44,6 +44,11 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - 顶部更多按钮点击事件
+-(void)speechTopMoreBtnAction {
+    !self.topArrowClickBlock?:self.topArrowClickBlock();
+}
+
 #pragma mark - UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -73,6 +78,19 @@
         make.center.offset(0);
         make.width.mas_equalTo(44*3.23);
         make.height.mas_equalTo(44);
+    }];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *moreImage = [BidLiveBundleRecourseManager getBundleImage:@"indexBlockMore" type:@"png"];
+    [btn setImage:moreImage forState:UIControlStateNormal];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
+    [btn addTarget:self action:@selector(speechTopMoreBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [headView addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-8);
+        make.centerY.offset(0);
+        make.width.height.mas_equalTo(40);
     }];
     
     return headView;

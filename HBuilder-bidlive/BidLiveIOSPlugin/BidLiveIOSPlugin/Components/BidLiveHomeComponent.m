@@ -174,6 +174,12 @@
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"anchor",@"adv":advDic}} domChanges:nil];
             }
         }];
+#pragma mark - 名家讲堂顶部箭头点击事件
+        [_homeVC setSpeechTopMoreClickBlock:^{
+            if (weakSelf.onTurnPage) {
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/news/index"}} domChanges:nil];
+            }
+        }];
 #pragma mark - 名家讲堂cell点击事件
         [_homeVC setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
             if (weakSelf.onTurnPage) {

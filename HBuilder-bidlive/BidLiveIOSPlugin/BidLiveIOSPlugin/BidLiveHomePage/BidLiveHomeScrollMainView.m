@@ -151,6 +151,10 @@
             !weakSelf.internalClickBlock?:weakSelf.internalClickBlock();
         }];
         
+#pragma mark - 名家讲堂顶部箭头点击事件
+        [self.speechMainView setTopArrowClickBlock:^{
+            !weakSelf.speechTopMoreClickBlock?:weakSelf.speechTopMoreClickBlock();
+        }];
 #pragma mark - 名家讲堂cell点击事件
         [self.speechMainView setCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
             !weakSelf.speechCellClickBlock?:weakSelf.speechCellClickBlock(model);

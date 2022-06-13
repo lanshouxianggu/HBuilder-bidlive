@@ -91,6 +91,9 @@
         [_mainScrollView setInternalClickBlock:^{
             !weakSelf.internalClickBlock?:weakSelf.internalClickBlock();
         }];
+        [_mainScrollView setSpeechTopMoreClickBlock:^{
+            !weakSelf.speechTopMoreClickBlock?:weakSelf.speechTopMoreClickBlock();
+        }];
         [_mainScrollView setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
             !weakSelf.speechCellClickBlock?:weakSelf.speechCellClickBlock(model);
         }];

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^moreClickBlock)(void);
 @property (nonatomic, copy) void (^retractingClickBlock)(void);
 
+@property (nonatomic, copy) void (^topArrowClickBlock)(void);
 @property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeHotCourseListModel *model);
 -(void)reloadData;
 @end
