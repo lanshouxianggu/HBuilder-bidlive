@@ -15,6 +15,7 @@
 #import "BidLiveHomeGlobalLiveModel.h"
 #import "BidLiveHomeHotCourseModel.h"
 #import "BidLiveHomeHighlightLotsModel.h"
+#import "BidLiveHomeGuessYouLikeModel.h"
 
 #import "MJExtension.h"
 #import "NSString+LLStringConnection.h"
@@ -159,6 +160,14 @@
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
             }
         }];
+#pragma mark - 猜你喜欢cell点击事件
+        [_homeVC setGuessYouLikeCellClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
+            [weakSelf guessYouLikeCellClickAction:model];
+        }];
+#pragma mark - 猜你喜欢banner点击事件
+        [_homeVC setGuessYouLikeBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
+            [weakSelf guessYouLikeBannerClickAction:model];
+        }];
 #pragma mark - 新上拍场点击事件
         [_homeVC setToNewAuctionClickBlock:^{
             if (weakSelf.onTurnPage) {
@@ -168,6 +177,57 @@
     }
     return _homeVC;
 }
+
+-(void)guessYouLikeCellClickAction:(BidLiveHomeGuessYouLikeListModel *)model {
+    NSString *pageStr = @"/pages/auction/item?auctionItemId="[@(model.id)];
+    if (self.onTurnPage) {
+        [self fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
+    }
+}
+
+-(void)guessYouLikeBannerClickAction:(BidLiveHomeBannerModel *)model {
+    NSString *pageStr = @"";
+    if ([model.adUrl isEqualToString:@"cn"] || [model.adUrl isEqualToString:@"en"]) {
+        pageStr = @"/pages/auction/itemList?id="[model.tag];
+    }else if ([model.adUrl isEqualToString:@"cnseller"] || [model.adUrl isEqualToString:@"enseller"]) {
+        pageStr = @"/pages/auction/companyAuctionList?id="[model.tag];
+    }else if ([model.adUrl isEqualToString:@"jd"]) {
+        pageStr = @"/pages/identification/expertDetail?expertId="[model.tag];
+    }else if ([model.adUrl isEqualToString:@"sp"]) {
+        pageStr = @"/pages/sendPhotos/consignationDetails?id="[model.tag];
+    }else if ([model.adUrl isEqualToString:@"recommend"]) {
+        pageStr = @"/pages/auctionHome/recommend?id="[model.tag];
+    }else if ([model.adUrl isEqualToString:@"jdindex"]) {
+        pageStr = @"/pages/identification/expertList";
+    }else if ([model.adUrl isEqualToString:@"jtindex"]) {
+        pageStr = @"/pages/news/index";
+    }else if ([model.adUrl isEqualToString:@"h5"]) {
+        //adv.tag.toLocaleLowerCase().indexOf('auctionhome/recommend') > -1
+        if (model.tag && [[model.tag lowercaseString] containsString:@"auctionhome/recommend"]) {
+            pageStr = @""[model.tag];
+        }else {
+//            var url = encodeURI(adv.tag)
+            pageStr = @"/pages/home/winH5?url="[model.tag];
+        }
+    }else if ([model.adUrl isEqualToString:@"spindex"]) {
+        pageStr = @"/pages/sendPhotos/sendPhotos";
+    }else if ([[model.adUrl lowercaseString] hasPrefix:@"http"]) {
+//        pageStr = @""[model.adUrl];
+        pageStr = @"/pages/home/winH5?url="[model.adUrl];
+    }else if ([model.adUrl isEqualToString:@"liveroom"]) {
+        ///TODO:
+    }else if ([model.adUrl isEqualToString:@"classroom"]) {
+        pageStr = @"/pages/lectureHall/videoDetails/videoDetails?courseId="[model.tag][@"&courseContentId=0"];
+    }else if ([model.adUrl isEqualToString:@"liveindex"]) {
+        pageStr = @"/pages/live/home/index";
+    }
+    
+    if (self.onTurnPage) {
+        [self fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
+    }
+}
+
+#pragma mark - lazy
 -(BidLiveHomeScrollMainView *)mainScrollView {
     if (!_mainScrollView) {
         _mainScrollView = [[BidLiveHomeScrollMainView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height)];

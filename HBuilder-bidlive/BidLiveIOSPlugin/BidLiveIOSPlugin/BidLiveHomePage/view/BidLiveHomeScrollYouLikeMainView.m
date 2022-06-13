@@ -33,6 +33,11 @@
     }];
 }
 
+-(void)bannerClick:(UIButton *)btn {
+    BidLiveHomeBannerModel *model = self.bannerArray[btn.tag];
+    !self.youlikeBannerClickBlock?:self.youlikeBannerClickBlock(model);
+}
+
 #pragma mark - UICollectionViewDelegate
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return self.likesArray.count;
@@ -77,6 +82,12 @@
                             [imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
                         }
                         [view addSubview:imageView];
+                        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                        btn.tag = indexPath.section-1;
+                        btn.frame = imageView.frame;
+                        [btn addTarget:self action:@selector(bannerClick:) forControlEvents:UIControlEventTouchUpInside];
+                        
+                        [view addSubview:btn];
                     }
                     
                     [reusableHeadView addSubview:view];
@@ -93,6 +104,12 @@
     NSArray<BidLiveHomeGuessYouLikeListModel *> *array = self.likesArray[indexPath.section];
     cell.model = array[indexPath.item];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray<BidLiveHomeGuessYouLikeListModel *> *array = self.likesArray[indexPath.section];
+    BidLiveHomeGuessYouLikeListModel *model = array[indexPath.item];
+    !self.youlikeCellClickBlock?:self.youlikeCellClickBlock(model);
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
