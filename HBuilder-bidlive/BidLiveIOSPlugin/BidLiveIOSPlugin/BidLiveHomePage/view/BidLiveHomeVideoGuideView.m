@@ -50,6 +50,10 @@
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    !self.cellClickBlock?:self.cellClickBlock(self.dataList[indexPath.item]);
+}
+
 #pragma mark - lazy
 -(UICollectionViewFlowLayout *)layout {
     if (!_layout) {

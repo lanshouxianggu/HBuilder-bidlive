@@ -15,11 +15,11 @@
                         <viewControllerLayoutGuide type="top" id="aN7-qZ-KCL"/>
                         <viewControllerLayoutGuide type="bottom" id="5o6-IB-QEo"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z0m-pv-cfa">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z0m-pv-cfa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dc_launchscreen_background" translatesAutoresizingMaskIntoConstraints="NO" id="am2-fj-j7C">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="dc_launchscreen_background" translatesAutoresizingMaskIntoConstraints="NO" id="am2-fj-j7C">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>

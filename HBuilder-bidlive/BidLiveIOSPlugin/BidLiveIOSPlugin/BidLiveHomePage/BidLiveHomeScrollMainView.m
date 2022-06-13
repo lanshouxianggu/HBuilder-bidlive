@@ -126,6 +126,10 @@
         [self.topMainView setCmsArticleClickBlock:^(BidLiveHomeCMSArticleModel * _Nonnull model) {
             !weakSelf.cmsArticleClickBlock?:weakSelf.cmsArticleClickBlock(model);
         }];
+#pragma mark - 视频导览cell点击事件
+        [self.topMainView setVideoGuaideCellClickBlock:^(BidLiveHomeVideoGuaideListModel * _Nonnull model) {
+            !weakSelf.videoGuaideCellClickBlock?:weakSelf.videoGuaideCellClickBlock(model);
+        }];
 #pragma mark - 全球直播cell点击事件
         [self.liveMainView setCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
             !weakSelf.globalLiveCellClickBlock?:weakSelf.globalLiveCellClickBlock(model);

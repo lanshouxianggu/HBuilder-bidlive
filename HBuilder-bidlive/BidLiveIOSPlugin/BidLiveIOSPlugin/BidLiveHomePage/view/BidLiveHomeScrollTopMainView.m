@@ -67,6 +67,10 @@
         [self.itemsView setLiveRoomClickBlock:^{
             !weakSelf.liveRoomClickBlock?:weakSelf.liveRoomClickBlock();
         }];
+        
+        [self.videoGuideView setCellClickBlock:^(BidLiveHomeVideoGuaideListModel * _Nonnull model) {
+            !weakSelf.videoGuaideCellClickBlock?:weakSelf.videoGuaideCellClickBlock(model);
+        }];
     }
     return self;
 }

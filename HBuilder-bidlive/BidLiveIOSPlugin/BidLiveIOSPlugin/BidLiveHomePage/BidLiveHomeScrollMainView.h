@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class BidLiveHomeHighlightLotsListModel;
 @class BidLiveHomeGuessYouLikeListModel;
 @class BidLiveHomeAnchorListModel;
+@class BidLiveHomeVideoGuaideListModel;
 @interface BidLiveHomeScrollMainView : UIView
 ///搜索block
 @property (nonatomic, copy) void (^searchClickBlock)(void);
@@ -36,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^bannerClick)(BidLiveHomeBannerModel *model);
 ///动态点击block
 @property (nonatomic, copy) void (^cmsArticleClickBlock)(BidLiveHomeCMSArticleModel *model);
+///视频导览cell点击block
+@property (nonatomic, copy) void (^videoGuaideCellClickBlock)(BidLiveHomeVideoGuaideListModel *model);
 ///全球直播cell点击block
 @property (nonatomic, copy) void (^globalLiveCellClickBlock)(BidLiveHomeGlobalLiveModel *model);
 ///全球直播海外点击block

@@ -17,6 +17,7 @@
 #import "BidLiveHomeHighlightLotsModel.h"
 #import "BidLiveHomeGuessYouLikeModel.h"
 #import "BidLiveHomeAnchorModel.h"
+#import "BidLiveHomeVideoGuaideModel.h"
 
 #import "MJExtension.h"
 #import "NSString+LLStringConnection.h"
@@ -122,6 +123,10 @@
             if (weakSelf.onTurnPage) {
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@""[@"/pages/home/newsDetail?id="][@(model.Id)]}} domChanges:nil];
             }
+        }];
+#pragma mark - 视频导览cell点击事件
+        [_homeVC setVideoGuaideCellClickBlock:^(BidLiveHomeVideoGuaideListModel * _Nonnull model) {
+            
         }];
 #pragma mark - 全球直播cell点击事件
         [_homeVC setGlobalLiveCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
