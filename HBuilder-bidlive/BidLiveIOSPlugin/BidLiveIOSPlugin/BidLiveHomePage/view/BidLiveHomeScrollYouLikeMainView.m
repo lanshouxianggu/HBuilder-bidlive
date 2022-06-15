@@ -155,16 +155,16 @@
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView1"];
         
-        WS(weakSelf)
-        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [weakSelf.collectionView.mj_footer endRefreshing];
-            });
-        }];
-        refreshFoot.refreshingTitleHidden = YES;
-        refreshFoot.onlyRefreshPerDrag = YES;
-        _collectionView.mj_footer = refreshFoot;
+//        WS(weakSelf)
+//        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [weakSelf.collectionView.mj_footer endRefreshing];
+//            });
+//        }];
+//        refreshFoot.refreshingTitleHidden = YES;
+//        refreshFoot.onlyRefreshPerDrag = YES;
+//        _collectionView.mj_footer = refreshFoot;
     }
     return _collectionView;
 }

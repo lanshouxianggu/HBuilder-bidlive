@@ -460,7 +460,7 @@
 -(void)loadGuessYouLikeListData {
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageGuessYouLikeList:self.youlikePageIndex completion:^(BidLiveHomeGuessYouLikeModel * _Nonnull model) {
-        NSLog(@"猜你喜欢列表数据加载：%d",weakSelf.youlikePageNormalIndex);
+        NSLog(@"猜你喜欢列表数据加载：%d 随机下标：%d",weakSelf.youlikePageNormalIndex,weakSelf.youlikePageIndex);
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:model.list];
         CGFloat origionHight = CGRectGetHeight(weakSelf.youlikeMainView.frame);
         if (weakSelf.isPullRefresh) {
@@ -488,30 +488,36 @@
                     NSMutableArray *lastArray = [NSMutableArray arrayWithArray:lastPageIndexArray];
                     [lastArray addObjectsFromArray:model.list];
 //                    weakSelf.youlikeMainView.likesArray[weakSelf.youlikePageNormalIndex] = lastArray;
-                    NSInteger lastIndex = weakSelf.youlikeMainView.likesArray.count-1;
-                    [weakSelf.youlikeMainView.likesArray replaceObjectAtIndex:lastIndex withObject:lastArray];
+                    if (lastPageIndexArray) {
+                        NSInteger lastIndex = weakSelf.youlikeMainView.likesArray.count-1;
+                        [weakSelf.youlikeMainView.likesArray replaceObjectAtIndex:lastIndex withObject:lastArray];
+                    }else {
+                        [weakSelf.youlikeMainView.likesArray addObject:model.list];
+                    }
                 }
             }
             origionHight+= (kYouLikeHeadViewHeight+(model.list.count/2)*280+4*10);
-            weakSelf.youlikePageNormalIndex++;
         }
+//        CGFloat youlikeViewMinY = CGRectGetMinY(self.youlikeMainView.frame);
+//        CGFloat youlikeViewMaxY = CGRectGetMaxY(self.youlikeMainView.frame);
         [weakSelf.youlikeMainView.collectionView reloadData];
-//        NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
-//        NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
-//        CGFloat height = 0;
-//        if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
-//            height = likesArrayCount*kYouLikeMainViewHeight;
-//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                make.height.mas_equalTo(height);
-//            }];
-//        }else {
-//            height = weakSelf.youlikePageNormalIndex*kYouLikeMainViewHeight-(weakSelf.youlikePageNormalIndex-likesBannerCount)*kYouLikeHeadViewHeight;
-//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                make.height.mas_equalTo(height);
-//            }];
-//        }
-//        NSLog(@"Height likeView: %f", height);
-//        NSLog(@"Height mainScroll: %f", weakSelf.mainScrollView.contentSize.height);
+        weakSelf.youlikePageNormalIndex++;
+        NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
+        NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
+        CGFloat height = 0;
+        if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
+            height = (likesArrayCount*kYouLikeMainViewHeight)+20;
+            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(height);
+            }];
+        }else {
+            NSInteger moreCount = weakSelf.youlikePageNormalIndex-(likesBannerCount);
+            height = (weakSelf.youlikePageNormalIndex*kYouLikeMainViewHeight)+20-moreCount*kYouLikeHeadViewHeight;
+            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(height);
+            }];
+        }
+        
     }];
 }
 
@@ -533,21 +539,21 @@
     
     CGFloat youlikeViewMinY = CGRectGetMinY(self.youlikeMainView.frame);
     
-    if (!self.superCanScroll) {
-        scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
-        self.youlikeMainView.canSlide = YES;
-        self.mainScrollView.showsVerticalScrollIndicator = NO;
-        self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
-    }else {
-        if (offsetY >= youlikeViewMinY) {
-            scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
-            self.superCanScroll = NO;
-            self.youlikeMainView.canSlide = YES;
-            self.mainScrollView.showsVerticalScrollIndicator = NO;
-            self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
-        }
-        self.mainScrollView.showsVerticalScrollIndicator = YES;
-    }
+//    if (!self.superCanScroll) {
+//        scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
+//        self.youlikeMainView.canSlide = YES;
+//        self.mainScrollView.showsVerticalScrollIndicator = NO;
+//        self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
+//    }else {
+//        if (offsetY >= youlikeViewMinY) {
+//            scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
+//            self.superCanScroll = NO;
+//            self.youlikeMainView.canSlide = YES;
+//            self.mainScrollView.showsVerticalScrollIndicator = NO;
+//            self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
+//        }
+//        self.mainScrollView.showsVerticalScrollIndicator = YES;
+//    }
     
     
     CGPoint offset = scrollView.contentOffset;
@@ -619,7 +625,7 @@
     if (!_mainScrollView) {
         _mainScrollView = [[BidLiveSimultaneouslyScrollView alloc] initWithFrame:CGRectZero];
         _mainScrollView.delegate = self;
-//        _mainScrollView.bounces = NO;
+        _mainScrollView.bounces = NO;
         
         WS(weakSelf)
         MJRefreshNormalHeader *refreshHead = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -632,13 +638,13 @@
         refreshHead.stateLabel.hidden = YES;
         _mainScrollView.mj_header = refreshHead;
         
-//        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//            weakSelf.isPullRefresh = NO;
-//            [weakSelf loadMoreData];
-//        }];
-//        refreshFoot.refreshingTitleHidden = YES;
-//        refreshFoot.onlyRefreshPerDrag = YES;
-//        _mainScrollView.mj_footer = refreshFoot;
+        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            weakSelf.isPullRefresh = NO;
+            [weakSelf loadMoreData];
+        }];
+        refreshFoot.refreshingTitleHidden = YES;
+        refreshFoot.onlyRefreshPerDrag = YES;
+        _mainScrollView.mj_footer = refreshFoot;
     }
     return _mainScrollView;
 }
@@ -732,10 +738,10 @@
             [weakSelf loadMoreData];
         }];
         
-        [_youlikeMainView setYouLikeViewScrollToTopBlock:^{
-            weakSelf.superCanScroll = YES;
-            weakSelf.mainScrollView.showsVerticalScrollIndicator = YES;
-        }];
+//        [_youlikeMainView setYouLikeViewScrollToTopBlock:^{
+//            weakSelf.superCanScroll = YES;
+//            weakSelf.mainScrollView.showsVerticalScrollIndicator = YES;
+//        }];
     }
     return _youlikeMainView;
 }
