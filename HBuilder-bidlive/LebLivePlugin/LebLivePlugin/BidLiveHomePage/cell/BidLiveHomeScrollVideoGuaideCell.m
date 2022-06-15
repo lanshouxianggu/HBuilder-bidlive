@@ -17,6 +17,7 @@
 @interface BidLiveHomeScrollVideoGuaideCell ()
 @property (nonatomic, strong) UIImageView *videoImageView;
 @property (nonatomic, strong) UILabel *videoTitleLabel;
+@property (nonatomic, strong) UIView *rtcSuperView;
 @end
 
 @implementation BidLiveHomeScrollVideoGuaideCell
@@ -53,6 +54,8 @@
         make.center.offset(0);
     }];
     
+    [topView addSubview:self.rtcSuperView];
+    
     UIView *bottomView = [UIView new];
     bottomView.backgroundColor = UIColor.whiteColor;
     [self.contentView addSubview:bottomView];
@@ -75,7 +78,7 @@
     _model = model;
     [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:nil];
     self.videoTitleLabel.text = model.name;
-//    self.livingView.hidden = !(model.isLiveroom && model.roomType==2);
+    self.livingView.hidden = !(model.isLiveroom && model.roomType==2);
 }
 
 #pragma mark - lazy
@@ -105,6 +108,19 @@
     }
     return _livingView;
 }
+
+-(UIView *)rtcSuperView {
+    if (!_rtcSuperView) {
+        CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height*4/7);
+        _rtcSuperView = [[UIView alloc] initWithFrame:frame];
+        _rtcSuperView.hidden = YES;
+        self.rtcView = [[WebRtcView alloc] initWithFrame:_rtcSuperView.frame];
+        self.rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+        [_rtcSuperView addSubview:self.rtcView];
+    }
+    return _rtcSuperView;
+}
+
 @end
 
 

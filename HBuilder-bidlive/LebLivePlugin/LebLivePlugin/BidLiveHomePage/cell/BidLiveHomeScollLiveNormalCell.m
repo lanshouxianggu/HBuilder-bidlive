@@ -92,6 +92,7 @@
         dispatch_source_set_event_handler(_timer, ^{
              dispatch_async(dispatch_get_main_queue(), ^{
                  weakSelf.model.StartTime-=1;
+                 NSLog(@"所剩时间：%ld",weakSelf.model.StartTime);
                  [weakSelf getHtmlRemainTime:weakSelf.model.StartTime prefix:@"距开拍  " completion:^(NSAttributedString *resultAttrStr) {
                      weakSelf.changeLabel.attributedText = resultAttrStr;
                  }];
@@ -141,6 +142,7 @@
     if ([type isEqualToString:@"h"]) {
         NSString *hour = [NSString stringWithFormat:@"%.0f", floor(timeDiff/(1000*60*60))];
         NSString *min = [NSString stringWithFormat:@"%.0f", floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))];
+        NSLog(@"%@",@"距开拍："[hour][@"时"][min][@"分"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
             make.text(hour).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);
@@ -148,9 +150,11 @@
             make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);;
             make.text(@"分").foregroundColor(UIColorFromRGB(0x666666));
         }];
+        
     }else if ([type isEqualToString:@"m"]) {
         NSString *min = [NSString stringWithFormat:@"%.0f", floor(timeDiff / (1000 * 60))];
         NSString *sec = [NSString stringWithFormat:@"%.0f", floor((timeDiff % (1000 *60)) /(1000))];
+        NSLog(@"%@",@"距开拍："[min][@"分"][sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
             make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);;
@@ -160,6 +164,7 @@
         }];
     }else if ([type isEqualToString:@"秒"]) {
         NSString *sec = [NSString stringWithFormat:@"%.0f", floor(timeDiff / 1000)];
+        NSLog(@"%@",@"距开拍："[sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
             make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);;

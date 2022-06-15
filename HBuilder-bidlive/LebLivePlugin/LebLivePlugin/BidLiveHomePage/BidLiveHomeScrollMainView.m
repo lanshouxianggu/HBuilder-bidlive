@@ -587,9 +587,6 @@
     }];
 }
 
--(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-}
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 //    [UIView animateWithDuration:0.15 animations:^{
