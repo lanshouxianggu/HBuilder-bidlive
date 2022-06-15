@@ -68,6 +68,7 @@
 }
 
 #pragma mark - scrollView 停止滚动监测
+//中间位置的cell播放视频流
 - (void)scrollViewDidEndScroll {
     CGFloat offsetX = self.collectionView.contentOffset.x;
     
@@ -90,16 +91,22 @@
         self.lastPlayVideoCell.rtcSuperView.hidden = YES;
         [self.rtcView removeFromSuperview];
         [self.rtcView.videoView stop];
-        [[LiveEBManager sharedManager] finitSDK];
+//        [[LiveEBManager sharedManager] finitSDK];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [currentCell.rtcSuperView addSubview:self.rtcView];
-            [self.rtcView.videoView start];
+            [self playStream];
             currentCell.rtcSuperView.hidden = NO;
             self.lastPlayVideoCell = currentCell;
         });
     });
     
     NSLog(@"当前位置：%f", offsetX);
+}
+
+-(void)playStream {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.rtcView.videoView start];
+    });
 }
 
 
@@ -113,14 +120,13 @@
     cell.model = self.dataList[indexPath.item];
 
     cell.rtcSuperView.hidden = YES;
-    [self.rtcView.videoView stop];
     if (indexPath.item==0) {
         cell.rtcSuperView.hidden = NO;
         [cell.rtcSuperView addSubview:self.rtcView];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.rtcView.videoView start];
+            [self playStream];
         });
-        
+
         self.lastPlayVideoCell = cell;
     }
     return cell;
