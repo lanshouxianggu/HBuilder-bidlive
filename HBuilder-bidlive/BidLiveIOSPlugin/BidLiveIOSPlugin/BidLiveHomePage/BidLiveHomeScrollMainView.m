@@ -83,7 +83,7 @@
 @property (nonatomic, assign) int youlikePageNormalIndex;
 @property (nonatomic, strong) NSMutableArray *youlikePageIndexArray;
 @property (nonatomic, strong) NSArray *youlikeBannerArray;
-
+@property (nonatomic, assign) CGFloat youlikeContainAllBannersHeight;
 ///是否下拉刷新
 @property (nonatomic, assign) BOOL isPullRefresh;
 
@@ -231,6 +231,7 @@
     self.youlikePageIndex = 0;
     self.youlikePageNormalIndex = 0;
     self.superCanScroll = YES;
+    self.youlikeContainAllBannersHeight = 0.0;
     self.youlikePageIndexArray = [NSMutableArray arrayWithArray:@[@(82),@(81),@(67),@(3),
                                                                   @(71),@(44),@(8),@(40),@(106),
                                                                   @(47),@(94),@(19),@(7),@(87),
@@ -500,24 +501,28 @@
         }
 //        CGFloat youlikeViewMinY = CGRectGetMinY(self.youlikeMainView.frame);
 //        CGFloat youlikeViewMaxY = CGRectGetMaxY(self.youlikeMainView.frame);
-        [weakSelf.youlikeMainView.collectionView reloadData];
-        weakSelf.youlikePageNormalIndex++;
+        
+        
         NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
         NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
         CGFloat height = 0;
         if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
             height = (likesArrayCount*kYouLikeMainViewHeight)+20;
+            NSLog(@"hight before:%f",height);
             [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(height);
             }];
+            self.youlikeContainAllBannersHeight = height;
         }else {
-            NSInteger moreCount = weakSelf.youlikePageNormalIndex-(likesBannerCount);
-            height = (weakSelf.youlikePageNormalIndex*kYouLikeMainViewHeight)+20-moreCount*kYouLikeHeadViewHeight;
+            NSInteger moreCount = weakSelf.youlikePageNormalIndex+1-likesBannerCount;
+            height = self.youlikeContainAllBannersHeight + (moreCount*(5*280+4*10));
+            NSLog(@"hight after:%f",height);
             [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(height);
             }];
         }
-        
+        weakSelf.youlikePageNormalIndex++;
+        [weakSelf.youlikeMainView.collectionView reloadData];
     }];
 }
 
