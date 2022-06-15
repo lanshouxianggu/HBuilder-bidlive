@@ -11,6 +11,8 @@
 #import "BidliveBundleRecourseManager.h"
 #import "BidLiveHomeScrollVideoGuaideCell.h"
 #import "BidLiveHomeVideoGuaideModel.h"
+#import <LiveEB_IOS/LiveEBManager.h>
+#import "WebRtcView.h"
 
 #define kCollectionViewHeight (SCREEN_HEIGHT*0.18)
 #define kItemWidth (SCREEN_WIDTH-15*2-12*2)/2.25
@@ -20,6 +22,7 @@
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) NSArray <BidLiveHomeVideoGuaideListModel *> *dataList;
 @property (nonatomic, strong) BidLiveHomeScrollVideoGuaideCell *lastPlayVideoCell;
+@property (nonatomic, strong) WebRtcView *rtcView;
 @end
 
 @implementation BidLiveHomeVideoGuideView
@@ -77,16 +80,23 @@
         indexPath = [self.collectionView indexPathForItemAtPoint:CGPointMake(offsetX+self.collectionView.frame.size.width/2, 0)];
         currentCell = (BidLiveHomeScrollVideoGuaideCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     }
+    if (currentCell==nil) {
+        return;
+    }
     if ([currentCell isEqual:self.lastPlayVideoCell]) {
         return;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.lastPlayVideoCell.rtcView.superview.hidden = YES;
-        [self.lastPlayVideoCell.rtcView.videoView stop];
-
-        [currentCell.rtcView.videoView start];
-        currentCell.rtcView.superview.hidden = NO;
-        self.lastPlayVideoCell = currentCell;
+        self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+        [self.rtcView removeFromSuperview];
+        [self.rtcView.videoView stop];
+        [[LiveEBManager sharedManager] finitSDK];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [currentCell.rtcSuperView addSubview:self.rtcView];
+            [self.rtcView.videoView start];
+            currentCell.rtcSuperView.hidden = NO;
+            self.lastPlayVideoCell = currentCell;
+        });
     });
     
     NSLog(@"当前位置：%f", offsetX);
@@ -102,13 +112,15 @@
     BidLiveHomeScrollVideoGuaideCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollVideoGuaideCell" forIndexPath:indexPath];
     cell.model = self.dataList[indexPath.item];
 
-    cell.rtcView.superview.hidden = YES;
-    [cell.rtcView.videoView stop];
+    cell.rtcSuperView.hidden = YES;
+    [self.rtcView.videoView stop];
     if (indexPath.item==0) {
-        cell.rtcView.superview.hidden = NO;
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [cell.rtcView.videoView start];
-//        });
+        cell.rtcSuperView.hidden = NO;
+        [cell.rtcSuperView addSubview:self.rtcView];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.rtcView.videoView start];
+        });
+        
         self.lastPlayVideoCell = cell;
     }
     return cell;
@@ -140,5 +152,13 @@
         [_collectionView registerClass:BidLiveHomeScrollVideoGuaideCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollVideoGuaideCell"];
     }
     return _collectionView;
+}
+
+-(WebRtcView *)rtcView {
+    if (!_rtcView) {
+        _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, kItemWidth, kCollectionViewHeight*4/7)];
+        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+    }
+    return _rtcView;
 }
 @end
