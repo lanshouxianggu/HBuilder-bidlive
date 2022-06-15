@@ -152,6 +152,7 @@
         _collectionView.dataSource = self;
 //        _collectionView.scrollEnabled = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
+        _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView1"];
         

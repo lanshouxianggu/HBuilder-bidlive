@@ -195,6 +195,7 @@
         _tableView.dataSource = self;
         _tableView.bounces = NO;
         _tableView.scrollEnabled = NO;
+        _tableView.scrollsToTop = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         if ([[UIDevice currentDevice].systemVersion floatValue] >= 15.0) {
             _tableView.sectionHeaderTopPadding = 0;

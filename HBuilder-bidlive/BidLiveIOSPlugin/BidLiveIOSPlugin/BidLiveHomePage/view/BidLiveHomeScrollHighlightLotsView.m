@@ -104,7 +104,7 @@
         _collectionView.backgroundColor = UIColorFromRGB(0xf8f8f8);
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        
+        _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollHighlightLotsCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollHighlightLotsCell"];
     }
     return _collectionView;

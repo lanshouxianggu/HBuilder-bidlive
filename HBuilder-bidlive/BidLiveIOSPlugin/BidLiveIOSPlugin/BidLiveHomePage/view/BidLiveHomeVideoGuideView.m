@@ -72,7 +72,7 @@
         _collectionView.backgroundColor = UIColorFromRGB(0xf8f8f8);
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        
+        _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollVideoGuaideCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollVideoGuaideCell"];
     }
     return _collectionView;

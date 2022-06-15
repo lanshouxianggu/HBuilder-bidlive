@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *liveBtn;
 @property (nonatomic, strong) dispatch_source_t timer;
 @property (nonatomic, assign) long long startTime;
+@property (nonatomic, assign) BOOL timerHasStarted;
 
 @end
 
@@ -68,10 +69,12 @@
             long long startTime = [NSDate dateWithTimeIntervalSince1970:model.StartTime*1000].timeIntervalSince1970;
             long long nowTime = [NSDate date].timeIntervalSince1970*1000;
             long long timeDiff = startTime-nowTime;
-            if (timeDiff > 0 && timeDiff <= 60*60*1000) {
+            if (timeDiff > 0 && timeDiff <= 60*60*1000 && !weakSelf.timerHasStarted) {
                 [weakSelf startTimer];
+                weakSelf.timerHasStarted = YES;
             }else {
                 [weakSelf endTimer];
+                weakSelf.timerHasStarted = NO;
             }
         }];
         
