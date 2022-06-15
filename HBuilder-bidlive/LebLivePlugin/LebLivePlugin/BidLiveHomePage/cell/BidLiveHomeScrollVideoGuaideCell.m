@@ -75,7 +75,7 @@
     _model = model;
     [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:nil];
     self.videoTitleLabel.text = model.name;
-    self.livingView.hidden = !(model.isLiveroom && model.roomType==2);
+//    self.livingView.hidden = !(model.isLiveroom && model.roomType==2);
 }
 
 #pragma mark - lazy

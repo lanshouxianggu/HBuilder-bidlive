@@ -476,6 +476,14 @@
 			<array>
 				<dict>
 					<key>class</key>
+					<string>BidLiveHomeComponent</string>
+					<key>name</key>
+					<string>homeView</string>
+					<key>type</key>
+					<string>component</string>
+				</dict>
+				<dict>
+					<key>class</key>
 					<string>FloatLiveDialogModule</string>
 					<key>name</key>
 					<string>FloatLiveDialogModule</string>
