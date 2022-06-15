@@ -41,6 +41,9 @@
 -(void)updateVideoGuideList:(NSArray<BidLiveHomeVideoGuaideListModel *> *)list {
     self.dataList = list;
     [self.collectionView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self startPlayFirstCell];
+    });
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -67,6 +70,16 @@
   }
 }
 
+
+#pragma mark - 播放第一个
+-(void)startPlayFirstCell {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    BidLiveHomeScrollVideoGuaideCell *firstCell = (BidLiveHomeScrollVideoGuaideCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    [firstCell.rtcSuperView addSubview:self.rtcView];
+    [self playStream];
+    firstCell.rtcSuperView.hidden = NO;
+    self.lastPlayVideoCell = firstCell;
+}
 #pragma mark - scrollView 停止滚动监测
 //中间位置的cell播放视频流
 - (void)scrollViewDidEndScroll {
@@ -118,17 +131,7 @@
 -(__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BidLiveHomeScrollVideoGuaideCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollVideoGuaideCell" forIndexPath:indexPath];
     cell.model = self.dataList[indexPath.item];
-
     cell.rtcSuperView.hidden = YES;
-    if (indexPath.item==0) {
-        cell.rtcSuperView.hidden = NO;
-        [cell.rtcSuperView addSubview:self.rtcView];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self playStream];
-        });
-
-        self.lastPlayVideoCell = cell;
-    }
     return cell;
 }
 
