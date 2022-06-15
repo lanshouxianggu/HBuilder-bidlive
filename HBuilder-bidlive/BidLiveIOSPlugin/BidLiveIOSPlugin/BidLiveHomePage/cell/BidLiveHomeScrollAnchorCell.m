@@ -65,13 +65,13 @@
         });
     }else if (model.liveStatus==0) {
         self.topLeftLabel.text = @"预展";
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.topLeftView gradientFromColor:UIColorFromRGB(0x7590F6) toColor:UIColorFromRGB(0x88D3F2) directionType:GradientDirectionToRight];
         });
     }else if (model.liveStatus==1) {
         self.topLeftLabel.text = @"直播中";
         self.topRightLabel.text = @""[@(model.watchCount)][@"热度"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.topLeftView gradientFromColor:UIColorFromRGB(0xF8523B) toColor:UIColorFromRGB(0xF9B194) directionType:GradientDirectionToRight];
         });
     }

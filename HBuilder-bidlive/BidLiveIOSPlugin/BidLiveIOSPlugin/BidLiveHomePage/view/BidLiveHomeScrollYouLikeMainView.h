@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *likesArray;
 @property (nonatomic, strong) NSMutableArray <BidLiveHomeBannerModel *> *bannerArray;
 @property (nonatomic, strong) UICollectionView *collectionView;
-
+///可否滑动
+@property (nonatomic,assign) BOOL canSlide;
 @property (nonatomic, copy) void (^loadMoreGuessYouLikeDataBlock)(void);
 @property (nonatomic, copy) void (^youLikeViewScrollToTopBlock)(void);
 

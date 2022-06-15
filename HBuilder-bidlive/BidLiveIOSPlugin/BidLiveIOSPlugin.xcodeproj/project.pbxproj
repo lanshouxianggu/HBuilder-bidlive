@@ -202,6 +202,8 @@
 		22BD41952840C55100854873 /* BidLiveHomeBtnItemsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41932840C55100854873 /* BidLiveHomeBtnItemsView.h */; };
 		22BD41B02841BC8300854873 /* BidLiveBundleRecourseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BD41AE2841BC8300854873 /* BidLiveBundleRecourseManager.h */; };
 		22BD41B12841BC8300854873 /* BidLiveBundleRecourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BD41AF2841BC8300854873 /* BidLiveBundleRecourseManager.m */; };
+		22CCC41028597D4300510C24 /* BidLiveSimultaneouslyScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC40E28597D4300510C24 /* BidLiveSimultaneouslyScrollView.h */; };
+		22CCC41128597D4300510C24 /* BidLiveSimultaneouslyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC40F28597D4300510C24 /* BidLiveSimultaneouslyScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -401,6 +403,8 @@
 		22BD41932840C55100854873 /* BidLiveHomeBtnItemsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeBtnItemsView.h; sourceTree = "<group>"; };
 		22BD41AE2841BC8300854873 /* BidLiveBundleRecourseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveBundleRecourseManager.h; sourceTree = "<group>"; };
 		22BD41AF2841BC8300854873 /* BidLiveBundleRecourseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveBundleRecourseManager.m; sourceTree = "<group>"; };
+		22CCC40E28597D4300510C24 /* BidLiveSimultaneouslyScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidLiveSimultaneouslyScrollView.h; sourceTree = "<group>"; };
+		22CCC40F28597D4300510C24 /* BidLiveSimultaneouslyScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidLiveSimultaneouslyScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -458,6 +462,8 @@
 				22B54A4C2852EE8100525686 /* BidLiveHomeVideoGuideView.m */,
 				22B54A512852EE8100525686 /* BidLiveLiveMainArticleScrollView.h */,
 				22B54A522852EE8100525686 /* BidLiveLiveMainArticleScrollView.m */,
+				22CCC40E28597D4300510C24 /* BidLiveSimultaneouslyScrollView.h */,
+				22CCC40F28597D4300510C24 /* BidLiveSimultaneouslyScrollView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -927,6 +933,7 @@
 				22B54A392852EBC700525686 /* NSString+LLStringConnection.h in Headers */,
 				22B54B1B2854771900525686 /* MJRefreshBackFooter.h in Headers */,
 				22B548C4284EEE9900525686 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				22CCC41028597D4300510C24 /* BidLiveSimultaneouslyScrollView.h in Headers */,
 				22B54A362852EBC700525686 /* UIView+PartRounded.h in Headers */,
 				22BD41872840A99100854873 /* BidLiveHomeComponent.h in Headers */,
 				22B548B0284EEE9900525686 /* NSObject+MJCoding.h in Headers */,
@@ -1119,6 +1126,7 @@
 				22B54AFF2854771900525686 /* UIView+MJExtension.m in Sources */,
 				22B54A3D2852EBC700525686 /* NSString+LLStringConnection.m in Sources */,
 				22B54A5A2852EE8100525686 /* BidLiveLiveMainArticleScrollView.m in Sources */,
+				22CCC41128597D4300510C24 /* BidLiveSimultaneouslyScrollView.m in Sources */,
 				22B547172845A0A900525686 /* BidLiveHomeScrollYouLikeMainView.m in Sources */,
 				22B54B032854771900525686 /* MJRefreshBackGifFooter.m in Sources */,
 				22B548CE284EEE9900525686 /* AFURLRequestSerialization.m in Sources */,

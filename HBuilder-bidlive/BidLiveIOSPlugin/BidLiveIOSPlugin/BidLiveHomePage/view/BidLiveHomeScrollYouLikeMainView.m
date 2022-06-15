@@ -11,9 +11,10 @@
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
 
-@interface BidLiveHomeScrollYouLikeMainView () <UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
+@interface BidLiveHomeScrollYouLikeMainView () <UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
+@property (nonatomic,assign) CGFloat currOffsetY;
 @end
 
 @implementation BidLiveHomeScrollYouLikeMainView
@@ -36,6 +37,10 @@
 -(void)bannerClick:(UIButton *)btn {
     BidLiveHomeBannerModel *model = self.bannerArray[btn.tag];
     !self.youlikeBannerClickBlock?:self.youlikeBannerClickBlock(model);
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -113,10 +118,15 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    if (scrollView.contentOffset.y<0) {
-//        self.collectionView.scrollEnabled = NO;
-//        !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
-//    }
+    if (!self.canSlide) {
+        scrollView.contentOffset = CGPointZero;
+    }else {
+        if (scrollView.contentOffset.y <= 0) {
+            self.canSlide = NO;
+            self.collectionView.showsVerticalScrollIndicator = NO;
+            !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
+        }
+    }
 }
 
 #pragma mark - lazy
@@ -140,21 +150,21 @@
 //        _collectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        _collectionView.scrollEnabled = NO;
+//        _collectionView.scrollEnabled = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView1"];
         
-//        WS(weakSelf)
-//        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [weakSelf.collectionView.mj_footer endRefreshing];
-//            });
-//        }];
-//        refreshFoot.refreshingTitleHidden = YES;
-//        refreshFoot.onlyRefreshPerDrag = YES;
-//        _collectionView.mj_footer = refreshFoot;
+        WS(weakSelf)
+        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.collectionView.mj_footer endRefreshing];
+            });
+        }];
+        refreshFoot.refreshingTitleHidden = YES;
+        refreshFoot.onlyRefreshPerDrag = YES;
+        _collectionView.mj_footer = refreshFoot;
     }
     return _collectionView;
 }

@@ -18,6 +18,8 @@
 #import "BidLiveHomeScrollYouLikeMainView.h"
 #import "BidLiveHomeScrollAnchorMainView.h"
 #import "BidLiveHomeScrollHighlightLotsView.h"
+#import "BidLiveSimultaneouslyScrollView.h"
+
 #import "BidLiveHomeNetworkModel.h"
 #import "BidLiveHomeVideoGuaideModel.h"
 
@@ -36,9 +38,9 @@
 #define kAnchorMainViewHeight (90+4*kAnchorCellHeight+60)
 
 #define kSpeechCellHeight (SCREEN_WIDTH-30)*405.5/537
-#define kSpeechMainViewHeight (70+4*kSpeechCellHeight+60)
+#define kSpeechMainViewHeight (70+kSpeechCellHeight+60)
 
-#define kYouLikeHeadViewHeight ((SCREEN_WIDTH-30)*138.5/537)
+#define kYouLikeHeadViewHeight ((SCREEN_WIDTH-30)*138.5/537+20)
 //#define kYouLikeMainViewHeight (110+5*280+4*10)
 #define kYouLikeMainViewHeight (kYouLikeHeadViewHeight+5*280+4*10)
 
@@ -47,7 +49,7 @@
 @interface BidLiveHomeScrollMainView () <UIScrollViewDelegate>
 @property (nonatomic, strong) BidLiveHomeHeadView *topSearchView;
 @property (nonatomic, strong) BidLiveHomeFloatView *floatView;
-@property (nonatomic, strong) UIScrollView *mainScrollView;
+@property (nonatomic, strong) BidLiveSimultaneouslyScrollView *mainScrollView;
 @property (nonatomic, strong) UIView *mainView;
 ///topView，包括图片广告轮播，按钮模块，文字滚动，直播页
 @property (nonatomic, strong) BidLiveHomeScrollTopMainView *topMainView;
@@ -84,6 +86,8 @@
 
 ///是否下拉刷新
 @property (nonatomic, assign) BOOL isPullRefresh;
+
+@property (nonatomic, assign) BOOL superCanScroll;
 @end
 
 @implementation BidLiveHomeScrollMainView
@@ -92,7 +96,6 @@
     if (self = [super initWithFrame:frame]) {
         [self initData];
         [self setupUI];
-        
         WS(weakSelf)
 #pragma mark - 全球拍卖点击事件
         [self.topMainView setGlobalSaleClickBlock:^{
@@ -164,16 +167,18 @@
             weakSelf.speechPageIndex++;
             weakSelf.isPullRefresh = NO;
             [weakSelf loadHomeHotCourseData];
+            
         }];
 #pragma mark - 名家讲堂收起点击事件
         [self.speechMainView setRetractingClickBlock:^{
             weakSelf.speechPageIndex = 1;
             weakSelf.speechMainView.videosArray = [NSMutableArray arrayWithArray:weakSelf.speechOrigionArray];
             [weakSelf.speechMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(90+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
+                make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
             }];
             [weakSelf.speechMainView.tableView reloadData];
-            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastVideosCount-5)*kSpeechCellHeight-150;
+//            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastVideosCount-5)*kSpeechCellHeight-150;
+            CGFloat offsetY = CGRectGetMinY(weakSelf.speechMainView.frame)-150;
             [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
         }];
 #pragma mark - 精选主播更多点击事件
@@ -191,7 +196,8 @@
             }];
             [weakSelf.anchorMainView reloadData];
             
-            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastAnchorsCount-5)*kAnchorCellHeight-150;
+//            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastAnchorsCount-5)*kAnchorCellHeight-150;
+            CGFloat offsetY = CGRectGetMinY(weakSelf.anchorMainView.frame)-150;
             [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
         }];
 #pragma mark - 精选主播箭头点击事件
@@ -224,6 +230,7 @@
     self.anchorPageIndex = 1;
     self.youlikePageIndex = 0;
     self.youlikePageNormalIndex = 0;
+    self.superCanScroll = YES;
     self.youlikePageIndexArray = [NSMutableArray arrayWithArray:@[@(82),@(81),@(67),@(3),
                                                                   @(71),@(44),@(8),@(40),@(106),
                                                                   @(47),@(94),@(19),@(7),@(87),
@@ -406,7 +413,7 @@
             weakSelf.speechOrigionArray = courseModel.list;
         }
         [weakSelf.speechMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(90+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
+            make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
         }];
         weakSelf.lastVideosCount = weakSelf.speechMainView.videosArray.count;
         [weakSelf.speechMainView reloadData];
@@ -456,6 +463,9 @@
         NSLog(@"猜你喜欢列表数据加载：%d",weakSelf.youlikePageNormalIndex);
         NSMutableArray *tempArray = [NSMutableArray arrayWithArray:model.list];
         CGFloat origionHight = CGRectGetHeight(weakSelf.youlikeMainView.frame);
+        if (weakSelf.isPullRefresh) {
+            [weakSelf.youlikeMainView.likesArray removeAllObjects];
+        }
         if (weakSelf.youlikePageIndex==0 && model.list.count>10) {
             [weakSelf.youlikeMainView.likesArray removeAllObjects];
             NSRange range1 = NSMakeRange(0, 10);
@@ -477,27 +487,31 @@
                     NSArray *lastPageIndexArray = [weakSelf.youlikeMainView.likesArray lastObject];
                     NSMutableArray *lastArray = [NSMutableArray arrayWithArray:lastPageIndexArray];
                     [lastArray addObjectsFromArray:model.list];
-                    weakSelf.youlikeMainView.likesArray[weakSelf.youlikePageNormalIndex] = lastArray;
+//                    weakSelf.youlikeMainView.likesArray[weakSelf.youlikePageNormalIndex] = lastArray;
+                    NSInteger lastIndex = weakSelf.youlikeMainView.likesArray.count-1;
+                    [weakSelf.youlikeMainView.likesArray replaceObjectAtIndex:lastIndex withObject:lastArray];
                 }
             }
             origionHight+= (kYouLikeHeadViewHeight+(model.list.count/2)*280+4*10);
             weakSelf.youlikePageNormalIndex++;
         }
-        NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
-        NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
-        if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
-            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(likesArrayCount*kYouLikeMainViewHeight);
-            }];
-        }else {
-            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(weakSelf.youlikePageNormalIndex*kYouLikeMainViewHeight-(weakSelf.youlikePageNormalIndex-likesBannerCount)*kYouLikeHeadViewHeight);
-            }];
-        }
-            
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.youlikeMainView.collectionView reloadData];
-        });
+        [weakSelf.youlikeMainView.collectionView reloadData];
+//        NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
+//        NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
+//        CGFloat height = 0;
+//        if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
+//            height = likesArrayCount*kYouLikeMainViewHeight;
+//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(height);
+//            }];
+//        }else {
+//            height = weakSelf.youlikePageNormalIndex*kYouLikeMainViewHeight-(weakSelf.youlikePageNormalIndex-likesBannerCount)*kYouLikeHeadViewHeight;
+//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(height);
+//            }];
+//        }
+//        NSLog(@"Height likeView: %f", height);
+//        NSLog(@"Height mainScroll: %f", weakSelf.mainScrollView.contentSize.height);
     }];
 }
 
@@ -511,20 +525,30 @@
     CGFloat offsetY = scrollView.contentOffset.y;
     if (offsetY<CGRectGetHeight(self.topSearchView.frame)) {
         CGFloat alpha = offsetY/CGRectGetHeight(self.topSearchView.frame);
-        NSLog(@"alpha = %f",alpha);
+//        NSLog(@"alpha = %f",alpha);
         self.topSearchView.backgroundColor = UIColorFromRGBA(0xf2f2f2, alpha);
     }else {
         self.topSearchView.backgroundColor = UIColorFromRGBA(0xf2f2f2,1);
     }
     
-//    CGFloat youlikeViewMinY = CGRectGetMinY(self.youlikeMainView.frame);
-//    if (offsetY<youlikeViewMinY) {
-//        self.mainScrollView.scrollEnabled = YES;
-//        self.youlikeMainView.collectionView.scrollEnabled = NO;
-//    }else {
-//        self.mainScrollView.scrollEnabled = NO;
-//        self.youlikeMainView.collectionView.scrollEnabled = YES;
-//    }
+    CGFloat youlikeViewMinY = CGRectGetMinY(self.youlikeMainView.frame);
+    
+    if (!self.superCanScroll) {
+        scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
+        self.youlikeMainView.canSlide = YES;
+        self.mainScrollView.showsVerticalScrollIndicator = NO;
+        self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
+    }else {
+        if (offsetY >= youlikeViewMinY) {
+            scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
+            self.superCanScroll = NO;
+            self.youlikeMainView.canSlide = YES;
+            self.mainScrollView.showsVerticalScrollIndicator = NO;
+            self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
+        }
+        self.mainScrollView.showsVerticalScrollIndicator = YES;
+    }
+    
     
     CGPoint offset = scrollView.contentOffset;
     CGRect bounds = scrollView.bounds;
@@ -550,6 +574,10 @@
 //        self.floatView.transform = CGAffineTransformMakeScale(0.001, 0.001);
         self.floatView.alpha = 0;
     }];
+}
+
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -587,9 +615,9 @@
 }
 
 #pragma mark - lazy
--(UIScrollView *)mainScrollView {
+-(BidLiveSimultaneouslyScrollView *)mainScrollView {
     if (!_mainScrollView) {
-        _mainScrollView = [[UIScrollView alloc] init];
+        _mainScrollView = [[BidLiveSimultaneouslyScrollView alloc] initWithFrame:CGRectZero];
         _mainScrollView.delegate = self;
 //        _mainScrollView.bounces = NO;
         
@@ -604,13 +632,13 @@
         refreshHead.stateLabel.hidden = YES;
         _mainScrollView.mj_header = refreshHead;
         
-        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            weakSelf.isPullRefresh = NO;
-            [weakSelf loadMoreData];
-        }];
-        refreshFoot.refreshingTitleHidden = YES;
-        refreshFoot.onlyRefreshPerDrag = YES;
-        _mainScrollView.mj_footer = refreshFoot;
+//        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//            weakSelf.isPullRefresh = NO;
+//            [weakSelf loadMoreData];
+//        }];
+//        refreshFoot.refreshingTitleHidden = YES;
+//        refreshFoot.onlyRefreshPerDrag = YES;
+//        _mainScrollView.mj_footer = refreshFoot;
     }
     return _mainScrollView;
 }
@@ -705,7 +733,8 @@
         }];
         
         [_youlikeMainView setYouLikeViewScrollToTopBlock:^{
-            weakSelf.mainScrollView.scrollEnabled = YES;
+            weakSelf.superCanScroll = YES;
+            weakSelf.mainScrollView.showsVerticalScrollIndicator = YES;
         }];
     }
     return _youlikeMainView;
