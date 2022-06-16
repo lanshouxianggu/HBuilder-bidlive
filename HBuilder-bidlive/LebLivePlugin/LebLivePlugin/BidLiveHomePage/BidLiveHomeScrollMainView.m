@@ -637,8 +637,17 @@
     if (rect.origin.y>0 && rect.origin.y<=SCREEN_HEIGHT/2) {
         //播放第一个cell上的视频
         [self.anchorMainView startPlayFirstCell];
+    }else if (rect.origin.y < 0){
+        CGFloat height = CGRectGetHeight(self.anchorMainView.frame);
+        if (fabs(rect.origin.y) > height) {
+            //停止播放视频
+            [self.anchorMainView stopPlayVideo];
+        }else {
+            [self.anchorMainView scrollViewDidEndScroll:fabs(rect.origin.y)];
+        }
     }else {
-        
+        //停止播放视频
+        [self.anchorMainView stopPlayVideo];
     }
 }
 

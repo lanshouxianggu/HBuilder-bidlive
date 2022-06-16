@@ -79,6 +79,36 @@
     self.lastPlayVideoCell = firstCell;
 }
 
+#pragma mark - scrollView 停止滚动监测
+//中间位置的cell播放视频流
+- (void)scrollViewDidEndScroll:(CGFloat)offsetY {
+    
+    NSIndexPath *indexPath = nil;
+    BidLiveHomeScrollAnchorCell *currentCell = nil;
+    if (offsetY==0) {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        currentCell = (BidLiveHomeScrollAnchorCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    }else {
+        indexPath = [self.tableView indexPathForRowAtPoint:CGPointMake(0, offsetY+SCREEN_HEIGHT/2)];
+        currentCell = (BidLiveHomeScrollAnchorCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    }
+    if (currentCell==nil) {
+        return;
+    }
+    if ([currentCell isEqual:self.lastPlayVideoCell]) {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self stopPlayVideo];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [currentCell.rtcSuperView addSubview:self.rtcView];
+            [self playStream];
+            currentCell.rtcSuperView.hidden = NO;
+            self.lastPlayVideoCell = currentCell;
+        });
+    });
+}
+
 -(void)playStream {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self.rtcView.videoView start];
