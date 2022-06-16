@@ -63,6 +63,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^toNewAuctionClickBlock)(void);
 
 -(void)destroyTimer;
+-(void)stopPlayVideo;
+-(void)loadData;
 @end
 
 NS_ASSUME_NONNULL_END

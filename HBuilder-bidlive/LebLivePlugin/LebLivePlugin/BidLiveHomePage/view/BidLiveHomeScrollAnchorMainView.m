@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong) BidLiveHomeScrollAnchorCell *lastPlayVideoCell;
 @property (nonatomic, strong) WebRtcView *rtcView;
+@property (nonatomic, assign) BOOL isPlayVideo;
 @end
 
 @implementation BidLiveHomeScrollAnchorMainView
@@ -54,9 +55,11 @@
 
 #pragma mark - 停止播放
 -(void)stopPlayVideo {
-    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
-    [self.rtcView removeFromSuperview];
     [self.rtcView.videoView stop];
+    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+    [_rtcView removeFromSuperview];
+    _rtcView = nil;
+    [[LiveEBManager sharedManager] finitSDK];
 }
 
 #pragma mark - 开始播放
@@ -66,14 +69,14 @@
     self.lastPlayVideoCell.rtcSuperView.hidden = NO;
 }
 
-#pragma mark - 播放第一个
+//#pragma mark - 播放第一个
 -(void)startPlayFirstCell {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     BidLiveHomeScrollAnchorCell *firstCell = (BidLiveHomeScrollAnchorCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    if ([firstCell isEqual:self.lastPlayVideoCell]) {
+        return;
+    }
     [firstCell.rtcSuperView addSubview:self.rtcView];
-    [self.rtcView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsZero);
-    }];
     [self playStream];
     firstCell.rtcSuperView.hidden = NO;
     self.lastPlayVideoCell = firstCell;
@@ -82,7 +85,6 @@
 #pragma mark - scrollView 停止滚动监测
 //中间位置的cell播放视频流
 - (void)scrollViewDidEndScroll:(CGFloat)offsetY {
-    
     NSIndexPath *indexPath = nil;
     BidLiveHomeScrollAnchorCell *currentCell = nil;
     if (offsetY==0) {
@@ -98,8 +100,9 @@
     if ([currentCell isEqual:self.lastPlayVideoCell]) {
         return;
     }
+            
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self stopPlayVideo];
+//        [self stopPlayVideo];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [currentCell.rtcSuperView addSubview:self.rtcView];
             [self playStream];
@@ -114,7 +117,6 @@
         [self.rtcView.videoView start];
     });
 }
-
 
 #pragma mark - UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -226,6 +228,7 @@
             weakSelf.isClickMore = YES;
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes=0;
+            [weakSelf startPlayFirstCell];
             !weakSelf.retractingClickBlock?:weakSelf.retractingClickBlock();
         }];
         

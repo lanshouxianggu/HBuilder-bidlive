@@ -72,9 +72,10 @@
 
 #pragma mark - 停止播放
 -(void)stopPlayVideo {
+    [self.rtcView.videoView stop];
     self.lastPlayVideoCell.rtcSuperView.hidden = YES;
     [self.rtcView removeFromSuperview];
-    [self.rtcView.videoView stop];
+    [[LiveEBManager sharedManager] finitSDK];
 }
 
 #pragma mark - 开始播放

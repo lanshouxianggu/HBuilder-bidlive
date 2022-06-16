@@ -20,6 +20,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [self.mainScrollView loadData];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -27,6 +29,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [self.mainScrollView destroyTimer];
+    [self.mainScrollView stopPlayVideo];
 }
 
 - (void)viewDidLoad {

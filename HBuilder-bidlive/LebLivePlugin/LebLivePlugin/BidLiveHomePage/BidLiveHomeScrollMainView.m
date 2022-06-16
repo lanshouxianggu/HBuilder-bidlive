@@ -337,6 +337,12 @@
     [self loadHomeHighliahtLotsListData];
 }
 
+#pragma mark - 停止播放视频流
+-(void)stopPlayVideo {
+    [self.anchorMainView stopPlayVideo];
+    [self.topMainView stopVideoPlay];
+}
+
 #pragma mark - 刷新数据
 -(void)refreshData {
     [self initData];
