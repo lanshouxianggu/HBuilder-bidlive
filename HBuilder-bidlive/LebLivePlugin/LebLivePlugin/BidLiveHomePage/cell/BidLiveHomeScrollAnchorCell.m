@@ -34,6 +34,9 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 //    self.coverImageView.backgroundColor = UIColor.cyanColor;
     
+    self.rtcSuperView.layer.masksToBounds = YES;
+    self.rtcSuperView.backgroundColor = UIColor.clearColor;
+    self.rtcSuperView.hidden = YES;
 //    self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.bottomCoverImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.topView.backgroundColor = UIColor.clearColor;

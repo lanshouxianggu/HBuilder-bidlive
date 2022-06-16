@@ -17,7 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^retractingClickBlock)(void);
 @property (nonatomic, copy) void (^arrowClickBlock)(void);
 @property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeAnchorListModel *model);
-
+-(void)startPlayVideo;
+-(void)stopPlayVideo;
+-(void)startPlayFirstCell;
 -(void)reloadData;
 @end
 

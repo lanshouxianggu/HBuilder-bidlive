@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollAnchorCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *rtcSuperView;
 @property (nonatomic, strong) BidLiveHomeAnchorListModel *model;
 @end
 

@@ -11,6 +11,8 @@
 #import "BidLiveBundleRecourseManager.h"
 #import "BidLiveHomeScrollAnchorCell.h"
 #import "BidLiveHomeScrollLiveBtnView.h"
+#import <LiveEB_IOS/LiveEBManager.h>
+#import "WebRtcView.h"
 
 @interface BidLiveHomeScrollAnchorMainView ()<UITableViewDelegate,UITableViewDataSource>
 ///是否点击了更多
@@ -20,6 +22,8 @@
 ///是否点击了收起
 @property (nonatomic, assign) BOOL isClickBack;
 
+@property (nonatomic, strong) BidLiveHomeScrollAnchorCell *lastPlayVideoCell;
+@property (nonatomic, strong) WebRtcView *rtcView;
 @end
 
 @implementation BidLiveHomeScrollAnchorMainView
@@ -47,6 +51,40 @@
 -(void)anchorMoreBtnAction {
     !self.arrowClickBlock?:self.arrowClickBlock();
 }
+
+#pragma mark - 停止播放
+-(void)stopPlayVideo {
+    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+    [self.rtcView removeFromSuperview];
+    [self.rtcView.videoView stop];
+}
+
+#pragma mark - 开始播放
+-(void)startPlayVideo {
+    [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
+    [self playStream];
+    self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+}
+
+#pragma mark - 播放第一个
+-(void)startPlayFirstCell {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    BidLiveHomeScrollAnchorCell *firstCell = (BidLiveHomeScrollAnchorCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [firstCell.rtcSuperView addSubview:self.rtcView];
+    [self.rtcView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsZero);
+    }];
+    [self playStream];
+    firstCell.rtcSuperView.hidden = NO;
+    self.lastPlayVideoCell = firstCell;
+}
+
+-(void)playStream {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.rtcView.videoView start];
+    });
+}
+
 
 #pragma mark - UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -212,4 +250,11 @@
     return _tableView;
 }
 
+-(WebRtcView *)rtcView {
+    if (!_rtcView) {
+        _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*11/18-10)];
+        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
+    }
+    return _rtcView;
+}
 @end

@@ -621,12 +621,24 @@
         }];
 //    });
     
+    //视频导览上的视频
     CGFloat offsetY = self.mainScrollView.contentOffset.y;
     CGFloat topMainViewMaxY = CGRectGetMaxX(self.topMainView.frame);
     if (offsetY>topMainViewMaxY) {
         [self.topMainView stopVideoPlay];
     }else {
         [self.topMainView startVideoPlay];
+    }
+    
+    //精选主播上的视频
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    CGRect rect = [self.anchorMainView convertRect:self.anchorMainView.bounds toView:window];
+    NSLog(@"精选主播位置：x=%f y=%f",rect.origin.x, rect.origin.y);
+    if (rect.origin.y>0 && rect.origin.y<=SCREEN_HEIGHT/2) {
+        //播放第一个cell上的视频
+        [self.anchorMainView startPlayFirstCell];
+    }else {
+        
     }
 }
 
