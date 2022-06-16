@@ -11,6 +11,8 @@
 #import "Masonry.h"
 #import "LCConfig.h"
 #import "BidLiveBundleRecourseManager.h"
+#import <stdio.h>
+#import <math.h>>
 
 #import "BidLiveHomeScrollTopMainView.h"
 #import "BidLiveHomeScrollLiveMainView.h"
@@ -232,32 +234,33 @@
     self.youlikePageNormalIndex = 0;
     self.superCanScroll = YES;
     self.youlikeContainAllBannersHeight = 0.0;
-    self.youlikePageIndexArray = [NSMutableArray arrayWithArray:@[@(82),@(81),@(67),@(3),
-                                                                  @(71),@(44),@(8),@(40),@(106),
-                                                                  @(47),@(94),@(19),@(7),@(87),
-                                                                  @(26),@(21),@(111),@(63),@(28),
-                                                                  @(39),@(17),@(60),@(9),@(15),
-                                                                  @(54),@(68),@(101),@(84),@(2),
-                                                                  @(57),@(12),@(85),@(61),@(16),
-                                                                  @(5),@(73),@(41),@(34),@(29),
-                                                                  @(62),@(89),@(6),@(30),@(27),
-                                                                  @(32),@(108),@(117),@(91),@(116),
-                                                                  @(11),@(114),@(115),@(72),@(97),
-                                                                  @(90),@(88),@(107),@(92),@(86),
-                                                                  @(53),@(36),@(22),@(56),@(59),
-                                                                  @(75),@(55),@(105),@(112),@(70),
-                                                                  @(58),@(110),@(38),@(104),@(65),
-                                                                  @(1),@(45),@(98),@(24),@(10),
-                                                                  @(83),@(33),@(35),@(43),@(48),
-                                                                  @(49),@(100),@(93),@(14),@(50),
-                                                                  @(37),@(31),@(96),@(79),@(46),
-                                                                  @(103),@(64),@(13),@(76),@(118),
-                                                                  @(66),@(99),@(102),@(51),@(52),
-                                                                  @(25),@(18),@(4),@(109),@(95),
-                                                                  @(23),@(74),@(78),@(80),@(77),
-                                                                  @(113),@(20),@(69),@(31),@(15),
-                                                                  @(77),@(19),@(117),@(28),@(21),
-                                                                  @(91),@(70),@(78),@(56),@(27),]];
+//    self.youlikePageIndexArray = [NSMutableArray arrayWithArray:@[@(82),@(81),@(67),@(3),
+//                                                                  @(71),@(44),@(8),@(40),@(106),
+//                                                                  @(47),@(94),@(19),@(7),@(87),
+//                                                                  @(26),@(21),@(111),@(63),@(28),
+//                                                                  @(39),@(17),@(60),@(9),@(15),
+//                                                                  @(54),@(68),@(101),@(84),@(2),
+//                                                                  @(57),@(12),@(85),@(61),@(16),
+//                                                                  @(5),@(73),@(41),@(34),@(29),
+//                                                                  @(62),@(89),@(6),@(30),@(27),
+//                                                                  @(32),@(108),@(117),@(91),@(116),
+//                                                                  @(11),@(114),@(115),@(72),@(97),
+//                                                                  @(90),@(88),@(107),@(92),@(86),
+//                                                                  @(53),@(36),@(22),@(56),@(59),
+//                                                                  @(75),@(55),@(105),@(112),@(70),
+//                                                                  @(58),@(110),@(38),@(104),@(65),
+//                                                                  @(1),@(45),@(98),@(24),@(10),
+//                                                                  @(83),@(33),@(35),@(43),@(48),
+//                                                                  @(49),@(100),@(93),@(14),@(50),
+//                                                                  @(37),@(31),@(96),@(79),@(46),
+//                                                                  @(103),@(64),@(13),@(76),@(118),
+//                                                                  @(66),@(99),@(102),@(51),@(52),
+//                                                                  @(25),@(18),@(4),@(109),@(95),
+//                                                                  @(23),@(74),@(78),@(80),@(77),
+//                                                                  @(113),@(20),@(69),@(31),@(15),
+//                                                                  @(77),@(19),@(117),@(28),@(21),
+//                                                                  @(91),@(70),@(78),@(56),@(27),]];
+    self.youlikePageIndexArray = [NSMutableArray array];
 }
 
 #pragma mark - 设置UI
@@ -473,6 +476,19 @@
         if (weakSelf.isPullRefresh) {
             [weakSelf.youlikeMainView.likesArray removeAllObjects];
         }
+        
+        NSInteger firstPageIndex = model.pageIndex;
+        NSMutableArray *tempPageArr = [NSMutableArray array];
+        for (int i=1; i<= model.pageCount; i++) {
+            if (i != firstPageIndex) {
+                [tempPageArr addObject:@(i)];
+            }
+        }
+        NSArray *sortedArr = [self shuffle:tempPageArr];
+        if (self.youlikePageIndexArray.count <= 1) {
+            [self.youlikePageIndexArray addObjectsFromArray:sortedArr];
+        }
+        
         if (weakSelf.youlikePageIndex==0 && model.list.count>10) {
             [weakSelf.youlikeMainView.likesArray removeAllObjects];
             NSRange range1 = NSMakeRange(0, 10);
@@ -530,6 +546,18 @@
         weakSelf.youlikePageNormalIndex++;
         [weakSelf.youlikeMainView.collectionView reloadData];
     }];
+}
+
+-(NSArray *)shuffle:(NSMutableArray *)array {
+    NSArray *tempArr = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        int seed = arc4random_uniform(2);
+        if (seed) {
+            return 1;
+        }else {
+            return -1;
+        }
+    }];
+    return tempArr;
 }
 
 #pragma mark - 销毁定时器
