@@ -104,7 +104,7 @@
 }
 
 -(void)startVideoPlay {
-    [self.videoGuideView startPlayFirstCell];
+    [self.videoGuideView startPlayVideo];
 }
 
 #pragma mark - SGAdvertScrollViewDelegate

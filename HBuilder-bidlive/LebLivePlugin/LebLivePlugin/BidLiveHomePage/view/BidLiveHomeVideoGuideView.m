@@ -77,6 +77,13 @@
     [self.rtcView.videoView stop];
 }
 
+#pragma mark - 开始播放
+-(void)startPlayVideo {
+    [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
+    [self playStream];
+    self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+}
+
 #pragma mark - 播放第一个
 -(void)startPlayFirstCell {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -169,8 +176,7 @@
 -(WebRtcView *)rtcView {
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, kItemWidth, kCollectionViewHeight*4/7)];
-//        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
-        _rtcView.videoView.liveEBURL = @"http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
+        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
     }
     return _rtcView;
 }
