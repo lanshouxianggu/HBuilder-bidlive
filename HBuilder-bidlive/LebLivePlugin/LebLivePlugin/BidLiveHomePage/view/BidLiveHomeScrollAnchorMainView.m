@@ -56,9 +56,10 @@
 #pragma mark - 停止播放
 -(void)stopPlayVideo {
     [self.rtcView.videoView stop];
-    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
     [_rtcView removeFromSuperview];
     _rtcView = nil;
+    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+    self.lastPlayVideoCell = nil;
     [[LiveEBManager sharedManager] finitSDK];
 }
 
@@ -247,9 +248,6 @@
     BidLiveHomeScrollAnchorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeScrollAnchorCell" forIndexPath:indexPath];
     cell.backgroundColor = UIColorFromRGB(0xf8f8f8);
     BidLiveHomeAnchorListModel *model = self.anchorsArray[indexPath.row];
-    if (indexPath.row==0||indexPath.row==2) {
-        model.liveStatus = 1;
-    }
     cell.model = model;
     
     return cell;

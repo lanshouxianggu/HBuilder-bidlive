@@ -111,8 +111,8 @@
         [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.livingLabel.mas_left).offset(-5);
         }];
-    }else if (model.status==5) {
-        //流拍
+    }else if (model.status==5 || model.status==2) {
+        //流拍、已结束
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x666666));
             make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));

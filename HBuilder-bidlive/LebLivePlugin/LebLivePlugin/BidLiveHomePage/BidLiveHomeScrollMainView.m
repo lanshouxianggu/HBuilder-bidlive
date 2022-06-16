@@ -629,8 +629,8 @@
     
     //视频导览上的视频
     CGFloat offsetY = self.mainScrollView.contentOffset.y;
-    CGFloat topMainViewMaxY = CGRectGetMaxX(self.topMainView.frame);
-    if (offsetY>topMainViewMaxY) {
+    CGFloat topMainViewMaxY = CGRectGetMaxY(self.topMainView.frame);
+    if (offsetY>topMainViewMaxY-CGRectGetHeight(self.topSearchView.frame)-100) {
         [self.topMainView stopVideoPlay];
     }else {
         [self.topMainView startVideoPlay];
@@ -652,6 +652,11 @@
             [self.anchorMainView scrollViewDidEndScroll:fabs(rect.origin.y)];
         }
     }else {
+        //停止播放视频
+        [self.anchorMainView stopPlayVideo];
+    }
+    CGFloat anchorMainViewMaxY = CGRectGetMaxY(self.anchorMainView.frame);
+    if (offsetY>anchorMainViewMaxY-CGRectGetHeight(self.topSearchView.frame)-130) {
         //停止播放视频
         [self.anchorMainView stopPlayVideo];
     }

@@ -21,7 +21,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    [self.mainScrollView loadData];
+//    [self.mainScrollView loadData];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
