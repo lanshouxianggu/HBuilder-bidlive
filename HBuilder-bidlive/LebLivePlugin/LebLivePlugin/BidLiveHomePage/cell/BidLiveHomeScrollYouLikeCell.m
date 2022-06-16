@@ -54,7 +54,7 @@
         make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x666666));
         make.text(model.strStartingPrice).foregroundColor(UIColorFromRGB(0x5E98CB));
     }];
-    if (model.status==2) {
+    if (model.auctionStatus==2) {
         self.stateLabel.text = @"正在直播";
         self.stateLabel.textColor = UIColorFromRGB(0xC6746C);
         self.dateLabel.text = @""[model.sellerName];

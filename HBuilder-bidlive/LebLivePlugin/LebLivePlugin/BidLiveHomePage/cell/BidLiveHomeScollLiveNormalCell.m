@@ -91,8 +91,6 @@
         WS(weakSelf);
         dispatch_source_set_event_handler(_timer, ^{
              dispatch_async(dispatch_get_main_queue(), ^{
-                 weakSelf.model.StartTime-=1;
-                 NSLog(@"所剩时间：%ld",weakSelf.model.StartTime);
                  [weakSelf getHtmlRemainTime:weakSelf.model.StartTime prefix:@"距开拍  " completion:^(NSAttributedString *resultAttrStr) {
                      weakSelf.changeLabel.attributedText = resultAttrStr;
                  }];

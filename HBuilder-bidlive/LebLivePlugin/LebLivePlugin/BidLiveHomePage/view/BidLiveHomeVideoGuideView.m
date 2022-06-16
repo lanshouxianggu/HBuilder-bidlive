@@ -70,6 +70,12 @@
   }
 }
 
+#pragma mark - 停止播放
+-(void)stopPlayVideo {
+    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+    [self.rtcView removeFromSuperview];
+    [self.rtcView.videoView stop];
+}
 
 #pragma mark - 播放第一个
 -(void)startPlayFirstCell {
@@ -101,10 +107,7 @@
         return;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.lastPlayVideoCell.rtcSuperView.hidden = YES;
-        [self.rtcView removeFromSuperview];
-        [self.rtcView.videoView stop];
-//        [[LiveEBManager sharedManager] finitSDK];
+        [self stopPlayVideo];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [currentCell.rtcSuperView addSubview:self.rtcView];
             [self playStream];
@@ -166,7 +169,8 @@
 -(WebRtcView *)rtcView {
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, kItemWidth, kCollectionViewHeight*4/7)];
-        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+//        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+        _rtcView.videoView.liveEBURL = @"http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
     }
     return _rtcView;
 }

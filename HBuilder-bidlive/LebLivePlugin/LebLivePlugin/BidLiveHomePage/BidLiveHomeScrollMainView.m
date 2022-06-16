@@ -620,6 +620,14 @@
             self.floatView.alpha = 1;
         }];
 //    });
+    
+    CGFloat offsetY = self.mainScrollView.contentOffset.y;
+    CGFloat topMainViewMaxY = CGRectGetMaxX(self.topMainView.frame);
+    if (offsetY>topMainViewMaxY) {
+        [self.topMainView stopVideoPlay];
+    }else {
+        [self.topMainView startVideoPlay];
+    }
 }
 
 #pragma mark - lazy

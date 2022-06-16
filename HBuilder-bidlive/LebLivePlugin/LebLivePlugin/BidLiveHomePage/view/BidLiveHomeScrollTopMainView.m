@@ -99,6 +99,14 @@
     [self.videoGuideView updateVideoGuideList:list];
 }
 
+-(void)stopVideoPlay {
+    [self.videoGuideView stopPlayVideo];
+}
+
+-(void)startVideoPlay {
+    [self.videoGuideView startPlayFirstCell];
+}
+
 #pragma mark - SGAdvertScrollViewDelegate
 -(void)advertScrollView:(SGAdvertScrollView *)advertScrollView didSelectedItemAtIndex:(NSInteger)index {
     !self.cmsArticleClickBlock?:self.cmsArticleClickBlock(self.cmsArticleArray[index]);

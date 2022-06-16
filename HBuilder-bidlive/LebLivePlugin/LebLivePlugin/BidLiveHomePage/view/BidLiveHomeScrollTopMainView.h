@@ -37,7 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)updateBanners:(NSArray<BidLiveHomeBannerModel *> *)banners;
 -(void)updateCMSArticleList:(NSArray<BidLiveHomeCMSArticleModel *> *)list;
 -(void)updateVideoGuaideList:(NSArray<BidLiveHomeVideoGuaideListModel *> *)list;
-
+-(void)startVideoPlay;
+-(void)stopVideoPlay;
 -(void)destroyTimer;
 @end
 

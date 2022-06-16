@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)updateVideoGuideList:(NSArray <BidLiveHomeVideoGuaideListModel *> *)list;
 
 @property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeVideoGuaideListModel *model);
+-(void)startPlayFirstCell;
+-(void)stopPlayVideo;
 @end
 
 NS_ASSUME_NONNULL_END
