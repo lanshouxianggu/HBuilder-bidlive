@@ -49,8 +49,9 @@
 }
 
 -(BidLiveHomeScrollMainView *)mainScrollView {
+    CGFloat tabBarHeight = [UIDevice vg_tabBarFullHeight];
     if (!_mainScrollView) {
-        _mainScrollView = [[BidLiveHomeScrollMainView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT)];
+        _mainScrollView = [[BidLiveHomeScrollMainView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT-tabBarHeight)];
         WS(weakSelf)
         [_mainScrollView setSearchClickBlock:^{
             !weakSelf.searchClickBlock?:weakSelf.searchClickBlock();

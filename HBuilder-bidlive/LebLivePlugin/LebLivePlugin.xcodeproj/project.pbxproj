@@ -209,6 +209,8 @@
 		22CCC5B62859B0DC00510C24 /* HJNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4F02859B0DB00510C24 /* HJNetwork.h */; };
 		22CCC5B72859B0DC00510C24 /* HJNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4F12859B0DB00510C24 /* HJNetwork.m */; };
 		22CCC5B82859B0DC00510C24 /* YFGIFImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4F22859B0DB00510C24 /* YFGIFImageView.h */; };
+		22CCC5BC285B2C0400510C24 /* UIDevice+VGAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC5BA285B2C0400510C24 /* UIDevice+VGAddition.h */; };
+		22CCC5BD285B2C0400510C24 /* UIDevice+VGAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC5BB285B2C0400510C24 /* UIDevice+VGAddition.m */; };
 		FD2FCB0125FC59260036D89D /* WebRtcView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2FCAFD25FC59250036D89D /* WebRtcView.m */; };
 		FD2FCB0225FC59260036D89D /* LebLiveComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2FCAFE25FC59260036D89D /* LebLiveComponent.m */; };
 /* End PBXBuildFile section */
@@ -416,6 +418,8 @@
 		22CCC4F02859B0DB00510C24 /* HJNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJNetwork.h; sourceTree = "<group>"; };
 		22CCC4F12859B0DB00510C24 /* HJNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJNetwork.m; sourceTree = "<group>"; };
 		22CCC4F22859B0DB00510C24 /* YFGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFGIFImageView.h; sourceTree = "<group>"; };
+		22CCC5BA285B2C0400510C24 /* UIDevice+VGAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+VGAddition.h"; sourceTree = "<group>"; };
+		22CCC5BB285B2C0400510C24 /* UIDevice+VGAddition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+VGAddition.m"; sourceTree = "<group>"; };
 		395DFD887906E59BC1855DC3 /* Pods-LebLivePlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LebLivePlugin.release.xcconfig"; path = "Target Support Files/Pods-LebLivePlugin/Pods-LebLivePlugin.release.xcconfig"; sourceTree = "<group>"; };
 		542CCF5A0E1F8B961B7F05A3 /* Pods-LebLivePlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LebLivePlugin.debug.xcconfig"; path = "Target Support Files/Pods-LebLivePlugin/Pods-LebLivePlugin.debug.xcconfig"; sourceTree = "<group>"; };
 		559A27F0F014D4F485DD3FA8 /* libPods-LebLivePlugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LebLivePlugin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -498,6 +502,8 @@
 				22CCC41C2859B0DB00510C24 /* UIView+PartRounded.m */,
 				22CCC41D2859B0DB00510C24 /* UIView+GradientColor.h */,
 				22CCC41E2859B0DB00510C24 /* UILabel+Common.m */,
+				22CCC5BA285B2C0400510C24 /* UIDevice+VGAddition.h */,
+				22CCC5BB285B2C0400510C24 /* UIDevice+VGAddition.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -743,8 +749,8 @@
 		22CCC4972859B0DB00510C24 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				22CCC4982859B0DB00510C24 /* BidLiveHomeComponent.m */,
 				22CCC4992859B0DB00510C24 /* BidLiveHomeComponent.h */,
+				22CCC4982859B0DB00510C24 /* BidLiveHomeComponent.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1005,6 +1011,7 @@
 				22CCC5A02859B0DC00510C24 /* BidLiveSimultaneouslyScrollView.h in Headers */,
 				22CCC5B12859B0DC00510C24 /* BidLiveBundleRecourseManager.h in Headers */,
 				22CCC5572859B0DC00510C24 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				22CCC5BC285B2C0400510C24 /* UIDevice+VGAddition.h in Headers */,
 				22CCC52A2859B0DB00510C24 /* MJRefreshBackStateFooter.h in Headers */,
 				22CCC5312859B0DB00510C24 /* MJRefreshAutoGifFooter.h in Headers */,
 				22CCC54D2859B0DB00510C24 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
@@ -1224,6 +1231,7 @@
 				22CCC5732859B0DC00510C24 /* BidLiveHomeScollLiveNormalCell.m in Sources */,
 				22CCC51D2859B0DB00510C24 /* UIScrollView+MJRefresh.m in Sources */,
 				22CCC5832859B0DC00510C24 /* SGAdvertScrollView.m in Sources */,
+				22CCC5BD285B2C0400510C24 /* UIDevice+VGAddition.m in Sources */,
 				22CCC59A2859B0DC00510C24 /* BidLiveHomeScrollYouLikeMainView.m in Sources */,
 				22CCC56D2859B0DC00510C24 /* BidLiveTopBannerView.m in Sources */,
 				22CCC5172859B0DB00510C24 /* NSString+MJExtension.m in Sources */,

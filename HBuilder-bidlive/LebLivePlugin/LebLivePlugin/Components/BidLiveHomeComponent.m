@@ -205,7 +205,7 @@
 #pragma mark - 新上拍场点击事件
         [_homeVC setToNewAuctionClickBlock:^{
             if (weakSelf.onTurnPage) {
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/newAuctions?source=en"}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":@"/pages/auctionHome/newAuctions?source="}} domChanges:nil];
             }
         }];
     }
