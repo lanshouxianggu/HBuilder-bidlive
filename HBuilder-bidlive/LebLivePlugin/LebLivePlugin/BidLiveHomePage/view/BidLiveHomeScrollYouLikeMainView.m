@@ -148,7 +148,7 @@
 //        _collectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-//        _collectionView.scrollEnabled = NO;
+        _collectionView.scrollEnabled = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];

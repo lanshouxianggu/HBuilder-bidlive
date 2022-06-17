@@ -37,13 +37,14 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
     
-//    [self.view addSubview:self.mainView];
-    [self.view addSubview:self.mainScrollView];
+    [self.view addSubview:self.mainView];
+//    [self.view addSubview:self.mainScrollView];
 }
 
 -(BidLiveHomeMainView *)mainView {
+    CGFloat tabBarHeight = [UIDevice vg_tabBarFullHeight];
     if (!_mainView) {
-        _mainView = [[BidLiveHomeMainView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT)];
+        _mainView = [[BidLiveHomeMainView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT-tabBarHeight)];
     }
     return _mainView;
 }
