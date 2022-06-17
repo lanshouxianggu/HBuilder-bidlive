@@ -65,9 +65,11 @@
 
 #pragma mark - 开始播放
 -(void)startPlayVideo {
-    [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
-    [self playStream];
-    self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+    if (self.lastPlayVideoCell) {
+        [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
+        [self playStream];
+        self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+    }
 }
 
 //#pragma mark - 播放第一个
@@ -77,6 +79,7 @@
     if ([firstCell isEqual:self.lastPlayVideoCell]) {
         return;
     }
+    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
     [firstCell.rtcSuperView addSubview:self.rtcView];
     [self playStream];
     firstCell.rtcSuperView.hidden = NO;
@@ -112,6 +115,7 @@
             self.lastPlayVideoCell = currentCell;
         });
     });
+    self.lastOffsetY = offsetY;
 }
 
 -(void)playStream {

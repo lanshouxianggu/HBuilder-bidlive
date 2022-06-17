@@ -12,8 +12,6 @@
 #import "UIImageView+WebCache.h"
 
 @interface BidLiveHomeScrollYouLikeMainView () <UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,UIGestureRecognizerDelegate>
-
-@property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic,assign) CGFloat currOffsetY;
 @end
 
@@ -118,15 +116,15 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (!self.canSlide) {
-        scrollView.contentOffset = CGPointZero;
-    }else {
-        if (scrollView.contentOffset.y <= 0) {
-            self.canSlide = NO;
-            self.collectionView.showsVerticalScrollIndicator = NO;
-            !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
-        }
-    }
+//    if (!self.canSlide) {
+//        scrollView.contentOffset = CGPointZero;
+//    }else {
+//        if (scrollView.contentOffset.y <= 0) {
+//            self.canSlide = NO;
+//            self.collectionView.showsVerticalScrollIndicator = NO;
+//            !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
+//        }
+//    }
 }
 
 #pragma mark - lazy

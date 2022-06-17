@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^arrowClickBlock)(void);
 @property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeAnchorListModel *model);
 
-- (void)scrollViewDidEndScroll:(CGFloat)offsetY;
+@property (nonatomic, assign) CGFloat lastOffsetY;
+-(void)scrollViewDidEndScroll:(CGFloat)offsetY;
 -(void)startPlayFirstCell;
 -(void)startPlayVideo;
 -(void)stopPlayVideo;

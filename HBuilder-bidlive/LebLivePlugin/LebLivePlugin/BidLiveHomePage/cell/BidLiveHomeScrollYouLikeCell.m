@@ -69,7 +69,7 @@
 -(UIImageView *)topImageView {
     if (!_topImageView) {
         _topImageView = [UIImageView new];
-        _topImageView.backgroundColor = UIColor.cyanColor;
+        _topImageView.backgroundColor = UIColor.whiteColor;
     }
     return _topImageView;
 }

@@ -33,7 +33,7 @@
 +(void)getHomePageArticleList:(int)pageIndex pageSize:(int)pageSize completion:(nonnull void (^)(NSArray<BidLiveHomeCMSArticleModel *> * _Nonnull))completionBlock {
     NSString *url = [NSString stringWithFormat:@"%@%@?pageIndex=%d&pageSize=%d",kAppEnApiAddress,kGetCMSArticleList,pageIndex,pageSize];
     
-    [HJNetwork POSTWithURL:url parameters:nil cachePolicy:HJCachePolicyCacheThenNetwork callback:^(id responseObject, BOOL isCache, NSError *error) {
+    [HJNetwork POSTWithURL:url parameters:nil cachePolicy:HJCachePolicyNetworkElseCache callback:^(id responseObject, BOOL isCache, NSError *error) {
         if (error) {
             !completionBlock?:completionBlock(@[]);
         }else {
@@ -51,7 +51,7 @@
     NSString *url = [NSString stringWithFormat:@"%@%@",kAppWebApiAddress,kGetListForIndex];
     NSDictionary *params = @{@"source":source};
     
-    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyCacheThenNetwork callback:^(id responseObject, BOOL isCache, NSError *error) {
+    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyNetworkElseCache callback:^(id responseObject, BOOL isCache, NSError *error) {
         if (error) {
             !completionBlock?:completionBlock(@[]);
         }else {
@@ -103,7 +103,7 @@
                              @"scrollLeft":scrollLeft
     };
     
-    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyCacheThenNetwork callback:^(id responseObject, BOOL isCache, NSError *error) {
+    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyNetworkElseCache callback:^(id responseObject, BOOL isCache, NSError *error) {
         if (error) {
             !completionBlock?:completionBlock([BidLiveHomeVideoGuaideModel new]);
         }else {
@@ -132,7 +132,7 @@
                              @"isContainBeforePage":@(isContainBeforePage)
     };
     
-    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyIgnoreCache callback:^(id responseObject, BOOL isCache, NSError *error) {
+    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyNetworkElseCache callback:^(id responseObject, BOOL isCache, NSError *error) {
         if (error) {
             !completionBlock?:completionBlock([BidLiveHomeAnchorModel new]);
         }else {
@@ -154,7 +154,7 @@
     NSString *url = [NSString stringWithFormat:@"%@%@",kAppWebApiAddress,kGetGuangGuangPagedList];
     NSDictionary *params = @{@"pageIndex":@(pageIndex)};
     
-    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyIgnoreCache callback:^(id responseObject, BOOL isCache, NSError *error) {
+    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyNetworkElseCache callback:^(id responseObject, BOOL isCache, NSError *error) {
         if (error) {
             !completionBlock?:completionBlock([BidLiveHomeGuessYouLikeModel new]);
         }else {
@@ -185,7 +185,7 @@
                              @"scrollLeft":scrollLeft
     };
     
-    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyCacheThenNetwork callback:^(id responseObject, BOOL isCache, NSError *error) {
+    [HJNetwork POSTWithURL:url parameters:params cachePolicy:HJCachePolicyNetworkElseCache callback:^(id responseObject, BOOL isCache, NSError *error) {
         if (error) {
             !completionBlock?:completionBlock([BidLiveHomeHighlightLotsModel new]);
         }else {

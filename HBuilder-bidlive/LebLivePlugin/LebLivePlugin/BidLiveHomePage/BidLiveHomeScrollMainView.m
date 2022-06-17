@@ -178,10 +178,15 @@
             [weakSelf.speechMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
             }];
-            [weakSelf.speechMainView.tableView reloadData];
-//            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastVideosCount-5)*kSpeechCellHeight-150;
-            CGFloat offsetY = CGRectGetMinY(weakSelf.speechMainView.frame)-150;
-            [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+//            CGRect frame = weakSelf.speechMainView.frame;
+//            frame.size.height = 70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60;
+//            weakSelf.speechMainView.frame = frame;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.speechMainView.tableView reloadData];
+                CGFloat offsetY = CGRectGetMinY(weakSelf.speechMainView.frame)-150;
+                [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+            });
+            
         }];
 #pragma mark - 精选主播更多点击事件
         [self.anchorMainView setMoreClickBlock:^{
@@ -202,7 +207,7 @@
             });
             
 //            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastAnchorsCount-5)*kAnchorCellHeight-150;
-            CGFloat offsetY = CGRectGetMinY(weakSelf.anchorMainView.frame)-150;
+            CGFloat offsetY = CGRectGetMinY(weakSelf.anchorMainView.frame)-145;
             [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
         }];
 #pragma mark - 精选主播箭头点击事件
@@ -364,7 +369,7 @@
         int currentPage = [[self.youlikePageIndexArray firstObject] intValue];
         self.youlikePageIndex = currentPage;
         [self loadGuessYouLikeListData];
-        [self.youlikePageIndexArray removeObjectAtIndex:0];
+//        [self.youlikePageIndexArray removeObjectAtIndex:0];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.mainScrollView.mj_footer endRefreshing];
         });
@@ -458,6 +463,11 @@
         }];
         weakSelf.lastAnchorsCount = weakSelf.anchorMainView.anchorsArray.count;
         [weakSelf.anchorMainView reloadData];
+        if (weakSelf.anchorPageIndex!=1) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.anchorMainView scrollViewDidEndScroll:weakSelf.anchorMainView.lastOffsetY];
+            });
+        }
     }];
 }
 
@@ -487,9 +497,9 @@
                 [tempPageArr addObject:@(i)];
             }
         }
-        NSArray *sortedArr = [self shuffle:tempPageArr];
-        if (self.youlikePageIndexArray.count <= 1) {
-            [self.youlikePageIndexArray addObjectsFromArray:sortedArr];
+        NSArray *sortedArr = [weakSelf shuffle:tempPageArr];
+        if (weakSelf.youlikePageIndexArray.count <= 1) {
+            [weakSelf.youlikePageIndexArray addObjectsFromArray:sortedArr];
         }
         
         if (weakSelf.youlikePageIndex==0 && model.list.count>10) {
@@ -537,17 +547,27 @@
             [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(height);
             }];
-            self.youlikeContainAllBannersHeight = height;
+            weakSelf.youlikeContainAllBannersHeight = height;
         }else {
             NSInteger moreCount = weakSelf.youlikePageNormalIndex+1-likesBannerCount;
-            height = self.youlikeContainAllBannersHeight + (moreCount*(5*280+4*10));
+            height = weakSelf.youlikeContainAllBannersHeight + (moreCount*(5*280+4*10))+20;
             NSLog(@"hight after:%f",height);
             [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(height);
             }];
         }
         weakSelf.youlikePageNormalIndex++;
+        [weakSelf.youlikePageIndexArray removeObjectAtIndex:0];
+        
+//        CGPoint offset = weakSelf.youlikeMainView.collectionView.contentOffset;
+//        [weakSelf.youlikeMainView.collectionView reloadData];
+//        [weakSelf.youlikeMainView.layout invalidateLayout];
+//        [weakSelf.youlikeMainView.collectionView layoutIfNeeded];
+//        [weakSelf.youlikeMainView.collectionView setContentOffset:offset];
+        
+        [CATransaction setDisableActions:YES];
         [weakSelf.youlikeMainView.collectionView reloadData];
+        [CATransaction commit];
     }];
 }
 
@@ -698,7 +718,7 @@
     if (!_mainScrollView) {
         _mainScrollView = [[BidLiveSimultaneouslyScrollView alloc] initWithFrame:CGRectZero];
         _mainScrollView.delegate = self;
-        _mainScrollView.bounces = NO;
+//        _mainScrollView.bounces = NO;
         
         WS(weakSelf)
         MJRefreshNormalHeader *refreshHead = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -711,11 +731,11 @@
         refreshHead.stateLabel.hidden = YES;
         _mainScrollView.mj_header = refreshHead;
         
-        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        MJRefreshAutoFooter *refreshFoot = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
             weakSelf.isPullRefresh = NO;
             [weakSelf loadMoreData];
         }];
-        refreshFoot.refreshingTitleHidden = YES;
+        refreshFoot.triggerAutomaticallyRefreshPercent = -50;
         refreshFoot.onlyRefreshPerDrag = YES;
         _mainScrollView.mj_footer = refreshFoot;
     }
