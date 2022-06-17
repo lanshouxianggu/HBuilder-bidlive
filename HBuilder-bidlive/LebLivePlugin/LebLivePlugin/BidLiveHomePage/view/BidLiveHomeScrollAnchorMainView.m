@@ -105,6 +105,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
 //        [self stopPlayVideo];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.lastPlayVideoCell.rtcSuperView.hidden = YES;
             [currentCell.rtcSuperView addSubview:self.rtcView];
             [self playStream];
             currentCell.rtcSuperView.hidden = NO;
@@ -249,6 +250,7 @@
     cell.backgroundColor = UIColorFromRGB(0xf8f8f8);
     BidLiveHomeAnchorListModel *model = self.anchorsArray[indexPath.row];
     cell.model = model;
+    cell.rtcSuperView.hidden = YES;
     
     return cell;
 }
@@ -285,6 +287,7 @@
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*11/18-10)];
         _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
+//        [_rtcView.videoView setRenderMode:LEBVideoRenderMode_ScaleAspect_FIT];
     }
     return _rtcView;
 }

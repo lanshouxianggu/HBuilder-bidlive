@@ -35,7 +35,7 @@
 //    self.coverImageView.backgroundColor = UIColor.cyanColor;
     
     self.rtcSuperView.layer.masksToBounds = YES;
-    self.rtcSuperView.backgroundColor = UIColor.clearColor;
+    self.rtcSuperView.backgroundColor = UIColor.blackColor;
     self.rtcSuperView.hidden = YES;
 //    self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.bottomCoverImageView.contentMode = UIViewContentModeScaleAspectFill;
