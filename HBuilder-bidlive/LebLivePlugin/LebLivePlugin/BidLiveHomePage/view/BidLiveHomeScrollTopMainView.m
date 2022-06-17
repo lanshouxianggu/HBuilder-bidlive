@@ -174,7 +174,7 @@
 
 -(BidLiveHomeVideoGuideView *)videoGuideView {
     if (!_videoGuideView) {
-        _videoGuideView = [[BidLiveHomeVideoGuideView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(self.scrollTitleSuperView.frame)+10, SCREEN_WIDTH-30, SCREEN_HEIGHT*0.25)];
+        _videoGuideView = [[BidLiveHomeVideoGuideView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(self.scrollTitleSuperView.frame)+10, SCREEN_WIDTH-30, SCREEN_HEIGHT*0.18)];
         _videoGuideView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     }
     return _videoGuideView;

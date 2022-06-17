@@ -37,8 +37,8 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
     
-    [self.view addSubview:self.mainView];
-//    [self.view addSubview:self.mainScrollView];
+//    [self.view addSubview:self.mainView];
+    [self.view addSubview:self.mainScrollView];
 }
 
 -(BidLiveHomeMainView *)mainView {

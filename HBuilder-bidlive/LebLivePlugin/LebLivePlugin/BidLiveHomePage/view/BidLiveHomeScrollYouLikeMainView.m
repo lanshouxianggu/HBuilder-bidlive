@@ -52,35 +52,35 @@
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if (kind==UICollectionElementKindSectionHeader) {
+    if (kind==UICollectionElementKindSectionFooter) {
         UICollectionReusableView *reusableHeadView = nil;
         if (!reusableHeadView) {
-            reusableHeadView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView1" forIndexPath:indexPath];
+            reusableHeadView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1" forIndexPath:indexPath];
             reusableHeadView.backgroundColor = UIColorFromRGB(0xf8f8f8);
             for (UIView *view in reusableHeadView.subviews) {
                 [view removeFromSuperview];
             }
-            if (indexPath.section==0) {
-                UILabel *label = (UILabel *)[reusableHeadView viewWithTag:100];
-                if (!label) {
-                    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 60)];
-                    label.tag = 100;
-                    label.text = @"猜 你 喜 欢";
-                    label.textAlignment = NSTextAlignmentCenter;
-                    label.textColor = UIColor.blackColor;
-                    label.font = [UIFont systemFontOfSize:22 weight:UIFontWeightBold];
-
-                    [reusableHeadView addSubview:label];
-                }
-            }else {
+//            if (indexPath.section==0) {
+//                UILabel *label = (UILabel *)[reusableHeadView viewWithTag:100];
+//                if (!label) {
+//                    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 60)];
+//                    label.tag = 100;
+//                    label.text = @"猜 你 喜 欢";
+//                    label.textAlignment = NSTextAlignmentCenter;
+//                    label.textColor = UIColor.blackColor;
+//                    label.font = [UIFont systemFontOfSize:22 weight:UIFontWeightBold];
+//
+//                    [reusableHeadView addSubview:label];
+//                }
+//            }else {
                 UIView *view = (UIView *)[reusableHeadView viewWithTag:101];
                 if (!view) {
                     view = [[UIView alloc] initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
                     view.backgroundColor = UIColorFromRGB(0xf8f8f8);
                     view.tag = 101;
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
-                    if (indexPath.section-1<self.bannerArray.count) {
-                        BidLiveHomeBannerModel *model = self.bannerArray[indexPath.section-1];
+                    if (indexPath.section<self.bannerArray.count) {
+                        BidLiveHomeBannerModel *model = self.bannerArray[indexPath.section];
                         if (model) {
                             [imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
                         }
@@ -95,11 +95,11 @@
                     
                     [reusableHeadView addSubview:view];
                 }
-            }
+//            }
         }
         return reusableHeadView;
     }
-    return [UICollectionReusableView new];
+    return nil;
 }
 
 -(__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -136,7 +136,8 @@
         _layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _layout.minimumLineSpacing = 10;
         _layout.minimumInteritemSpacing = 0;
-        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
+//        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
+        _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
     }
     return _layout;
 }
@@ -152,7 +153,7 @@
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
-        [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView1"];
+        [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
         
 //        WS(weakSelf)
 //        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{

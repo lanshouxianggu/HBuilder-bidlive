@@ -64,6 +64,7 @@
 ///焦点拍品
 @property (nonatomic, strong) BidLiveHomeScrollHighlightLotsView *highlightLotsMainView;
 ///猜你喜欢
+@property (nonatomic, strong) UIView *youlikeHeadTitleView;
 @property (nonatomic, strong) BidLiveHomeScrollYouLikeMainView *youlikeMainView;
 ///上一次讲堂视频的数量
 @property (nonatomic, assign) NSInteger lastVideosCount;
@@ -299,10 +300,17 @@
         make.height.mas_equalTo(kHightlightLotsMainViewHeight);
     }];
     
+    [self.mainView addSubview:self.youlikeHeadTitleView];
+    [self.youlikeHeadTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.offset(0);
+        make.height.mas_equalTo(80);
+        make.top.equalTo(self.highlightLotsMainView.mas_bottom).offset(0);
+    }];
+    
     [self.mainView addSubview:self.youlikeMainView];
     [self.youlikeMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
-        make.top.equalTo(self.highlightLotsMainView.mas_bottom).offset(-30);
+        make.top.equalTo(self.youlikeHeadTitleView).offset(0);
         make.height.mas_equalTo(kYouLikeMainViewHeight);
         make.bottom.offset(-10);
     }];
@@ -516,7 +524,7 @@
         NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
         CGFloat height = 0;
         if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
-            height = (likesArrayCount*kYouLikeMainViewHeight)+20;
+            height = (likesArrayCount*kYouLikeMainViewHeight)+10;
             NSLog(@"hight before:%f",height);
             [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(height);
@@ -709,7 +717,7 @@
             weakSelf.isPullRefresh = NO;
             [weakSelf loadMoreData];
         }];
-        refreshFoot.triggerAutomaticallyRefreshPercent = -50;
+        refreshFoot.triggerAutomaticallyRefreshPercent = -20;
         refreshFoot.onlyRefreshPerDrag = YES;
         _mainScrollView.mj_footer = refreshFoot;
     }
@@ -793,6 +801,25 @@
         _highlightLotsMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     }
     return _highlightLotsMainView;
+}
+
+-(UIView *)youlikeHeadTitleView {
+    if (!_youlikeHeadTitleView) {
+        _youlikeHeadTitleView = [UIView new];
+        _youlikeHeadTitleView.backgroundColor = UIColorFromRGB(0xF8F8F8);
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.tag = 100;
+        label.text = @"猜 你 喜 欢";
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = UIColor.blackColor;
+        label.font = [UIFont systemFontOfSize:22 weight:UIFontWeightBold];
+
+        [_youlikeHeadTitleView addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.offset(0);
+        }];
+    }
+    return _youlikeHeadTitleView;
 }
 
 -(BidLiveHomeScrollYouLikeMainView *)youlikeMainView {

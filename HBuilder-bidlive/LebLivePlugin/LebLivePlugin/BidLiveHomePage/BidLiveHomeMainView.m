@@ -14,6 +14,11 @@
 #import "LCConfig.h"
 #import "BidLiveBundleRecourseManager.h"
 #import "BidLiveHomeScrollYouLikeMainView.h"
+#import "BidLiveHomeScrollTopMainView.h"
+#import "BidLiveHomeScrollLiveMainView.h"
+#import "BidLiveHomeScrollAnchorMainView.h"
+#import "BidLiveHomeScrollSpeechMainView.h"
+#import "BidLiveHomeScrollHighlightLotsView.h"
 
 #define kTopMainBannerViewHeight (UIApplication.sharedApplication.statusBarFrame.size.height>20?210:180)
 
@@ -42,9 +47,32 @@
 @property (nonatomic, strong) BidLiveHomeHeadView *topSearchView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) BidLiveHomeFloatView *floatView;
+
+///topView，包括图片广告轮播，按钮模块，文字滚动，直播页
+@property (nonatomic, strong) BidLiveHomeScrollTopMainView *topMainView;
+///直播专场
+@property (nonatomic, strong) BidLiveHomeScrollLiveMainView *liveMainView;
+///精选主播
+@property (nonatomic, strong) BidLiveHomeScrollAnchorMainView *anchorMainView;
+///联拍讲堂
+@property (nonatomic, strong) BidLiveHomeScrollSpeechMainView *speechMainView;
+///焦点拍品
+@property (nonatomic, strong) BidLiveHomeScrollHighlightLotsView *highlightLotsMainView;
 ///猜你喜欢
 @property (nonatomic, strong) BidLiveHomeScrollYouLikeMainView *youlikeMainView;
+///上一次讲堂视频的数量
+@property (nonatomic, assign) NSInteger lastVideosCount;
+///名家讲堂当前页码
+@property (nonatomic, assign) int speechPageIndex;
+///第一页名家讲堂列表数据
+@property (nonatomic, strong) NSArray *speechOrigionArray;
 
+///上一次精选主播的数量
+@property (nonatomic, assign) NSInteger lastAnchorsCount;
+///精选主播当前页码
+@property (nonatomic, assign) int anchorPageIndex;
+///第一页精选主播列表数据
+@property (nonatomic, strong) NSArray *anchorOrigionArray;
 ///猜你喜欢当前页码(无序)
 @property (nonatomic, assign) int youlikePageIndex;
 ///猜你喜欢当前页码(有序)
@@ -95,16 +123,25 @@
     self.youlikePageIndexArray = [NSMutableArray array];
 }
 
+#pragma mark - 刷新数据
+-(void)refreshData {
+    [self initData];
+    [self loadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.tableView.mj_header endRefreshing];
+    });
+}
+
 #pragma mark - 加载数据
 -(void)loadData {
     [self loadBannerData];
-//    [self loadCMSArticleData];
-//    [self loadGlobalLiveData];
-//    [self loadHomeHotCourseData];
-//    [self loadHomeVideoGuaideData];
-//    [self loadHomeAnchorListData];
+    [self loadCMSArticleData];
+    [self loadGlobalLiveData];
+    [self loadHomeHotCourseData];
+    [self loadHomeVideoGuaideData];
+    [self loadHomeAnchorListData];
     [self loadGuessYouLikeListData];
-//    [self loadHomeHighliahtLotsListData];
+    [self loadHomeHighliahtLotsListData];
 }
 
 #pragma mark - 加载广告轮播数据
@@ -112,17 +149,107 @@
     WS(weakSelf)
     //顶部banner
     [BidLiveHomeNetworkModel getHomePageBannerList:11 client:@"wx" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
-//        [weakSelf.topMainView updateBanners:bannerList];
+        [weakSelf.topMainView updateBanners:bannerList];
     }];
     
     //全球直播banner
     [BidLiveHomeNetworkModel getHomePageBannerList:12 client:@"wx" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
-//        [weakSelf.liveMainView updateBannerArray:bannerList];
+        [weakSelf.liveMainView updateBannerArray:bannerList];
     }];
     
     //猜你喜欢banner
     [BidLiveHomeNetworkModel getHomePageBannerList:22 client:@"app" completion:^(NSArray<BidLiveHomeBannerModel *> * _Nonnull bannerList) {
         weakSelf.youlikeBannerArray = bannerList;
+    }];
+}
+
+#pragma mark - 加载动态滚动数据
+-(void)loadCMSArticleData {
+    WS(weakSelf)
+    [BidLiveHomeNetworkModel getHomePageArticleList:1 pageSize:5 completion:^(NSArray<BidLiveHomeCMSArticleModel *> * _Nonnull cmsArticleList) {
+        [weakSelf.topMainView updateCMSArticleList:cmsArticleList];
+    }];
+}
+
+#pragma mark - 加载视频导览列表数据
+-(void)loadHomeVideoGuaideData {
+    WS(weakSelf)
+    [BidLiveHomeNetworkModel getHomePageVideoGuaideList:1 pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeVideoGuaideModel * _Nonnull courseModel) {
+        [weakSelf.topMainView updateVideoGuaideList:courseModel.list];
+    }];
+}
+
+#pragma mark - 加载全球直播列表数据
+-(void)loadGlobalLiveData {
+    WS(weakSelf)
+    [BidLiveHomeNetworkModel getHomePageGlobalLiveList:@"all" completion:^(NSArray<BidLiveHomeGlobalLiveModel *> * _Nonnull liveList) {
+        NSMutableArray *totalArray = [NSMutableArray arrayWithArray:liveList];
+        NSRange range1 = NSMakeRange(0, totalArray.count/2);
+        NSRange range2 = NSMakeRange(totalArray.count/2, totalArray.count/2);
+        NSArray *array1 = [totalArray subarrayWithRange:range1];
+        NSArray *array2 = [totalArray subarrayWithRange:range2];
+        weakSelf.liveMainView.firstPartLiveArray = array1;
+        weakSelf.liveMainView.secondPartLiveArray = array2;
+        
+        [weakSelf.liveMainView reloadData];
+    }];
+}
+
+#pragma mark - 加载名家讲堂列表数据
+-(void)loadHomeHotCourseData {
+    WS(weakSelf)
+    [BidLiveHomeNetworkModel getHomePageHotCourse:self.speechPageIndex pageSize:4 pageCount:0 completion:^(BidLiveHomeHotCourseModel * _Nonnull courseModel) {
+        if (weakSelf.isPullRefresh) {
+            [weakSelf.speechMainView.videosArray removeAllObjects];
+        }
+        [weakSelf.speechMainView.videosArray addObjectsFromArray:courseModel.list];
+        if (weakSelf.speechPageIndex==1) {
+            weakSelf.speechOrigionArray = courseModel.list;
+        }
+        [weakSelf.speechMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
+        }];
+        weakSelf.lastVideosCount = weakSelf.speechMainView.videosArray.count;
+        [weakSelf.speechMainView reloadData];
+//        [weakSelf.tableView reloadData];
+    }];
+}
+
+#pragma mark - 加载精选主播列表数据
+-(void)loadHomeAnchorListData {
+    WS(weakSelf)
+    
+    [BidLiveHomeNetworkModel getHomePageAnchorList:self.anchorPageIndex pageSize:4 pageCount:0 isContainBeforePage:false completion:^(BidLiveHomeAnchorModel * _Nonnull model) {
+        if (weakSelf.isPullRefresh) {
+            [weakSelf.anchorMainView.anchorsArray removeAllObjects];
+        }
+        [weakSelf.anchorMainView.anchorsArray addObjectsFromArray:model.list];
+        if (weakSelf.anchorPageIndex==1) {
+            weakSelf.anchorOrigionArray = model.list;
+        }
+        [weakSelf.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(90+weakSelf.anchorMainView.anchorsArray.count*kAnchorCellHeight+60);
+        }];
+        weakSelf.lastAnchorsCount = weakSelf.anchorMainView.anchorsArray.count;
+        [weakSelf.anchorMainView reloadData];
+        
+        if (weakSelf.anchorPageIndex!=1) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.anchorMainView scrollViewDidEndScroll:weakSelf.anchorMainView.lastOffsetY];
+            });
+        }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [weakSelf.tableView reloadData];
+        });
+    }];
+}
+
+#pragma mark - 加载焦点拍品列表数据
+-(void)loadHomeHighliahtLotsListData {
+    WS(weakSelf)
+    [BidLiveHomeNetworkModel getHomePageHighlightLotsList:1 pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeHighlightLotsModel * _Nonnull courseModel) {
+        [weakSelf.highlightLotsMainView updateHighlightLotsList:courseModel.list];
     }];
 }
 
@@ -247,7 +374,7 @@
 
 #pragma mark - UITableViewDelegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 6;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -259,16 +386,27 @@
         return kTopMainViewHeight;
     }
     if (indexPath.section==1) {
-        return 200;
+        return kLiveMainViewHeight;
+    }
+    if (indexPath.section==2) {
+        return kAnchorMainViewHeight;
+//        return UITableViewAutomaticDimension;
     }
     if (indexPath.section==3) {
+//        return kSpeechMainViewHeight;
+        return UITableViewAutomaticDimension;
+    }
+    if (indexPath.section==4) {
+        return kHightlightLotsMainViewHeight;
+    }
+    if (indexPath.section==5) {
         return UITableViewAutomaticDimension;
     }
     return 200;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section==0) {
+    if (section==0||section==1||section==2||section==3||section==4) {
         return 0;
     }
     return 80;
@@ -277,22 +415,10 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headView = [UIView new];
     headView.backgroundColor = UIColorFromRGB(0xF8F8F8);
-    
-    if (section==1 || section==2) {
-        UIImage *image = [BidLiveBundleRecourseManager getBundleImage:section==1?@"special":@"classroom" type:@"png"];
-        
-        UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
-        [headView addSubview:imageV];
-        [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.offset(0);
-            make.width.mas_equalTo(44*3.35);
-            make.height.mas_equalTo(44);
-        }];
-    }
-    if (section==3) {
+    if (section==5) {
         UILabel *label = (UILabel *)[headView viewWithTag:100];
         if (!label) {
-            label = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 60)];
+            label = [[UILabel alloc] initWithFrame:CGRectZero];
             label.tag = 100;
             label.text = @"猜 你 喜 欢";
             label.textAlignment = NSTextAlignmentCenter;
@@ -300,6 +426,9 @@
             label.font = [UIFont systemFontOfSize:22 weight:UIFontWeightBold];
 
             [headView addSubview:label];
+            [label mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.center.offset(0);
+            }];
         }
     }
     
@@ -307,42 +436,68 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.section==0) {
-        BidLiveHomeFirstCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeFirstCell" forIndexPath:indexPath];
-//        BidLiveHomeFirstTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeFirstTableViewCell" forIndexPath:indexPath];
-//        if (!cell) {
-//            cell = [[BidLiveHomeFirstTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"BidLiveHomeFirstTableViewCell"];
-//        }
-//        WS(weakSelf)
-//        [cell setGlobalSaleClickBlock:^{
-//            !weakSelf.globalSaleClickBlock?:weakSelf.globalSaleClickBlock();
-//        }];
-//
-//        [cell setAppraisalClickBlock:^{
-//            !weakSelf.appraisalClickBlock?:weakSelf.appraisalClickBlock();
-//        }];
-//
-//        [cell setCountrySaleClickBlock:^{
-//            !weakSelf.countrySaleClickBlock?:weakSelf.countrySaleClickBlock();
-//        }];
-//
-//        [cell setSendClickBlock:^{
-//            !weakSelf.sendClickBlock?:weakSelf.sendClickBlock();
-//        }];
-//
-//        [cell setSpeechClassClickBlock:^{
-//            !weakSelf.speechClassClickBlock?:weakSelf.speechClassClickBlock();
-//        }];
-//
-//        [cell setInformationClickBlock:^{
-//            !weakSelf.informationClickBlock?:weakSelf.informationClickBlock();
-//        }];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell0" forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell0"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell.contentView addSubview:self.topMainView];
+        [self.topMainView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.insets(UIEdgeInsetsZero);
+        }];
+        
         return cell;
     }
-    if (indexPath.section==3) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    if (indexPath.section==1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell1" forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell1"];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        [cell.contentView addSubview:self.liveMainView];
+        [self.liveMainView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.insets(UIEdgeInsetsZero);
+        }];
+        return cell;
+    }
+    if (indexPath.section==2) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell2" forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell4"];
+        }
+        [cell.contentView addSubview:self.anchorMainView];
+        [self.anchorMainView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.insets(UIEdgeInsetsZero);
+        }];
+        return cell;
+    }
+//    if (indexPath.section==3) {
+//        [cell.contentView addSubview:self.speechMainView];
+//        [self.speechMainView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.insets(UIEdgeInsetsZero);
+//        }];
+//        return cell;
+//    }
+    if (indexPath.section==4) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell4" forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell4"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell.contentView addSubview:self.highlightLotsMainView];
+        [self.highlightLotsMainView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.insets(UIEdgeInsetsZero);
+        }];
+        return cell;
+    }
+    if (indexPath.section==5) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell5" forIndexPath:indexPath];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell5"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:self.youlikeMainView];
         [self.youlikeMainView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.insets(UIEdgeInsetsZero);
@@ -351,8 +506,10 @@
         return cell;
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     return cell;
 }
 
@@ -414,6 +571,13 @@
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell0"];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell1"];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell2"];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell3"];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell4"];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell5"];
+        
         [_tableView registerClass:BidLiveHomeFirstTableViewCell.class forCellReuseIdentifier:@"BidLiveHomeFirstTableViewCell"];
     
         UINib *nib = [BidLiveBundleRecourseManager getBundleNib:@"BidLiveHomeFirstCell" type:@"nib"];
@@ -423,7 +587,7 @@
         WS(weakSelf)
         MJRefreshNormalHeader *refreshHead = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             weakSelf.isPullRefresh = YES;
-//            [weakSelf refreshData];
+            [weakSelf refreshData];
         }];
         refreshHead.backgroundColor = [UIColor clearColor];
         
@@ -454,6 +618,51 @@
         _floatView = [[BidLiveHomeFloatView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-60-30, SCREEN_HEIGHT-130, 60, 60)];
     }
     return _floatView;
+}
+
+-(BidLiveHomeScrollTopMainView *)topMainView {
+    if (!_topMainView) {
+        _topMainView  = [[BidLiveHomeScrollTopMainView alloc] initWithFrame:CGRectZero];
+        _topMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+        
+        WS(weakSelf)
+        [_topMainView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
+    }
+    return _topMainView;
+}
+
+-(BidLiveHomeScrollLiveMainView *)liveMainView {
+    if (!_liveMainView) {
+        _liveMainView = [[BidLiveHomeScrollLiveMainView alloc] initWithFrame:CGRectZero];
+        _liveMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+    }
+    return _liveMainView;
+}
+
+-(BidLiveHomeScrollAnchorMainView *)anchorMainView {
+    if (!_anchorMainView) {
+        _anchorMainView = [[BidLiveHomeScrollAnchorMainView alloc] initWithFrame:CGRectZero];
+        _anchorMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+    }
+    return _anchorMainView;
+}
+
+-(BidLiveHomeScrollSpeechMainView *)speechMainView {
+    if (!_speechMainView) {
+        _speechMainView = [[BidLiveHomeScrollSpeechMainView alloc] initWithFrame:CGRectZero];
+        _speechMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+    }
+    return _speechMainView;
+}
+
+-(BidLiveHomeScrollHighlightLotsView *)highlightLotsMainView {
+    if (!_highlightLotsMainView) {
+        _highlightLotsMainView = [[BidLiveHomeScrollHighlightLotsView alloc] initWithFrame:CGRectZero];
+        _highlightLotsMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+    }
+    return _highlightLotsMainView;
 }
 
 -(BidLiveHomeScrollYouLikeMainView *)youlikeMainView {
