@@ -230,7 +230,6 @@
             weakSelf.isClickMore = YES;
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes=0;
-            [weakSelf startPlayFirstCell];
             !weakSelf.retractingClickBlock?:weakSelf.retractingClickBlock();
         }];
         
@@ -250,7 +249,6 @@
     cell.backgroundColor = UIColorFromRGB(0xf8f8f8);
     BidLiveHomeAnchorListModel *model = self.anchorsArray[indexPath.row];
     cell.model = model;
-    cell.rtcSuperView.hidden = YES;
     
     return cell;
 }

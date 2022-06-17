@@ -197,6 +197,9 @@
                 make.height.mas_equalTo(90+weakSelf.anchorMainView.anchorsArray.count*kAnchorCellHeight+60);
             }];
             [weakSelf.anchorMainView reloadData];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.anchorMainView startPlayFirstCell];
+            });
             
 //            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastAnchorsCount-5)*kAnchorCellHeight-150;
             CGFloat offsetY = CGRectGetMinY(weakSelf.anchorMainView.frame)-150;

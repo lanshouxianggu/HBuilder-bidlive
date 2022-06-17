@@ -43,18 +43,8 @@ UNI_EXPORT_METHOD(@selector(closeMiniFloatDialog))
             [[LiveEBManager sharedManager] finitSDK];
             [self.floatView removeFromSuperview];
             self.hasOpenMiniFloatDialog = NO;
+            NSLog(@"视频悬浮窗关闭");
         }
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            for (UIView *subView in [UIApplication sharedApplication].windows.firstObject.subviews) {
-//                if ([subView isKindOfClass:[LebLiveFloatView class]]) {
-//                    LebLiveFloatView *floatView = (LebLiveFloatView *)subView;
-//                    [floatView endPlay];
-//                    [subView removeFromSuperview];
-//                    [[LiveEBManager sharedManager] finitSDK];
-//                    self.hasOpenMiniFloatDialog = NO;
-//                }
-//            }
-//        });
     });
 }
 
@@ -63,6 +53,7 @@ UNI_EXPORT_METHOD(@selector(closeMiniFloatDialog))
         return;
     }
     self.hasOpenMiniFloatDialog = YES;
+    NSLog(@"视频悬浮窗显示");
     //显示播流浮窗
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *liveUrl = videoUrl;
