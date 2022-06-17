@@ -151,9 +151,9 @@
         NSLog(@"%@",@"距开拍："[hour][@"时"][min][@"分"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
-            make.text(hour).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);
+            make.text(hour).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);
             make.text(@"时").foregroundColor(UIColorFromRGB(0x666666));
-            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);;
+            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
             make.text(@"分").foregroundColor(UIColorFromRGB(0x666666));
         }];
         
@@ -163,9 +163,9 @@
         NSLog(@"%@",@"距开拍："[min][@"分"][sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
-            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);;
+            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
             make.text(@"分").foregroundColor(UIColorFromRGB(0x666666));
-            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);;
+            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
             make.text(@"秒").foregroundColor(UIColorFromRGB(0x666666));
         }];
     }else if ([type isEqualToString:@"秒"]) {
@@ -173,7 +173,7 @@
         NSLog(@"%@",@"距开拍："[sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
-            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightMedium]);;
+            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
             make.text(@"秒").foregroundColor(UIColorFromRGB(0x666666));
         }];
     }

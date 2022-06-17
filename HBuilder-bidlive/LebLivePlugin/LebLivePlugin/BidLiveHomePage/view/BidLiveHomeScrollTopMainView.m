@@ -168,6 +168,7 @@
     if (!_scrollTitleView) {
         _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(60, 0, SCREEN_WIDTH-85, kMainViewHeihgt)];
         _scrollTitleView.delegate = self;
+        _scrollTitleView.scrollTimeInterval = 2;
     }
     return _scrollTitleView;
 }
