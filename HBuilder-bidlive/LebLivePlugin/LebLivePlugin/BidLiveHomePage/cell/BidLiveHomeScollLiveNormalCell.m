@@ -91,9 +91,17 @@
         WS(weakSelf);
         dispatch_source_set_event_handler(_timer, ^{
              dispatch_async(dispatch_get_main_queue(), ^{
-                 [weakSelf getHtmlRemainTime:weakSelf.model.StartTime prefix:@"距开拍  " completion:^(NSAttributedString *resultAttrStr) {
-                     weakSelf.changeLabel.attributedText = resultAttrStr;
-                 }];
+                 if (weakSelf.model.StartTime>0) {
+                     [weakSelf getHtmlRemainTime:weakSelf.model.StartTime prefix:@"距开拍  " completion:^(NSAttributedString *resultAttrStr) {
+                         weakSelf.changeLabel.attributedText = resultAttrStr;
+                     }];
+                 }else {
+                     [weakSelf endTimer];
+                     [weakSelf.liveBtn setTitle:@"正在直播" forState:UIControlStateNormal];
+                     weakSelf.liveBtn.backgroundColor = UIColorFromRGB(0xD56C68);
+                     weakSelf.changeLabel.text = [NSString stringWithFormat:@"第%ld件/%ld件",weakSelf.model.NowItemCount,weakSelf.model.AuctionItemCount];
+                     weakSelf.changeLabel.textColor = UIColorFromRGB(0xD56C68);
+                 }
              });
          });
          //开启计时器
