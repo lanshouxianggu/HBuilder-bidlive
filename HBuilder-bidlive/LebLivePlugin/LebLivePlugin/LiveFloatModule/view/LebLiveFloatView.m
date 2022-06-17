@@ -138,4 +138,8 @@
     }
 }
 
+-(void)dealloc {
+    NSLog(@"dealloc -- %s",__func__);
+}
+
 @end

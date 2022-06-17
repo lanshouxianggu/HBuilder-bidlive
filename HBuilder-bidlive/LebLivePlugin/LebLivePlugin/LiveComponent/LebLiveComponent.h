@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LebLiveComponent : DCUniComponent<LiveEBVideoViewDelegate>
-@property (nonatomic, strong) WebRtcView *rtcView;
+@property (nonatomic, strong) WebRtcView * _Nullable rtcView;
 @property CGFloat videoWidthRate;
 @property CGFloat videoHeightRate;
 

@@ -33,7 +33,7 @@ static const CGFloat sVideoHeight = 160;
 @property (nonatomic, assign) BOOL showStatsEvent;
 @property (nonatomic, copy) NSString *liveUrl;
 @property (nonatomic, assign) BOOL isFullScreen;
-
+@property (nonatomic, assign) BOOL hasFinitSDK;
 @end
 
 @implementation LebLiveComponent
@@ -108,7 +108,16 @@ static const CGFloat sVideoHeight = 160;
 }
 
 - (void)viewWillUnload {
-    [[LiveEBManager sharedManager] finitSDK];
+    if (!self.hasFinitSDK) {
+        NSLog(@"销毁腾讯云SDK");
+        self.hasFinitSDK = YES;
+        [self.rtcView.videoView removeFromSuperview];
+        self.rtcView.videoView = nil;
+        [self.rtcView removeFromSuperview];
+        self.rtcView = nil;
+        [[LiveEBManager sharedManager] finitSDK];
+    }
+    
 }
 
 -(void)showFloatView {

@@ -42,6 +42,7 @@ UNI_EXPORT_METHOD(@selector(closeMiniFloatDialog))
             [self.floatView endPlay];
             [[LiveEBManager sharedManager] finitSDK];
             [self.floatView removeFromSuperview];
+            self.floatView = nil;
             self.hasOpenMiniFloatDialog = NO;
             NSLog(@"视频悬浮窗关闭");
         }
