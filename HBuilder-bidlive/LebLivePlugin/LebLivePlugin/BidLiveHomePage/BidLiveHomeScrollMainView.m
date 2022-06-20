@@ -838,6 +838,7 @@
         
         WS(weakSelf)
         [_highlightLotsMainView setScrollToRightBlock:^{
+            weakSelf.highlightLotsPageIndex++;
             [weakSelf loadHomeHighliahtLotsListData];
         }];
     }

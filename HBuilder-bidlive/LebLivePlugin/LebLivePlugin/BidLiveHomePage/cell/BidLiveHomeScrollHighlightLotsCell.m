@@ -132,7 +132,7 @@
 -(UIImageView *)topImageView {
     if (!_topImageView) {
         _topImageView = [[UIImageView alloc] init];
-        _topImageView.backgroundColor = UIColor.cyanColor;
+        _topImageView.backgroundColor = UIColorFromRGB(0xf8f8f8);
         _topImageView.layer.masksToBounds = YES;
     }
     return _topImageView;

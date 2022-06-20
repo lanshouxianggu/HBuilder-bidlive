@@ -141,7 +141,8 @@
     [self.rtcView.videoView stop];
     [_rtcView removeFromSuperview];
     _rtcView = nil;
-    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+//    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+    self.lastPlayVideoCell.rtcSuperView.alpha = 0;
     self.lastPlayVideoCell = nil;
     [[LiveEBManager sharedManager] finitSDK];
 }
@@ -151,7 +152,8 @@
     if (self.lastPlayVideoCell) {
         [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
         [self playStream];
-        self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+//        self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+        self.lastPlayVideoCell.rtcSuperView.alpha = 0;
     }
 }
 
@@ -162,10 +164,14 @@
     if ([firstCell isEqual:self.lastPlayVideoCell]) {
         return;
     }
-    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+//    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+    self.lastPlayVideoCell.rtcSuperView.alpha = 0;
     [firstCell.rtcSuperView addSubview:self.rtcView];
     [self playStream];
-    firstCell.rtcSuperView.hidden = NO;
+//    firstCell.rtcSuperView.hidden = NO;
+    [UIView animateWithDuration:0.35 animations:^{
+        firstCell.rtcSuperView.alpha = 1;
+    }];
     self.lastPlayVideoCell = firstCell;
 }
 
@@ -191,10 +197,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
 //        [self stopPlayVideo];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+//            self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+            self.lastPlayVideoCell.rtcSuperView.alpha = 0;
             [currentCell.rtcSuperView addSubview:self.rtcView];
             [self playStream];
-            currentCell.rtcSuperView.hidden = NO;
+//            currentCell.rtcSuperView.hidden = NO;
+            [UIView animateWithDuration:0.35 animations:^{
+                currentCell.rtcSuperView.alpha = 1;
+            }];
             self.lastPlayVideoCell = currentCell;
         });
     });
