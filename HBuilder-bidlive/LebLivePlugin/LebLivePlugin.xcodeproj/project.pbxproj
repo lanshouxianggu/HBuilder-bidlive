@@ -136,7 +136,7 @@
 		22CCC56D2859B0DC00510C24 /* BidLiveTopBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4A02859B0DB00510C24 /* BidLiveTopBannerView.m */; };
 		22CCC56E2859B0DC00510C24 /* BidLiveHomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4A12859B0DB00510C24 /* BidLiveHomeViewController.h */; };
 		22CCC56F2859B0DC00510C24 /* BidLiveHomeFloatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4A22859B0DB00510C24 /* BidLiveHomeFloatView.m */; };
-		22CCC5702859B0DC00510C24 /* BidLiveHomeScrollMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4A32859B0DB00510C24 /* BidLiveHomeScrollMainView.m */; };
+		22CCC5702859B0DC00510C24 /* we.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4A32859B0DB00510C24 /* we.m */; };
 		22CCC5712859B0DC00510C24 /* BidLiveHomeBtnItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4A42859B0DB00510C24 /* BidLiveHomeBtnItemsView.m */; };
 		22CCC5722859B0DC00510C24 /* BidLiveHomeMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4A52859B0DB00510C24 /* BidLiveHomeMainView.m */; };
 		22CCC5732859B0DC00510C24 /* BidLiveHomeScollLiveNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4A72859B0DB00510C24 /* BidLiveHomeScollLiveNormalCell.m */; };
@@ -345,7 +345,7 @@
 		22CCC4A02859B0DB00510C24 /* BidLiveTopBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveTopBannerView.m; sourceTree = "<group>"; };
 		22CCC4A12859B0DB00510C24 /* BidLiveHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeViewController.h; sourceTree = "<group>"; };
 		22CCC4A22859B0DB00510C24 /* BidLiveHomeFloatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeFloatView.m; sourceTree = "<group>"; };
-		22CCC4A32859B0DB00510C24 /* BidLiveHomeScrollMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScrollMainView.m; sourceTree = "<group>"; };
+		22CCC4A32859B0DB00510C24 /* we.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = we.m; sourceTree = "<group>"; };
 		22CCC4A42859B0DB00510C24 /* BidLiveHomeBtnItemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeBtnItemsView.m; sourceTree = "<group>"; };
 		22CCC4A52859B0DB00510C24 /* BidLiveHomeMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeMainView.m; sourceTree = "<group>"; };
 		22CCC4A72859B0DB00510C24 /* BidLiveHomeScollLiveNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeScollLiveNormalCell.m; sourceTree = "<group>"; };
@@ -767,7 +767,7 @@
 				22CCC49D2859B0DB00510C24 /* BidLiveHomeMainView.h */,
 				22CCC4A52859B0DB00510C24 /* BidLiveHomeMainView.m */,
 				22CCC4E62859B0DB00510C24 /* BidLiveHomeScrollMainView.h */,
-				22CCC4A32859B0DB00510C24 /* BidLiveHomeScrollMainView.m */,
+				22CCC4A32859B0DB00510C24 /* we.m */,
 				22CCC4A12859B0DB00510C24 /* BidLiveHomeViewController.h */,
 				22CCC4E52859B0DB00510C24 /* BidLiveHomeViewController.m */,
 				22CCC4CE2859B0DB00510C24 /* BidLiveTopBannerView.h */,
@@ -1246,7 +1246,7 @@
 				22CCC4F62859B0DB00510C24 /* UIColor+LLRandomColor.m in Sources */,
 				22CCC5472859B0DB00510C24 /* UIRefreshControl+AFNetworking.m in Sources */,
 				22CCC5902859B0DC00510C24 /* BidLiveHomeAnchorModel.m in Sources */,
-				22CCC5702859B0DC00510C24 /* BidLiveHomeScrollMainView.m in Sources */,
+				22CCC5702859B0DC00510C24 /* we.m in Sources */,
 				22CCC5562859B0DC00510C24 /* AFAutoPurgingImageCache.m in Sources */,
 				22CCC5342859B0DB00510C24 /* MJRefreshAutoNormalFooter.m in Sources */,
 				22CCC52D2859B0DB00510C24 /* MJRefreshBackStateFooter.m in Sources */,

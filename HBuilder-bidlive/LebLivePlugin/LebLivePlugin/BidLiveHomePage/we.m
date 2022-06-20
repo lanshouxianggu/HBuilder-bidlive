@@ -191,16 +191,19 @@
         }];
 #pragma mark - 精选主播更多点击事件
         [self.anchorMainView setMoreClickBlock:^{
-            weakSelf.anchorPageIndex++;
-            weakSelf.isPullRefresh = NO;
-            [weakSelf loadHomeAnchorListData];
+//            weakSelf.anchorPageIndex++;
+//            weakSelf.isPullRefresh = NO;
+//            [weakSelf loadHomeAnchorListData];
+            [weakSelf.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(90+weakSelf.anchorMainView.anchorsArray.count*kAnchorCellHeight+60);
+            }];
         }];
 #pragma mark - 精选主播收起点击事件
         [self.anchorMainView setRetractingClickBlock:^{
-            weakSelf.anchorPageIndex = 1;
-            weakSelf.anchorMainView.anchorsArray = [NSMutableArray arrayWithArray:weakSelf.anchorOrigionArray];
+//            weakSelf.anchorPageIndex = 1;
+//            weakSelf.anchorMainView.anchorsArray = [NSMutableArray arrayWithArray:weakSelf.anchorOrigionArray];
             [weakSelf.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(90+weakSelf.anchorMainView.anchorsArray.count*kAnchorCellHeight+60);
+                make.height.mas_equalTo(90+(weakSelf.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+60);
             }];
             [weakSelf.anchorMainView reloadData];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -432,24 +435,27 @@
 -(void)loadHomeAnchorListData {
     WS(weakSelf)
     
-    [BidLiveHomeNetworkModel getHomePageAnchorList:self.anchorPageIndex pageSize:4 pageCount:0 isContainBeforePage:false completion:^(BidLiveHomeAnchorModel * _Nonnull model) {
+    [BidLiveHomeNetworkModel getHomePageAnchorList:self.anchorPageIndex pageSize:8 pageCount:0 isContainBeforePage:false completion:^(BidLiveHomeAnchorModel * _Nonnull model) {
         if (weakSelf.isPullRefresh) {
             [weakSelf.anchorMainView.anchorsArray removeAllObjects];
+            weakSelf.anchorMainView.clickMoreTimes = 0;
+            [weakSelf.anchorMainView addSubviewToFooterView:weakSelf.anchorMainView.clickMoreTimes];
         }
+        
         [weakSelf.anchorMainView.anchorsArray addObjectsFromArray:model.list];
         if (weakSelf.anchorPageIndex==1) {
             weakSelf.anchorOrigionArray = model.list;
         }
         [weakSelf.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(90+weakSelf.anchorMainView.anchorsArray.count*kAnchorCellHeight+60);
+            make.height.mas_equalTo(90+(weakSelf.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+60);
         }];
         weakSelf.lastAnchorsCount = weakSelf.anchorMainView.anchorsArray.count;
         [weakSelf.anchorMainView reloadData];
-        if (weakSelf.anchorPageIndex!=1) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [weakSelf.anchorMainView scrollViewDidEndScroll:weakSelf.anchorMainView.lastOffsetY];
-            });
-        }
+//        if (weakSelf.anchorPageIndex!=1) {
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [weakSelf.anchorMainView scrollViewDidEndScroll:weakSelf.anchorMainView.lastOffsetY];
+//            });
+//        }
     }];
 }
 
