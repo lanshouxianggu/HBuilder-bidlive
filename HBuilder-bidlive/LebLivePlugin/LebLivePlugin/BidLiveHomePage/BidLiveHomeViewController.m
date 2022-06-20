@@ -9,10 +9,17 @@
 #import "BidLiveHomeMainView.h"
 #import "BidLiveHomeScrollMainView.h"
 #import "LCConfig.h"
+#import <AVKit/AVKit.h>
 
-@interface BidLiveHomeViewController ()
+@interface BidLiveHomeViewController () <AVPictureInPictureControllerDelegate>
 @property (nonatomic, strong) BidLiveHomeMainView *mainView;
 @property (nonatomic, strong) BidLiveHomeScrollMainView *mainScrollView;
+
+
+@property (nonatomic, strong) AVPictureInPictureController *pipVC;
+@property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) AVPlayer *player;
+@property(nonatomic,strong) AVPlayerItem *playItem;
 @end
 
 @implementation BidLiveHomeViewController
@@ -39,6 +46,79 @@
     
 //    [self.view addSubview:self.mainView];
     [self.view addSubview:self.mainScrollView];
+    
+//    [self startPip];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openOrClose) name:UIApplicationWillResignActiveNotification object:nil];
+}
+
+- (void)startPip {
+    NSString *videoUrl = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+    videoUrl = @"https://fileoss.fdzq.com/go_fd_co/fd-1587373158-9t0y5n.mp4";
+//    videoUrl = @"https://qiniu.hongwan.com.cn/hongwan/v/990g76sj2wvedbs53vji.mp4";
+//    videoUrl = @"https://qiniu.hongwan.com.cn/hongwan/v/1982wi5b4690f4rqbd9kk.mp4";
+    
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionOrientationBack error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    
+    self.playItem = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:videoUrl]];
+    self.player = [[AVPlayer alloc] initWithPlayerItem:self.playItem];
+//    self.player = [AVPlayer playerWithURL:[NSURL URLWithString:videoUrl]];
+    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    self.playerLayer.backgroundColor = (__bridge CGColorRef _Nullable)(UIColor.blackColor);
+    self.playerLayer.frame = CGRectMake(100, 80, 100, 200);
+    [self.player play];
+    [self.view.layer addSublayer:self.playerLayer];
+    //1.判断是否支持画中画功能
+    if ([AVPictureInPictureController isPictureInPictureSupported]) {
+        //2.开启权限
+        @try {
+            NSError *error = nil;
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback mode:AVAudioSessionModeMoviePlayback options:AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers error:&error];
+            // 为什么注释掉这里？你会发现有时 AVAudioSession 会有开启失败的情况。故用上面的方法
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionOrientationBack error:&error];
+            [[AVAudioSession sharedInstance] setActive:YES error:&error];
+        } @catch (NSException *exception) {
+            NSLog(@"AVAudioSession发生错误");
+        }
+        self.pipVC = [[AVPictureInPictureController alloc] initWithPlayerLayer:self.playerLayer];
+        self.pipVC.delegate = self;
+    }
+}
+
+- (void)openOrClose {
+    if (self.pipVC.isPictureInPictureActive) {
+        [self.pipVC stopPictureInPicture];
+    } else {
+        [self.pipVC startPictureInPicture];
+    }
+}
+
+//各种代理
+// 即将开启画中画
+- (void)pictureInPictureControllerWillStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController {
+    NSLog(@"");
+}
+// 已经开启画中画
+- (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController {
+    NSLog(@"");
+}
+// 开启画中画失败
+- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error {
+    NSLog(@"%@", error);
+}
+// 即将关闭画中画
+- (void)pictureInPictureControllerWillStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController {
+    NSLog(@"");
+}
+// 已经关闭画中画
+- (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController {
+    NSLog(@"");
+}
+// 关闭画中画且恢复播放界面
+- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL restored))completionHandler {
+    NSLog(@"");
 }
 
 -(BidLiveHomeMainView *)mainView {
@@ -116,7 +196,8 @@
         }];
         
         [_mainScrollView setToNewAuctionClickBlock:^{
-            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
+//            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
+            [weakSelf openOrClose];
         }];
     }
     return _mainScrollView;

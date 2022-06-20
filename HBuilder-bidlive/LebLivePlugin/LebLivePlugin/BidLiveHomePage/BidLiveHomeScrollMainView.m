@@ -327,7 +327,7 @@
     [self.mainView addSubview:self.youlikeMainView];
     [self.youlikeMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
-        make.top.equalTo(self.youlikeHeadTitleView).offset(0);
+        make.top.equalTo(self.youlikeHeadTitleView.mas_bottom);
 //        make.height.mas_equalTo(kYouLikeMainViewHeight);
         make.height.mas_equalTo(0);
         make.bottom.offset(-10);
