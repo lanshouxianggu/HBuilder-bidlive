@@ -11,6 +11,8 @@
 #import "LCConfig.h"
 #import <AVKit/AVKit.h>
 
+#import "WebRtcView.h"
+
 @interface BidLiveHomeViewController () <AVPictureInPictureControllerDelegate>
 @property (nonatomic, strong) BidLiveHomeMainView *mainView;
 @property (nonatomic, strong) BidLiveHomeScrollMainView *mainScrollView;
@@ -20,6 +22,9 @@
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
 @property (nonatomic, strong) AVPlayer *player;
 @property(nonatomic,strong) AVPlayerItem *playItem;
+@property (nonatomic, strong) AVQueuePlayer *queuePlayer;
+@property (nonatomic, strong) AVPlayerItem *loadingItem;
+@property (nonatomic, strong) WebRtcView *rtcView;
 @end
 
 @implementation BidLiveHomeViewController
@@ -46,8 +51,10 @@
     
 //    [self.view addSubview:self.mainView];
     [self.view addSubview:self.mainScrollView];
+     
     
-//    [self startPip];
+    //测试画中画
+    [self startPip];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openOrClose) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
@@ -63,28 +70,64 @@
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     
     self.playItem = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:videoUrl]];
-    self.player = [[AVPlayer alloc] initWithPlayerItem:self.playItem];
+//    self.player = [[AVPlayer alloc] initWithPlayerItem:self.playItem];
 //    self.player = [AVPlayer playerWithURL:[NSURL URLWithString:videoUrl]];
-    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    self.playerLayer.backgroundColor = (__bridge CGColorRef _Nullable)(UIColor.blackColor);
+//    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+//    [self.player play];
+    
+    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.queuePlayer];
     self.playerLayer.frame = CGRectMake(100, 80, 100, 200);
-    [self.player play];
+    self.playerLayer.backgroundColor = (__bridge CGColorRef _Nullable)([UIColor blackColor]);
+    [self.queuePlayer play];
+    
     [self.view.layer addSublayer:self.playerLayer];
     //1.判断是否支持画中画功能
     if ([AVPictureInPictureController isPictureInPictureSupported]) {
-        //2.开启权限
-        @try {
-            NSError *error = nil;
-            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback mode:AVAudioSessionModeMoviePlayback options:AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers error:&error];
-            // 为什么注释掉这里？你会发现有时 AVAudioSession 会有开启失败的情况。故用上面的方法
-            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionOrientationBack error:&error];
-            [[AVAudioSession sharedInstance] setActive:YES error:&error];
-        } @catch (NSException *exception) {
-            NSLog(@"AVAudioSession发生错误");
-        }
         self.pipVC = [[AVPictureInPictureController alloc] initWithPlayerLayer:self.playerLayer];
         self.pipVC.delegate = self;
     }
+}
+
+-(void)openPictureInPicture:(NSString *)url {
+    if (!url || url.length == 0 ) return;
+//    if (![url containsString:@"m3u8"]) return;
+    // - 播放视频
+    NSArray *keys = @[@"tracks"];
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:url] options:nil];
+    [asset loadValuesAsynchronouslyForKeys:keys completionHandler:^(){
+        for (NSString *thisKey in keys) {
+            NSError *error = nil;
+            AVKeyValueStatus keyStatus = [asset statusOfValueForKey:thisKey error:&error];
+            if (keyStatus != AVKeyValueStatusLoaded) {
+                return ;
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:asset];
+            [item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+//            [self.queuePlayer replaceCurrentItemWithPlayerItem:item];
+            [self.queuePlayer replaceCurrentItemWithPlayerItem:self.playItem];
+        });
+    }];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if (![keyPath isEqualToString:@"status"]) return;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.queuePlayer.status == AVPlayerStatusReadyToPlay) {
+            [self.queuePlayer play];
+        } else {
+        }
+    });
+    if (object == self.loadingItem) {
+        NSLog(@"beginItem %ld", (long)self.queuePlayer.status);
+    }
+//    else {
+//        // - 如果当前开始使用 _queuePlayer 播放m3u8, 停止播放视频.
+//        [[QIEPlayer shareInstance] stopPlay];
+//        NSLog(@"// console [error] ... xxxxx");
+//    }
 }
 
 - (void)openOrClose {
@@ -93,6 +136,31 @@
     } else {
         [self.pipVC startPictureInPicture];
     }
+}
+
+-(WebRtcView *)rtcView {
+    if (!_rtcView) {
+        _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(100, 80, 100, 200)];
+        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+    }
+    return _rtcView;
+}
+
+-(AVPlayerItem *)loadingItem{
+    if(!_loadingItem){
+        _loadingItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@"https://qiniu.hongwan.com.cn/hongwan/v/1982wi5b4690f4rqbd9kk.mp4"]];
+        [_loadingItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    return _loadingItem;
+}
+
+- (AVQueuePlayer *)queuePlayer{
+    if (!_queuePlayer) {
+        _queuePlayer = [AVQueuePlayer queuePlayerWithItems:@[self.loadingItem]];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_mediaPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:_queuePlayer.currentItem];
+        _queuePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    }
+    return _queuePlayer;
 }
 
 //各种代理
@@ -198,6 +266,7 @@
         [_mainScrollView setToNewAuctionClickBlock:^{
 //            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
             [weakSelf openOrClose];
+//            [weakSelf openPictureInPicture:@"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1"];
         }];
     }
     return _mainScrollView;

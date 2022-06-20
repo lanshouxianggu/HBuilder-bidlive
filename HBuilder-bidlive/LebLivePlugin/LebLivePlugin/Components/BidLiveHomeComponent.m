@@ -265,7 +265,7 @@
 -(BidLiveHomeScrollMainView *)mainScrollView {
     if (!_mainScrollView) {
         _mainScrollView = [[BidLiveHomeScrollMainView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height)];
-        _mainScrollView.backgroundColor = UIColor.cyanColor;
+        _mainScrollView.backgroundColor = UIColorFromRGB(0xf8f8f8);
        
     }
     return _mainScrollView;
