@@ -12,7 +12,7 @@
 #import "BidLiveBundleRecourseManager.h"
 #import "BidLiveHomeHighlightLotsModel.h"
 
-#define kTopViewHeight 90
+#define kTopViewHeight 70
 #define kItemWidth (SCREEN_WIDTH-15*2-12*2)/2.25
 #define kBottomViewHeight (SCREEN_WIDTH*0.689)
 

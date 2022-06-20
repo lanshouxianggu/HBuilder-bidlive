@@ -41,13 +41,13 @@
 -(void)setupUI {
     [self addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsMake(0, 0, 60, 0));
+        make.edges.insets(UIEdgeInsetsMake(0, 0, 40, 0));
     }];
     
     [self addSubview:self.footerView];
     [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.offset(0);
-        make.height.mas_equalTo(60);
+        make.height.mas_equalTo(40);
     }];
     
     [self addSubviewToFooterView:self.clickMoreTimes];
@@ -73,7 +73,7 @@
             make.width.mas_equalTo(70);
             make.height.mas_equalTo(30);
             make.centerX.offset(-2);
-            make.bottom.offset(-10);
+            make.bottom.offset(0);
         }];
     }
 //    else if (self.clickMoreTimes>0 && self.clickMoreTimes<2) {
@@ -123,7 +123,7 @@
             make.width.mas_equalTo(70);
             make.height.mas_equalTo(30);
             make.centerX.offset(-2);
-            make.bottom.offset(-10);
+            make.bottom.offset(0);
         }];
     }
 }
@@ -221,7 +221,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 90;
+    return 70;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -233,7 +233,8 @@
     UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
     [headView addSubview:imageV];
     [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.offset(0);
+        make.centerX.offset(0);
+        make.centerY.offset(5);
         make.width.mas_equalTo(44*3.23);
         make.height.mas_equalTo(44);
     }];

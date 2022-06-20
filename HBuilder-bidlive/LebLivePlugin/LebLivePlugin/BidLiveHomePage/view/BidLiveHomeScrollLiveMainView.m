@@ -98,9 +98,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section==0) {
-        return 90;
-    }else if (section==1) {
+    if (section==1) {
         return (SCREEN_WIDTH-30)*138.5/537+10;
     }
     return 70;
@@ -116,8 +114,9 @@
         UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
         [headView addSubview:imageV];
         [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.offset(0);
-            make.width.mas_equalTo(44*3.23);
+            make.centerX.offset(0);
+            make.centerY.offset(5);
+            make.width.mas_equalTo(44*3.35);
             make.height.mas_equalTo(44);
         }];
     }

@@ -11,8 +11,6 @@
 #import "Masonry.h"
 #import "LCConfig.h"
 #import "BidLiveBundleRecourseManager.h"
-#import <stdio.h>
-#import <math.h>>
 
 #import "BidLiveHomeScrollTopMainView.h"
 #import "BidLiveHomeScrollLiveMainView.h"
@@ -28,25 +26,26 @@
 #define kTopMainBannerViewHeight (UIApplication.sharedApplication.statusBarFrame.size.height>20?210:180)
 
 #define kAnimationViewHeight (SCREEN_WIDTH*72/585)
-#define kTopMainViewHeight (kTopMainBannerViewHeight+100+10+kAnimationViewHeight+10+SCREEN_HEIGHT*0.18)
+#define kVideoGuaideViewHeight (SCREEN_HEIGHT*0.18)
+#define kTopMainViewHeight (kTopMainBannerViewHeight+100+10+kAnimationViewHeight+10)
 
 #define kLiveNormalCellHeight ((SCREEN_WIDTH-30)*218.5/537)
 #define kLiveCenterImageCellHeight ((SCREEN_WIDTH-30)*138.5/537)
 //#define kLiveMainViewHeight (140*8+90+90+70+110)
-#define kLiveMainViewHeight (kLiveNormalCellHeight*8+90+kLiveCenterImageCellHeight+10+70+kLiveCenterImageCellHeight)
+#define kLiveMainViewHeight (kLiveNormalCellHeight*8+70+kLiveCenterImageCellHeight+10+70+kLiveCenterImageCellHeight)
 
 #define kAnchorCellHeight ((SCREEN_WIDTH-30)*11/18-10)
 
-#define kAnchorMainViewHeight (90+4*kAnchorCellHeight+60)
+#define kAnchorMainViewHeight (90+4*kAnchorCellHeight+40)
 
 #define kSpeechCellHeight (SCREEN_WIDTH-30)*405.5/537
-#define kSpeechMainViewHeight (70+kSpeechCellHeight+60)
+#define kSpeechMainViewHeight (70+kSpeechCellHeight+40)
 
 #define kYouLikeHeadViewHeight ((SCREEN_WIDTH-30)*138.5/537+20)
 //#define kYouLikeMainViewHeight (110+5*280+4*10)
 #define kYouLikeMainViewHeight (kYouLikeHeadViewHeight+5*280+4*10)
 
-#define kHightlightLotsMainViewHeight (SCREEN_WIDTH*0.689+90)
+#define kHightlightLotsMainViewHeight (SCREEN_WIDTH*0.689+70)
 
 @interface BidLiveHomeScrollMainView () <UIScrollViewDelegate>
 @property (nonatomic, strong) BidLiveHomeHeadView *topSearchView;
@@ -170,17 +169,21 @@
             weakSelf.speechPageIndex++;
             weakSelf.isPullRefresh = NO;
             [weakSelf loadHomeHotCourseData];
-            
+//            NSInteger count = (weakSelf.speechMainView.clickMoreTimes+1)*4;
+//            [weakSelf.speechMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(70+count*kAnchorCellHeight+40);
+//            }];
         }];
 #pragma mark - 名家讲堂收起点击事件
         [self.speechMainView setRetractingClickBlock:^{
             weakSelf.speechPageIndex = 1;
             weakSelf.speechMainView.videosArray = [NSMutableArray arrayWithArray:weakSelf.speechOrigionArray];
+            weakSelf.speechMainView.clickMoreTimes = 0;
             [weakSelf.speechMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
+                make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+40);
             }];
 //            CGRect frame = weakSelf.speechMainView.frame;
-//            frame.size.height = 70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60;
+//            frame.size.height = 70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+40;
 //            weakSelf.speechMainView.frame = frame;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf.speechMainView.tableView reloadData];
@@ -195,7 +198,7 @@
 //            weakSelf.isPullRefresh = NO;
 //            [weakSelf loadHomeAnchorListData];
             [weakSelf.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(90+weakSelf.anchorMainView.anchorsArray.count*kAnchorCellHeight+60);
+                make.height.mas_equalTo(70+weakSelf.anchorMainView.anchorsArray.count*kAnchorCellHeight+40);
             }];
         }];
 #pragma mark - 精选主播收起点击事件
@@ -203,7 +206,7 @@
 //            weakSelf.anchorPageIndex = 1;
 //            weakSelf.anchorMainView.anchorsArray = [NSMutableArray arrayWithArray:weakSelf.anchorOrigionArray];
             [weakSelf.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(90+(weakSelf.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+60);
+                make.height.mas_equalTo(70+(weakSelf.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+40);
             }];
             [weakSelf.anchorMainView reloadData];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -279,28 +282,32 @@
     [self.liveMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.equalTo(self.topMainView.mas_bottom);
-        make.height.mas_equalTo(kLiveMainViewHeight);
+//        make.height.mas_equalTo(kLiveMainViewHeight);
+        make.height.mas_equalTo(0);
     }];
     
     [self.mainView addSubview:self.anchorMainView];
     [self.anchorMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.equalTo(self.liveMainView.mas_bottom);
-        make.height.mas_equalTo(kAnchorMainViewHeight);
+//        make.height.mas_equalTo(kAnchorMainViewHeight);
+        make.height.mas_equalTo(0);
     }];
     
     [self.mainView addSubview:self.speechMainView];
     [self.speechMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.equalTo(self.anchorMainView.mas_bottom);
-        make.height.mas_equalTo(kSpeechMainViewHeight);
+//        make.height.mas_equalTo(kSpeechMainViewHeight);
+        make.height.mas_equalTo(0);
     }];
     
     [self.mainView addSubview:self.highlightLotsMainView];
     [self.highlightLotsMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.equalTo(self.speechMainView.mas_bottom);
-        make.height.mas_equalTo(kHightlightLotsMainViewHeight);
+//        make.height.mas_equalTo(kHightlightLotsMainViewHeight);
+        make.height.mas_equalTo(0);
     }];
     
     [self.mainView addSubview:self.youlikeHeadTitleView];
@@ -314,7 +321,8 @@
     [self.youlikeMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.equalTo(self.youlikeHeadTitleView).offset(0);
-        make.height.mas_equalTo(kYouLikeMainViewHeight);
+//        make.height.mas_equalTo(kYouLikeMainViewHeight);
+        make.height.mas_equalTo(0);
         make.bottom.offset(-10);
     }];
     
@@ -400,6 +408,10 @@
         weakSelf.liveMainView.firstPartLiveArray = array1;
         weakSelf.liveMainView.secondPartLiveArray = array2;
         
+        [weakSelf.liveMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(kLiveMainViewHeight);
+        }];
+        
         [weakSelf.liveMainView reloadData];
     }];
 }
@@ -410,13 +422,15 @@
     [BidLiveHomeNetworkModel getHomePageHotCourse:self.speechPageIndex pageSize:4 pageCount:0 completion:^(BidLiveHomeHotCourseModel * _Nonnull courseModel) {
         if (weakSelf.isPullRefresh) {
             [weakSelf.speechMainView.videosArray removeAllObjects];
+            weakSelf.speechMainView.clickMoreTimes = 0;
+            [weakSelf.speechMainView addSubviewToFooterView:weakSelf.anchorMainView.clickMoreTimes];
         }
         [weakSelf.speechMainView.videosArray addObjectsFromArray:courseModel.list];
         if (weakSelf.speechPageIndex==1) {
             weakSelf.speechOrigionArray = courseModel.list;
         }
         [weakSelf.speechMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+60);
+            make.height.mas_equalTo(70+weakSelf.speechMainView.videosArray.count*kSpeechCellHeight+40);
         }];
         weakSelf.lastVideosCount = weakSelf.speechMainView.videosArray.count;
         [weakSelf.speechMainView reloadData];
@@ -428,6 +442,9 @@
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageVideoGuaideList:1 pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeVideoGuaideModel * _Nonnull courseModel) {
         [weakSelf.topMainView updateVideoGuaideList:courseModel.list];
+        [weakSelf.topMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(kTopMainViewHeight+kVideoGuaideViewHeight);
+        }];
     }];
 }
 
@@ -447,7 +464,7 @@
             weakSelf.anchorOrigionArray = model.list;
         }
         [weakSelf.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(90+(weakSelf.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+60);
+            make.height.mas_equalTo(70+(weakSelf.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+40);
         }];
         weakSelf.lastAnchorsCount = weakSelf.anchorMainView.anchorsArray.count;
         [weakSelf.anchorMainView reloadData];
@@ -464,6 +481,9 @@
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageHighlightLotsList:1 pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeHighlightLotsModel * _Nonnull courseModel) {
         [weakSelf.highlightLotsMainView updateHighlightLotsList:courseModel.list];
+        [weakSelf.highlightLotsMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(kHightlightLotsMainViewHeight);
+        }];
     }];
 }
 

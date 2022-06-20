@@ -24,7 +24,7 @@
         UILabel *label = [UILabel new];
         label.text = title;
         label.font = [UIFont systemFontOfSize:14];
-        label.textColor = UIColorFromRGB(0x666666);
+        label.textColor = UIColorFromRGB(0x999999);
         
         [self addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
