@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) NSArray <BidLiveHomeHighlightLotsListModel *> *dataList;
+@property (nonatomic, assign) BOOL isScrollToRight;
 @end
 
 @implementation BidLiveHomeScrollHighlightLotsView
@@ -47,6 +48,10 @@
     }];
 }
 
+-(void)loadMoreData {
+    !self.scrollToRightBlock?:self.scrollToRightBlock();
+}
+
 -(void)updateHighlightLotsList:(NSArray<BidLiveHomeHighlightLotsListModel *> *)list {
     self.dataList = list;
     [self.collectionView reloadData];
@@ -66,6 +71,19 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     BidLiveHomeHighlightLotsListModel *model = self.dataList[indexPath.item];
     !self.cellClickBlock?:self.cellClickBlock(model);
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.isScrollToRight) {
+        return;
+    }
+    CGFloat offsetX = self.collectionView.contentOffset.x;
+    CGFloat width = scrollView.frame.size.width;
+    CGFloat distanceFromRight = scrollView.contentSize.width-offsetX;
+    if (distanceFromRight<=width) {
+        [self loadMoreData];
+        self.isScrollToRight = YES;
+    }
 }
 
 #pragma mark - lazy

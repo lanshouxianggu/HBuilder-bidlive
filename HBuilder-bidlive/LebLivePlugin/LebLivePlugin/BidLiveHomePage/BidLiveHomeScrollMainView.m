@@ -79,6 +79,11 @@
 ///第一页精选主播列表数据
 @property (nonatomic, strong) NSArray *anchorOrigionArray;
 
+///焦点拍品当前页码
+@property (nonatomic, assign) int highlightLotsPageIndex;
+///焦点拍品列表
+@property (nonatomic, strong) NSMutableArray *hightlightLotsList;
+
 ///猜你喜欢当前页码(无序)
 @property (nonatomic, assign) int youlikePageIndex;
 ///猜你喜欢当前页码(有序)
@@ -246,10 +251,12 @@
     self.speechPageIndex = 1;
     self.anchorPageIndex = 1;
     self.youlikePageIndex = 0;
+    self.highlightLotsPageIndex = 1;
     self.youlikePageNormalIndex = 0;
     self.superCanScroll = YES;
     self.youlikeContainAllBannersHeight = 0.0;
     self.youlikePageIndexArray = [NSMutableArray array];
+    self.hightlightLotsList = [NSMutableArray array];
 }
 
 #pragma mark - 设置UI
@@ -479,11 +486,14 @@
 #pragma mark - 加载焦点拍品列表数据
 -(void)loadHomeHighliahtLotsListData {
     WS(weakSelf)
-    [BidLiveHomeNetworkModel getHomePageHighlightLotsList:1 pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeHighlightLotsModel * _Nonnull courseModel) {
-        [weakSelf.highlightLotsMainView updateHighlightLotsList:courseModel.list];
-        [weakSelf.highlightLotsMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(kHightlightLotsMainViewHeight);
-        }];
+    [BidLiveHomeNetworkModel getHomePageHighlightLotsList:self.highlightLotsPageIndex pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeHighlightLotsModel * _Nonnull courseModel) {
+        if (courseModel.list && courseModel.list.count) {
+            [weakSelf.hightlightLotsList addObjectsFromArray:courseModel.list];
+            [weakSelf.highlightLotsMainView updateHighlightLotsList:weakSelf.hightlightLotsList];
+            [weakSelf.highlightLotsMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(kHightlightLotsMainViewHeight);
+            }];
+        }
     }];
 }
 
@@ -825,6 +835,11 @@
     if (!_highlightLotsMainView) {
         _highlightLotsMainView = [[BidLiveHomeScrollHighlightLotsView alloc] initWithFrame:CGRectZero];
         _highlightLotsMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+        
+        WS(weakSelf)
+        [_highlightLotsMainView setScrollToRightBlock:^{
+            [weakSelf loadHomeHighliahtLotsListData];
+        }];
     }
     return _highlightLotsMainView;
 }
