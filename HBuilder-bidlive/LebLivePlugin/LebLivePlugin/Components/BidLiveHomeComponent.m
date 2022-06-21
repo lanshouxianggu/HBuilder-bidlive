@@ -72,8 +72,8 @@
 #pragma mark - 顶部图片广告点击事件
         [_homeVC setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
             if (weakSelf.onTurnPage) {
-                NSDictionary *advDic = [model mj_keyValues];
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"banner",@"adv":advDic}} domChanges:nil];
+                NSDictionary *infoDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"banner",@"page":infoDic}} domChanges:nil];
             }
         }];
 #pragma mark - 全球拍卖点击事件
@@ -126,7 +126,10 @@
         }];
 #pragma mark - 视频导览cell点击事件
         [_homeVC setVideoGuaideCellClickBlock:^(BidLiveHomeVideoGuaideListModel * _Nonnull model) {
-            
+            if (weakSelf.onTurnPage) {
+                NSDictionary *infoDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"videoGuaide",@"page":infoDic}} domChanges:nil];
+            }
         }];
 #pragma mark - 全球直播cell点击事件
         [_homeVC setGlobalLiveCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
@@ -170,8 +173,8 @@
 //            }
             //这里涉及到的某些逻辑app无法处理，传json过去，让uniapp去处理
             if (weakSelf.onTurnPage) {
-                NSDictionary *advDic = [model mj_keyValues];
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"anchor",@"adv":advDic}} domChanges:nil];
+                NSDictionary *infoDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"anchor",@"page":infoDic}} domChanges:nil];
             }
         }];
 #pragma mark - 名家讲堂顶部箭头点击事件
@@ -200,7 +203,11 @@
         }];
 #pragma mark - 猜你喜欢banner点击事件
         [_homeVC setGuessYouLikeBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
-            [weakSelf guessYouLikeBannerClickAction:model];
+//            [weakSelf guessYouLikeBannerClickAction:model];
+            if (weakSelf.onTurnPage) {
+                NSDictionary *infoDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"banner",@"page":infoDic}} domChanges:nil];
+            }
         }];
 #pragma mark - 新上拍场点击事件
         [_homeVC setToNewAuctionClickBlock:^{

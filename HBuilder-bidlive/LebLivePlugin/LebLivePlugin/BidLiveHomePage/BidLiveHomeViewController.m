@@ -24,6 +24,7 @@
 @property(nonatomic,strong) AVPlayerItem *playItem;
 @property (nonatomic, strong) AVQueuePlayer *queuePlayer;
 @property (nonatomic, strong) AVPlayerItem *loadingItem;
+@property (nonatomic, strong) AVPlayerItem *testItem;
 @property (nonatomic, strong) WebRtcView *rtcView;
 @end
 
@@ -44,6 +45,10 @@
     [self.mainScrollView stopPlayVideo];
 }
 
+-(void)dealloc {
+    NSLog(@"--dealloc--%s",__FUNCTION__);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -54,8 +59,8 @@
      
     
     //测试画中画
-    [self startPip];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openOrClose) name:UIApplicationWillResignActiveNotification object:nil];
+//    [self startPip];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openOrClose) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)startPip {
@@ -63,6 +68,7 @@
     videoUrl = @"https://fileoss.fdzq.com/go_fd_co/fd-1587373158-9t0y5n.mp4";
 //    videoUrl = @"https://qiniu.hongwan.com.cn/hongwan/v/990g76sj2wvedbs53vji.mp4";
 //    videoUrl = @"https://qiniu.hongwan.com.cn/hongwan/v/1982wi5b4690f4rqbd9kk.mp4";
+//    videoUrl = @"https://cdn2.bzjupinhang.com:65/20220222/3jE8F54h/475kb/hls/index.m3u8";
     
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers error:nil];
@@ -105,8 +111,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             AVPlayerItem *item = [[AVPlayerItem alloc] initWithAsset:asset];
             [item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-//            [self.queuePlayer replaceCurrentItemWithPlayerItem:item];
-            [self.queuePlayer replaceCurrentItemWithPlayerItem:self.playItem];
+            [self.queuePlayer replaceCurrentItemWithPlayerItem:item];
+//            [self.queuePlayer replaceCurrentItemWithPlayerItem:self.playItem];
         });
     }];
 }
@@ -117,6 +123,8 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (self.queuePlayer.status == AVPlayerStatusReadyToPlay) {
             [self.queuePlayer play];
+            
+//            [self openOrClose];
         } else {
         }
     });
@@ -148,15 +156,22 @@
 
 -(AVPlayerItem *)loadingItem{
     if(!_loadingItem){
-        _loadingItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@"https://qiniu.hongwan.com.cn/hongwan/v/1982wi5b4690f4rqbd9kk.mp4"]];
+        _loadingItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@"https://fileoss.fdzq.com/go_fd_co/fd-1587373158-9t0y5n.mp4"]];
         [_loadingItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     }
     return _loadingItem;
 }
 
+-(AVPlayerItem *)testItem {
+    if (!_testItem) {
+        _testItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@"https://qiniu.hongwan.com.cn/hongwan/v/1982wi5b4690f4rqbd9kk.mp4"]];
+    }
+    return _testItem;
+}
+
 - (AVQueuePlayer *)queuePlayer{
     if (!_queuePlayer) {
-        _queuePlayer = [AVQueuePlayer queuePlayerWithItems:@[self.loadingItem]];
+        _queuePlayer = [AVQueuePlayer queuePlayerWithItems:@[self.loadingItem,self.testItem]];
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_mediaPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:_queuePlayer.currentItem];
         _queuePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     }
@@ -267,6 +282,7 @@
 //            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
             [weakSelf openOrClose];
 //            [weakSelf openPictureInPicture:@"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1"];
+//            [weakSelf openPictureInPicture:@"https://cdn2.bzjupinhang.com:65/20220222/3jE8F54h/475kb/hls/index.m3u8"];
         }];
     }
     return _mainScrollView;
