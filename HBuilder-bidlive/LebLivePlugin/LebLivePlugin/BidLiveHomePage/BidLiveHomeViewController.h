@@ -61,6 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^guessYouLikeBannerClickBlock)(BidLiveHomeBannerModel *model);
 ///新上拍场点击block
 @property (nonatomic, copy) void (^toNewAuctionClickBlock)(void);
+
+///停止视频导览/精选主播上播放的视频
+-(void)stopPlayVideo;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -132,7 +132,8 @@
 -(UIImageView *)topImageView {
     if (!_topImageView) {
         _topImageView = [[UIImageView alloc] init];
-        _topImageView.backgroundColor = UIColorFromRGB(0xf8f8f8);
+        _topImageView.backgroundColor = UIColor.whiteColor;
+        _topImageView.contentMode = UIViewContentModeScaleAspectFit;
         _topImageView.layer.masksToBounds = YES;
     }
     return _topImageView;

@@ -45,6 +45,10 @@
     [self.mainScrollView stopPlayVideo];
 }
 
+-(void)stopPlayVideo {
+    [self.mainScrollView stopPlayVideo];
+}
+
 -(void)dealloc {
     NSLog(@"--dealloc--%s",__FUNCTION__);
 }

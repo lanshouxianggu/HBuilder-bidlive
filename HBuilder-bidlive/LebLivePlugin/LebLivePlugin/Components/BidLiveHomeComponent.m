@@ -33,6 +33,9 @@
 
 @implementation BidLiveHomeComponent
 
+// 通过 WX_EXPORT_METHOD 将方法暴露给前端
+UNI_EXPORT_METHOD(@selector(stopPlay))
+
 -(void)onCreateComponentWithRef:(NSString *)ref type:(NSString *)type styles:(NSDictionary *)styles attributes:(NSDictionary *)attributes events:(NSArray *)events uniInstance:(DCUniSDKInstance *)uniInstance
 {
 }
@@ -44,6 +47,10 @@
 
 -(void)viewDidLoad {
     
+}
+
+-(void)stopPlay {
+    [self.homeVC stopPlayVideo];
 }
 
 -(void)addEvent:(NSString *)eventName {

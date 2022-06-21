@@ -70,6 +70,7 @@
     if (!_topImageView) {
         _topImageView = [UIImageView new];
         _topImageView.backgroundColor = UIColor.whiteColor;
+        _topImageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _topImageView;
 }
