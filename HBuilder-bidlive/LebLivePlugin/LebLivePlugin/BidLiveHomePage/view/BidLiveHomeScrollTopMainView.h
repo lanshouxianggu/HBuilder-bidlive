@@ -40,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)startVideoPlay;
 -(void)stopVideoPlay;
 -(void)destroyTimer;
+-(void)videoGuaideViewBackToStartFrame;
 @end
 
 NS_ASSUME_NONNULL_END

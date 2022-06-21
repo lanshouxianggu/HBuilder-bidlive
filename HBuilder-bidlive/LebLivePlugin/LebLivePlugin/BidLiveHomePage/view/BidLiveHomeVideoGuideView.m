@@ -38,6 +38,10 @@
     [self addSubview:self.collectionView];
 }
 
+-(void)backToStartFrame {
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
+
 -(void)updateVideoGuideList:(NSArray<BidLiveHomeVideoGuaideListModel *> *)list {
     self.dataList = list;
     [self.collectionView reloadData];

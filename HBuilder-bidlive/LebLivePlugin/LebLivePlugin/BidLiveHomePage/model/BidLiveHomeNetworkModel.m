@@ -223,4 +223,38 @@
     }];
 }
 
++(void)getHomePageGetTXTtpPlayUrl:(NSInteger)playType
+                           domain:(NSString *)domain
+                       streamName:(NSString *)streamName
+                          appName:(NSString *)appName
+                              key:(NSString *)key
+                      secondsTime:(NSInteger)secondsTime
+                       completion:(void (^)(NSString * _Nonnull))completionBlock
+{
+    NSString *url = @""[kAppWebApiAddress][kGetTXTtpPlayUrl];
+    NSDictionary *params = @{@"playType":@(playType),
+                             @"domain":@""[domain],
+                             @"streamName":@""[streamName],
+                             @"appName":@""[appName],
+                             @"key":@""[key],
+                             @"secondsTime":@(secondsTime)
+    };
+    
+    [HJNetwork POSTWithURL:url parameters:params callback:^(id responseObject, BOOL isCache, NSError *error) {
+        if (error) {
+            !completionBlock?:completionBlock(@"");
+        }else {
+            if ([responseObject isKindOfClass:NSDictionary.class]) {
+                if ([responseObject[@"result"] isKindOfClass:NSDictionary.class]) {
+                    NSDictionary *dataDic = responseObject[@"result"];
+                    NSString *url = @""[dataDic[@"message"]];
+                    !completionBlock?:completionBlock(url);
+                }else{
+                    !completionBlock?:completionBlock(@"");
+                }
+            }
+        }
+    }];
+}
+
 @end

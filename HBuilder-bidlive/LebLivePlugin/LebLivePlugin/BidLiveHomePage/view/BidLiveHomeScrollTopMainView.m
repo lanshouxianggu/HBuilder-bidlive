@@ -82,6 +82,10 @@
     [self addSubview:self.videoGuideView];
 }
 
+-(void)videoGuaideViewBackToStartFrame {
+    [self.videoGuideView backToStartFrame];
+}
+
 -(void)updateBanners:(NSArray<BidLiveHomeBannerModel *> *)banners {
     [self.bannerView updateBannerArray:banners];
 }

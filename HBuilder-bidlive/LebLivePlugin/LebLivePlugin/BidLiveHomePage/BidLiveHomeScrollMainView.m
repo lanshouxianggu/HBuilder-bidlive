@@ -448,6 +448,10 @@
 -(void)loadHomeVideoGuaideData {
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageVideoGuaideList:1 pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeVideoGuaideModel * _Nonnull courseModel) {
+        if (weakSelf.isPullRefresh) {
+            //视频导览列表回到原始位置
+            [weakSelf.topMainView videoGuaideViewBackToStartFrame];
+        }
         [weakSelf.topMainView updateVideoGuaideList:courseModel.list];
         [weakSelf.topMainView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(kTopMainViewHeight+kVideoGuaideViewHeight);

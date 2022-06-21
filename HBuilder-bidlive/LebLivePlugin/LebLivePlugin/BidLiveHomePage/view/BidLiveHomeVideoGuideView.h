@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeVideoGuaideListModel *model);
 -(void)startPlayVideo;
 -(void)stopPlayVideo;
+
+-(void)backToStartFrame;
 @end
 
 NS_ASSUME_NONNULL_END

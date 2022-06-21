@@ -27,6 +27,9 @@ static NSString *const kGetAuctionPromotionItems = @"/api/services/app/AuctionPr
 ///猜你喜欢
 static NSString *const kGetGuangGuangPagedList = @"/api/services/app/AuctionItemQuery/GetGuangGuangPagedList";
 
+///获取播流地址
+static NSString *const kGetTXTtpPlayUrl = @"/api/services/app/TtpMember/GetTXTtpPlayUrl";
+
 /*************************************** newttp **********************************************/
 static NSString *const kAppNewttpApiAddress = @"http://newttp_api.51bidlive.com";
 

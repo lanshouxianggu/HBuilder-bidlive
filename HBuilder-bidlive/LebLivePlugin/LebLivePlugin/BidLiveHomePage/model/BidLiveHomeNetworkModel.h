@@ -69,6 +69,24 @@ NS_ASSUME_NONNULL_BEGIN
 ///获取直播状态
 +(void)getHomePageGetLiveRoomStatus:(NSString *)liveRoomId completion:(void (^)(NSInteger liveStatus))completionBlock;
 
+///获取直播播流地址
+/**
+ params:
+ @playType:直播类型 1=直播带货 2=公开课 3=预展
+ @domain:推流域名
+ @streamName:传值拍场ID, StreamName(自定义的流名称，每路直播流的唯一标识符，推荐用随机数字或数字。)
+ @appName:直播的应用名称，默认为 live，可自定义
+ @key:鉴权 Key（非必需）
+ @secondsTime:过期时间 秒
+ */
++(void)getHomePageGetTXTtpPlayUrl:(NSInteger)playType
+                           domain:(NSString *)domain
+                       streamName:(NSString *)streamName
+                          appName:(NSString *)appName
+                              key:(NSString *)key
+                      secondsTime:(NSInteger)secondsTime
+                       completion:(void (^)(NSString * liveUrl))completionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
