@@ -45,6 +45,8 @@ UNI_EXPORT_METHOD(@selector(closeMiniFloatDialog))
             self.floatView = nil;
             self.hasOpenMiniFloatDialog = NO;
             NSLog(@"视频悬浮窗关闭");
+            //关闭屏幕常亮
+            [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
         }
     });
 }
@@ -55,6 +57,8 @@ UNI_EXPORT_METHOD(@selector(closeMiniFloatDialog))
     }
     self.hasOpenMiniFloatDialog = YES;
     NSLog(@"视频悬浮窗显示");
+    //开启屏幕常亮
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     //显示播流浮窗
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString *liveUrl = videoUrl;
