@@ -169,7 +169,7 @@
     [firstCell.rtcSuperView addSubview:self.rtcView];
     [self playStream];
 //    firstCell.rtcSuperView.hidden = NO;
-    [UIView animateWithDuration:0.35 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         firstCell.rtcSuperView.alpha = 1;
     }];
     self.lastPlayVideoCell = firstCell;
@@ -202,7 +202,7 @@
             [currentCell.rtcSuperView addSubview:self.rtcView];
             [self playStream];
 //            currentCell.rtcSuperView.hidden = NO;
-            [UIView animateWithDuration:0.35 animations:^{
+            [UIView animateWithDuration:0.5 animations:^{
                 currentCell.rtcSuperView.alpha = 1;
             }];
             self.lastPlayVideoCell = currentCell;
@@ -382,6 +382,7 @@
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*11/18-10)];
         _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
+        [_rtcView.videoView setAudioMute:YES];
 //        [_rtcView.videoView setRenderMode:LEBVideoRenderMode_ScaleAspect_FIT];
     }
     return _rtcView;

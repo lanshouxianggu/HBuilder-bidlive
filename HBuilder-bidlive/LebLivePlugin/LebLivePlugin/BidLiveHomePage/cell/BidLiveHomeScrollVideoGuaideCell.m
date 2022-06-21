@@ -113,7 +113,8 @@
     if (!_rtcSuperView) {
         CGRect frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height*4/7);
         _rtcSuperView = [[UIView alloc] initWithFrame:frame];
-        _rtcSuperView.hidden = YES;
+//        _rtcSuperView.hidden = YES;
+        _rtcSuperView.alpha = 0;
     }
     return _rtcSuperView;
 }

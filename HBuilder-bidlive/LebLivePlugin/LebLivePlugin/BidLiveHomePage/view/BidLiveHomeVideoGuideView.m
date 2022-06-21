@@ -73,7 +73,8 @@
 #pragma mark - 停止播放
 -(void)stopPlayVideo {
     [self.rtcView.videoView stop];
-    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+//    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
+    self.lastPlayVideoCell.rtcSuperView.alpha = 0;
     [self.rtcView removeFromSuperview];
     [[LiveEBManager sharedManager] finitSDK];
 }
@@ -82,7 +83,8 @@
 -(void)startPlayVideo {
     [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
     [self playStream];
-    self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+//    self.lastPlayVideoCell.rtcSuperView.hidden = NO;
+    self.lastPlayVideoCell.rtcSuperView.alpha = 1;
 }
 
 #pragma mark - 播放第一个
@@ -91,7 +93,10 @@
     BidLiveHomeScrollVideoGuaideCell *firstCell = (BidLiveHomeScrollVideoGuaideCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     [firstCell.rtcSuperView addSubview:self.rtcView];
     [self playStream];
-    firstCell.rtcSuperView.hidden = NO;
+//    firstCell.rtcSuperView.hidden = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+        firstCell.rtcSuperView.alpha = 1;
+    }];
     self.lastPlayVideoCell = firstCell;
 }
 #pragma mark - scrollView 停止滚动监测
@@ -119,7 +124,10 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [currentCell.rtcSuperView addSubview:self.rtcView];
             [self playStream];
-            currentCell.rtcSuperView.hidden = NO;
+//            currentCell.rtcSuperView.hidden = NO;
+            [UIView animateWithDuration:0.5 animations:^{
+                currentCell.rtcSuperView.alpha = 1;
+            }];
             self.lastPlayVideoCell = currentCell;
         });
     });
@@ -142,7 +150,7 @@
 -(__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BidLiveHomeScrollVideoGuaideCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollVideoGuaideCell" forIndexPath:indexPath];
     cell.model = self.dataList[indexPath.item];
-    cell.rtcSuperView.hidden = YES;
+//    cell.rtcSuperView.hidden = YES;
     return cell;
 }
 
@@ -178,6 +186,7 @@
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, kItemWidth, kCollectionViewHeight*4/7)];
         _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+        [_rtcView.videoView setAudioMute:YES];
     }
     return _rtcView;
 }
