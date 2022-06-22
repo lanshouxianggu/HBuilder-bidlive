@@ -6,11 +6,7 @@
 //
 
 #import "BidLiveHomeScrollHighlightLotsCell.h"
-#import "Masonry.h"
-#import "NSString+LLStringConnection.h"
-#import "NSAttributedString+LLMake.h"
 #import "LCConfig.h"
-#import "UIImageView+WebCache.h"
 
 @interface BidLiveHomeScrollHighlightLotsCell ()
 @property (nonatomic, strong) UIImageView *topImageView;

@@ -6,7 +6,6 @@
 //
 
 #import "BidLiveHomeScrollAnchorMainView.h"
-#import "Masonry.h"
 #import "LCConfig.h"
 #import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeScrollAnchorCell.h"

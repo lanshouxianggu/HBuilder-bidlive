@@ -6,10 +6,7 @@
 //
 
 #import "BidLiveHomeHeadView.h"
-#import "Masonry.h"
 #import "LCConfig.h"
-#import "DCSVProgressHUD.h"
-#import "BidLiveBundleResourceManager.h"
 
 @interface BidLiveHomeHeadView ()
 

@@ -8,8 +8,6 @@
 #import "BidLiveHomeScrollHighlightLotsView.h"
 #import "BidLiveHomeScrollHighlightLotsCell.h"
 #import "LCConfig.h"
-#import "Masonry.h"
-#import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeHighlightLotsModel.h"
 
 #define kTopViewHeight 70

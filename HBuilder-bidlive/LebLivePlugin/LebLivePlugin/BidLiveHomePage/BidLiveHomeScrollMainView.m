@@ -8,9 +8,7 @@
 #import "BidLiveHomeScrollMainView.h"
 #import "BidLiveHomeHeadView.h"
 #import "BidLiveHomeFloatView.h"
-#import "Masonry.h"
 #import "LCConfig.h"
-#import "BidLiveBundleResourceManager.h"
 
 #import "BidLiveHomeScrollTopMainView.h"
 #import "BidLiveHomeScrollLiveMainView.h"

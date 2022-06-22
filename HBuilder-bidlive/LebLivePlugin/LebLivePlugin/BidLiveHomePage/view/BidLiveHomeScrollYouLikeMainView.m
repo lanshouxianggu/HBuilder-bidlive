@@ -8,8 +8,6 @@
 #import "BidLiveHomeScrollYouLikeMainView.h"
 #import "BidLiveHomeScrollYouLikeCell.h"
 #import "LCConfig.h"
-#import "Masonry.h"
-#import "UIImageView+WebCache.h"
 
 @interface BidLiveHomeScrollYouLikeMainView () <UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic,assign) CGFloat currOffsetY;

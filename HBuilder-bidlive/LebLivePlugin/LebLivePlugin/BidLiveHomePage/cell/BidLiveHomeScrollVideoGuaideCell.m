@@ -6,13 +6,7 @@
 //
 
 #import "BidLiveHomeScrollVideoGuaideCell.h"
-#import "BidLiveBundleResourceManager.h"
-#import "UIImageView+WebCache.h"
-#import "Masonry.h"
 #import "LCConfig.h"
-#import "UIView+PartRounded.h"
-#import "UIView+GradientColor.h"
-#import "UIImage+GIF.h"
 
 @interface BidLiveHomeScrollVideoGuaideCell ()
 @property (nonatomic, strong) UIImageView *videoImageView;

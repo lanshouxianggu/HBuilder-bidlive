@@ -10,7 +10,6 @@
 #import "SGAdvertScrollView.h"
 #import "BidLiveHomeBtnItemsView.h"
 #import "LCConfig.h"
-#import "Masonry.h"
 
 @interface BidLiveHomeFirstTableViewCell () <SGAdvertScrollViewDelegate>
 @property (nonatomic, strong) BidLiveTopBannerView *bannerView;

@@ -12,8 +12,6 @@
 #import "BidLiveHomeCMSArticleModel.h"
 #import "BidLiveHomeVideoGuideView.h"
 #import "LCConfig.h"
-#import "Masonry.h"
-#import "BidLiveBundleResourceManager.h"
 
 #define kMainViewHeihgt (SCREEN_WIDTH*72/585)
 

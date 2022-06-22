@@ -6,16 +6,11 @@
 //
 
 #import "BidLiveHomeScrollLiveMainView.h"
-#import "Masonry.h"
 #import "LCConfig.h"
-#import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeScollLiveNormalCell.h"
-#import "DCSVProgressHUD.h"
 #import "BidLiveHomeScrollLiveBtnView.h"
 #import "BidLiveHomeGlobalLiveModel.h"
 #import "BidLiveLiveMainArticleScrollView.h"
-#import "UIImageView+WebCache.h"
-#import "UIImage+GIF.h"
 
 @interface BidLiveHomeScrollLiveMainView () <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;

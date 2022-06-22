@@ -7,8 +7,6 @@
 
 #import "BidLiveHomeBtnItemsView.h"
 #import "LCConfig.h"
-#import "Masonry.h"
-#import "BidLiveBundleResourceManager.h"
 
 @interface BidLiveHomeBtnItemsView () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;

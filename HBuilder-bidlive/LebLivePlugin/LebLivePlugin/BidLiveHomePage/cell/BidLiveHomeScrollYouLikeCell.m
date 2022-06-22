@@ -7,10 +7,6 @@
 
 #import "BidLiveHomeScrollYouLikeCell.h"
 #import "LCConfig.h"
-#import "Masonry.h"
-#import "UIImageView+WebCache.h"
-#import "NSString+LLStringConnection.h"
-#import "NSAttributedString+LLMake.h"
 
 @interface BidLiveHomeScrollYouLikeCell ()
 @property (nonatomic, strong) UIImageView *topImageView;

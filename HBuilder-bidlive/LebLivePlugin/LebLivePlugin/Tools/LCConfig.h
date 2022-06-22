@@ -17,6 +17,12 @@
 #import "BidLiveHomeNetworkModel.h"
 #import "UIDevice+VGAddition.h"
 #import "BidLiveBundleResourceManager.h"
+#import "Masonry.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+GIF.h"
+#import "UIView+PartRounded.h"
+#import "UIView+GradientColor.h"
+
 
 //弱引用
 #define WEAK_SELF(weakeSelf) __weak typeof(self) weakeSelf = self

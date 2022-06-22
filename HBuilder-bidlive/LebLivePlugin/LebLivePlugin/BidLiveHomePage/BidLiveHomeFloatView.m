@@ -6,9 +6,7 @@
 //
 
 #import "BidLiveHomeFloatView.h"
-#import "Masonry.h"
-#import "DCSVProgressHUD.h"
-#import "BidLiveBundleResourceManager.h"
+#import "LCConfig.h"
 
 @implementation BidLiveHomeFloatView
 

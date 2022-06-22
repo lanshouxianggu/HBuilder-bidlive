@@ -6,10 +6,7 @@
 //
 
 #import "BidLiveHomeScrollSpeechMainView.h"
-#import "Masonry.h"
 #import "LCConfig.h"
-#import "BidLiveBundleResourceManager.h"
-#import "DCSVProgressHUD.h"
 #import "BidLiveHomeScrollSpeechCell.h"
 #import "BidLiveHomeScrollLiveBtnView.h"
 

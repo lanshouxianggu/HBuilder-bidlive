@@ -7,8 +7,6 @@
 
 #import "BidLiveHomeScrollLiveBtnView.h"
 #import "LCConfig.h"
-#import "Masonry.h"
-#import "BidLiveBundleResourceManager.h"
 
 @interface BidLiveHomeScrollLiveBtnView ()
 @property (nonatomic, copy) NSString *title;

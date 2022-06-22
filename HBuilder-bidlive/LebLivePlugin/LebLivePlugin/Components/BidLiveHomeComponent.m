@@ -8,7 +8,6 @@
 #import "BidLiveHomeComponent.h"
 #import "BidLiveHomeScrollMainView.h"
 #import "BidLiveHomeViewController.h"
-#import "DCSVProgressHUD.h"
 #import "LCConfig.h"
 #import "BidLiveHomeBannerModel.h"
 #import "BidLiveHomeCMSArticleModel.h"
@@ -18,9 +17,6 @@
 #import "BidLiveHomeGuessYouLikeModel.h"
 #import "BidLiveHomeAnchorModel.h"
 #import "BidLiveHomeVideoGuaideModel.h"
-
-#import "MJExtension.h"
-#import "NSString+LLStringConnection.h"
 
 #define sOnEventGlobalSaleClicked @"onEventGlobalSaleClicked"
 #define sOnTurnPageEvent @"onTurnPage"
