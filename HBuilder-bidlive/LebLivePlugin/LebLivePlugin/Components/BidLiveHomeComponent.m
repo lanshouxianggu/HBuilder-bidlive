@@ -146,6 +146,11 @@ UNI_EXPORT_METHOD(@selector(stopPlay))
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
             }
         }];
+#pragma mark - 全球直播cell上的正在直播点击事件
+        [_homeVC setGlobalLiveCellLivingBtnClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+            NSDictionary *infoDic = [model mj_keyValues];
+            [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"live",@"page":infoDic}} domChanges:nil];
+        }];
 #pragma mark - 全球直播海外点击事件
         [_homeVC setAbroadClickBlock:^{
             if (weakSelf.onTurnPage) {

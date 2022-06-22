@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BidLiveHomeScollLiveNormalCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (nonatomic, strong) BidLiveHomeGlobalLiveModel *model;
+
+@property (nonatomic, copy) void (^livingBtnClickBlock)(BidLiveHomeGlobalLiveModel *model);
 @end
 
 NS_ASSUME_NONNULL_END

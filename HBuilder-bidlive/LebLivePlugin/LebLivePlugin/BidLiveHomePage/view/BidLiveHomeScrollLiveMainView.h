@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^bottomImageClickBlock)(BidLiveHomeBannerModel *model);
 ///cell点击block
 @property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeGlobalLiveModel *model);
+///cell上的正在直播按钮点击block
+@property (nonatomic, copy) void (^cellLivingBtnClickBlock)(BidLiveHomeGlobalLiveModel *model);
 -(void)updateBannerArray:(NSArray <BidLiveHomeBannerModel *> *)bannerArray;
 
 -(void)reloadData;

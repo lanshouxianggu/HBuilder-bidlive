@@ -41,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^videoGuaideCellClickBlock)(BidLiveHomeVideoGuaideListModel *model);
 ///全球直播cell点击block
 @property (nonatomic, copy) void (^globalLiveCellClickBlock)(BidLiveHomeGlobalLiveModel *model);
+///全球直播cell上的正在直播按钮点击block
+@property (nonatomic, copy) void (^globalLiveCellLivingBtnClickBlock)(BidLiveHomeGlobalLiveModel *model);
 ///全球直播海外点击block
 @property (nonatomic, copy) void (^abroadClickBlock)(void);
 ///全球直播国内点击block

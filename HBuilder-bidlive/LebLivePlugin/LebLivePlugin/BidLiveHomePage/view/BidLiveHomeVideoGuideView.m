@@ -130,12 +130,18 @@
 -(void)playStream:(BidLiveHomeScrollVideoGuaideCell *)currentCell {
     //1、请求接口获取播流地址
     
-    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:currentCell.model.roomType domain:@"" streamName:@""[currentCell.model.liveRoomId] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
-        if (liveUrl.length) {
-            //2、播流
-        }
-    }];
-    
+//    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:currentCell.model.roomType domain:@"" streamName:@""[currentCell.model.liveRoomId] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
+//        if (liveUrl.length) {
+//            //2、播流
+//            [currentCell.rtcSuperView addSubview:self.rtcView];
+//            self.rtcView.videoView.liveEBURL = @""[liveUrl];
+//            [self.rtcView.videoView start];
+//            [UIView animateWithDuration:0.5 animations:^{
+//                currentCell.rtcSuperView.alpha = 1;
+//            }];
+//            self.lastPlayVideoCell = currentCell;
+//        }
+//    }];
     
     [currentCell.rtcSuperView addSubview:self.rtcView];
     [self.rtcView.videoView start];
@@ -190,7 +196,8 @@
 -(WebRtcView *)rtcView {
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, kItemWidth, kCollectionViewHeight*4/7)];
-        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+//        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+        _rtcView.videoView.liveEBURL = @"webrtc://play-tencent.51bidlive.com/live/GKK4059706386974642176_bzgq?txSecret=9efa6dec3fdd154812f13a9fb1efe617&txTime=62bc0438";
         [_rtcView.videoView setAudioMute:YES];
     }
     return _rtcView;

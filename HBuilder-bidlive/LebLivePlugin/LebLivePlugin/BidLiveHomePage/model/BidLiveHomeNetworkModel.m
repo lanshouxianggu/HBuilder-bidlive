@@ -247,7 +247,7 @@
             if ([responseObject isKindOfClass:NSDictionary.class]) {
                 if ([responseObject[@"result"] isKindOfClass:NSDictionary.class]) {
                     NSDictionary *dataDic = responseObject[@"result"];
-                    NSString *url = @""[dataDic[@"message"]];
+                    NSString *url = @""[dataDic[@"data"]];
                     !completionBlock?:completionBlock(url);
                 }else{
                     !completionBlock?:completionBlock(@"");

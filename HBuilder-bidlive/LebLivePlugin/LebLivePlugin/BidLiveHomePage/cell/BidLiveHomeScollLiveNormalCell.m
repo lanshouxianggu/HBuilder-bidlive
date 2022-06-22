@@ -185,6 +185,7 @@
 }
 
 - (IBAction)liveBtnAction:(id)sender {
+    !self.livingBtnClickBlock?:self.livingBtnClickBlock(self.model);
 }
 
 -(void)dealloc {

@@ -165,6 +165,11 @@
         }else if (indexPath.section==1) {
             cell.model = self.secondPartLiveArray[indexPath.row];
         }
+        
+        WS(weakSelf)
+        [cell setLivingBtnClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+            !weakSelf.cellLivingBtnClickBlock?:weakSelf.cellLivingBtnClickBlock(model);
+        }];
         return cell;
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];

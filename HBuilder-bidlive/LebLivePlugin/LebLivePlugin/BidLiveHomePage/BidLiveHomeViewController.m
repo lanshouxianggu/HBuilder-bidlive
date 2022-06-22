@@ -254,6 +254,9 @@
         [_mainScrollView setGlobalLiveCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
             !weakSelf.globalLiveCellClickBlock?:weakSelf.globalLiveCellClickBlock(model);
         }];
+        [_mainScrollView setGlobalLiveCellLivingBtnClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+            !weakSelf.globalLiveCellLivingBtnClickBlock?:weakSelf.globalLiveCellLivingBtnClickBlock(model);
+        }];
         [_mainScrollView setVideoGuaideCellClickBlock:^(BidLiveHomeVideoGuaideListModel * _Nonnull model) {
             !weakSelf.videoGuaideCellClickBlock?:weakSelf.videoGuaideCellClickBlock(model);
         }];
