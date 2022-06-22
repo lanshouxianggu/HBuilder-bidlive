@@ -47,7 +47,10 @@
 
 -(void)setModel:(BidLiveHomeGuessYouLikeListModel *)model {
     _model = model;
-    [self.topImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
+    @autoreleasepool {
+        [self.topImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
+    }
+    
     self.nameLabel.text = @""[model.auctionItemName];
     
     self.priceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {

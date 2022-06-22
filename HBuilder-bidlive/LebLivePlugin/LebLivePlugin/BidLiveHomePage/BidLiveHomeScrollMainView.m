@@ -95,6 +95,8 @@
 @property (nonatomic, assign) BOOL isPullRefresh;
 
 @property (nonatomic, assign) BOOL superCanScroll;
+@property (nonatomic, assign) BOOL isLoadMoreData;
+@property (nonatomic, assign) BOOL isFirstScroll;
 @end
 
 @implementation BidLiveHomeScrollMainView
@@ -254,6 +256,7 @@
     self.highlightLotsPageIndex = 1;
     self.youlikePageNormalIndex = 0;
     self.superCanScroll = YES;
+    self.isFirstScroll = YES;
     self.youlikeContainAllBannersHeight = 0.0;
     self.youlikePageIndexArray = [NSMutableArray array];
     self.hightlightLotsList = [NSMutableArray array];
@@ -328,8 +331,8 @@
     [self.youlikeMainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.equalTo(self.youlikeHeadTitleView.mas_bottom);
-//        make.height.mas_equalTo(kYouLikeMainViewHeight);
-        make.height.mas_equalTo(0);
+        make.height.mas_equalTo(kYouLikeMainViewHeight);
+//        make.height.mas_equalTo(0);
         make.bottom.offset(-10);
     }];
     
@@ -368,6 +371,7 @@
     if (self.youlikePageIndexArray.firstObject) {
         int currentPage = [[self.youlikePageIndexArray firstObject] intValue];
         self.youlikePageIndex = currentPage;
+        self.isLoadMoreData = YES;
         [self loadGuessYouLikeListData];
 //        [self.youlikePageIndexArray removeObjectAtIndex:0];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -520,8 +524,11 @@
             }
         }
         NSArray *sortedArr = [weakSelf shuffle:tempPageArr];
-        if (weakSelf.youlikePageIndexArray.count <= 1) {
-            [weakSelf.youlikePageIndexArray addObjectsFromArray:sortedArr];
+//        if (weakSelf.youlikePageIndexArray.count <= 1) {
+//            [weakSelf.youlikePageIndexArray addObjectsFromArray:sortedArr];
+//        }
+        if (!weakSelf.isLoadMoreData) {
+            [weakSelf.youlikePageIndexArray setArray:sortedArr];
         }
         
         if (weakSelf.youlikePageIndex==0 && model.list.count>10) {
@@ -560,24 +567,24 @@
 //        CGFloat youlikeViewMaxY = CGRectGetMaxY(self.youlikeMainView.frame);
         
         
-        NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
-        NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
-        CGFloat height = 0;
-        if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
-            height = (likesArrayCount*kYouLikeMainViewHeight)+10;
-            NSLog(@"hight before:%f",height);
-            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(height);
-            }];
-            weakSelf.youlikeContainAllBannersHeight = height;
-        }else {
-            NSInteger moreCount = weakSelf.youlikePageNormalIndex+1-likesBannerCount;
-            height = weakSelf.youlikeContainAllBannersHeight + (moreCount*(5*280+4*10))+20;
-            NSLog(@"hight after:%f",height);
-            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(height);
-            }];
-        }
+//        NSInteger likesArrayCount = weakSelf.youlikeMainView.likesArray.count;
+//        NSInteger likesBannerCount = weakSelf.youlikeBannerArray.count;
+//        CGFloat height = 0;
+//        if (weakSelf.youlikePageNormalIndex < likesBannerCount) {
+//            height = (likesArrayCount*kYouLikeMainViewHeight)+10;
+//            NSLog(@"hight before:%f",height);
+//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(height);
+//            }];
+//            weakSelf.youlikeContainAllBannersHeight = height;
+//        }else {
+//            NSInteger moreCount = weakSelf.youlikePageNormalIndex+1-likesBannerCount;
+//            height = weakSelf.youlikeContainAllBannersHeight + (moreCount*(5*280+4*10))+20;
+//            NSLog(@"hight after:%f",height);
+//            [weakSelf.youlikeMainView mas_updateConstraints:^(MASConstraintMaker *make) {
+//                make.height.mas_equalTo(height);
+//            }];
+//        }
         weakSelf.youlikePageNormalIndex++;
         [weakSelf.youlikePageIndexArray removeObjectAtIndex:0];
         
@@ -621,23 +628,20 @@
         self.topSearchView.backgroundColor = UIColorFromRGBA(0xf2f2f2,1);
     }
     
-    CGFloat youlikeViewMinY = CGRectGetMinY(self.youlikeMainView.frame);
-    
-//    if (!self.superCanScroll) {
-//        scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
-//        self.youlikeMainView.canSlide = YES;
-//        self.mainScrollView.showsVerticalScrollIndicator = NO;
-//        self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
-//    }else {
-//        if (offsetY >= youlikeViewMinY) {
-//            scrollView.contentOffset = CGPointMake(0, youlikeViewMinY);
-//            self.superCanScroll = NO;
-//            self.youlikeMainView.canSlide = YES;
-//            self.mainScrollView.showsVerticalScrollIndicator = NO;
-//            self.youlikeMainView.collectionView.showsVerticalScrollIndicator = YES;
-//        }
-//        self.mainScrollView.showsVerticalScrollIndicator = YES;
-//    }
+    CGFloat height = scrollView.frame.size.height;
+    CGFloat contentYoffset = scrollView.contentOffset.y;
+    CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
+
+    if (distanceFromBottom <= height) {
+        if (self.isFirstScroll) {
+            self.isFirstScroll = NO;
+            return;
+        }
+        
+        NSLog(@"滚动到底部了，移交滚动权限给猜你喜欢视图");
+        self.youlikeMainView.collectionView.scrollEnabled = YES;
+        self.mainScrollView.scrollEnabled = NO;
+    }
     
     
     CGPoint offset = scrollView.contentOffset;
@@ -660,6 +664,11 @@
     if (fabs(offsetY)==statusBarHeight) {
         return;
     }
+    
+    [self hiddeFloatView];
+}
+
+-(void)hiddeFloatView {
     [UIView animateWithDuration:0.35 animations:^{
 //        self.floatView.transform = CGAffineTransformMakeScale(0.001, 0.001);
         self.floatView.alpha = 0;
@@ -753,13 +762,13 @@
         refreshHead.stateLabel.hidden = YES;
         _mainScrollView.mj_header = refreshHead;
         
-        MJRefreshAutoFooter *refreshFoot = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-            weakSelf.isPullRefresh = NO;
-            [weakSelf loadMoreData];
-        }];
-        refreshFoot.triggerAutomaticallyRefreshPercent = -20;
-        refreshFoot.onlyRefreshPerDrag = YES;
-        _mainScrollView.mj_footer = refreshFoot;
+//        MJRefreshAutoFooter *refreshFoot = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+//            weakSelf.isPullRefresh = NO;
+//            [weakSelf loadMoreData];
+//        }];
+//        refreshFoot.triggerAutomaticallyRefreshPercent = -20;
+//        refreshFoot.onlyRefreshPerDrag = YES;
+//        _mainScrollView.mj_footer = refreshFoot;
     }
     return _mainScrollView;
 }
@@ -878,10 +887,18 @@
             [weakSelf loadMoreData];
         }];
         
-//        [_youlikeMainView setYouLikeViewScrollToTopBlock:^{
-//            weakSelf.superCanScroll = YES;
-//            weakSelf.mainScrollView.showsVerticalScrollIndicator = YES;
-//        }];
+        [_youlikeMainView setYouLikeViewScrollToTopBlock:^{
+            weakSelf.mainScrollView.scrollEnabled = YES;
+            weakSelf.mainScrollView.showsVerticalScrollIndicator = YES;
+        }];
+        
+        [_youlikeMainView setYouLikeViewEndScrollBlock:^{
+            [weakSelf scrollViewDidEndScroll];
+        }];
+        
+        [_youlikeMainView setYouLikeViewDidScrollBlock:^{
+            [weakSelf hiddeFloatView];
+        }];
     }
     return _youlikeMainView;
 }

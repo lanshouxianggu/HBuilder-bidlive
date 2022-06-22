@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) BOOL canSlide;
 @property (nonatomic, copy) void (^loadMoreGuessYouLikeDataBlock)(void);
 @property (nonatomic, copy) void (^youLikeViewScrollToTopBlock)(void);
+@property (nonatomic, copy) void (^youLikeViewEndScrollBlock)(void);
+@property (nonatomic, copy) void (^youLikeViewDidScrollBlock)(void);
 
 ///cell点击block
 @property (nonatomic, copy) void (^youlikeCellClickBlock)(BidLiveHomeGuessYouLikeListModel *model);

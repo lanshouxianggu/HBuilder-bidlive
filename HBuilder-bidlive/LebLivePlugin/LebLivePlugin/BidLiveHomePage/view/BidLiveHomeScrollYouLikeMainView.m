@@ -37,9 +37,9 @@
     !self.youlikeBannerClickBlock?:self.youlikeBannerClickBlock(model);
 }
 
-//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-//    return YES;
-//}
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
 
 #pragma mark - UICollectionViewDelegate
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -116,15 +116,37 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    if (!self.canSlide) {
-//        scrollView.contentOffset = CGPointZero;
-//    }else {
-//        if (scrollView.contentOffset.y <= 0) {
-//            self.canSlide = NO;
-//            self.collectionView.showsVerticalScrollIndicator = NO;
-//            !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
-//        }
-//    }
+    CGFloat contentYoffset = scrollView.contentOffset.y;
+    if (contentYoffset <= 0) {
+        NSLog(@"滚动到顶部了，移交滚动权限给主视图");
+        self.collectionView.scrollEnabled = NO;
+        !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
+    }else {
+        !self.youLikeViewDidScrollBlock?:self.youLikeViewDidScrollBlock();
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // 停止类型1、停止类型2
+    BOOL scrollToScrollStop = !scrollView.tracking && !scrollView.dragging && !scrollView.decelerating;
+    if (scrollToScrollStop) {
+       [self scrollViewDidEndScroll];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+       // 停止类型3
+       BOOL dragToDragStop = scrollView.tracking && !scrollView.dragging && !scrollView.decelerating;
+       if (dragToDragStop) {
+          [self scrollViewDidEndScroll];
+       }
+  }
+}
+
+#pragma mark - scrollView 停止滚动监测
+- (void)scrollViewDidEndScroll {
+    !self.youLikeViewEndScrollBlock?:self.youLikeViewEndScrollBlock();
 }
 
 #pragma mark - lazy
@@ -149,22 +171,23 @@
 //        _collectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        _collectionView.scrollEnabled = NO;
+//        _collectionView.scrollEnabled = NO;
+//        _collectionView.bounces = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
         
-//        WS(weakSelf)
-//        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [weakSelf.collectionView.mj_footer endRefreshing];
-//            });
-//        }];
-//        refreshFoot.refreshingTitleHidden = YES;
-//        refreshFoot.onlyRefreshPerDrag = YES;
-//        _collectionView.mj_footer = refreshFoot;
+        WS(weakSelf)
+        MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.collectionView.mj_footer endRefreshing];
+            });
+        }];
+        refreshFoot.refreshingTitleHidden = YES;
+        refreshFoot.onlyRefreshPerDrag = YES;
+        _collectionView.mj_footer = refreshFoot;
     }
     return _collectionView;
 }
