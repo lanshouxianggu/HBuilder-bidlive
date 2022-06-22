@@ -65,6 +65,13 @@
                                 <color key="textColor" red="0.83529411764705885" green="0.42352941176470588" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0qt-0e-7Wn">
+                                <rect key="frame" x="311" y="17.5" width="24" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Pqz-Zx-ogj"/>
+                                    <constraint firstAttribute="width" constant="24" id="wRw-KY-Yz8"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -76,12 +83,14 @@
                             <constraint firstItem="zqx-ow-3zQ" firstAttribute="top" secondItem="tSy-W7-Vap" secondAttribute="top" constant="15" id="SOP-aN-doS"/>
                             <constraint firstAttribute="trailing" secondItem="zqx-ow-3zQ" secondAttribute="trailing" constant="20" id="T84-JC-9KL"/>
                             <constraint firstAttribute="trailing" secondItem="shQ-DY-B8A" secondAttribute="trailing" constant="15" id="TxL-HW-tmK"/>
+                            <constraint firstItem="0qt-0e-7Wn" firstAttribute="centerY" secondItem="zqx-ow-3zQ" secondAttribute="centerY" id="WH7-Cz-7YC"/>
                             <constraint firstItem="shQ-DY-B8A" firstAttribute="leading" secondItem="8sE-Mi-no1" secondAttribute="trailing" constant="10" id="ZZU-M8-tMs"/>
                             <constraint firstAttribute="trailing" secondItem="LfG-9m-E8R" secondAttribute="trailing" constant="10" id="c4V-ne-UcH"/>
                             <constraint firstItem="8sE-Mi-no1" firstAttribute="leading" secondItem="tSy-W7-Vap" secondAttribute="leading" constant="10" id="der-Kz-VJy"/>
                             <constraint firstItem="shQ-DY-B8A" firstAttribute="top" secondItem="PE6-Of-6tp" secondAttribute="bottom" constant="10" id="hzg-HS-Bx6"/>
                             <constraint firstItem="PE6-Of-6tp" firstAttribute="leading" secondItem="8sE-Mi-no1" secondAttribute="trailing" constant="10" id="jT8-k3-9ZH"/>
                             <constraint firstItem="zqx-ow-3zQ" firstAttribute="leading" secondItem="8sE-Mi-no1" secondAttribute="trailing" constant="10" id="ppK-0R-cBa"/>
+                            <constraint firstAttribute="trailing" secondItem="0qt-0e-7Wn" secondAttribute="trailing" constant="10" id="qVE-g8-Ubw"/>
                             <constraint firstAttribute="bottom" secondItem="LfG-9m-E8R" secondAttribute="bottom" constant="15" id="qZc-A8-vCb"/>
                             <constraint firstAttribute="bottom" secondItem="6Te-nJ-xXY" secondAttribute="bottom" constant="21" id="uxA-WF-n4W"/>
                             <constraint firstAttribute="trailing" secondItem="PE6-Of-6tp" secondAttribute="trailing" constant="20" id="w4T-5b-DYH"/>
@@ -102,11 +111,12 @@
                 <outlet property="detailLabel" destination="shQ-DY-B8A" id="OM7-bt-IVS"/>
                 <outlet property="imageV" destination="8sE-Mi-no1" id="frM-In-27d"/>
                 <outlet property="liveBtn" destination="LfG-9m-E8R" id="ZzO-gJ-hfX"/>
+                <outlet property="liveIcon" destination="0qt-0e-7Wn" id="qmO-hk-KmP"/>
                 <outlet property="mainTitleLabel" destination="zqx-ow-3zQ" id="Dka-Uv-wze"/>
                 <outlet property="mainView" destination="tSy-W7-Vap" id="zVb-OF-gPt"/>
                 <outlet property="subTitleLabel" destination="PE6-Of-6tp" id="Dad-NG-LWc"/>
             </connections>
-            <point key="canvasLocation" x="139" y="95"/>
+            <point key="canvasLocation" x="138.40579710144928" y="94.754464285714278"/>
         </tableViewCell>
     </objects>
     <resources>

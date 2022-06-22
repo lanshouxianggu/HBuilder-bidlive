@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *changeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *liveBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *liveIcon;
 @property (nonatomic, strong) dispatch_source_t timer;
 @property (nonatomic, assign) long long startTime;
 @property (nonatomic, assign) BOOL timerHasStarted;
@@ -39,6 +40,9 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.liveBtn.layer.cornerRadius = 3;
     self.liveBtn.layer.masksToBounds = YES;
+    
+    UIImage *liveIconImage = [BidLiveBundleResourceManager getBundleImage:@"videolive" type:@"png"];
+    self.liveIcon.image = liveIconImage;
 }
 
 -(void)setModel:(BidLiveHomeGlobalLiveModel *)model {
@@ -47,7 +51,7 @@
     self.mainTitleLabel.text = model.CompanyName;
     self.subTitleLabel.text = model.SpecialName;
     self.detailLabel.text = model.LotRange;
-    
+    self.liveIcon.hidden = !model.IsVideoLive;
     
     if (model.Status==4) {
         [self.liveBtn setTitle:@"正在直播" forState:UIControlStateNormal];
