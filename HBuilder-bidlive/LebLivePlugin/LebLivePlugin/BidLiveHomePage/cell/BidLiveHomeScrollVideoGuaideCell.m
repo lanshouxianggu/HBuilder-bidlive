@@ -11,7 +11,6 @@
 @interface BidLiveHomeScrollVideoGuaideCell ()
 @property (nonatomic, strong) UIImageView *videoImageView;
 @property (nonatomic, strong) UILabel *videoTitleLabel;
-
 @end
 
 @implementation BidLiveHomeScrollVideoGuaideCell
@@ -72,7 +71,7 @@
     _model = model;
     [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:nil];
     self.videoTitleLabel.text = model.name;
-    self.livingView.hidden = !(model.isLiveroom && model.roomType==2);
+    self.livingView.hidden = !(model.isLiveroom && model.liveStatus==1);
 }
 
 #pragma mark - lazy
@@ -111,6 +110,15 @@
         _rtcSuperView.alpha = 0;
     }
     return _rtcSuperView;
+}
+
+-(WebRtcView *)rtcView {
+    if (!_rtcView) {
+        _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height*4/7)];
+//        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+        [_rtcView.videoView setAudioMute:YES];
+    }
+    return _rtcView;
 }
 
 @end

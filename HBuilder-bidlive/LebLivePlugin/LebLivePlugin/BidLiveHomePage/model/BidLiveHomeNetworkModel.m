@@ -233,11 +233,8 @@
 {
     NSString *url = @""[kAppWebApiAddress][kGetTXTtpPlayUrl];
     NSDictionary *params = @{@"playType":@(playType),
-                             @"domain":@""[domain],
                              @"streamName":@""[streamName],
-                             @"appName":@""[appName],
-                             @"key":@""[key],
-                             @"secondsTime":@(secondsTime)
+                             
     };
     
     [HJNetwork POSTWithURL:url parameters:params callback:^(id responseObject, BOOL isCache, NSError *error) {

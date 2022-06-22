@@ -150,7 +150,7 @@
 -(void)startPlayVideo {
     if (self.lastPlayVideoCell) {
         [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
-        [self playStream];
+        [self playStream:self.lastPlayVideoCell];
 //        self.lastPlayVideoCell.rtcSuperView.hidden = NO;
         self.lastPlayVideoCell.rtcSuperView.alpha = 0;
     }
@@ -161,16 +161,12 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     BidLiveHomeScrollAnchorCell *firstCell = (BidLiveHomeScrollAnchorCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     if ([firstCell isEqual:self.lastPlayVideoCell]) {
+        [self playStream:firstCell];
         return;
     }
 //    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
     self.lastPlayVideoCell.rtcSuperView.alpha = 0;
-    [firstCell.rtcSuperView addSubview:self.rtcView];
-    [self playStream];
-//    firstCell.rtcSuperView.hidden = NO;
-    [UIView animateWithDuration:0.5 animations:^{
-        firstCell.rtcSuperView.alpha = 1;
-    }];
+    [self playStream:firstCell];
     self.lastPlayVideoCell = firstCell;
 }
 
@@ -198,22 +194,32 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            self.lastPlayVideoCell.rtcSuperView.hidden = YES;
             self.lastPlayVideoCell.rtcSuperView.alpha = 0;
-            [currentCell.rtcSuperView addSubview:self.rtcView];
-            [self playStream];
-//            currentCell.rtcSuperView.hidden = NO;
-            [UIView animateWithDuration:0.5 animations:^{
-                currentCell.rtcSuperView.alpha = 1;
-            }];
-            self.lastPlayVideoCell = currentCell;
+            [self playStream:currentCell];
         });
     });
     self.lastOffsetY = offsetY;
 }
 
--(void)playStream {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.rtcView.videoView start];
-    });
+-(void)playStream:(BidLiveHomeScrollAnchorCell *)currentCell {
+    NSInteger playType = 1;//直播间
+    if (currentCell.model.liveRoomType==2) {
+        //anchorType 1看展 0公开课
+        playType = currentCell.model.anchorType==1?3:2;
+    }
+    //1、请求接口获取播流地址
+    WS(weakSelf)
+    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:playType domain:@"" streamName:@""[currentCell.model.id] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
+        if (liveUrl.length) {
+            //2、播流
+            [currentCell.rtcSuperView addSubview:weakSelf.rtcView];
+            weakSelf.rtcView.videoView.liveEBURL = @""[liveUrl];
+            [weakSelf.rtcView.videoView start];
+            [UIView animateWithDuration:0.5 animations:^{
+                currentCell.rtcSuperView.alpha = 1;
+            }];
+            weakSelf.lastPlayVideoCell = currentCell;
+        }
+    }];
 }
 
 #pragma mark - UITableViewDelegate
@@ -380,7 +386,7 @@
 -(WebRtcView *)rtcView {
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*11/18-10)];
-        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
+//        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
         [_rtcView.videoView setAudioMute:YES];
 //        [_rtcView.videoView setRenderMode:LEBVideoRenderMode_ScaleAspect_FIT];
     }

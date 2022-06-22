@@ -33,7 +33,8 @@
 
 -(void)setModel:(BidLiveHomeHotCourseListModel *)model {
     _model = model;
-    [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:nil];
+    UIImage *placeHoldImage = [BidLiveBundleResourceManager getBundleImage:@"banner_lodding" type:@"png"];
+    [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.coverUrl] placeholderImage:placeHoldImage];
     self.videoNameLabel.text = model.courseSubjectName;
     self.authNameLabel.text = model.anchorName;
     if (model.updatedCount<model.contentCount) {
