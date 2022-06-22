@@ -63,6 +63,12 @@
 -(__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BidLiveHomeScrollHighlightLotsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollHighlightLotsCell" forIndexPath:indexPath];
     cell.model = self.dataList[indexPath.item];
+    
+    WS(weakSelf)
+    [cell setLivingLabelTapBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+        !weakSelf.cellLivingLabelClickBlock?:weakSelf.cellLivingLabelClickBlock(model);
+    }];
+    
     return cell;
 }
 

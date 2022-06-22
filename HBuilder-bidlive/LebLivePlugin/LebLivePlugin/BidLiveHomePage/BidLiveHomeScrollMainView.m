@@ -246,6 +246,10 @@
         [self.highlightLotsMainView setCellClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
             !weakSelf.highlightLotsCellClickBlock?:weakSelf.highlightLotsCellClickBlock(model);
         }];
+#pragma mark - 焦点拍品cell上的正在直播点击事件
+        [self.highlightLotsMainView setCellLivingLabelClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            !weakSelf.highlightLotsCellLivinLabelClickBlock?:weakSelf.highlightLotsCellLivinLabelClickBlock(model);
+        }];
         [self loadData];
     }
     return self;

@@ -55,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^speechTopMoreClickBlock)(void);
 ///名家讲堂cell点击block
 @property (nonatomic, copy) void (^speechCellClickBlock)(BidLiveHomeHotCourseListModel *model);
+///焦点拍品cell上的正在直播点击block
+@property (nonatomic, copy) void (^highlightLotsCellLivinLabelClickBlock)(BidLiveHomeHighlightLotsListModel *model);
 ///焦点拍品cell点击block
 @property (nonatomic, copy) void (^highlightLotsCellClickBlock)(BidLiveHomeHighlightLotsListModel *model);
 ///猜你喜欢cell点击block

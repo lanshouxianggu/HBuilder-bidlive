@@ -148,8 +148,10 @@ UNI_EXPORT_METHOD(@selector(stopPlay))
         }];
 #pragma mark - 全球直播cell上的正在直播点击事件
         [_homeVC setGlobalLiveCellLivingBtnClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
-            NSDictionary *infoDic = [model mj_keyValues];
-            [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"live",@"page":infoDic}} domChanges:nil];
+            if (weakSelf.onTurnPage) {
+                NSDictionary *infoDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"live",@"page":infoDic}} domChanges:nil];
+            }
         }];
 #pragma mark - 全球直播海外点击事件
         [_homeVC setAbroadClickBlock:^{
@@ -203,6 +205,13 @@ UNI_EXPORT_METHOD(@selector(stopPlay))
             if (weakSelf.onTurnPage) {
                 NSString *pageStr = @""[@"/pages/auction/item?auctionItemId="][@(model.id)];
                 [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
+            }
+        }];
+#pragma mark - 焦点拍品cell上的正在直播点击事件
+        [_homeVC setHighlightLotsCellLivinLabelClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            if (weakSelf.onTurnPage) {
+                NSDictionary *infoDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"live",@"page":infoDic}} domChanges:nil];
             }
         }];
 #pragma mark - 猜你喜欢cell点击事件

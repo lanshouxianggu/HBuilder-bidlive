@@ -169,7 +169,7 @@
 //        _collectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-//        _collectionView.scrollEnabled = NO;
+        _collectionView.scrollEnabled = NO;
 //        _collectionView.bounces = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
@@ -183,6 +183,7 @@
                 [weakSelf.collectionView.mj_footer endRefreshing];
             });
         }];
+        refreshFoot.triggerAutomaticallyRefreshPercent = -20;
         refreshFoot.refreshingTitleHidden = YES;
         refreshFoot.onlyRefreshPerDrag = YES;
         _collectionView.mj_footer = refreshFoot;

@@ -13,7 +13,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *startingPriceLabel;
 @property (nonatomic, strong) UILabel *remainTimeLabel;
-@property (nonatomic, strong) UILabel *livingLabel;
+@property (nonatomic, strong) UIButton *livingLabel;
 @end
 
 @implementation BidLiveHomeScrollHighlightLotsCell
@@ -65,7 +65,7 @@
     
     [bottomView addSubview:self.livingLabel];
     [self.livingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.offset(-12);
+        make.bottom.offset(-6);
         make.right.offset(-8);
         make.width.mas_equalTo(50);
     }];
@@ -76,6 +76,10 @@
         make.right.offset(-8);
         make.bottom.offset(-12);
     }];
+}
+
+-(void)livingLableTapAction {
+    !self.livingLabelTapBlock?:self.livingLabelTapBlock(self.model);
 }
 
 #pragma mark - setter
@@ -108,12 +112,16 @@
             make.right.equalTo(self.livingLabel.mas_left).offset(-5);
         }];
     }else if (model.status==5/* || model.status==2*/) {
-        //流拍、已结束
+        //流拍
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
             make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
         }];
         self.remainTimeLabel.text = @""[model.companyName];
+        self.livingLabel.hidden = NO;
+        [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.livingLabel.mas_left).offset(-5);
+        }];
     }else {
         //预展中
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
@@ -162,12 +170,13 @@
     return _remainTimeLabel;
 }
 
--(UILabel *)livingLabel {
+-(UIButton *)livingLabel {
     if (!_livingLabel) {
-        _livingLabel = [UILabel new];
-        _livingLabel.text = @"正在直播";
-        _livingLabel.textColor = UIColorFromRGB(0xD56C68);
-        _livingLabel.font = [UIFont systemFontOfSize:12];
+        _livingLabel = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_livingLabel setTitle:@"正在直播" forState:UIControlStateNormal];
+        [_livingLabel setTitleColor:UIColorFromRGB(0xD56C68) forState:UIControlStateNormal];
+        _livingLabel.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_livingLabel addTarget:self action:@selector(livingLableTapAction) forControlEvents:UIControlEventTouchUpInside];
 //        _livingLabel.hidden = YES;
     }
     return _livingLabel;

@@ -208,7 +208,7 @@
     }
     //1、请求接口获取播流地址
     WS(weakSelf)
-    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:playType domain:@"" streamName:@""[currentCell.model.id] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
+    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:3 domain:@"" streamName:@""[currentCell.model.id] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
         if (liveUrl.length) {
             //2、播流
             [currentCell.rtcSuperView addSubview:weakSelf.rtcView];

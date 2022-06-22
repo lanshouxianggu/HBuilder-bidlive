@@ -275,6 +275,9 @@
         [_mainScrollView setHighlightLotsCellClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
             !weakSelf.highlightLotsCellClickBlock?:weakSelf.highlightLotsCellClickBlock(model);
         }];
+        [_mainScrollView setHighlightLotsCellLivinLabelClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            !weakSelf.highlightLotsCellLivinLabelClickBlock?:weakSelf.highlightLotsCellLivinLabelClickBlock(model);
+        }];
         [_mainScrollView setGuessYouLikeCellClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
             !weakSelf.guessYouLikeCellClickBlock?:weakSelf.guessYouLikeCellClickBlock(model);
         }];

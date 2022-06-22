@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^scrollToRightBlock)(void);
 @property (nonatomic, copy) void (^cellClickBlock)(BidLiveHomeHighlightLotsListModel *model);
+@property (nonatomic, copy) void (^cellLivingLabelClickBlock)(BidLiveHomeHighlightLotsListModel *model);
 @end
 
 NS_ASSUME_NONNULL_END

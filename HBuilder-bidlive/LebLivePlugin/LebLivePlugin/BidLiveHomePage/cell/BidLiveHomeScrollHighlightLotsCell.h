@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollHighlightLotsCell : UICollectionViewCell
 @property (nonatomic, strong) BidLiveHomeHighlightLotsListModel *model;
+@property (nonatomic, copy) void (^livingLabelTapBlock)(BidLiveHomeHighlightLotsListModel *model);
 @end
 
 NS_ASSUME_NONNULL_END
