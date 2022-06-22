@@ -9,7 +9,7 @@
 #import "BidLiveHomeScrollHighlightLotsCell.h"
 #import "LCConfig.h"
 #import "Masonry.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeHighlightLotsModel.h"
 
 #define kTopViewHeight 70
@@ -92,7 +92,7 @@
         _topView = [[UIView alloc] initWithFrame:CGRectZero];
         _topView.backgroundColor = UIColorFromRGB(0xf8f8f8);
         
-        UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"indexBlock5" type:@"png"];
+        UIImage *image = [BidLiveBundleResourceManager getBundleImage:@"indexBlock5" type:@"png"];
         
         UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
         [_topView addSubview:imageV];

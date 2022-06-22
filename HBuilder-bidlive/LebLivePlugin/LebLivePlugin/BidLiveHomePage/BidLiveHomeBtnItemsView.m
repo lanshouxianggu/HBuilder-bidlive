@@ -8,7 +8,7 @@
 #import "BidLiveHomeBtnItemsView.h"
 #import "LCConfig.h"
 #import "Masonry.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 
 @interface BidLiveHomeBtnItemsView () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
@@ -23,12 +23,12 @@
     if (self = [super initWithFrame:frame]) {
         self.titlesArr = @[@"全球专场",@"鉴  定",@"国内专场",@"送  拍",@"直播间",@"讲  堂"];
         
-        UIImage *image1 = [BidLiveBundleRecourseManager getBundleImage:@"quanqiupai" type:@"png"];
-        UIImage *image2 = [BidLiveBundleRecourseManager getBundleImage:@"jianding" type:@"png"];
-        UIImage *image3 = [BidLiveBundleRecourseManager getBundleImage:@"guoneipai" type:@"png"];
-        UIImage *image4 = [BidLiveBundleRecourseManager getBundleImage:@"songpai" type:@"png"];
-        UIImage *image5 = [BidLiveBundleRecourseManager getBundleImage:@"zhibojian" type:@"png"];
-        UIImage *image6 = [BidLiveBundleRecourseManager getBundleImage:@"lianpaijiangtang" type:@"png"];
+        UIImage *image1 = [BidLiveBundleResourceManager getBundleImage:@"quanqiupai" type:@"png"];
+        UIImage *image2 = [BidLiveBundleResourceManager getBundleImage:@"jianding" type:@"png"];
+        UIImage *image3 = [BidLiveBundleResourceManager getBundleImage:@"guoneipai" type:@"png"];
+        UIImage *image4 = [BidLiveBundleResourceManager getBundleImage:@"songpai" type:@"png"];
+        UIImage *image5 = [BidLiveBundleResourceManager getBundleImage:@"zhibojian" type:@"png"];
+        UIImage *image6 = [BidLiveBundleResourceManager getBundleImage:@"lianpaijiangtang" type:@"png"];
         self.imagesArr = @[image1,image2,image3,image4,image5,image6];
         [self setupUI];
     }

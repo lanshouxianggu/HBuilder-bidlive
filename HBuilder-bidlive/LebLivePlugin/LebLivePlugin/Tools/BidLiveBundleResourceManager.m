@@ -1,13 +1,13 @@
 //
-//  BidLiveBundleRecourseManager.m
+//  BidLiveBundleResourceManager.m
 //  BidLiveIOSPlugin
 //
 //  Created by bidlive on 2022/5/28.
 //
 
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 
-@implementation BidLiveBundleRecourseManager
+@implementation BidLiveBundleResourceManager
 +(UIImage *)getBundleImage:(NSString *)imageName type:(NSString *)type {
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"BidLiveBundle" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];

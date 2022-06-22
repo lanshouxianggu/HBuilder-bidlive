@@ -8,7 +8,7 @@
 #import "BidLiveHomeScrollAnchorMainView.h"
 #import "Masonry.h"
 #import "LCConfig.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeScrollAnchorCell.h"
 #import "BidLiveHomeScrollLiveBtnView.h"
 #import <LiveEB_IOS/LiveEBManager.h>
@@ -238,7 +238,7 @@
     UIView *headView = [UIView new];
     headView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"indexBlock3" type:@"png"];
+    UIImage *image = [BidLiveBundleResourceManager getBundleImage:@"indexBlock3" type:@"png"];
     
     UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
     [headView addSubview:imageV];
@@ -250,7 +250,7 @@
     }];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *moreImage = [BidLiveBundleRecourseManager getBundleImage:@"indexBlockMore" type:@"png"];
+    UIImage *moreImage = [BidLiveBundleResourceManager getBundleImage:@"indexBlockMore" type:@"png"];
     [btn setImage:moreImage forState:UIControlStateNormal];
     [btn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [btn addTarget:self action:@selector(anchorMoreBtnAction) forControlEvents:UIControlEventTouchUpInside];
@@ -372,7 +372,7 @@
         
         
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
-        UINib *nib = [BidLiveBundleRecourseManager getBundleNib:@"BidLiveHomeScrollAnchorCell" type:@"nib"];
+        UINib *nib = [BidLiveBundleResourceManager getBundleNib:@"BidLiveHomeScrollAnchorCell" type:@"nib"];
         [_tableView registerNib:nib forCellReuseIdentifier:@"BidLiveHomeScrollAnchorCell"];
     }
     return _tableView;

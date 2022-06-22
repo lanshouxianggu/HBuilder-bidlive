@@ -6,7 +6,7 @@
 //
 
 #import "BidLiveHomeScrollVideoGuaideCell.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 #import "UIImageView+WebCache.h"
 #import "Masonry.h"
 #import "LCConfig.h"
@@ -45,7 +45,7 @@
     
     [topView addSubview:self.livingView];
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"iconicon-play" type:@"png"];
+    UIImage *image = [BidLiveBundleResourceManager getBundleImage:@"iconicon-play" type:@"png"];
     
     UIImageView *iconImageV = [[UIImageView alloc] initWithImage:image];
     [topView addSubview:iconImageV];

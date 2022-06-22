@@ -6,7 +6,7 @@
 //
 
 #import "BidLiveHomeScrollSpeechCell.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 #import "UIImageView+WebCache.h"
 
 @interface BidLiveHomeScrollSpeechCell ()
@@ -26,7 +26,7 @@
     // Initialization code
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"iconicon-play" type:@"png"];
+    UIImage *image = [BidLiveBundleResourceManager getBundleImage:@"iconicon-play" type:@"png"];
     self.videoIconImageView.image = image;
     self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
 }

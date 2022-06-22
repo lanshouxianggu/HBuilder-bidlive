@@ -1,5 +1,5 @@
 //
-//  BidLiveBundleRecourseManager.h
+//  BidLiveBundleResourceManager.h
 //  BidLiveIOSPlugin
 //
 //  Created by bidlive on 2022/5/28.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BidLiveBundleRecourseManager : NSObject
+@interface BidLiveBundleResourceManager : NSObject
 +(UIImage *)getBundleImage:(NSString *)imageName type:(NSString *)type;
 +(UINib *)getBundleNib:(NSString *)nibName type:(NSString *)type;
 @end

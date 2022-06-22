@@ -9,7 +9,7 @@
 #import "Masonry.h"
 #import "LCConfig.h"
 #import "DCSVProgressHUD.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 
 @interface BidLiveHomeHeadView ()
 
@@ -51,7 +51,7 @@
         make.centerX.offset(10);
     }];
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"iconfont-sousuo" type:@"png"];
+    UIImage *image = [BidLiveBundleResourceManager getBundleImage:@"iconfont-sousuo" type:@"png"];
     UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
     
     [searchView addSubview:imageV];

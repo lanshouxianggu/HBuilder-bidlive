@@ -201,11 +201,11 @@
 		22CCC5AE2859B0DC00510C24 /* BidLiveHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4E52859B0DB00510C24 /* BidLiveHomeViewController.m */; };
 		22CCC5AF2859B0DC00510C24 /* BidLiveHomeScrollMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4E62859B0DB00510C24 /* BidLiveHomeScrollMainView.h */; };
 		22CCC5B02859B0DC00510C24 /* BidLiveHomeFloatView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4E72859B0DB00510C24 /* BidLiveHomeFloatView.h */; };
-		22CCC5B12859B0DC00510C24 /* BidLiveBundleRecourseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4E92859B0DB00510C24 /* BidLiveBundleRecourseManager.h */; };
+		22CCC5B12859B0DC00510C24 /* BidLiveBundleResourceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4E92859B0DB00510C24 /* BidLiveBundleResourceManager.h */; };
 		22CCC5B22859B0DC00510C24 /* BidliveInterfaceEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4EA2859B0DB00510C24 /* BidliveInterfaceEnum.h */; };
 		22CCC5B32859B0DC00510C24 /* LCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4EB2859B0DB00510C24 /* LCConfig.h */; };
 		22CCC5B42859B0DC00510C24 /* YFGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4EC2859B0DB00510C24 /* YFGIFImageView.m */; };
-		22CCC5B52859B0DC00510C24 /* BidLiveBundleRecourseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4ED2859B0DB00510C24 /* BidLiveBundleRecourseManager.m */; };
+		22CCC5B52859B0DC00510C24 /* BidLiveBundleResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4ED2859B0DB00510C24 /* BidLiveBundleResourceManager.m */; };
 		22CCC5B62859B0DC00510C24 /* HJNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4F02859B0DB00510C24 /* HJNetwork.h */; };
 		22CCC5B72859B0DC00510C24 /* HJNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CCC4F12859B0DB00510C24 /* HJNetwork.m */; };
 		22CCC5B82859B0DC00510C24 /* YFGIFImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 22CCC4F22859B0DB00510C24 /* YFGIFImageView.h */; };
@@ -410,11 +410,11 @@
 		22CCC4E52859B0DB00510C24 /* BidLiveHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveHomeViewController.m; sourceTree = "<group>"; };
 		22CCC4E62859B0DB00510C24 /* BidLiveHomeScrollMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeScrollMainView.h; sourceTree = "<group>"; };
 		22CCC4E72859B0DB00510C24 /* BidLiveHomeFloatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveHomeFloatView.h; sourceTree = "<group>"; };
-		22CCC4E92859B0DB00510C24 /* BidLiveBundleRecourseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveBundleRecourseManager.h; sourceTree = "<group>"; };
+		22CCC4E92859B0DB00510C24 /* BidLiveBundleResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidLiveBundleResourceManager.h; sourceTree = "<group>"; };
 		22CCC4EA2859B0DB00510C24 /* BidliveInterfaceEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidliveInterfaceEnum.h; sourceTree = "<group>"; };
 		22CCC4EB2859B0DB00510C24 /* LCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCConfig.h; sourceTree = "<group>"; };
 		22CCC4EC2859B0DB00510C24 /* YFGIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFGIFImageView.m; sourceTree = "<group>"; };
-		22CCC4ED2859B0DB00510C24 /* BidLiveBundleRecourseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveBundleRecourseManager.m; sourceTree = "<group>"; };
+		22CCC4ED2859B0DB00510C24 /* BidLiveBundleResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidLiveBundleResourceManager.m; sourceTree = "<group>"; };
 		22CCC4F02859B0DB00510C24 /* HJNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJNetwork.h; sourceTree = "<group>"; };
 		22CCC4F12859B0DB00510C24 /* HJNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJNetwork.m; sourceTree = "<group>"; };
 		22CCC4F22859B0DB00510C24 /* YFGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFGIFImageView.h; sourceTree = "<group>"; };
@@ -877,13 +877,13 @@
 		22CCC4E82859B0DB00510C24 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				22CCC4E92859B0DB00510C24 /* BidLiveBundleRecourseManager.h */,
+				22CCC4E92859B0DB00510C24 /* BidLiveBundleResourceManager.h */,
+				22CCC4ED2859B0DB00510C24 /* BidLiveBundleResourceManager.m */,
 				22CCC4EA2859B0DB00510C24 /* BidliveInterfaceEnum.h */,
-				22CCC4EB2859B0DB00510C24 /* LCConfig.h */,
-				22CCC4EC2859B0DB00510C24 /* YFGIFImageView.m */,
-				22CCC4ED2859B0DB00510C24 /* BidLiveBundleRecourseManager.m */,
 				22CCC4EE2859B0DB00510C24 /* HJNetwork */,
+				22CCC4EB2859B0DB00510C24 /* LCConfig.h */,
 				22CCC4F22859B0DB00510C24 /* YFGIFImageView.h */,
+				22CCC4EC2859B0DB00510C24 /* YFGIFImageView.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1009,7 +1009,7 @@
 				22CCC59E2859B0DC00510C24 /* BidLiveHomeScrollTopMainView.h in Headers */,
 				22CCC5762859B0DC00510C24 /* BidLiveHomeFirstTableViewCell.h in Headers */,
 				22CCC5A02859B0DC00510C24 /* BidLiveSimultaneouslyScrollView.h in Headers */,
-				22CCC5B12859B0DC00510C24 /* BidLiveBundleRecourseManager.h in Headers */,
+				22CCC5B12859B0DC00510C24 /* BidLiveBundleResourceManager.h in Headers */,
 				22CCC5572859B0DC00510C24 /* AFNetworkActivityIndicatorManager.h in Headers */,
 				22CCC5BC285B2C0400510C24 /* UIDevice+VGAddition.h in Headers */,
 				22CCC52A2859B0DB00510C24 /* MJRefreshBackStateFooter.h in Headers */,
@@ -1273,7 +1273,7 @@
 				22CCC5062859B0DB00510C24 /* YYKVStorage.m in Sources */,
 				22CCC5972859B0DC00510C24 /* BidLiveHomeHotCourseModel.m in Sources */,
 				22CCC57B2859B0DC00510C24 /* BidLiveHomeScrollHighlightLotsCell.m in Sources */,
-				22CCC5B52859B0DC00510C24 /* BidLiveBundleRecourseManager.m in Sources */,
+				22CCC5B52859B0DC00510C24 /* BidLiveBundleResourceManager.m in Sources */,
 				22CCC5892859B0DC00510C24 /* BidLiveHomeGuessYouLikeModel.m in Sources */,
 				FD2FCB0225FC59260036D89D /* LebLiveComponent.m in Sources */,
 				22CCC5B42859B0DC00510C24 /* YFGIFImageView.m in Sources */,

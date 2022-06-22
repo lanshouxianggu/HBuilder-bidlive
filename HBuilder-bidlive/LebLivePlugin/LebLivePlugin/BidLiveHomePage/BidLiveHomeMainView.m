@@ -12,7 +12,7 @@
 #import "BidLiveHomeFloatView.h"
 #import "Masonry.h"
 #import "LCConfig.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeScrollYouLikeMainView.h"
 #import "BidLiveHomeScrollTopMainView.h"
 #import "BidLiveHomeScrollLiveMainView.h"
@@ -580,7 +580,7 @@
         
         [_tableView registerClass:BidLiveHomeFirstTableViewCell.class forCellReuseIdentifier:@"BidLiveHomeFirstTableViewCell"];
     
-        UINib *nib = [BidLiveBundleRecourseManager getBundleNib:@"BidLiveHomeFirstCell" type:@"nib"];
+        UINib *nib = [BidLiveBundleResourceManager getBundleNib:@"BidLiveHomeFirstCell" type:@"nib"];
         
         [_tableView registerNib:nib forCellReuseIdentifier:@"BidLiveHomeFirstCell"];
         

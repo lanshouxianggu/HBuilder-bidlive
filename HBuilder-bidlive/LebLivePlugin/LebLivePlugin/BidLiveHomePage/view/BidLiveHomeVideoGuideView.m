@@ -8,7 +8,7 @@
 #import "BidLiveHomeVideoGuideView.h"
 #import "LCConfig.h"
 #import "Masonry.h"
-#import "BidliveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeScrollVideoGuaideCell.h"
 #import "BidLiveHomeVideoGuaideModel.h"
 #import <LiveEB_IOS/LiveEBManager.h>

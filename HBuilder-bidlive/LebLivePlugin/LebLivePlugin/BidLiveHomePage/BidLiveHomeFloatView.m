@@ -8,7 +8,7 @@
 #import "BidLiveHomeFloatView.h"
 #import "Masonry.h"
 #import "DCSVProgressHUD.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 
 @implementation BidLiveHomeFloatView
 
@@ -34,7 +34,7 @@
         make.edges.insets(UIEdgeInsetsZero);
     }];
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"newauctionicon" type:@"png"];
+    UIImage *image = [BidLiveBundleResourceManager getBundleImage:@"newauctionicon" type:@"png"];
     
     UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
     [mainView addSubview:imageV];

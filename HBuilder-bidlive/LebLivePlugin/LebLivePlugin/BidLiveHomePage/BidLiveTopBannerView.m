@@ -6,7 +6,6 @@
 //
 
 #import "BidLiveTopBannerView.h"
-#import "UIImageView+WebCache.h"
 #import "LCConfig.h"
 
 @interface BidLiveTopBannerView () <UIScrollViewDelegate>
@@ -28,20 +27,31 @@
         self.scrollView.showsVerticalScrollIndicator = NO;
         self.scrollView.showsHorizontalScrollIndicator = NO;
         self.scrollView.delegate = self;
-        
+        [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
         
         self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-30, self.frame.size.width, 30)];
         
         [self addSubview:self.scrollView];
         [self addSubview:self.pageControl];
         
-        if (!self.timer) {
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollIamge) userInfo:nil repeats:YES];
-            NSRunLoop *runloop = [NSRunLoop currentRunLoop];
-            [runloop addTimer:self.timer forMode:NSRunLoopCommonModes];
-        }
+        self.pageControl.currentPage = 0;
+        self.pageControl.pageIndicatorTintColor = UIColorFromRGB(0x666666);
+        self.pageControl.currentPageIndicatorTintColor = UIColorFromRGB(0x69B2D2);
+        self.pageControl.userInteractionEnabled = NO;
+        
+        [self startTimer];
     }
     return self;
+}
+
+-(void)startTimer {
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(scrollIamge) userInfo:nil repeats:YES];
+    NSRunLoop *runloop = [NSRunLoop currentRunLoop];
+    [runloop addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
 -(void)updateBannerArray:(NSArray<BidLiveHomeBannerModel *> *)bannerArray {
@@ -55,11 +65,12 @@
     [self.imgArray addObject:[bannerArray firstObject]];
     
     self.scrollView.contentSize = CGSizeMake(self.frame.size.width*self.imgArray.count, self.frame.size.height);
+    UIImage *placeholderImage = [BidLiveBundleResourceManager getBundleImage:@"banner_lodding" type:@"png"];
     for (int i = 0; i<self.imgArray.count; i++) {
         BidLiveHomeBannerModel *mode = self.imgArray[i];
         CGRect imgFrame = CGRectMake(self.frame.size.width*i, 0, self.frame.size.width, self.frame.size.height);
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:imgFrame];
-        [imgView sd_setImageWithURL:[NSURL URLWithString:mode.imageUrl] placeholderImage:nil];
+        [imgView sd_setImageWithURL:[NSURL URLWithString:mode.imageUrl] placeholderImage:placeholderImage];
         [self.scrollView addSubview:imgView];
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -68,14 +79,9 @@
         [btn addTarget:self action:@selector(imageViewTapGes:) forControlEvents:UIControlEventTouchUpInside];
         [self.scrollView addSubview:btn];
     }
-
-    [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
-    
     self.pageControl.numberOfPages = bannerArray.count;
-    self.pageControl.currentPage = 0;
-    self.pageControl.pageIndicatorTintColor = UIColorFromRGB(0x666666);
-    self.pageControl.currentPageIndicatorTintColor = UIColorFromRGB(0x69B2D2);
-    self.pageControl.userInteractionEnabled = NO;
+    
+    [self startTimer];
 }
 
 -(void)destroyTimer {

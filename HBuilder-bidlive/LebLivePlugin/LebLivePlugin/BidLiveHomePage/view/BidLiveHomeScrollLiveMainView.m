@@ -8,7 +8,7 @@
 #import "BidLiveHomeScrollLiveMainView.h"
 #import "Masonry.h"
 #import "LCConfig.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 #import "BidLiveHomeScollLiveNormalCell.h"
 #import "DCSVProgressHUD.h"
 #import "BidLiveHomeScrollLiveBtnView.h"
@@ -109,7 +109,7 @@
     headView.backgroundColor = UIColorFromRGB(0xf8f8f8);
     WS(weakSelf)
     if (section==0) {
-        UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"indexBlock2" type:@"png"];
+        UIImage *image = [BidLiveBundleResourceManager getBundleImage:@"indexBlock2" type:@"png"];
         
         UIImageView *imageV = [[UIImageView alloc] initWithImage:image];
         [headView addSubview:imageV];
@@ -227,7 +227,7 @@
         
         
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"UITableViewCell"];
-        UINib *nib = [BidLiveBundleRecourseManager getBundleNib:@"BidLiveHomeScollLiveNormalCell" type:@"nib"];
+        UINib *nib = [BidLiveBundleResourceManager getBundleNib:@"BidLiveHomeScollLiveNormalCell" type:@"nib"];
         [_tableView registerNib:nib forCellReuseIdentifier:@"BidLiveHomeScollLiveNormalCell"];
     }
     return _tableView;

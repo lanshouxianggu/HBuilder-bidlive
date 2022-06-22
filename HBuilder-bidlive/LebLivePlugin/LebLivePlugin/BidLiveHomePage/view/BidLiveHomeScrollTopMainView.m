@@ -13,7 +13,7 @@
 #import "BidLiveHomeVideoGuideView.h"
 #import "LCConfig.h"
 #import "Masonry.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 
 #define kMainViewHeihgt (SCREEN_WIDTH*72/585)
 
@@ -155,7 +155,7 @@
         [_scrollTitleSuperView addSubview:lab];
         [_scrollTitleSuperView addSubview:self.scrollTitleView];
         
-        UIImage *arrow = [BidLiveBundleRecourseManager getBundleImage:@"arrow-dark-right" type:@"png"];
+        UIImage *arrow = [BidLiveBundleResourceManager getBundleImage:@"arrow-dark-right" type:@"png"];
         UIImageView *imageV = [[UIImageView alloc] initWithImage:arrow];
         [_scrollTitleSuperView addSubview:imageV];
         [imageV mas_makeConstraints:^(MASConstraintMaker *make) {

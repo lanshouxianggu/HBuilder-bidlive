@@ -10,7 +10,7 @@
 #import "BidLiveHomeFloatView.h"
 #import "Masonry.h"
 #import "LCConfig.h"
-#import "BidLiveBundleRecourseManager.h"
+#import "BidLiveBundleResourceManager.h"
 
 #import "BidLiveHomeScrollTopMainView.h"
 #import "BidLiveHomeScrollLiveMainView.h"

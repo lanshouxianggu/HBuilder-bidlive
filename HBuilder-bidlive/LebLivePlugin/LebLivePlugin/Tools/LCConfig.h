@@ -16,6 +16,7 @@
 #import "MJExtension.h"
 #import "BidLiveHomeNetworkModel.h"
 #import "UIDevice+VGAddition.h"
+#import "BidLiveBundleResourceManager.h"
 
 //弱引用
 #define WEAK_SELF(weakeSelf) __weak typeof(self) weakeSelf = self
