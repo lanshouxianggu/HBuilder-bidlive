@@ -96,14 +96,14 @@
     if (model.status==3) {
         //已拍
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
-            make.text(@"落槌价 ").foregroundColor(UIColorFromRGB(0x666666));
+            make.text(@"落槌价 ").foregroundColor(UIColorFromRGB(0x999999));
             make.text(@""[model.strDealPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
         }];
         self.remainTimeLabel.text = @""[model.companyName];
     }else if (model.status==4) {
         //正在直播
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
-            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x666666));
+            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
             make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
         }];
         self.remainTimeLabel.text = @""[model.companyName];
@@ -111,17 +111,17 @@
         [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.livingLabel.mas_left).offset(-5);
         }];
-    }else if (model.status==5 || model.status==2) {
+    }else if (model.status==5/* || model.status==2*/) {
         //流拍、已结束
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
-            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x666666));
+            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
             make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
         }];
         self.remainTimeLabel.text = @""[model.companyName];
     }else {
-        //未开拍
+        //预展中
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
-            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x666666));
+            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
             make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
         }];
         self.remainTimeLabel.text = @"距开拍 "[model.strRemainTime];
@@ -151,7 +151,7 @@
 -(UILabel *)startingPriceLabel {
     if (!_startingPriceLabel) {
         _startingPriceLabel = [UILabel new];
-        _startingPriceLabel.textColor = UIColorFromRGB(0x666666);
+        _startingPriceLabel.textColor = UIColorFromRGB(0x999999);
         _startingPriceLabel.font = [UIFont systemFontOfSize:12];
     }
     return _startingPriceLabel;
@@ -160,7 +160,7 @@
 -(UILabel *)remainTimeLabel {
     if (!_remainTimeLabel) {
         _remainTimeLabel = [UILabel new];
-        _remainTimeLabel.textColor = UIColorFromRGB(0x666666);
+        _remainTimeLabel.textColor = UIColorFromRGB(0x999999);
         _remainTimeLabel.font = [UIFont systemFontOfSize:12];
     }
     return _remainTimeLabel;

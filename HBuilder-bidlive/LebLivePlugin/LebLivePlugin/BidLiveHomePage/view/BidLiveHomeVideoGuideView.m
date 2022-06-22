@@ -85,23 +85,18 @@
 
 #pragma mark - 开始播放
 -(void)startPlayVideo {
-    [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
-    [self playStream];
-//    self.lastPlayVideoCell.rtcSuperView.hidden = NO;
-    self.lastPlayVideoCell.rtcSuperView.alpha = 1;
+//    [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
+//    [self playStream];
+//    self.lastPlayVideoCell.rtcSuperView.alpha = 1;
+    
+    [self playStream:self.lastPlayVideoCell];
 }
 
 #pragma mark - 播放第一个
 -(void)startPlayFirstCell {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     BidLiveHomeScrollVideoGuaideCell *firstCell = (BidLiveHomeScrollVideoGuaideCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    [firstCell.rtcSuperView addSubview:self.rtcView];
-    [self playStream];
-//    firstCell.rtcSuperView.hidden = NO;
-    [UIView animateWithDuration:0.5 animations:^{
-        firstCell.rtcSuperView.alpha = 1;
-    }];
-    self.lastPlayVideoCell = firstCell;
+    [self playStream:firstCell];
 }
 #pragma mark - scrollView 停止滚动监测
 //中间位置的cell播放视频流
@@ -126,23 +121,29 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self stopPlayVideo];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [currentCell.rtcSuperView addSubview:self.rtcView];
-            [self playStream];
-//            currentCell.rtcSuperView.hidden = NO;
-            [UIView animateWithDuration:0.5 animations:^{
-                currentCell.rtcSuperView.alpha = 1;
-            }];
-            self.lastPlayVideoCell = currentCell;
+            [self playStream:currentCell];
         });
     });
     
     NSLog(@"当前位置：%f", offsetX);
 }
 
--(void)playStream {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self.rtcView.videoView start];
-    });
+-(void)playStream:(BidLiveHomeScrollVideoGuaideCell *)currentCell {
+    //1、请求接口获取播流地址
+    
+    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:currentCell.model.roomType domain:@"" streamName:@""[currentCell.model.liveRoomId] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
+        if (liveUrl.length) {
+            //2、播流
+        }
+    }];
+    
+    
+    [currentCell.rtcSuperView addSubview:self.rtcView];
+    [self.rtcView.videoView start];
+    [UIView animateWithDuration:0.5 animations:^{
+        currentCell.rtcSuperView.alpha = 1;
+    }];
+    self.lastPlayVideoCell = currentCell;
 }
 
 
@@ -155,6 +156,7 @@
     BidLiveHomeScrollVideoGuaideCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollVideoGuaideCell" forIndexPath:indexPath];
     cell.model = self.dataList[indexPath.item];
 //    cell.rtcSuperView.hidden = YES;
+    cell.rtcSuperView.alpha = 0;
     return cell;
 }
 

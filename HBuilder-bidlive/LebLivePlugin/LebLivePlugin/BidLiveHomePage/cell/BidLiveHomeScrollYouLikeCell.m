@@ -51,7 +51,7 @@
     self.nameLabel.text = @""[model.auctionItemName];
     
     self.priceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
-        make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x666666));
+        make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
         make.text(model.strStartingPrice).foregroundColor(UIColorFromRGB(0x5E98CB));
     }];
     if (model.auctionStatus==2) {
@@ -123,7 +123,7 @@
     if (!_priceLabel) {
         _priceLabel = [UILabel new];
         _priceLabel.text = @"起拍价 2万日元";
-        _priceLabel.textColor = UIColorFromRGB(0x666666);
+        _priceLabel.textColor = UIColorFromRGB(0x999999);
         _priceLabel.font = [UIFont systemFontOfSize:14];
     }
     return _priceLabel;
@@ -133,7 +133,7 @@
     if (!_dateLabel) {
         _dateLabel = [UILabel new];
         _dateLabel.text = @"距开拍 5天3时";
-        _dateLabel.textColor = UIColorFromRGB(0x666666);
+        _dateLabel.textColor = UIColorFromRGB(0x999999);
         _dateLabel.font = [UIFont systemFontOfSize:14];
     }
     return _dateLabel;

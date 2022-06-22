@@ -45,7 +45,7 @@
     
     [topView addSubview:self.livingView];
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"lianpaijiangtangvideobg" type:@"png"];
+    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"iconicon-play" type:@"png"];
     
     UIImageView *iconImageV = [[UIImageView alloc] initWithImage:image];
     [topView addSubview:iconImageV];

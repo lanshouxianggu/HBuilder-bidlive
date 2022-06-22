@@ -26,7 +26,7 @@
     // Initialization code
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"lianpaijiangtangvideobg" type:@"png"];
+    UIImage *image = [BidLiveBundleRecourseManager getBundleImage:@"iconicon-play" type:@"png"];
     self.videoIconImageView.image = image;
     self.videoImageView.contentMode = UIViewContentModeScaleAspectFill;
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2289BA402862A51200EFCC0E /* iconicon-play.png in Resources */ = {isa = PBXBuildFile; fileRef = 2289BA3F2862A51200EFCC0E /* iconicon-play.png */; };
 		22B5491D2850482200525686 /* newauctionicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B549092850482100525686 /* newauctionicon.png */; };
 		22B5491E2850482200525686 /* newsFeed.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B5490A2850482100525686 /* newsFeed.png */; };
 		22B5491F2850482200525686 /* iconfont-sousuo.png in Resources */ = {isa = PBXBuildFile; fileRef = 22B5490B2850482100525686 /* iconfont-sousuo.png */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2289BA3F2862A51200EFCC0E /* iconicon-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconicon-play.png"; sourceTree = "<group>"; };
 		22B549012850466B00525686 /* BidLiveBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BidLiveBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B549092850482100525686 /* newauctionicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newauctionicon.png; sourceTree = "<group>"; };
 		22B5490A2850482100525686 /* newsFeed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsFeed.png; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				22B549152850482100525686 /* jianding.png */,
 				22B549162850482100525686 /* more.png */,
 				22B549172850482100525686 /* classroom.png */,
+				2289BA3F2862A51200EFCC0E /* iconicon-play.png */,
 				22B549182850482100525686 /* lianpaijiangtangvideobg.png */,
 			);
 			path = images;
@@ -222,6 +225,7 @@
 				22B5491E2850482200525686 /* newsFeed.png in Resources */,
 				22B5491F2850482200525686 /* iconfont-sousuo.png in Resources */,
 				22B54A722853192B00525686 /* banner_lodding.png in Resources */,
+				2289BA402862A51200EFCC0E /* iconicon-play.png in Resources */,
 				22B5492E2850482200525686 /* BidLiveHomeScrollSpeechCell.xib in Resources */,
 				22B5492B2850482200525686 /* classroom.png in Resources */,
 				22B54A7828533EB300525686 /* animation_live.gif in Resources */,

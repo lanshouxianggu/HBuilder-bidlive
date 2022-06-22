@@ -135,7 +135,7 @@ UNI_EXPORT_METHOD(@selector(stopPlay))
         [_homeVC setVideoGuaideCellClickBlock:^(BidLiveHomeVideoGuaideListModel * _Nonnull model) {
             if (weakSelf.onTurnPage) {
                 NSDictionary *infoDic = [model mj_keyValues];
-                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"videoGuaide",@"page":infoDic}} domChanges:nil];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"videoGuide",@"page":infoDic}} domChanges:nil];
             }
         }];
 #pragma mark - 全球直播cell点击事件
