@@ -113,16 +113,11 @@
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self.timer invalidate];
-    self.timer = nil;
+    [self destroyTimer];
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(scrollIamge) userInfo:nil repeats:YES];
-    
-    //优先级 设置到当前的runloop中
-    NSRunLoop *runloop = [NSRunLoop currentRunLoop];
-    [runloop addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [self startTimer];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

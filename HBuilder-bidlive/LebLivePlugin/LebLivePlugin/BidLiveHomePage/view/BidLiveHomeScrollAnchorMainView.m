@@ -201,6 +201,9 @@
 }
 
 -(void)playStream:(BidLiveHomeScrollAnchorCell *)currentCell {
+    if (currentCell.model.liveStatus!=1) {
+        return;
+    }
     NSInteger playType = 1;//直播间
     if (currentCell.model.roomType==2) {
         //anchorType 1看展 0公开课
@@ -208,7 +211,7 @@
     }
     //1、请求接口获取播流地址
     WS(weakSelf)
-    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:3 domain:@"" streamName:@""[currentCell.model.id] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
+    [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:playType domain:@"" streamName:@""[currentCell.model.id] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
         if (liveUrl.length) {
             //2、播流
             [currentCell.rtcSuperView addSubview:weakSelf.rtcView];

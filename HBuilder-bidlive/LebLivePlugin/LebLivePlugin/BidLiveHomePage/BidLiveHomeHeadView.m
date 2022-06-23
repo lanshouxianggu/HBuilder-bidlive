@@ -39,7 +39,7 @@
     UILabel *lab = [UILabel new];
     lab.text = @"请输入关键字搜索";
     lab.textColor = UIColorFromRGB(0x666666);
-    lab.font = [UIFont systemFontOfSize:14];
+    lab.font = FONT_SIZE_REGULAR(14);
     lab.textAlignment = NSTextAlignmentCenter;
     
     [searchView addSubview:lab];

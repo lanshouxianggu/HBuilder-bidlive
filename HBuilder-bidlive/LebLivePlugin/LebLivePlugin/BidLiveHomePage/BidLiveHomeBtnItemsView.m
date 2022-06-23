@@ -154,7 +154,7 @@
     if (!_titleLable) {
         _titleLable = [UILabel new];
         _titleLable.textColor = UIColorFromRGB(0x3b3b3b);
-        _titleLable.font = [UIFont systemFontOfSize:14];
+        _titleLable.font = FONT_SIZE_REGULAR(14);
         _titleLable.textAlignment = NSTextAlignmentCenter;
     }
     return _titleLable;

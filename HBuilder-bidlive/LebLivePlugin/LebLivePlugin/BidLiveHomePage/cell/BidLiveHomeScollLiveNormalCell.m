@@ -43,6 +43,12 @@
     
     UIImage *liveIconImage = [BidLiveBundleResourceManager getBundleImage:@"videolive" type:@"png"];
     self.liveIcon.image = liveIconImage;
+    
+    self.mainTitleLabel.font = FONT_SIZE_MEDIUM(16);
+    self.subTitleLabel.font = FONT_SIZE_REGULAR(16);
+    self.detailLabel.font = FONT_SIZE_REGULAR(14);
+    self.changeLabel.font = FONT_SIZE_REGULAR(14);
+    self.liveBtn.titleLabel.font = FONT_SIZE_REGULAR(14);
 }
 
 -(void)setModel:(BidLiveHomeGlobalLiveModel *)model {
@@ -158,9 +164,9 @@
 //        NSLog(@"%@",@"距开拍："[hour][@"时"][min][@"分"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
-            make.text(hour).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);
+            make.text(hour).foregroundColor(UIColorFromRGB(0x69B2D2)).font(FONT_SIZE_BOLD(13));
             make.text(@"时").foregroundColor(UIColorFromRGB(0x666666));
-            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
+            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font(FONT_SIZE_BOLD(13));;
             make.text(@"分").foregroundColor(UIColorFromRGB(0x666666));
         }];
         
@@ -170,9 +176,9 @@
 //        NSLog(@"%@",@"距开拍："[min][@"分"][sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
-            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
+            make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font(FONT_SIZE_BOLD(13));;
             make.text(@"分").foregroundColor(UIColorFromRGB(0x666666));
-            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
+            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font(FONT_SIZE_BOLD(13));;
             make.text(@"秒").foregroundColor(UIColorFromRGB(0x666666));
         }];
     }else if ([type isEqualToString:@"秒"]) {
@@ -180,7 +186,7 @@
 //        NSLog(@"%@",@"距开拍："[sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
-            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
+            make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font(FONT_SIZE_BOLD(13));;
             make.text(@"秒").foregroundColor(UIColorFromRGB(0x666666));
         }];
     }

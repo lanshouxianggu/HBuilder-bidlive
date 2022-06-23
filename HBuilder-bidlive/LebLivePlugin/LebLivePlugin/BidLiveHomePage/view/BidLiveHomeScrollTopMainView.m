@@ -32,7 +32,6 @@
     if (self = [super initWithFrame:frame]) {
         self.imageArray = @[];
         self.scrollTitleView.titleColor = UIColorFromRGB(0x3b3b3b);
-        self.scrollTitleView.titleFont = [UIFont systemFontOfSize:14];
         self.scrollTitleView.delegate = self;
         
         [self setupUI];
@@ -149,7 +148,7 @@
         UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 60, kMainViewHeihgt)];
         lab.text = @"[动态]";
         lab.textColor = UIColorFromRGB(0x999999);
-        lab.font = [UIFont systemFontOfSize:14];
+        lab.font = FONT_SIZE_REGULAR(14);
         [_scrollTitleSuperView addSubview:lab];
         [_scrollTitleSuperView addSubview:self.scrollTitleView];
         
@@ -171,6 +170,7 @@
         _scrollTitleView = [[SGAdvertScrollView alloc] initWithFrame:CGRectMake(60, 0, SCREEN_WIDTH-85, kMainViewHeihgt)];
         _scrollTitleView.delegate = self;
         _scrollTitleView.scrollTimeInterval = 2;
+        [_scrollTitleView setTitleFont:FONT_SIZE_REGULAR(14)];
     }
     return _scrollTitleView;
 }
