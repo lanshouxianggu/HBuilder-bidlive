@@ -99,36 +99,43 @@
             make.text(@"落槌价 ").foregroundColor(UIColorFromRGB(0x999999));
             make.text(@""[model.strDealPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
         }];
-        self.remainTimeLabel.text = @""[model.companyName];
-    }else if (model.status==4) {
-        //正在直播
-        self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
-            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
-            make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
-        }];
-        self.remainTimeLabel.text = @""[model.companyName];
-        self.livingLabel.hidden = NO;
-        [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.livingLabel.mas_left).offset(-5);
-        }];
-    }else if (model.status==5/* || model.status==2*/) {
-        //流拍
-        self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
-            make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
-            make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
-        }];
-        self.remainTimeLabel.text = @""[model.companyName];
-        self.livingLabel.hidden = NO;
-        [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self.livingLabel.mas_left).offset(-5);
-        }];
     }else {
-        //预展中
         self.startingPriceLabel.attributedText = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
             make.text(@""[model.strStartingPrice]).foregroundColor(UIColorFromRGB(0x69B2D2));
         }];
+    }
+    
+    if (model.auctionStatus==3) {
+        //预展中
+//        [self.livingLabel setTitle:@"预展中" forState:UIControlStateNormal];
+//        [self.livingLabel setTitleColor:UIColorFromRGB(0x69B2D2) forState:UIControlStateNormal];
+//        self.livingLabel.hidden = NO;
+//        [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(self.livingLabel.mas_left).offset(-5);
+//        }];
         self.remainTimeLabel.text = @"距开拍 "[model.strRemainTime];
+    }else if (model.auctionStatus==4) {
+        //准备中
+//        [self.livingLabel setTitle:@"准备中" forState:UIControlStateNormal];
+//        [self.livingLabel setTitleColor:UIColorFromRGB(0x69B2D2) forState:UIControlStateNormal];
+//        self.livingLabel.hidden = NO;
+//        [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.right.equalTo(self.livingLabel.mas_left).offset(-5);
+//        }];
+        self.remainTimeLabel.text = @"距开拍 "[model.strRemainTime];
+    }else if (model.auctionStatus==5) {
+        //已结束
+        self.remainTimeLabel.text = @""[model.companyName];
+    }else if (model.auctionStatus==100) {
+        //进行中
+        [self.livingLabel setTitle:@"正在直播" forState:UIControlStateNormal];
+        [self.livingLabel setTitleColor:UIColorFromRGB(0xD56C68) forState:UIControlStateNormal];
+        self.livingLabel.hidden = NO;
+        [self.remainTimeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.livingLabel.mas_left).offset(-5);
+        }];
+        self.remainTimeLabel.text = @""[model.companyName];
     }
 }
 
