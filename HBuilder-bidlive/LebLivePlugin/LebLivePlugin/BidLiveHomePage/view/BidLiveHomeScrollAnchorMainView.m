@@ -13,7 +13,7 @@
 #import <LiveEB_IOS/LiveEBManager.h>
 #import "WebRtcView.h"
 
-@interface BidLiveHomeScrollAnchorMainView ()<UITableViewDelegate,UITableViewDataSource>
+@interface BidLiveHomeScrollAnchorMainView ()<UITableViewDelegate,UITableViewDataSource,LiveEBVideoViewDelegate>
 ///是否点击了更多
 @property (nonatomic, assign) BOOL isClickMore;
 ///是否点击了收起
@@ -360,6 +360,11 @@
     !self.cellClickBlock?:self.cellClickBlock(self.anchorsArray[indexPath.row]);
 }
 
+#pragma mark - LiveEBVideoViewDelegate
+-(void)onCompletion:(LiveEBVideoView *)videoView {
+    [self stopPlayVideo];
+}
+
 
 #pragma mark - lazy
 -(UITableView *)tableView {
@@ -388,6 +393,7 @@
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*11/18-10)];
 //        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
         [_rtcView.videoView setAudioMute:YES];
+        _rtcView.videoView.delegate = self;
 //        [_rtcView.videoView setRenderMode:LEBVideoRenderMode_ScaleAspect_FIT];
     }
     return _rtcView;

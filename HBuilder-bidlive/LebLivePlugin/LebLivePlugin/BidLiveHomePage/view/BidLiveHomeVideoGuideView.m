@@ -16,7 +16,7 @@
 #define kCollectionViewHeight (SCREEN_HEIGHT*0.18)
 #define kItemWidth (SCREEN_WIDTH-15*2-12*2)/2.25
 
-@interface BidLiveHomeVideoGuideView () <UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
+@interface BidLiveHomeVideoGuideView () <UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate,LiveEBVideoViewDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 @property (nonatomic, strong) NSArray <BidLiveHomeVideoGuaideListModel *> *dataList;
@@ -162,6 +162,12 @@
     !self.cellClickBlock?:self.cellClickBlock(self.dataList[indexPath.item]);
 }
 
+#pragma mark - LiveEBVideoViewDelegate
+-(void)onCompletion:(LiveEBVideoView *)videoView {
+    [self stopPlayVideo];
+}
+
+
 #pragma mark - lazy
 -(UICollectionViewFlowLayout *)layout {
     if (!_layout) {
@@ -190,6 +196,7 @@
     if (!_rtcView) {
         _rtcView = [[WebRtcView alloc] initWithFrame:CGRectMake(0, 0, kItemWidth, kCollectionViewHeight*4/7)];
 //        _rtcView.videoView.liveEBURL = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+        _rtcView.videoView.delegate = self;
         [_rtcView.videoView setAudioMute:YES];
     }
     return _rtcView;
