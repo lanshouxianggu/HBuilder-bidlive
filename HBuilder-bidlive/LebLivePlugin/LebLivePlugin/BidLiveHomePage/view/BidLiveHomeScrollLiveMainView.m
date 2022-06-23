@@ -167,8 +167,15 @@
         }
         
         WS(weakSelf)
-        [cell setLivingBtnClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
-            !weakSelf.cellLivingBtnClickBlock?:weakSelf.cellLivingBtnClickBlock(model);
+//        [cell setLivingBtnClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+//            !weakSelf.cellLivingBtnClickBlock?:weakSelf.cellLivingBtnClickBlock(model);
+//        }];
+        [cell setLivingBtnClickBlock:^(NSString * _Nonnull btnTitle) {
+            if ([btnTitle isEqualToString:@"正在直播"]) {
+                !weakSelf.cellLivingBtnClickBlock?:weakSelf.cellLivingBtnClickBlock(weakSelf.firstPartLiveArray[indexPath.row]);
+            }else {
+                !weakSelf.cellClickBlock?:weakSelf.cellClickBlock(weakSelf.firstPartLiveArray[indexPath.row]);
+            }
         }];
         return cell;
     }

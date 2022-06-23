@@ -51,8 +51,8 @@
     self.mainTitleLabel.text = model.CompanyName;
     self.subTitleLabel.text = model.SpecialName;
     self.detailLabel.text = model.LotRange;
-    self.liveIcon.hidden = !model.IsVideoLive;
-    
+    self.liveIcon.hidden = !(model.IsVideoLive && model.Status==4);
+    self.timerHasStarted = NO;
     if (model.Status==4) {
         [self.liveBtn setTitle:@"正在直播" forState:UIControlStateNormal];
         self.liveBtn.backgroundColor = UIColorFromRGB(0xD56C68);
@@ -74,9 +74,11 @@
             long long nowTime = [NSDate date].timeIntervalSince1970*1000;
             long long timeDiff = startTime-nowTime;
             if (timeDiff > 0 && timeDiff <= 60*60*1000 && !weakSelf.timerHasStarted) {
+//                NSLog(@"model id = %ld 开始倒计时 timeDiff = %lld", weakSelf.model.Id, timeDiff);
                 [weakSelf startTimer];
                 weakSelf.timerHasStarted = YES;
             }else {
+//                NSLog(@"model id = %ld 停止倒计时 timeDiff = %lld", weakSelf.model.Id, timeDiff);
                 [weakSelf endTimer];
                 weakSelf.timerHasStarted = NO;
             }
@@ -95,6 +97,7 @@
         WS(weakSelf);
         dispatch_source_set_event_handler(_timer, ^{
              dispatch_async(dispatch_get_main_queue(), ^{
+//                 NSLog(@"model id = %ld", weakSelf.model.Id);
                  if (weakSelf.model.StartTime>0) {
                      [weakSelf getHtmlRemainTime:weakSelf.model.StartTime prefix:@"距开拍  " completion:^(NSAttributedString *resultAttrStr) {
                          weakSelf.changeLabel.attributedText = resultAttrStr;
@@ -152,7 +155,7 @@
     if ([type isEqualToString:@"h"]) {
         NSString *hour = [NSString stringWithFormat:@"%.0f", floor(timeDiff/(1000*60*60))];
         NSString *min = [NSString stringWithFormat:@"%.0f", floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))];
-        NSLog(@"%@",@"距开拍："[hour][@"时"][min][@"分"]);
+//        NSLog(@"%@",@"距开拍："[hour][@"时"][min][@"分"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
             make.text(hour).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);
@@ -164,7 +167,7 @@
     }else if ([type isEqualToString:@"m"]) {
         NSString *min = [NSString stringWithFormat:@"%.0f", floor(timeDiff / (1000 * 60))];
         NSString *sec = [NSString stringWithFormat:@"%.0f", floor((timeDiff % (1000 *60)) /(1000))];
-        NSLog(@"%@",@"距开拍："[min][@"分"][sec][@"秒"]);
+//        NSLog(@"%@",@"距开拍："[min][@"分"][sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
             make.text(min).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
@@ -174,7 +177,7 @@
         }];
     }else if ([type isEqualToString:@"秒"]) {
         NSString *sec = [NSString stringWithFormat:@"%.0f", floor(timeDiff / 1000)];
-        NSLog(@"%@",@"距开拍："[sec][@"秒"]);
+//        NSLog(@"%@",@"距开拍："[sec][@"秒"]);
         result = [NSAttributedString makeAttributedString:^(LLAttributedStringMaker * _Nonnull make) {
             make.text(prefix).foregroundColor(UIColorFromRGB(0x666666));
             make.text(sec).foregroundColor(UIColorFromRGB(0x69B2D2)).font([UIFont systemFontOfSize:13 weight:UIFontWeightBold]);;
@@ -184,8 +187,9 @@
     !completion?:completion(result);
 }
 
-- (IBAction)liveBtnAction:(id)sender {
-    !self.livingBtnClickBlock?:self.livingBtnClickBlock(self.model);
+- (IBAction)liveBtnAction:(UIButton *)sender {
+    !self.livingBtnClickBlock?:self.livingBtnClickBlock(sender.titleLabel.text);
+    
 }
 
 -(void)dealloc {

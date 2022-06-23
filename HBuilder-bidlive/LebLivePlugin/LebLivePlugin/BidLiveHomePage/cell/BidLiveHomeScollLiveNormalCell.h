@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (nonatomic, strong) BidLiveHomeGlobalLiveModel *model;
 
-@property (nonatomic, copy) void (^livingBtnClickBlock)(BidLiveHomeGlobalLiveModel *model);
+@property (nonatomic, copy) void (^livingBtnClickBlock)(NSString *btnTitle);
 @end
 
 NS_ASSUME_NONNULL_END

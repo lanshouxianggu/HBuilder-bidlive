@@ -427,7 +427,9 @@
         weakSelf.liveMainView.secondPartLiveArray = array2;
         
         [weakSelf.liveMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(kLiveMainViewHeight);
+            //kLiveNormalCellHeight*8+70+kLiveCenterImageCellHeight+10+70+kLiveCenterImageCellHeight
+//            make.height.mas_equalTo(kLiveMainViewHeight);
+            make.height.mas_equalTo(kLiveNormalCellHeight*liveList.count+70+kLiveCenterImageCellHeight+10+70+kLiveCenterImageCellHeight);
         }];
         
         [weakSelf.liveMainView reloadData];

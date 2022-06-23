@@ -490,20 +490,20 @@
 		22CCC4122859B0DB00510C24 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				22CCC4192859B0DB00510C24 /* NSAttributedString+LLMake.h */,
 				22CCC4132859B0DB00510C24 /* NSAttributedString+LLMake.m */,
 				22CCC4142859B0DB00510C24 /* NSString+LLStringConnection.h */,
-				22CCC4152859B0DB00510C24 /* UIColor+LLRandomColor.m */,
-				22CCC4162859B0DB00510C24 /* UILabel+Common.h */,
-				22CCC4172859B0DB00510C24 /* UIView+GradientColor.m */,
-				22CCC4182859B0DB00510C24 /* UIView+PartRounded.h */,
-				22CCC4192859B0DB00510C24 /* NSAttributedString+LLMake.h */,
-				22CCC41A2859B0DB00510C24 /* UIColor+LLRandomColor.h */,
 				22CCC41B2859B0DB00510C24 /* NSString+LLStringConnection.m */,
-				22CCC41C2859B0DB00510C24 /* UIView+PartRounded.m */,
-				22CCC41D2859B0DB00510C24 /* UIView+GradientColor.h */,
-				22CCC41E2859B0DB00510C24 /* UILabel+Common.m */,
+				22CCC41A2859B0DB00510C24 /* UIColor+LLRandomColor.h */,
+				22CCC4152859B0DB00510C24 /* UIColor+LLRandomColor.m */,
 				22CCC5BA285B2C0400510C24 /* UIDevice+VGAddition.h */,
 				22CCC5BB285B2C0400510C24 /* UIDevice+VGAddition.m */,
+				22CCC4162859B0DB00510C24 /* UILabel+Common.h */,
+				22CCC41E2859B0DB00510C24 /* UILabel+Common.m */,
+				22CCC41D2859B0DB00510C24 /* UIView+GradientColor.h */,
+				22CCC4172859B0DB00510C24 /* UIView+GradientColor.m */,
+				22CCC4182859B0DB00510C24 /* UIView+PartRounded.h */,
+				22CCC41C2859B0DB00510C24 /* UIView+PartRounded.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
