@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray <BidLiveHomeBannerModel *> *bannerArray;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
+@property (nonatomic, assign) BOOL hasScrollToBottom;
 
 ///可否滑动
 @property (nonatomic,assign) BOOL canSlide;

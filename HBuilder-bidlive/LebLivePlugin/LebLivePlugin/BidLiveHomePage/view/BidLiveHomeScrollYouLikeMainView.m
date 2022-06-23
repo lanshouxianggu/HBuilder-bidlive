@@ -49,6 +49,7 @@
     return dataArray.count;
 }
 
+
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind==UICollectionElementKindSectionFooter) {
         UICollectionReusableView *reusableHeadView = nil;
@@ -100,6 +101,13 @@
     return nil;
 }
 
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    if (self.likesArray.count>1 && section==self.likesArray.count-1) {
+        return CGSizeZero;
+    }
+    return CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
+}
+
 -(__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BidLiveHomeScrollYouLikeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell" forIndexPath:indexPath];
     NSArray<BidLiveHomeGuessYouLikeListModel *> *array = self.likesArray[indexPath.section];
@@ -125,11 +133,19 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat contentYoffset = scrollView.contentOffset.y;
+    NSLog(@"猜你喜欢 offsetY: %f", contentYoffset);
     if (contentYoffset <= 0) {
         NSLog(@"滚动到顶部了，移交滚动权限给主视图");
         self.collectionView.scrollEnabled = NO;
         !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
     }else {
+//        CGFloat height = scrollView.frame.size.height;
+//        CGFloat contentYoffset = scrollView.contentOffset.y;
+//        CGFloat distanceFromBottom = height - contentYoffset-25;
+//        if (distanceFromBottom <= height && !self.hasScrollToBottom) {
+//            self.hasScrollToBottom = YES;
+//            !self.loadMoreGuessYouLikeDataBlock?:self.loadMoreGuessYouLikeDataBlock();
+//        }
         !self.youLikeViewDidScrollBlock?:self.youLikeViewDidScrollBlock();
     }
 }
@@ -167,7 +183,7 @@
         _layout.minimumLineSpacing = 10;
         _layout.minimumInteritemSpacing = 0;
 //        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
-        _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
+//        _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
     }
     return _layout;
 }
@@ -180,7 +196,7 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.scrollEnabled = NO;
-//        _collectionView.bounces = NO;
+        _collectionView.bounces = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
@@ -193,7 +209,7 @@
                 [weakSelf.collectionView.mj_footer endRefreshing];
             });
         }];
-        refreshFoot.triggerAutomaticallyRefreshPercent = -20;
+        refreshFoot.triggerAutomaticallyRefreshPercent = 0;
         refreshFoot.refreshingTitleHidden = YES;
         refreshFoot.onlyRefreshPerDrag = YES;
         _collectionView.mj_footer = refreshFoot;

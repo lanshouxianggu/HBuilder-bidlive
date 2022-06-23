@@ -619,6 +619,7 @@
         
         [CATransaction setDisableActions:YES];
         [weakSelf.youlikeMainView.collectionView reloadData];
+        weakSelf.youlikeMainView.hasScrollToBottom = NO;
         [CATransaction commit];
     }];
 }
