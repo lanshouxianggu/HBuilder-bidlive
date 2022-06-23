@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UILabel *dateLabel;
-@property (nonatomic, strong) UILabel *stateLabel;
+@property (nonatomic, strong) UIButton *stateLabel;
 @end
 
 @implementation BidLiveHomeScrollYouLikeCell
@@ -53,14 +53,20 @@
         make.text(@"起拍价 ").foregroundColor(UIColorFromRGB(0x999999));
         make.text(model.strStartingPrice).foregroundColor(UIColorFromRGB(0x5E98CB));
     }];
-    if (model.auctionStatus==2) {
-        self.stateLabel.text = @"正在直播";
-        self.stateLabel.textColor = UIColorFromRGB(0xC6746C);
+    if (model.auctionStatus==4) {
+        [self.stateLabel setTitle:@"正在直播" forState:UIControlStateNormal];
+        [self.stateLabel setTitleColor:UIColorFromRGB(0xC6746C) forState:UIControlStateNormal];
         self.dateLabel.text = @""[model.sellerName];
     }else {
-        self.stateLabel.text = @"预展中";
-        self.stateLabel.textColor = UIColorFromRGB(0x5E98CB);
+        [self.stateLabel setTitle:@"预展中" forState:UIControlStateNormal];
+        [self.stateLabel setTitleColor:UIColorFromRGB(0x5E98CB) forState:UIControlStateNormal];
         self.dateLabel.text = @"距开拍 "[model.strRemainTime];
+    }
+}
+
+-(void)livingAction:(UIButton *)btn {
+    if ([btn.titleLabel.text isEqualToString:@"正在直播"]) {
+        !self.livingTapBlock?:self.livingTapBlock(self.model);
     }
 }
 
@@ -88,14 +94,14 @@
         [_bottomView addSubview:self.priceLabel];
         [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(8);
-            make.top.equalTo(self.nameLabel.mas_bottom).offset(6);
+            make.top.equalTo(self.nameLabel.mas_bottom).offset(8);
             make.right.offset(-8);
         }];
         
         [_bottomView addSubview:self.dateLabel];
         [self.dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(8);
-            make.top.equalTo(self.priceLabel.mas_bottom).offset(6);
+            make.top.equalTo(self.priceLabel.mas_bottom).offset(8);
             make.right.offset(-60);
         }];
         
@@ -113,7 +119,7 @@
         _nameLabel = [UILabel new];
         _nameLabel.text = @"清 青花人物纹纹杯";
         _nameLabel.textColor = UIColorFromRGB(0x3b3b3b);
-        _nameLabel.font = [UIFont systemFontOfSize:15];
+        _nameLabel.font = FONT_SIZE_REGULAR(15);
     }
     return _nameLabel;
 }
@@ -123,7 +129,7 @@
         _priceLabel = [UILabel new];
         _priceLabel.text = @"起拍价 2万日元";
         _priceLabel.textColor = UIColorFromRGB(0x999999);
-        _priceLabel.font = [UIFont systemFontOfSize:14];
+        _priceLabel.font = FONT_SIZE_REGULAR(12);
     }
     return _priceLabel;
 }
@@ -133,18 +139,19 @@
         _dateLabel = [UILabel new];
         _dateLabel.text = @"距开拍 5天3时";
         _dateLabel.textColor = UIColorFromRGB(0x999999);
-        _dateLabel.font = [UIFont systemFontOfSize:14];
+        _dateLabel.font = FONT_SIZE_REGULAR(12);
     }
     return _dateLabel;
 }
 
--(UILabel *)stateLabel {
+-(UIButton *)stateLabel {
     if (!_stateLabel) {
-        _stateLabel = [UILabel new];
-        _stateLabel.text = @"预展中";
-        _stateLabel.textAlignment = NSTextAlignmentRight;
-        _stateLabel.textColor = UIColorFromRGB(0x5E98CB);
-        _stateLabel.font = [UIFont systemFontOfSize:14];
+        _stateLabel = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_stateLabel setTitle:@"预展中" forState:UIControlStateNormal];
+        _stateLabel.titleLabel.textAlignment = NSTextAlignmentRight;
+        [_stateLabel setTitleColor:UIColorFromRGB(0x5E98CB) forState:UIControlStateNormal];
+        _stateLabel.titleLabel.font = FONT_SIZE_REGULAR(13);
+        [_stateLabel addTarget:self action:@selector(livingAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _stateLabel;
 }

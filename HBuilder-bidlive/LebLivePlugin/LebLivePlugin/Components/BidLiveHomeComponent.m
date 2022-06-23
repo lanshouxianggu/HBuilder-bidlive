@@ -216,7 +216,17 @@ UNI_EXPORT_METHOD(@selector(stopPlay))
         }];
 #pragma mark - 猜你喜欢cell点击事件
         [_homeVC setGuessYouLikeCellClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
-            [weakSelf guessYouLikeCellClickAction:model];
+            NSString *pageStr = @"/pages/auction/item?auctionItemId="[@(model.id)];
+            if (weakSelf.onTurnPage) {
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
+            }
+        }];
+#pragma mark - 猜你喜欢cell上的正在直播点击事件
+        [_homeVC setGuessYoulikeCellLivingClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
+            if (weakSelf.onTurnPage) {
+                NSDictionary *infoDic = [model mj_keyValues];
+                [weakSelf fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"live",@"page":infoDic}} domChanges:nil];
+            }
         }];
 #pragma mark - 猜你喜欢banner点击事件
         [_homeVC setGuessYouLikeBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
@@ -234,13 +244,6 @@ UNI_EXPORT_METHOD(@selector(stopPlay))
         }];
     }
     return _homeVC;
-}
-
--(void)guessYouLikeCellClickAction:(BidLiveHomeGuessYouLikeListModel *)model {
-    NSString *pageStr = @"/pages/auction/item?auctionItemId="[@(model.id)];
-    if (self.onTurnPage) {
-        [self fireEvent:sOnTurnPageEvent params:@{@"detail":@{@"type":@"h5",@"page":pageStr}} domChanges:nil];
-    }
 }
 
 -(void)guessYouLikeBannerClickAction:(BidLiveHomeBannerModel *)model {

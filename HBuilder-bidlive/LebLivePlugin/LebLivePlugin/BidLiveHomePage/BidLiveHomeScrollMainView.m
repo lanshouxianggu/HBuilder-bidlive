@@ -238,6 +238,10 @@
         [self.youlikeMainView setYoulikeCellClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
             !weakSelf.guessYouLikeCellClickBlock?:weakSelf.guessYouLikeCellClickBlock(model);
         }];
+#pragma mark - 猜你喜欢cell上的正在直播点击事件
+        [self.youlikeMainView setYoulikeCellLivingClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
+            !weakSelf.guessYoulikeCellLivingClickBlock?:weakSelf.guessYoulikeCellLivingClickBlock(model);
+        }];
 #pragma mark - 猜你喜欢banner点击事件
         [self.youlikeMainView setYoulikeBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
             !weakSelf.guessYouLikeBannerClickBlock?:weakSelf.guessYouLikeBannerClickBlock(model);

@@ -104,6 +104,11 @@
     BidLiveHomeScrollYouLikeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell" forIndexPath:indexPath];
     NSArray<BidLiveHomeGuessYouLikeListModel *> *array = self.likesArray[indexPath.section];
     cell.model = array[indexPath.item];
+    
+    WS(weakSelf)
+    [cell setLivingTapBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
+        !weakSelf.youlikeCellLivingClickBlock?:weakSelf.youlikeCellLivingClickBlock(model);
+    }];
     return cell;
 }
 

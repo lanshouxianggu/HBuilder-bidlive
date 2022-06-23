@@ -281,6 +281,9 @@
         [_mainScrollView setGuessYouLikeCellClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
             !weakSelf.guessYouLikeCellClickBlock?:weakSelf.guessYouLikeCellClickBlock(model);
         }];
+        [_mainScrollView setGuessYoulikeCellLivingClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
+            !weakSelf.guessYoulikeCellLivingClickBlock?:weakSelf.guessYoulikeCellLivingClickBlock(model);
+        }];
         [_mainScrollView setGuessYouLikeBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
             !weakSelf.guessYouLikeBannerClickBlock?:weakSelf.guessYouLikeBannerClickBlock(model);
         }];

@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BidLiveHomeScrollYouLikeCell : UICollectionViewCell
 @property (nonatomic, strong) BidLiveHomeGuessYouLikeListModel *model;
+@property (nonatomic, copy) void (^livingTapBlock)(BidLiveHomeGuessYouLikeListModel *model);
 @end
 
 NS_ASSUME_NONNULL_END
