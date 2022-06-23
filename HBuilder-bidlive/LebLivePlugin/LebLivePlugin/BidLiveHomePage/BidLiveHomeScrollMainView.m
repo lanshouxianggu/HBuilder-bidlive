@@ -554,8 +554,10 @@
             }
         }else {
             if (model.list) {
-                if (weakSelf.youlikePageNormalIndex < weakSelf.youlikeBannerArray.count) {
-                    [weakSelf.youlikeMainView.bannerArray addObject:weakSelf.youlikeBannerArray[weakSelf.youlikePageNormalIndex]];
+                if (weakSelf.youlikePageNormalIndex <= weakSelf.youlikeBannerArray.count) {
+                    if (weakSelf.youlikePageNormalIndex<weakSelf.youlikeBannerArray.count) {
+                        [weakSelf.youlikeMainView.bannerArray addObject:weakSelf.youlikeBannerArray[weakSelf.youlikePageNormalIndex]];
+                    }
                     [weakSelf.youlikeMainView.likesArray addObject:model.list];
                 }else {
                     NSArray *lastPageIndexArray = [weakSelf.youlikeMainView.likesArray lastObject];

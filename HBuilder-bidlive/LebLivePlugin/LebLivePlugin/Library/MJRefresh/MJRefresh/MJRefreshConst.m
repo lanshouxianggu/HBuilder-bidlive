@@ -19,9 +19,9 @@ NSString *const MJRefreshHeaderIdleText = @"MJRefreshHeaderIdleText";
 NSString *const MJRefreshHeaderPullingText = @"MJRefreshHeaderPullingText";
 NSString *const MJRefreshHeaderRefreshingText = @"MJRefreshHeaderRefreshingText";
 
-NSString *const MJRefreshAutoFooterIdleText = @"MJRefreshAutoFooterIdleText";
+NSString *const MJRefreshAutoFooterIdleText = @"上拉加载更多";
 NSString *const MJRefreshAutoFooterRefreshingText = @"MJRefreshAutoFooterRefreshingText";
-NSString *const MJRefreshAutoFooterNoMoreDataText = @"MJRefreshAutoFooterNoMoreDataText";
+NSString *const MJRefreshAutoFooterNoMoreDataText = @"没有更多数据了";
 
 NSString *const MJRefreshBackFooterIdleText = @"MJRefreshBackFooterIdleText";
 NSString *const MJRefreshBackFooterPullingText = @"MJRefreshBackFooterPullingText";
