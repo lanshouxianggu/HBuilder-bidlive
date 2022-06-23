@@ -43,7 +43,7 @@
     UIImageView *iconImageV = [[UIImageView alloc] initWithImage:image];
     [topView addSubview:iconImageV];
     [iconImageV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(25);
+        make.width.height.mas_equalTo(AUTO_WIDTH(25));
         make.center.offset(0);
     }];
     
@@ -61,8 +61,8 @@
     [self.videoTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(8);
         make.right.offset(-8);
-        make.top.offset(12);
-        make.bottom.offset(-12);
+        make.top.offset(AUTO_WIDTH(12));
+        make.bottom.offset(-AUTO_WIDTH(12));
     }];
 }
 
@@ -87,7 +87,8 @@
     if (!_videoTitleLabel) {
         _videoTitleLabel = [UILabel new];
         _videoTitleLabel.textColor = UIColorFromRGB(0x3b3b3b);
-        _videoTitleLabel.font = [UIFont systemFontOfSize:13];
+//        _videoTitleLabel.font = [UIFont systemFontOfSize:13];
+        _videoTitleLabel.font = FONT_SIZE_REGULAR(13);
         _videoTitleLabel.numberOfLines = 2;
         _videoTitleLabel.text = @"精彩亚洲艺术专拍上线 艾德预展现场打卡打卡打卡打卡打卡打卡";
     }
@@ -131,7 +132,7 @@
         [self setupUI];
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self gradientFromColor:UIColorFromRGB(0xF8523B) toColor:UIColorFromRGB(0xF9B194) directionType:GradientDirectionToRight];
-            [self addRoundedCorners:UIRectCornerBottomRight withSize:CGSizeMake(8, 8)];
+            [self addRoundedCorners:UIRectCornerBottomRight withSize:CGSizeMake(AUTO_WIDTH(8), AUTO_WIDTH(8))];
 //        });
     }
     return self;
@@ -142,9 +143,9 @@
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     NSString *imagePath = [bundle pathForResource:@"animation_live" ofType:@"gif"];
     NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
-    UIImage *gifImage = [UIImage sd_imageWithGIFData:imageData];
+//    UIImage *gifImage = [UIImage sd_imageWithGIFData:imageData];
     
-    YFGIFImageView *imageV = [[YFGIFImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    YFGIFImageView *imageV = [[YFGIFImageView alloc] initWithFrame:CGRectMake(0, 0, AUTO_WIDTH(20), AUTO_HEIGHT(20))];
 //    imageV.image = gifImage;
     imageV.gifData = imageData;
     [imageV startGIF];
@@ -154,7 +155,8 @@
     UILabel *lab = [UILabel new];
     lab.text = @"直播中";
     lab.textColor = UIColor.whiteColor;
-    lab.font = [UIFont systemFontOfSize:11];
+//    lab.font = [UIFont systemFontOfSize:11];
+    lab.font = FONT_SIZE_REGULAR(11);
     [self addSubview:lab];
     [lab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.offset(0);

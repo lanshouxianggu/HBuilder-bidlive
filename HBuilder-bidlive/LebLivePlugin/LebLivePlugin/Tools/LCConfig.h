@@ -67,6 +67,22 @@
 #define AUTO_WIDTH(w)   (w*[UIScreen mainScreen].bounds.size.width/375.0f)
 #define AUTO_HEIGHT(h)  (h*[UIScreen mainScreen].bounds.size.height/667.0f)
 
+
+#define FONT_SIZE_REGULAR(size) ([UIFont systemFontOfSize:FontSize(size) weight:UIFontWeightRegular])
+#define FONT_SIZE_MEDIUM(size) ([UIFont systemFontOfSize:FontSize(size) weight:UIFontWeightMedium])
+#define FONT_SIZE_BOLD(size) ([UIFont systemFontOfSize:FontSize(size) weight:UIFontWeightBold])
+/**
+ *  字体适配 我在PCH文件定义了一个方法
+ */
+static inline CGFloat FontSize(CGFloat fontSize){
+    if (SCREEN_WIDTH==320) {
+        return fontSize-2;
+    }else if (SCREEN_WIDTH>=375){
+        return fontSize;
+    }
+    return fontSize;
+}
+
 //判断是否是ipad
 #define isPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 
