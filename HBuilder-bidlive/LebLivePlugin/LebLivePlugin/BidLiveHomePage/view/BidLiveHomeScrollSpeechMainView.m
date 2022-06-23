@@ -66,13 +66,14 @@
             make.bottom.offset(0);
         }];
     }
-    else if (self.clickMoreTimes>0 && self.clickMoreTimes<2) {
+    else if (self.clickMoreTimes>0 && self.clickMoreTimes<3) {
         BidLiveHomeScrollLiveBtnView *leftView = [[BidLiveHomeScrollLiveBtnView alloc] initWithFrame:CGRectZero title:@"收起" direction:ArrowDirectionUp];
         [leftView setClickBock:^{
             weakSelf.isClickBack = YES;
             weakSelf.isClickMore = NO;
             weakSelf.clickMoreTimes = 0;
             !weakSelf.retractingClickBlock?:weakSelf.retractingClickBlock();
+            [weakSelf addSubviewToFooterView:weakSelf.clickMoreTimes];
         }];
         [weakSelf.footerView addSubview:leftView];
         [leftView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -88,6 +89,7 @@
             weakSelf.isClickBack = NO;
             weakSelf.clickMoreTimes++;
             !weakSelf.moreClickBlock?:weakSelf.moreClickBlock();
+            [weakSelf addSubviewToFooterView:weakSelf.clickMoreTimes];
         }];
 
         [weakSelf.footerView addSubview:rightView];

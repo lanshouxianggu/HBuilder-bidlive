@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BidLiveHomeAnchorListModel : NSObject
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *dataType;
+@property (nonatomic, assign) NSInteger roomType;
 @property (nonatomic, assign) NSInteger storeId;
 @property (nonatomic, copy) NSString *storeName;
 @property (nonatomic, assign) NSInteger publishId;

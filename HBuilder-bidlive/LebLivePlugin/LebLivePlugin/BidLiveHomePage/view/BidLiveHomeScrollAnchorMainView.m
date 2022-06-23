@@ -202,7 +202,7 @@
 
 -(void)playStream:(BidLiveHomeScrollAnchorCell *)currentCell {
     NSInteger playType = 1;//直播间
-    if (currentCell.model.liveRoomType==2) {
+    if (currentCell.model.roomType==2) {
         //anchorType 1看展 0公开课
         playType = currentCell.model.anchorType==1?3:2;
     }

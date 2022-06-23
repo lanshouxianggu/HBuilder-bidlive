@@ -198,6 +198,9 @@
                 [weakSelf.speechMainView.tableView reloadData];
                 CGFloat offsetY = CGRectGetMinY(weakSelf.speechMainView.frame)-150;
                 [weakSelf.mainScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+                
+                weakSelf.mainScrollView.scrollEnabled = YES;
+                weakSelf.youlikeMainView.collectionView.scrollEnabled = NO;
             });
             
         }];
@@ -551,8 +554,11 @@
             NSArray *array1 = [tempArray subarrayWithRange:range1];
             NSArray *array2 = [tempArray subarrayWithRange:range2];
             [weakSelf.youlikeMainView.likesArray addObject:array1];
-            [weakSelf.youlikeMainView.likesArray addObject:array2];
-            weakSelf.youlikePageNormalIndex = 1;
+            if (array2.count%10==0) {
+                [weakSelf.youlikeMainView.likesArray addObject:array2];
+                weakSelf.youlikePageNormalIndex = 1;
+            }
+            
             if (weakSelf.youlikeBannerArray.count) {
                 [weakSelf.youlikeMainView.bannerArray addObject:weakSelf.youlikeBannerArray[weakSelf.youlikePageNormalIndex]];
             }

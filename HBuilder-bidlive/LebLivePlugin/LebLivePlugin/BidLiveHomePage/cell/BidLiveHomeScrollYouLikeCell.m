@@ -65,9 +65,7 @@
 }
 
 -(void)livingAction:(UIButton *)btn {
-    if ([btn.titleLabel.text isEqualToString:@"正在直播"]) {
-        !self.livingTapBlock?:self.livingTapBlock(self.model);
-    }
+    !self.livingTapBlock?:self.livingTapBlock(btn.titleLabel.text);
 }
 
 #pragma mark - lazy
