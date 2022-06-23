@@ -669,23 +669,6 @@
         self.mainScrollView.scrollEnabled = NO;
     }
     
-    
-    CGPoint offset = scrollView.contentOffset;
-    CGRect bounds = scrollView.bounds;
-    CGSize size = scrollView.contentSize;
-    UIEdgeInsets inset = scrollView.contentInset;
-    CGFloat currentOffset = offset.y + bounds.size.height - inset.bottom;
-    CGFloat maximumOffset = size.height;
-    
-    if (currentOffset>=maximumOffset) {
-//        if (self.youlikePageIndexArray.firstObject) {
-//            int currentPage = [[self.youlikePageIndexArray firstObject] intValue];
-//            self.youlikePageIndex = currentPage;
-//            [self loadGuessYouLikeListData];
-//            [self.youlikePageIndexArray removeObjectAtIndex:0];
-//        }
-    }
-    
     CGFloat statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
     if (fabs(offsetY)==statusBarHeight) {
         return;
