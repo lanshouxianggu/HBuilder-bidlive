@@ -45,7 +45,7 @@
 
 #define kHightlightLotsMainViewHeight (SCREEN_WIDTH*0.689+70)
 
-@interface BidLiveHomeScrollMainView () <UIScrollViewDelegate>
+@interface BidLiveHomeScrollMainView () <UIScrollViewDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) BidLiveHomeHeadView *topSearchView;
 @property (nonatomic, strong) BidLiveHomeFloatView *floatView;
 @property (nonatomic, strong) BidLiveSimultaneouslyScrollView *mainScrollView;
@@ -95,6 +95,12 @@
 @property (nonatomic, assign) BOOL superCanScroll;
 @property (nonatomic, assign) BOOL isLoadMoreData;
 @property (nonatomic, assign) BOOL isFirstScroll;
+///定时器
+@property (nonatomic, strong) dispatch_source_t timer;
+
+@property (nonatomic, assign) BOOL mainScrollEnabled;
+@property (nonatomic, assign) BOOL subScrollEnabled;
+@property (nonatomic, assign) CGFloat maxOffsetY;
 @end
 
 @implementation BidLiveHomeScrollMainView
@@ -351,7 +357,44 @@
     }];
     
     [self.mainView insertSubview:self.youlikeMainView belowSubview:self.speechMainView];
+    
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesAction:)];
+//    pan.delegate = self;
+//    [self addGestureRecognizer:pan];
 }
+
+//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+//    return YES;
+//}
+//
+//-(void)panGesAction:(UIPanGestureRecognizer *)recognizer {
+//    CGFloat currentPanY = 0;
+//    if (recognizer.state != UIGestureRecognizerStateChanged) {
+//        currentPanY = 0;
+//        //每次滑动结束都清空状态
+//        self.mainScrollEnabled = NO;
+//        self.subScrollEnabled = NO;
+//    }else {
+//        CGFloat currentY = [recognizer translationInView:self.mainScrollView].y;
+//        //说明在这次滑动过程中经过了临界点
+//        if (self.mainScrollEnabled||self.subScrollEnabled) {
+//            if (currentPanY==0) {
+//                currentPanY = currentY;
+//            }
+//            CGFloat offsetY = currentPanY-currentY;
+//            if (self.mainScrollEnabled) {
+//                CGFloat supposeY = self.maxOffsetY+offsetY;
+//                if (supposeY>=0) {
+//                    self.mainScrollView.contentOffset = CGPointMake(0, supposeY);
+//                }else {
+//                    self.mainScrollView.contentOffset = CGPointZero;
+//                }
+//            }else {
+//                self.youlikeMainView.collectionView.contentOffset = CGPointMake(0, offsetY);
+//            }
+//        }
+//    }
+//}
 
 #pragma mark - 加载数据
 -(void)loadData {
@@ -363,6 +406,35 @@
     [self loadHomeAnchorListData];
     [self loadGuessYouLikeListData];
     [self loadHomeHighliahtLotsListData];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self startTimer];
+    });
+}
+
+-(void)startTimer {
+    if (!_timer) {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+        dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 30 * NSEC_PER_SEC, 0);
+        WS(weakSelf);
+        dispatch_source_set_event_handler(_timer, ^{
+             dispatch_async(dispatch_get_main_queue(), ^{
+//                 weakSelf.isPullRefresh = YES;
+                 [weakSelf loadGlobalLiveData];
+//                 [weakSelf loadHomeAnchorListData];
+             });
+         });
+         //开启计时器
+         dispatch_resume(_timer);
+    }
+}
+
+-(void)endTimer {
+    if (_timer) {
+        dispatch_source_cancel(_timer);
+        _timer = nil;
+    }
 }
 
 #pragma mark - 停止播放视频流
@@ -657,7 +729,7 @@
     CGFloat height = scrollView.frame.size.height;
     CGFloat contentYoffset = scrollView.contentOffset.y;
     CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
-
+    self.maxOffsetY = height;
     if (distanceFromBottom <= height) {
         if (self.isFirstScroll) {
             self.isFirstScroll = NO;
@@ -667,6 +739,13 @@
         NSLog(@"滚动到底部了，移交滚动权限给猜你喜欢视图");
         self.youlikeMainView.collectionView.scrollEnabled = YES;
         self.mainScrollView.scrollEnabled = NO;
+        self.mainScrollEnabled = NO;
+        self.subScrollEnabled = YES;
+    }else {
+        self.youlikeMainView.collectionView.scrollEnabled = NO;
+        self.mainScrollView.scrollEnabled = YES;
+        self.mainScrollEnabled = YES;
+        self.subScrollEnabled = NO;
     }
     
     CGFloat statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;

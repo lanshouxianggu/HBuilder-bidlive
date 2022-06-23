@@ -167,6 +167,13 @@
     [self stopPlayVideo];
 }
 
+- (void)videoView:(LiveEBVideoView *)videoView didError:(NSError *)error {
+    [self stopPlayVideo];
+}
+
+-(void)videoView:(LiveEBVideoView *)videoView didChangeVideoSize:(CGSize)size {
+    
+}
 
 #pragma mark - lazy
 -(UICollectionViewFlowLayout *)layout {
