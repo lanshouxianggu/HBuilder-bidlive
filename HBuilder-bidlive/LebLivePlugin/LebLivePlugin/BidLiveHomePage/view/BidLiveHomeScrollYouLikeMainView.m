@@ -196,7 +196,7 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.scrollEnabled = NO;
-        _collectionView.bounces = NO;
+//        _collectionView.bounces = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
@@ -205,12 +205,10 @@
         WS(weakSelf)
         MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
             !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [weakSelf.collectionView.mj_footer endRefreshing];
-            });
         }];
-        refreshFoot.triggerAutomaticallyRefreshPercent = 0;
+        refreshFoot.triggerAutomaticallyRefreshPercent = -50;
         refreshFoot.refreshingTitleHidden = YES;
+        [refreshFoot setTitle:@"没有更多数据了" forState:MJRefreshStateNoMoreData];
         refreshFoot.onlyRefreshPerDrag = YES;
         _collectionView.mj_footer = refreshFoot;
     }
