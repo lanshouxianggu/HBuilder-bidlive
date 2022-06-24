@@ -51,6 +51,14 @@
 @property (nonatomic, assign) BOOL isPullRefresh;
 ///是否上拉加载
 @property (nonatomic, assign) BOOL isLoadMoreData;
+@property (nonatomic, assign) BOOL isFirstScroll;
+///定时器
+@property (nonatomic, strong) dispatch_source_t timer;
+
+///精选主播点击更多增加的高度
+@property (nonatomic, assign) CGFloat anchorMoreAddedHeight;
+///名家讲堂点击更多增加的高度
+@property (nonatomic, assign) CGFloat speechAddedHeight;
 @end
 
 @implementation BidLiveHomeMainViewV2
@@ -73,8 +81,9 @@
     self.youlikePageIndex = 0;
     self.highlightLotsPageIndex = 1;
     self.youlikePageNormalIndex = 0;
-//    self.superCanScroll = YES;
-//    self.isFirstScroll = YES;
+    self.anchorMoreAddedHeight = 0.f;
+    self.speechAddedHeight = 0.f;
+    self.isFirstScroll = YES;
     self.isLoadMoreData = NO;
     self.youlikeContainAllBannersHeight = 0.0;
     self.youlikePageIndexArray = [NSMutableArray array];
@@ -180,23 +189,29 @@
             CGFloat offsetY = CGRectGetMinY(weakSelf.headMainView.speechMainView.frame)-150;
             [weakSelf.collectionView setContentOffset:CGPointMake(0, offsetY) animated:YES];
         });
-        
+        [weakSelf updateHeadViewHeight:weakSelf.speechAddedHeight add:NO];
     }];
 #pragma mark - 精选主播更多点击事件
     [self.headMainView.anchorMainView setMoreClickBlock:^{
 //            weakSelf.anchorPageIndex++;
 //            weakSelf.isPullRefresh = NO;
 //            [weakSelf loadHomeAnchorListData];
+        CGFloat height = 70+weakSelf.headMainView.anchorMainView.anchorsArray.count*kAnchorCellHeight+40;
         [weakSelf.headMainView.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(70+weakSelf.headMainView.anchorMainView.anchorsArray.count*kAnchorCellHeight+40);
+            make.height.mas_equalTo(height);
         }];
+        weakSelf.anchorMoreAddedHeight += (weakSelf.headMainView.anchorMainView.anchorsArray.count-4)*kAnchorCellHeight;
+        CGFloat addedHeight = (weakSelf.headMainView.anchorMainView.anchorsArray.count-4)*kAnchorCellHeight;
+        [weakSelf updateHeadViewHeight:addedHeight add:YES];
     }];
 #pragma mark - 精选主播收起点击事件
     [self.headMainView.anchorMainView setRetractingClickBlock:^{
 //            weakSelf.anchorPageIndex = 1;
 //            weakSelf.anchorMainView.anchorsArray = [NSMutableArray arrayWithArray:weakSelf.anchorOrigionArray];
+        
+        CGFloat height = 70+(weakSelf.headMainView.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+40;
         [weakSelf.headMainView.anchorMainView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(70+(weakSelf.headMainView.anchorMainView.anchorsArray.count<=4?:4)*kAnchorCellHeight+40);
+            make.height.mas_equalTo(height);
         }];
         [weakSelf.headMainView.anchorMainView reloadData];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -206,6 +221,8 @@
 //            CGFloat offsetY = CGRectGetMaxY(weakSelf.liveMainView.frame)+(weakSelf.lastAnchorsCount-5)*kAnchorCellHeight-150;
         CGFloat offsetY = CGRectGetMinY(weakSelf.headMainView.anchorMainView.frame)-145;
         [weakSelf.collectionView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+        
+        [weakSelf updateHeadViewHeight:weakSelf.anchorMoreAddedHeight add:NO];
     }];
 #pragma mark - 精选主播箭头点击事件
     [self.headMainView.anchorMainView setArrowClickBlock:^{
@@ -247,17 +264,62 @@
     [self loadHomeAnchorListData];
     [self loadHomeHighliahtLotsListData];
     [self loadGuessYouLikeListData];
-//
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self startTimer];
-//    });
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self startTimer];
+    });
 }
 
--(void)updateHeadViewHeight:(CGFloat)height {
-//    CGFloat headMainViewHeight = self.headMainViewSize.height;
-//    headMainViewHeight+=kVideoGuaideViewHeight;
-//    self.headMainViewSize = CGSizeMake(self.headMainViewSize.width, headMainViewHeight);
-//    [self.collectionView reloadData];
+-(void)startTimer {
+    if (!_timer) {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+        dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 30 * NSEC_PER_SEC, 0);
+        WS(weakSelf);
+        dispatch_source_set_event_handler(_timer, ^{
+             dispatch_async(dispatch_get_main_queue(), ^{
+    //                 weakSelf.isPullRefresh = YES;
+                 [weakSelf loadGlobalLiveData];
+    //                 [weakSelf loadHomeAnchorListData];
+             });
+         });
+         //开启计时器
+         dispatch_resume(_timer);
+    }
+}
+
+-(void)endTimer {
+    if (_timer) {
+        dispatch_source_cancel(_timer);
+        _timer = nil;
+    }
+}
+
+#pragma mark - 销毁定时器
+-(void)destroyTimer {
+    [self.headMainView.topMainView destroyTimer];
+}
+
+#pragma mark - 停止播放视频流
+-(void)stopPlayVideo {
+    [self.headMainView.anchorMainView stopPlayVideo];
+    [self.headMainView.topMainView stopVideoPlay];
+}
+
+#pragma mark - 刷新数据
+-(void)refreshData {
+    [self initData];
+    [self loadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.collectionView.mj_header endRefreshing];
+    });
+}
+
+-(void)updateHeadViewHeight:(CGFloat)height add:(BOOL)isAdd {
+    CGFloat headMainViewHeight = self.headMainViewSize.height;
+    headMainViewHeight = headMainViewHeight+(isAdd?height:-height);
+    self.headMainViewSize = CGSizeMake(self.headMainViewSize.width, headMainViewHeight);
+    [self.collectionView reloadData];
 }
 
 #pragma mark - 加载广告轮播数据
@@ -291,6 +353,10 @@
 -(void)loadGlobalLiveData {
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageGlobalLiveList:@"all" completion:^(NSArray<BidLiveHomeGlobalLiveModel *> * _Nonnull liveList) {
+        if (liveList==nil || liveList.count==0) {
+            [weakSelf updateHeadViewHeight:kLiveMainViewHeight add:NO];
+            return;
+        }
         NSMutableArray *totalArray = [NSMutableArray arrayWithArray:liveList];
         NSRange range1 = NSMakeRange(0, totalArray.count/2);
         NSRange range2 = NSMakeRange(totalArray.count/2, totalArray.count/2);
@@ -307,7 +373,6 @@
         }];
         
         [weakSelf.headMainView.liveMainView reloadData];
-        [weakSelf updateHeadViewHeight:height];
     }];
 }
 
@@ -315,11 +380,15 @@
 -(void)loadHomeHotCourseData {
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageHotCourse:self.speechPageIndex pageSize:4 pageCount:0 completion:^(BidLiveHomeHotCourseModel * _Nonnull courseModel) {
+        if (courseModel.list.count==0) {
+            [weakSelf updateHeadViewHeight:kSpeechMainViewHeight add:NO];
+        }
         if (weakSelf.isPullRefresh) {
             [weakSelf.headMainView.speechMainView.videosArray removeAllObjects];
             weakSelf.headMainView.speechMainView.clickMoreTimes = 0;
             [weakSelf.headMainView.speechMainView addSubviewToFooterView:weakSelf.headMainView.anchorMainView.clickMoreTimes];
         }
+        
         [weakSelf.headMainView.speechMainView.videosArray addObjectsFromArray:courseModel.list];
         if (weakSelf.speechPageIndex==1) {
             weakSelf.speechOrigionArray = courseModel.list;
@@ -330,8 +399,11 @@
         }];
         weakSelf.lastVideosCount = weakSelf.headMainView.speechMainView.videosArray.count;
         [weakSelf.headMainView.speechMainView reloadData];
-        
-        [weakSelf updateHeadViewHeight:height];
+        if (weakSelf.headMainView.speechMainView.videosArray.count>4) {
+            CGFloat addedHeight = courseModel.list.count*kSpeechCellHeight;
+            weakSelf.speechAddedHeight += courseModel.list.count*kSpeechCellHeight;
+            [weakSelf updateHeadViewHeight:addedHeight add:YES];
+        }
     }];
 }
 
@@ -339,6 +411,10 @@
 -(void)loadHomeVideoGuaideData {
     WS(weakSelf)
     [BidLiveHomeNetworkModel getHomePageVideoGuaideList:1 pageSize:20 isNoMore:false isLoad:true scrollLeft:@"" completion:^(BidLiveHomeVideoGuaideModel * _Nonnull courseModel) {
+        if (courseModel==nil || courseModel.list.count==0) {
+            [weakSelf updateHeadViewHeight:kVideoGuaideViewHeight add:NO];
+            return;
+        }
         if (weakSelf.isPullRefresh) {
             //视频导览列表回到原始位置
             [weakSelf.headMainView.topMainView videoGuaideViewBackToStartFrame];
@@ -348,7 +424,6 @@
         [weakSelf.headMainView.topMainView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(height);
         }];
-        [weakSelf updateHeadViewHeight:height];
     }];
 }
 
@@ -362,7 +437,10 @@
             weakSelf.headMainView.anchorMainView.clickMoreTimes = 0;
             [weakSelf.headMainView.anchorMainView addSubviewToFooterView:weakSelf.headMainView.anchorMainView.clickMoreTimes];
         }
-        
+        if (model==nil || model.list.count==0) {
+            [weakSelf updateHeadViewHeight:kAnchorMainViewHeight add:NO];
+            return;
+        }
         [weakSelf.headMainView.anchorMainView.anchorsArray addObjectsFromArray:model.list];
         if (weakSelf.anchorPageIndex==1) {
             weakSelf.anchorOrigionArray = model.list;
@@ -378,8 +456,6 @@
 //                [weakSelf.anchorMainView scrollViewDidEndScroll:weakSelf.anchorMainView.lastOffsetY];
 //            });
 //        }
-        
-        [weakSelf updateHeadViewHeight:height];
     }];
 }
 
@@ -393,8 +469,9 @@
             [weakSelf.headMainView.highlightLotsMainView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(kHightlightLotsMainViewHeight);
             }];
+        }else {
+            [weakSelf updateHeadViewHeight:kHightlightLotsMainViewHeight add:NO];
         }
-        [weakSelf updateHeadViewHeight:kHightlightLotsMainViewHeight];
     }];
 }
 
@@ -405,7 +482,6 @@
         self.youlikePageIndex = currentPage;
         self.isLoadMoreData = YES;
         [self loadGuessYouLikeListData];
-//        [self.youlikePageIndexArray removeObjectAtIndex:0];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.collectionView.mj_footer endRefreshing];
         });
@@ -463,7 +539,6 @@
                     NSArray *lastPageIndexArray = [weakSelf.likesArray lastObject];
                     NSMutableArray *lastArray = [NSMutableArray arrayWithArray:lastPageIndexArray];
                     [lastArray addObjectsFromArray:model.list];
-//                    weakSelf.youlikeMainView.likesArray[weakSelf.youlikePageNormalIndex] = lastArray;
                     if (lastPageIndexArray) {
                         NSInteger lastIndex = weakSelf.likesArray.count-1;
                         [weakSelf.likesArray replaceObjectAtIndex:lastIndex withObject:lastArray];
@@ -534,42 +609,28 @@
             for (UIView *view in reusableHeadView.subviews) {
                 [view removeFromSuperview];
             }
-//            if (indexPath.section==0) {
-//                UILabel *label = (UILabel *)[reusableHeadView viewWithTag:100];
-//                if (!label) {
-//                    label = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH, 60)];
-//                    label.tag = 100;
-//                    label.text = @"猜 你 喜 欢";
-//                    label.textAlignment = NSTextAlignmentCenter;
-//                    label.textColor = UIColor.blackColor;
-//                    label.font = [UIFont systemFontOfSize:22 weight:UIFontWeightBold];
-//
-//                    [reusableHeadView addSubview:label];
-//                }
-//            }else {
-                UIView *view = (UIView *)[reusableHeadView viewWithTag:101];
-                if (!view) {
-                    view = [[UIView alloc] initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
-                    view.backgroundColor = UIColorFromRGB(0xf8f8f8);
-                    view.tag = 101;
-                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
-                    if (indexPath.section<self.bannerArray.count) {
-                        BidLiveHomeBannerModel *model = self.bannerArray[indexPath.section];
-                        if (model) {
-                            [imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
-                        }
-                        [view addSubview:imageView];
-                        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-                        btn.tag = indexPath.section-1;
-                        btn.frame = imageView.frame;
-                        [btn addTarget:self action:@selector(bannerClick:) forControlEvents:UIControlEventTouchUpInside];
-                        
-                        [view addSubview:btn];
+            UIView *view = (UIView *)[reusableHeadView viewWithTag:101];
+            if (!view) {
+                view = [[UIView alloc] initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
+                view.backgroundColor = UIColorFromRGB(0xf8f8f8);
+                view.tag = 101;
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-30, (SCREEN_WIDTH-30)*138.5/537)];
+                if (indexPath.section<self.bannerArray.count) {
+                    BidLiveHomeBannerModel *model = self.bannerArray[indexPath.section];
+                    if (model) {
+                        [imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] placeholderImage:nil];
                     }
+                    [view addSubview:imageView];
+                    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                    btn.tag = indexPath.section-1;
+                    btn.frame = imageView.frame;
+                    [btn addTarget:self action:@selector(bannerClick:) forControlEvents:UIControlEventTouchUpInside];
                     
-                    [reusableHeadView addSubview:view];
+                    [view addSubview:btn];
                 }
-//            }
+                
+                [reusableHeadView addSubview:view];
+            }
         }
         return reusableHeadView;
     }else if (kind==UICollectionElementKindSectionHeader) {
@@ -637,22 +698,30 @@
     !self.youlikeCellClickBlock?:self.youlikeCellClickBlock(model);
 }
 
+#pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat contentYoffset = scrollView.contentOffset.y;
-    if (contentYoffset <= 0) {
-        NSLog(@"滚动到顶部了，移交滚动权限给主视图");
-//        self.collectionView.scrollEnabled = NO;
-//        !self.youLikeViewScrollToTopBlock?:self.youLikeViewScrollToTopBlock();
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY<CGRectGetHeight(self.topSearchView.frame)) {
+        CGFloat alpha = offsetY/CGRectGetHeight(self.topSearchView.frame);
+//        NSLog(@"alpha = %f",alpha);
+        self.topSearchView.backgroundColor = UIColorFromRGBA(0xf2f2f2, alpha);
     }else {
-//        CGFloat height = scrollView.frame.size.height;
-//        CGFloat contentYoffset = scrollView.contentOffset.y;
-//        CGFloat distanceFromBottom = height - contentYoffset-25;
-//        if (distanceFromBottom <= height && !self.hasScrollToBottom) {
-//            self.hasScrollToBottom = YES;
-//            !self.loadMoreGuessYouLikeDataBlock?:self.loadMoreGuessYouLikeDataBlock();
-//        }
-        !self.youLikeViewDidScrollBlock?:self.youLikeViewDidScrollBlock();
+        self.topSearchView.backgroundColor = UIColorFromRGBA(0xf2f2f2,1);
     }
+    
+    CGFloat statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
+    if (fabs(offsetY)==statusBarHeight) {
+        return;
+    }
+    
+    [self hiddeFloatView];
+}
+
+-(void)hiddeFloatView {
+    [UIView animateWithDuration:0.35 animations:^{
+//        self.floatView.transform = CGAffineTransformMakeScale(0.001, 0.001);
+        self.floatView.alpha = 0;
+    }];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -687,8 +756,6 @@
         _layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _layout.minimumLineSpacing = 10;
         _layout.minimumInteritemSpacing = 0;
-//        _layout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
-//        _layout.footerReferenceSize = CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH-30)*138.5/537+20);
     }
     return _layout;
 }
@@ -697,20 +764,27 @@
     if (!_collectionView) {
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
         _collectionView.backgroundColor = UIColorFromRGB(0xf8f8f8);
-//        _collectionView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.scrollEnabled = YES;
-//        _collectionView.bounces = NO;
         _collectionView.alwaysBounceVertical = YES;
-//        _collectionView.scrollsToTop = NO;
         [_collectionView registerClass:BidLiveHomeScrollYouLikeCell.class forCellWithReuseIdentifier:@"BidLiveHomeScrollYouLikeCell"];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"UICollectionReusableView1"];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UICollectionReusableView2"];
         
         WS(weakSelf)
+        MJRefreshNormalHeader *refreshHead = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            weakSelf.isPullRefresh = YES;
+            [weakSelf refreshData];
+        }];
+        refreshHead.backgroundColor = [UIColor clearColor];
+        
+        refreshHead.lastUpdatedTimeLabel.hidden = YES;
+        refreshHead.stateLabel.hidden = YES;
+        _collectionView.mj_header = refreshHead;
+        
         MJRefreshAutoNormalFooter *refreshFoot = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//            !weakSelf.loadMoreGuessYouLikeDataBlock?:weakSelf.loadMoreGuessYouLikeDataBlock();
+            weakSelf.isPullRefresh = NO;
             [weakSelf loadMoreData];
         }];
         refreshFoot.triggerAutomaticallyRefreshPercent = -50;
