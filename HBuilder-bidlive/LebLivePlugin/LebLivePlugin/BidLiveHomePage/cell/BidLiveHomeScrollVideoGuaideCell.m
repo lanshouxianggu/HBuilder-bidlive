@@ -61,8 +61,9 @@
     [self.videoTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(8);
         make.right.offset(-8);
-        make.top.offset(AUTO_WIDTH(12));
-        make.bottom.offset(-AUTO_WIDTH(12));
+//        make.top.offset(AUTO_WIDTH(12));
+//        make.bottom.offset(-AUTO_WIDTH(12));
+        make.centerY.offset(0);
     }];
 }
 

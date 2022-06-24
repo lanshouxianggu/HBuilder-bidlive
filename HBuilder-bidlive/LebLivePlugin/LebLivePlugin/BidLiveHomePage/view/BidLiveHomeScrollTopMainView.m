@@ -158,8 +158,8 @@
         [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.offset(-15);
             make.centerY.offset(0);
-            make.width.mas_equalTo(8);
-            make.height.mas_equalTo(12);
+            make.width.mas_equalTo(AUTO_WIDTH(6));
+            make.height.mas_equalTo(AUTO_HEIGHT(10));
         }];
     }
     return _scrollTitleSuperView;

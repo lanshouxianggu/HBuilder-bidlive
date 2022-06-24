@@ -154,7 +154,7 @@
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
         _titleLabel.textColor = UIColorFromRGB(0x3b3b3b);
-        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.font = FONT_SIZE_REGULAR(14);
     }
     return _titleLabel;
 }
@@ -163,7 +163,7 @@
     if (!_startingPriceLabel) {
         _startingPriceLabel = [UILabel new];
         _startingPriceLabel.textColor = UIColorFromRGB(0x999999);
-        _startingPriceLabel.font = [UIFont systemFontOfSize:12];
+        _startingPriceLabel.font = FONT_SIZE_REGULAR(12);
     }
     return _startingPriceLabel;
 }
@@ -172,7 +172,7 @@
     if (!_remainTimeLabel) {
         _remainTimeLabel = [UILabel new];
         _remainTimeLabel.textColor = UIColorFromRGB(0x999999);
-        _remainTimeLabel.font = [UIFont systemFontOfSize:12];
+        _remainTimeLabel.font = FONT_SIZE_REGULAR(12);
     }
     return _remainTimeLabel;
 }
@@ -182,7 +182,7 @@
         _livingLabel = [UIButton buttonWithType:UIButtonTypeCustom];
         [_livingLabel setTitle:@"正在直播" forState:UIControlStateNormal];
         [_livingLabel setTitleColor:UIColorFromRGB(0xD56C68) forState:UIControlStateNormal];
-        _livingLabel.titleLabel.font = [UIFont systemFontOfSize:12];
+        _livingLabel.titleLabel.font = FONT_SIZE_REGULAR(12);
         [_livingLabel addTarget:self action:@selector(livingLableTapAction) forControlEvents:UIControlEventTouchUpInside];
 //        _livingLabel.hidden = YES;
     }
