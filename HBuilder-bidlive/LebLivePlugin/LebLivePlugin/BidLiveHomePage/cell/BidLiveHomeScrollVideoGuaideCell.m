@@ -145,7 +145,7 @@
     NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
 //    UIImage *gifImage = [UIImage sd_imageWithGIFData:imageData];
     
-    YFGIFImageView *imageV = [[YFGIFImageView alloc] initWithFrame:CGRectMake(0, 0, AUTO_WIDTH(20), AUTO_HEIGHT(20))];
+    YFGIFImageView *imageV = [[YFGIFImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 //    imageV.image = gifImage;
     imageV.gifData = imageData;
     [imageV startGIF];

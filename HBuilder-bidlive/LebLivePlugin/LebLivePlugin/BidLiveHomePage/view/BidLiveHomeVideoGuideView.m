@@ -89,6 +89,10 @@
 -(void)startPlayFirstCell {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     BidLiveHomeScrollVideoGuaideCell *firstCell = (BidLiveHomeScrollVideoGuaideCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    if ([firstCell isEqual:self.lastPlayVideoCell]) {
+        return;
+    }
+    [self stopPlayVideo];
     [self playStream:firstCell];
 }
 #pragma mark - scrollView 停止滚动监测
@@ -122,6 +126,9 @@
 }
 
 -(void)playStream:(BidLiveHomeScrollVideoGuaideCell *)currentCell {
+    if ([currentCell isEqual:self.lastPlayVideoCell]) {
+        return;
+    }
     NSInteger playType = 1;//直播间
     if (currentCell.model.roomType==2) {
         //anchorType 1看展 0公开课

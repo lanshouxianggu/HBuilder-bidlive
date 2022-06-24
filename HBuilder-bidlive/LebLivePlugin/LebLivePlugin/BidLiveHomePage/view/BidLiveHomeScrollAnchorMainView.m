@@ -137,23 +137,21 @@
 
 #pragma mark - 停止播放
 -(void)stopPlayVideo {
+//    [self.rtcView.videoView stop];
+//    [_rtcView removeFromSuperview];
+//    _rtcView = nil;
+//    self.lastPlayVideoCell.rtcSuperView.alpha = 0;
+//    self.lastPlayVideoCell = nil;
+//    [[LiveEBManager sharedManager] finitSDK];
+    
     [self.rtcView.videoView stop];
-    [_rtcView removeFromSuperview];
-    _rtcView = nil;
-//    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
     self.lastPlayVideoCell.rtcSuperView.alpha = 0;
-    self.lastPlayVideoCell = nil;
     [[LiveEBManager sharedManager] finitSDK];
 }
 
 #pragma mark - 开始播放
 -(void)startPlayVideo {
-    if (self.lastPlayVideoCell) {
-        [self.lastPlayVideoCell.rtcSuperView addSubview:self.rtcView];
-        [self playStream:self.lastPlayVideoCell];
-//        self.lastPlayVideoCell.rtcSuperView.hidden = NO;
-        self.lastPlayVideoCell.rtcSuperView.alpha = 0;
-    }
+    [self playStream:self.lastPlayVideoCell];
 }
 
 //#pragma mark - 播放第一个
@@ -161,13 +159,11 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     BidLiveHomeScrollAnchorCell *firstCell = (BidLiveHomeScrollAnchorCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     if ([firstCell isEqual:self.lastPlayVideoCell]) {
-        [self playStream:firstCell];
         return;
     }
-//    self.lastPlayVideoCell.rtcSuperView.hidden = YES;
     self.lastPlayVideoCell.rtcSuperView.alpha = 0;
+    [self stopPlayVideo];
     [self playStream:firstCell];
-    self.lastPlayVideoCell = firstCell;
 }
 
 #pragma mark - scrollView 停止滚动监测
@@ -190,10 +186,8 @@
     }
             
     dispatch_async(dispatch_get_main_queue(), ^{
-//        [self stopPlayVideo];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            self.lastPlayVideoCell.rtcSuperView.hidden = YES;
-            self.lastPlayVideoCell.rtcSuperView.alpha = 0;
+        [self stopPlayVideo];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self playStream:currentCell];
         });
     });
@@ -214,6 +208,8 @@
     [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:playType domain:@"" streamName:@""[currentCell.model.id] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
         if (liveUrl.length) {
             //2、播流
+//            [weakSelf.rtcView.videoView stop];
+//            weakSelf.lastPlayVideoCell.rtcSuperView.alpha = 0;
             [currentCell.rtcSuperView addSubview:weakSelf.rtcView];
             weakSelf.rtcView.videoView.liveEBURL = @""[liveUrl];
             [weakSelf.rtcView.videoView start];
