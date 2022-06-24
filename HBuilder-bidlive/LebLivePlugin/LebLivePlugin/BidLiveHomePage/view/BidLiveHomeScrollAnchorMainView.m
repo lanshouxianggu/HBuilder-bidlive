@@ -137,16 +137,16 @@
 
 #pragma mark - 停止播放
 -(void)stopPlayVideo {
-//    [self.rtcView.videoView stop];
-//    [_rtcView removeFromSuperview];
-//    _rtcView = nil;
-//    self.lastPlayVideoCell.rtcSuperView.alpha = 0;
-//    self.lastPlayVideoCell = nil;
-//    [[LiveEBManager sharedManager] finitSDK];
-    
     [self.rtcView.videoView stop];
+    [_rtcView removeFromSuperview];
+    _rtcView = nil;
     self.lastPlayVideoCell.rtcSuperView.alpha = 0;
+    self.lastPlayVideoCell = nil;
     [[LiveEBManager sharedManager] finitSDK];
+    
+//    [self.rtcView.videoView stop];
+//    self.lastPlayVideoCell.rtcSuperView.alpha = 0;
+//    [[LiveEBManager sharedManager] finitSDK];
 }
 
 #pragma mark - 开始播放
@@ -161,7 +161,6 @@
     if ([firstCell isEqual:self.lastPlayVideoCell]) {
         return;
     }
-    self.lastPlayVideoCell.rtcSuperView.alpha = 0;
     [self stopPlayVideo];
     [self playStream:firstCell];
 }
@@ -195,6 +194,19 @@
 }
 
 -(void)playStream:(BidLiveHomeScrollAnchorCell *)currentCell {
+    if ([currentCell isEqual:self.lastPlayVideoCell]) {
+        return;
+    }
+    /** 测试代码*/
+//    [currentCell.rtcSuperView addSubview:self.rtcView];
+//    self.rtcView.videoView.liveEBURL = @""[currentCell.model.liveUrl];
+//    [self.rtcView.videoView start];
+//    [UIView animateWithDuration:0.5 animations:^{
+//        currentCell.rtcSuperView.alpha = 1;
+//    }];
+//    self.lastPlayVideoCell = currentCell;
+    /** 测试代码*/
+    
     if (currentCell.model.liveStatus!=1) {
         return;
     }
@@ -208,8 +220,6 @@
     [BidLiveHomeNetworkModel getHomePageGetTXTtpPlayUrl:playType domain:@"" streamName:@""[currentCell.model.id] appName:@"" key:@"" secondsTime:1 completion:^(NSString * _Nonnull liveUrl) {
         if (liveUrl.length) {
             //2、播流
-//            [weakSelf.rtcView.videoView stop];
-//            weakSelf.lastPlayVideoCell.rtcSuperView.alpha = 0;
             [currentCell.rtcSuperView addSubview:weakSelf.rtcView];
             weakSelf.rtcView.videoView.liveEBURL = @""[liveUrl];
             [weakSelf.rtcView.videoView start];
@@ -350,6 +360,14 @@
     BidLiveHomeScrollAnchorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidLiveHomeScrollAnchorCell" forIndexPath:indexPath];
     cell.backgroundColor = UIColorFromRGB(0xf8f8f8);
     BidLiveHomeAnchorListModel *model = self.anchorsArray[indexPath.row];
+    
+    //测试代码
+//    if (indexPath.row%2==0) {
+//        model.liveUrl = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar";
+//    }else {
+//        model.liveUrl = @"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1";
+//    }
+    
     cell.model = model;
     
     return cell;

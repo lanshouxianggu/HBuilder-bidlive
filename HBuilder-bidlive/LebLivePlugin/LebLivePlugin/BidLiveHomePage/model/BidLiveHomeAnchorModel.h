@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) bool isTryLive;
 @property (nonatomic, assign) NSInteger rankCustomGroup;
 @property (nonatomic, assign) NSInteger rankOrderNo;
+@property (nonatomic, copy) NSString *liveUrl;
 @end
 
 @interface BidLiveHomeAnchorModel : NSObject
