@@ -223,6 +223,80 @@
     CGFloat tabBarHeight = [UIDevice vg_tabBarFullHeight];
     if (!_mainViewV2) {
         _mainViewV2 = [[BidLiveHomeMainViewV2 alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT-tabBarHeight)];
+        WS(weakSelf)
+        [_mainViewV2 setSearchClickBlock:^{
+            !weakSelf.searchClickBlock?:weakSelf.searchClickBlock();
+        }];
+        [_mainViewV2 setGlobalSaleClickBlock:^{
+            !weakSelf.globalSaleClickBlock?:weakSelf.globalSaleClickBlock();
+        }];
+        [_mainViewV2 setCountrySaleClickBlock:^{
+            !weakSelf.countrySaleClickBlock?:weakSelf.countrySaleClickBlock();
+        }];
+        [_mainViewV2 setSpeechClassClickBlock:^{
+            !weakSelf.speechClassClickBlock?:weakSelf.speechClassClickBlock();
+        }];
+        [_mainViewV2 setAppraisalClickBlock:^{
+            !weakSelf.appraisalClickBlock?:weakSelf.appraisalClickBlock();
+        }];
+        [_mainViewV2 setSendClickBlock:^{
+            !weakSelf.sendClickBlock?:weakSelf.sendClickBlock();
+        }];
+        [_mainViewV2 setInformationClickBlock:^{
+            !weakSelf.informationClickBlock?:weakSelf.informationClickBlock();
+        }];
+        [_mainViewV2 setLiveRoomClickBlock:^{
+            !weakSelf.liveRoomClickBlock?:weakSelf.liveRoomClickBlock();
+        }];
+        [_mainViewV2 setCmsArticleClickBlock:^(BidLiveHomeCMSArticleModel * _Nonnull model) {
+            !weakSelf.cmsArticleClickBlock?:weakSelf.cmsArticleClickBlock(model);
+        }];
+        [_mainViewV2 setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
+        [_mainViewV2 setGlobalLiveCellClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+            !weakSelf.globalLiveCellClickBlock?:weakSelf.globalLiveCellClickBlock(model);
+        }];
+        [_mainViewV2 setGlobalLiveCellLivingBtnClickBlock:^(BidLiveHomeGlobalLiveModel * _Nonnull model) {
+            !weakSelf.globalLiveCellLivingBtnClickBlock?:weakSelf.globalLiveCellLivingBtnClickBlock(model);
+        }];
+        [_mainViewV2 setVideoGuaideCellClickBlock:^(BidLiveHomeVideoGuaideListModel * _Nonnull model) {
+            !weakSelf.videoGuaideCellClickBlock?:weakSelf.videoGuaideCellClickBlock(model);
+        }];
+        [_mainViewV2 setAbroadClickBlock:^{
+            !weakSelf.abroadClickBlock?:weakSelf.abroadClickBlock();
+        }];
+        [_mainViewV2 setInternalClickBlock:^{
+            !weakSelf.internalClickBlock?:weakSelf.internalClickBlock();
+        }];
+        [_mainViewV2 setSpeechTopMoreClickBlock:^{
+            !weakSelf.speechTopMoreClickBlock?:weakSelf.speechTopMoreClickBlock();
+        }];
+        [_mainViewV2 setSpeechCellClickBlock:^(BidLiveHomeHotCourseListModel * _Nonnull model) {
+            !weakSelf.speechCellClickBlock?:weakSelf.speechCellClickBlock(model);
+        }];
+        [_mainViewV2 setHighlightLotsCellClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            !weakSelf.highlightLotsCellClickBlock?:weakSelf.highlightLotsCellClickBlock(model);
+        }];
+        [_mainViewV2 setHighlightLotsCellLivinLabelClickBlock:^(BidLiveHomeHighlightLotsListModel * _Nonnull model) {
+            !weakSelf.highlightLotsCellLivinLabelClickBlock?:weakSelf.highlightLotsCellLivinLabelClickBlock(model);
+        }];
+        [_mainViewV2 setGuessYouLikeCellClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
+            !weakSelf.guessYouLikeCellClickBlock?:weakSelf.guessYouLikeCellClickBlock(model);
+        }];
+        [_mainViewV2 setGuessYoulikeCellLivingClickBlock:^(BidLiveHomeGuessYouLikeListModel * _Nonnull model) {
+            !weakSelf.guessYoulikeCellLivingClickBlock?:weakSelf.guessYoulikeCellLivingClickBlock(model);
+        }];
+        [_mainViewV2 setGuessYouLikeBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.guessYouLikeBannerClickBlock?:weakSelf.guessYouLikeBannerClickBlock(model);
+        }];
+        [_mainViewV2 setAnchorCellClickBlock:^(BidLiveHomeAnchorListModel * _Nonnull model) {
+            !weakSelf.anchorCellClickBlock?:weakSelf.anchorCellClickBlock(model);
+        }];
+        
+        [_mainViewV2 setToNewAuctionClickBlock:^{
+            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
+        }];
     }
     return _mainViewV2;
 }
@@ -303,8 +377,8 @@
         }];
         
         [_mainScrollView setToNewAuctionClickBlock:^{
-//            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
-            [weakSelf openOrClose];
+            !weakSelf.toNewAuctionClickBlock?:weakSelf.toNewAuctionClickBlock();
+//            [weakSelf openOrClose];
 //            [weakSelf openPictureInPicture:@"webrtc://5664.liveplay.myqcloud.com/live/5664_harchar1"];
 //            [weakSelf openPictureInPicture:@"https://cdn2.bzjupinhang.com:65/20220222/3jE8F54h/475kb/hls/index.m3u8"];
         }];

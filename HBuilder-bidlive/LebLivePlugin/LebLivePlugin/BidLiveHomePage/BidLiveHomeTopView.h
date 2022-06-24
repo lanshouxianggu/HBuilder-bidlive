@@ -18,6 +18,7 @@
 #import "BidLiveHomeVideoGuaideModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+@class BidLiveHomeBannerModel;
 @interface BidLiveHomeTopView : UIView
 ///topView，包括图片广告轮播，按钮模块，文字滚动，直播页
 @property (nonatomic, strong) BidLiveHomeScrollTopMainView *topMainView;
@@ -50,6 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int highlightLotsPageIndex;
 ///焦点拍品列表
 @property (nonatomic, strong) NSMutableArray *hightlightLotsList;
+
+@property (nonatomic, copy) void (^topBannerClickBlock)(BidLiveHomeBannerModel *model);
+@property (nonatomic, copy) void (^highlightLotsViewScrollToRightBlock)(void);
 @end
 
 NS_ASSUME_NONNULL_END

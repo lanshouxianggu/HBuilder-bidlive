@@ -447,6 +447,7 @@
 -(void)refreshData {
     [self initData];
     [self loadData];
+    [self.mainScrollView.mj_footer setState:MJRefreshStateIdle];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.mainScrollView.mj_header endRefreshing];
     });

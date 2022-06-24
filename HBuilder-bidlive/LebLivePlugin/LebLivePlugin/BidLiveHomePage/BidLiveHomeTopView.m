@@ -75,10 +75,10 @@
         _topMainView  = [[BidLiveHomeScrollTopMainView alloc] initWithFrame:CGRectZero];
         _topMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
         
-//        WS(weakSelf)
-//        [_topMainView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
-//            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
-//        }];
+        WS(weakSelf)
+        [_topMainView setBannerClick:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.topBannerClickBlock?:weakSelf.topBannerClickBlock(model);
+        }];
     }
     return _topMainView;
 }
@@ -112,11 +112,10 @@
         _highlightLotsMainView = [[BidLiveHomeScrollHighlightLotsView alloc] initWithFrame:CGRectZero];
         _highlightLotsMainView.backgroundColor = UIColorFromRGB(0xf8f8f8);
         
-//        WS(weakSelf)
-//        [_highlightLotsMainView setScrollToRightBlock:^{
-//            weakSelf.highlightLotsPageIndex++;
-//            [weakSelf loadHomeHighliahtLotsListData];
-//        }];
+        WS(weakSelf)
+        [_highlightLotsMainView setScrollToRightBlock:^{
+            !weakSelf.highlightLotsViewScrollToRightBlock?:weakSelf.highlightLotsViewScrollToRightBlock();
+        }];
     }
     return _highlightLotsMainView;
 }

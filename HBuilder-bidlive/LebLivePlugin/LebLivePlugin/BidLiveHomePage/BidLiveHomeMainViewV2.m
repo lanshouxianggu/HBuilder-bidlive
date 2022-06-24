@@ -310,7 +310,8 @@
 -(void)refreshData {
     [self initData];
     [self loadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [self.collectionView.mj_footer setState:MJRefreshStateIdle];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.collectionView.mj_header endRefreshing];
     });
 }
@@ -833,6 +834,16 @@
     if (!_headMainView) {
         _headMainView = [[BidLiveHomeTopView alloc] initWithFrame:CGRectZero];
         _headMainView.layer.masksToBounds = YES;
+        
+        WS(weakSelf)
+        [_headMainView setHighlightLotsViewScrollToRightBlock:^{
+            weakSelf.highlightLotsPageIndex++;
+            [weakSelf loadHomeHighliahtLotsListData];
+        }];
+        
+        [_headMainView setTopBannerClickBlock:^(BidLiveHomeBannerModel * _Nonnull model) {
+            !weakSelf.bannerClick?:weakSelf.bannerClick(model);
+        }];
     }
     return _headMainView;
 }
