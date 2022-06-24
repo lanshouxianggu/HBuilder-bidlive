@@ -405,7 +405,12 @@ static NSString *const advertScrollViewMoreCell = @"advertScrollViewMoreCell";
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
 
     // 3、通过动画滚动到下一个位置
-    [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    // 如果是最后一个，不动画
+    BOOL animated = YES;
+    if (nextItem == 0) {
+        animated = NO;
+    }
+    [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:animated];
 }
 
 #pragma mark - - - setting

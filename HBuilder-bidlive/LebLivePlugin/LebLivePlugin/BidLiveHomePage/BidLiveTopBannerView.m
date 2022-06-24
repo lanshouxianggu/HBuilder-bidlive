@@ -29,7 +29,7 @@
         self.scrollView.delegate = self;
         [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
         
-        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-30, self.frame.size.width, 30)];
+        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.frame.size.height-30, SCREEN_WIDTH, 30)];
         
         [self addSubview:self.scrollView];
         [self addSubview:self.pageControl];
