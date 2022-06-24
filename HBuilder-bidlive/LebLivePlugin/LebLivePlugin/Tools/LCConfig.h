@@ -24,6 +24,30 @@
 #import "UIView+GradientColor.h"
 
 
+#define kTopMainBannerViewHeight (UIApplication.sharedApplication.statusBarFrame.size.height>20?210:180)
+
+#define kAnimationViewHeight (SCREEN_WIDTH*72/585)
+#define kVideoGuaideViewHeight (SCREEN_HEIGHT*0.18)
+#define kTopMainViewHeight (kTopMainBannerViewHeight+100+10+kAnimationViewHeight+10)
+
+#define kLiveNormalCellHeight ((SCREEN_WIDTH-30)*218.5/537)
+#define kLiveCenterImageCellHeight ((SCREEN_WIDTH-30)*138.5/537)
+//#define kLiveMainViewHeight (140*8+90+90+70+110)
+#define kLiveMainViewHeight (kLiveNormalCellHeight*8+70+kLiveCenterImageCellHeight+10+70+kLiveCenterImageCellHeight)
+
+#define kAnchorCellHeight ((SCREEN_WIDTH-30)*11/18-10)
+
+#define kAnchorMainViewHeight (70+4*kAnchorCellHeight+40)
+
+#define kSpeechCellHeight (SCREEN_WIDTH-30)*405.5/537
+#define kSpeechMainViewHeight (70+4*kSpeechCellHeight+40)
+
+#define kYouLikeHeadViewHeight ((SCREEN_WIDTH-30)*138.5/537+20)
+//#define kYouLikeMainViewHeight (110+5*280+4*10)
+#define kYouLikeMainViewHeight (kYouLikeHeadViewHeight+5*280+4*10)
+
+#define kHightlightLotsMainViewHeight (SCREEN_WIDTH*0.689+70)
+
 //弱引用
 #define WEAK_SELF(weakeSelf) __weak typeof(self) weakeSelf = self
 #define WEAK @weakify(self);

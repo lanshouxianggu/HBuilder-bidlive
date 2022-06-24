@@ -8,6 +8,7 @@
 #import "BidLiveHomeViewController.h"
 #import "BidLiveHomeMainView.h"
 #import "BidLiveHomeScrollMainView.h"
+#import "BidLiveHomeMainViewV2.h""
 #import "LCConfig.h"
 #import <AVKit/AVKit.h>
 
@@ -16,7 +17,7 @@
 @interface BidLiveHomeViewController () <AVPictureInPictureControllerDelegate>
 @property (nonatomic, strong) BidLiveHomeMainView *mainView;
 @property (nonatomic, strong) BidLiveHomeScrollMainView *mainScrollView;
-
+@property (nonatomic, strong) BidLiveHomeMainViewV2 *mainViewV2;
 
 @property (nonatomic, strong) AVPictureInPictureController *pipVC;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
@@ -59,7 +60,9 @@
     self.view.backgroundColor = UIColor.whiteColor;
     
 //    [self.view addSubview:self.mainView];
-    [self.view addSubview:self.mainScrollView];
+//    [self.view addSubview:self.mainScrollView];
+    
+    [self.view addSubview:self.mainViewV2];
      
     
     //测试画中画
@@ -214,6 +217,14 @@
         _mainView = [[BidLiveHomeMainView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT-tabBarHeight)];
     }
     return _mainView;
+}
+
+-(BidLiveHomeMainViewV2 *)mainViewV2 {
+    CGFloat tabBarHeight = [UIDevice vg_tabBarFullHeight];
+    if (!_mainViewV2) {
+        _mainViewV2 = [[BidLiveHomeMainViewV2 alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT-tabBarHeight)];
+    }
+    return _mainViewV2;
 }
 
 -(BidLiveHomeScrollMainView *)mainScrollView {
