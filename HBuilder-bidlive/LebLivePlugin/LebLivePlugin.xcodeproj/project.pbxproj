@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2289BA4C28646A9900EFCC0E /* LJDynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2289BA4A28646A9900EFCC0E /* LJDynamicItem.m */; };
+		2289BA4D28646A9900EFCC0E /* LJDynamicItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2289BA4B28646A9900EFCC0E /* LJDynamicItem.h */; };
 		22B547AE284734D000525686 /* FloatLiveDialogModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 22B547AC284734D000525686 /* FloatLiveDialogModule.h */; };
 		22B547AF284734D000525686 /* FloatLiveDialogModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B547AD284734D000525686 /* FloatLiveDialogModule.m */; };
 		22B547BB28475ADB00525686 /* TXLiteAVSDK_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B547BA28475ADB00525686 /* TXLiteAVSDK_Smart.framework */; };
@@ -216,6 +218,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2289BA4A28646A9900EFCC0E /* LJDynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJDynamicItem.m; sourceTree = "<group>"; };
+		2289BA4B28646A9900EFCC0E /* LJDynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJDynamicItem.h; sourceTree = "<group>"; };
 		22B547AC284734D000525686 /* FloatLiveDialogModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatLiveDialogModule.h; sourceTree = "<group>"; };
 		22B547AD284734D000525686 /* FloatLiveDialogModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FloatLiveDialogModule.m; sourceTree = "<group>"; };
 		22B547BA28475ADB00525686 /* TXLiteAVSDK_Smart.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TXLiteAVSDK_Smart.framework; sourceTree = "<group>"; };
@@ -877,6 +881,8 @@
 		22CCC4E82859B0DB00510C24 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				2289BA4B28646A9900EFCC0E /* LJDynamicItem.h */,
+				2289BA4A28646A9900EFCC0E /* LJDynamicItem.m */,
 				22CCC4E92859B0DB00510C24 /* BidLiveBundleResourceManager.h */,
 				22CCC4ED2859B0DB00510C24 /* BidLiveBundleResourceManager.m */,
 				22CCC4EA2859B0DB00510C24 /* BidliveInterfaceEnum.h */,
@@ -1038,6 +1044,7 @@
 				22CCC54B2859B0DB00510C24 /* AFAutoPurgingImageCache.h in Headers */,
 				22CCC5122859B0DB00510C24 /* MJExtension.h in Headers */,
 				22CCC51A2859B0DB00510C24 /* NSObject+MJKeyValue.h in Headers */,
+				2289BA4D28646A9900EFCC0E /* LJDynamicItem.h in Headers */,
 				22CCC4FA2859B0DB00510C24 /* NSAttributedString+LLMake.h in Headers */,
 				22CCC4FE2859B0DB00510C24 /* UIView+GradientColor.h in Headers */,
 				22CCC5AF2859B0DC00510C24 /* BidLiveHomeScrollMainView.h in Headers */,
@@ -1215,6 +1222,7 @@
 				22CCC5AA2859B0DC00510C24 /* BidLiveHomeScrollTopMainView.m in Sources */,
 				22CCC5822859B0DC00510C24 /* BidLiveHomeScrollVideoGuaideCell.m in Sources */,
 				22CCC55D2859B0DC00510C24 /* AFURLResponseSerialization.m in Sources */,
+				2289BA4C28646A9900EFCC0E /* LJDynamicItem.m in Sources */,
 				22CCC5132859B0DB00510C24 /* MJExtensionConst.m in Sources */,
 				22CCC56F2859B0DC00510C24 /* BidLiveHomeFloatView.m in Sources */,
 				22CCC5552859B0DC00510C24 /* UIWebView+AFNetworking.m in Sources */,
