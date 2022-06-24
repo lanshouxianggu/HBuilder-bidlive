@@ -745,7 +745,46 @@
 
 #pragma mark - scrollView 停止滚动监测
 - (void)scrollViewDidEndScroll {
-    !self.youLikeViewEndScrollBlock?:self.youLikeViewEndScrollBlock();
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.35 animations:^{
+//            self.floatView.transform = CGAffineTransformMakeScale(1, 1);
+            self.floatView.alpha = 1;
+        }];
+//    });
+    
+    //视频导览上的视频
+    CGFloat offsetY = self.collectionView.contentOffset.y;
+    CGFloat topMainViewMaxY = CGRectGetMaxY(self.headMainView.topMainView.frame);
+    if (offsetY>topMainViewMaxY-CGRectGetHeight(self.topSearchView.frame)-100) {
+        [self.headMainView.topMainView stopVideoPlay];
+    }else {
+        [self.headMainView.topMainView startVideoPlay];
+    }
+    
+    //精选主播上的视频
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    CGRect rect = [self.headMainView.anchorMainView convertRect:self.headMainView.anchorMainView.bounds toView:window];
+//    NSLog(@"精选主播位置：x=%f y=%f",rect.origin.x, rect.origin.y);
+    if (rect.origin.y>0 && rect.origin.y<=SCREEN_HEIGHT/2) {
+        //播放第一个cell上的视频
+        [self.headMainView.anchorMainView startPlayFirstCell];
+    }else if (rect.origin.y < 0){
+        CGFloat height = CGRectGetHeight(self.headMainView.anchorMainView.frame);
+        if (fabs(rect.origin.y) > height) {
+            //停止播放视频
+            [self.headMainView.anchorMainView stopPlayVideo];
+        }else {
+            [self.headMainView.anchorMainView scrollViewDidEndScroll:fabs(rect.origin.y)];
+        }
+    }else {
+        //停止播放视频
+        [self.headMainView.anchorMainView stopPlayVideo];
+    }
+    CGFloat anchorMainViewMaxY = CGRectGetMaxY(self.headMainView.anchorMainView.frame);
+    if (offsetY>anchorMainViewMaxY-CGRectGetHeight(self.topSearchView.frame)-130) {
+        //停止播放视频
+        [self.headMainView.anchorMainView stopPlayVideo];
+    }
 }
 
 #pragma mark - lazy
